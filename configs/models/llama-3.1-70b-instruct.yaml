@@ -1,0 +1,13 @@
+name: meta-llama/Llama-3.1-70B-Instruct
+revision: 1605565b47bb9346c5515c34102e054115b4f98b
+short_name: llama-3.1-70b-instruct
+dtype: bfloat16
+quantization: null
+chat_template: true
+thinking_mode: null
+expected_vram_gb: 140
+n_gpus: 2
+chat_generation_suffix: null
+# Non-reasoning. bf16 weights ~140 GB: device_map=auto over n_gpus. The template stamps
+# strftime_now into the system header; scoring.apply_chat_template_safe pins
+# date_string='26 Jul 2024'.

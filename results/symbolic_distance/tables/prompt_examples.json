@@ -1,0 +1,427 @@
+{
+  "in_context_full": {
+    "condition": "icl_people",
+    "test": "icl",
+    "model": "Qwen/Qwen3-32B",
+    "model_key": "qwen3-32b",
+    "item_pool": "novel_names_11",
+    "instruction_id": "iwl_height_T2",
+    "assignment_strategy": "random",
+    "surface_form_mode": "fixed_gt",
+    "symbolic_distance": 3,
+    "rank_low": 2,
+    "rank_high": 5,
+    "gold_true": true,
+    "query_items": [
+      "John",
+      "Bob"
+    ],
+    "context_ordering": [
+      "Mike",
+      "Tom",
+      "Bob",
+      "Amy",
+      "Anna",
+      "John",
+      "Mary",
+      "Lisa",
+      "Joe",
+      "Sue",
+      "Dan"
+    ],
+    "prompt": "<|im_start|>system\nIn the following question, > means \"is taller\" and < means \"is shorter\". Answer whether the statement is true or false.<|im_end|>\n<|im_start|>user\nBob > Tom\nTom > Mike\nDan > Sue\nMary > John\nJohn > Anna\nSue > Joe\nAmy > Bob\nLisa > Mary\nJoe > Lisa\nAnna > Amy\n\nIs it true or false that John > Bob?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "prompt_sha256": "ee8f678fe00bcc3dc7fa22c99771e9a6fa2ef76369710cea8551f345f3d1a4a3",
+    "parts": {
+      "system": "In the following question, > means \"is taller\" and < means \"is shorter\". Answer whether the statement is true or false.",
+      "premises": [
+        "Bob > Tom",
+        "Tom > Mike",
+        "Dan > Sue",
+        "Mary > John",
+        "John > Anna",
+        "Sue > Joe",
+        "Amy > Bob",
+        "Lisa > Mary",
+        "Joe > Lisa",
+        "Anna > Amy"
+      ],
+      "query": "Is it true or false that John > Bob?",
+      "assistant_prefill": "<think>\n\n</think>\n\n"
+    },
+    "source_file": "nxhop/final_countries/icl/qwen3-32b/N=11__hop=3__surface=fixed_gt.jsonl",
+    "source_line": 2,
+    "trial_id": 2
+  },
+  "familiar_contexts": [
+    {
+      "condition": "no_context",
+      "test": "iwl",
+      "model": "Qwen/Qwen3-32B",
+      "model_key": "qwen3-32b",
+      "item_pool": "countries_by_population_11",
+      "instruction_id": "iwl_population_T2",
+      "assignment_strategy": "natural",
+      "surface_form_mode": "zero_context",
+      "symbolic_distance": 3,
+      "rank_low": 2,
+      "rank_high": 5,
+      "gold_true": true,
+      "query_items": [
+        "Ukraine",
+        "Singapore"
+      ],
+      "context_ordering": [
+        "Jamaica",
+        "Panama",
+        "Singapore",
+        "Belgium",
+        "Netherlands",
+        "Ukraine",
+        "Spain",
+        "Germany",
+        "Mexico",
+        "Brazil",
+        "United States"
+      ],
+      "prompt": "<|im_start|>system\nIn the following question, > means \"has a larger population\" and < means \"has a smaller population\". Answer whether the statement is true or false.<|im_end|>\n<|im_start|>user\nIs it true or false that Ukraine > Singapore?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+      "prompt_sha256": "137563dc1e35a1e32dbcaec84cdef19691c04bee73d4109e15ee7c7a141bd61d",
+      "parts": {
+        "system": "In the following question, > means \"has a larger population\" and < means \"has a smaller population\". Answer whether the statement is true or false.",
+        "premises": [],
+        "query": "Is it true or false that Ukraine > Singapore?",
+        "assistant_prefill": "<think>\n\n</think>\n\n"
+      },
+      "source_file": "nxhop/final_countries/iwl/qwen3-32b/N=11__hop=3__surface=zero_context__assign=natural.jsonl",
+      "source_line": 2,
+      "trial_id": 2
+    },
+    {
+      "condition": "congruent",
+      "test": "content",
+      "model": "Qwen/Qwen3-32B",
+      "model_key": "qwen3-32b",
+      "item_pool": "countries_by_population_11",
+      "instruction_id": "iwl_population_T2_ctxonly",
+      "assignment_strategy": "natural",
+      "surface_form_mode": "fixed_gt",
+      "symbolic_distance": 3,
+      "rank_low": 2,
+      "rank_high": 5,
+      "gold_true": true,
+      "query_items": [
+        "Ukraine",
+        "Singapore"
+      ],
+      "context_ordering": [
+        "Jamaica",
+        "Panama",
+        "Singapore",
+        "Belgium",
+        "Netherlands",
+        "Ukraine",
+        "Spain",
+        "Germany",
+        "Mexico",
+        "Brazil",
+        "United States"
+      ],
+      "prompt": "<|im_start|>system\nIn the following question, > means \"has a larger population\" and < means \"has a smaller population\". Answer whether the statement is true or false. Base your answer only on the comparisons given — not on outside knowledge.<|im_end|>\n<|im_start|>user\nBrazil > Mexico\nUkraine > Netherlands\nNetherlands > Belgium\nMexico > Germany\nBelgium > Singapore\nGermany > Spain\nSpain > Ukraine\nUnited States > Brazil\nSingapore > Panama\nPanama > Jamaica\n\nIs it true or false that Ukraine > Singapore?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+      "prompt_sha256": "1d514351eb9a520cfd8737f9f2628d85bdaa29db611c5154e140e02b19208e2d",
+      "parts": {
+        "system": "In the following question, > means \"has a larger population\" and < means \"has a smaller population\". Answer whether the statement is true or false. Base your answer only on the comparisons given — not on outside knowledge.",
+        "premises": [
+          "Brazil > Mexico",
+          "Ukraine > Netherlands",
+          "Netherlands > Belgium",
+          "Mexico > Germany",
+          "Belgium > Singapore",
+          "Germany > Spain",
+          "Spain > Ukraine",
+          "United States > Brazil",
+          "Singapore > Panama",
+          "Panama > Jamaica"
+        ],
+        "query": "Is it true or false that Ukraine > Singapore?",
+        "assistant_prefill": "<think>\n\n</think>\n\n"
+      },
+      "source_file": "nxhop/final_countries/content_ctxonly/qwen3-32b/N=11__hop=3__surface=fixed_gt__assign=natural.jsonl",
+      "source_line": 2,
+      "trial_id": 2
+    },
+    {
+      "condition": "reversed",
+      "test": "content",
+      "model": "Qwen/Qwen3-32B",
+      "model_key": "qwen3-32b",
+      "item_pool": "countries_by_population_11",
+      "instruction_id": "iwl_population_T2_ctxonly",
+      "assignment_strategy": "reversed",
+      "surface_form_mode": "fixed_gt",
+      "symbolic_distance": 3,
+      "rank_low": 5,
+      "rank_high": 8,
+      "gold_true": false,
+      "query_items": [
+        "Ukraine",
+        "Singapore"
+      ],
+      "context_ordering": [
+        "United States",
+        "Brazil",
+        "Mexico",
+        "Germany",
+        "Spain",
+        "Ukraine",
+        "Netherlands",
+        "Belgium",
+        "Singapore",
+        "Panama",
+        "Jamaica"
+      ],
+      "prompt": "<|im_start|>system\nIn the following question, > means \"has a larger population\" and < means \"has a smaller population\". Answer whether the statement is true or false. Base your answer only on the comparisons given — not on outside knowledge.<|im_end|>\n<|im_start|>user\nPanama > Singapore\nBrazil > United States\nMexico > Brazil\nUkraine > Spain\nNetherlands > Ukraine\nSingapore > Belgium\nJamaica > Panama\nSpain > Germany\nBelgium > Netherlands\nGermany > Mexico\n\nIs it true or false that Ukraine > Singapore?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+      "prompt_sha256": "38b6e27f1ec4864b468ed4f99f4a82cb65907ac8ee56c4547a871991bd9f9d27",
+      "parts": {
+        "system": "In the following question, > means \"has a larger population\" and < means \"has a smaller population\". Answer whether the statement is true or false. Base your answer only on the comparisons given — not on outside knowledge.",
+        "premises": [
+          "Panama > Singapore",
+          "Brazil > United States",
+          "Mexico > Brazil",
+          "Ukraine > Spain",
+          "Netherlands > Ukraine",
+          "Singapore > Belgium",
+          "Jamaica > Panama",
+          "Spain > Germany",
+          "Belgium > Netherlands",
+          "Germany > Mexico"
+        ],
+        "query": "Is it true or false that Ukraine > Singapore?",
+        "assistant_prefill": "<think>\n\n</think>\n\n"
+      },
+      "source_file": "nxhop/final_countries/content_ctxonly/qwen3-32b/N=11__hop=3__surface=fixed_gt__assign=reversed.jsonl",
+      "source_line": 9,
+      "trial_id": 9
+    },
+    {
+      "condition": "shuffled",
+      "test": "content",
+      "model": "Qwen/Qwen3-32B",
+      "model_key": "qwen3-32b",
+      "item_pool": "countries_by_population_11",
+      "instruction_id": "iwl_population_T2_ctxonly",
+      "assignment_strategy": "random",
+      "surface_form_mode": "fixed_gt",
+      "symbolic_distance": 3,
+      "rank_low": 1,
+      "rank_high": 4,
+      "gold_true": false,
+      "query_items": [
+        "Ukraine",
+        "Singapore"
+      ],
+      "context_ordering": [
+        "Germany",
+        "Ukraine",
+        "Jamaica",
+        "Spain",
+        "Singapore",
+        "Panama",
+        "Netherlands",
+        "United States",
+        "Belgium",
+        "Brazil",
+        "Mexico"
+      ],
+      "prompt": "<|im_start|>system\nIn the following question, > means \"has a larger population\" and < means \"has a smaller population\". Answer whether the statement is true or false. Base your answer only on the comparisons given — not on outside knowledge.<|im_end|>\n<|im_start|>user\nJamaica > Ukraine\nNetherlands > Panama\nUkraine > Germany\nUnited States > Netherlands\nSingapore > Spain\nSpain > Jamaica\nMexico > Brazil\nBrazil > Belgium\nPanama > Singapore\nBelgium > United States\n\nIs it true or false that Ukraine > Singapore?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+      "prompt_sha256": "4ef8831aa0969baf7debad8a05ac70c1c1241eb8140b03d39b17e3aec2cbb4ea",
+      "parts": {
+        "system": "In the following question, > means \"has a larger population\" and < means \"has a smaller population\". Answer whether the statement is true or false. Base your answer only on the comparisons given — not on outside knowledge.",
+        "premises": [
+          "Jamaica > Ukraine",
+          "Netherlands > Panama",
+          "Ukraine > Germany",
+          "United States > Netherlands",
+          "Singapore > Spain",
+          "Spain > Jamaica",
+          "Mexico > Brazil",
+          "Brazil > Belgium",
+          "Panama > Singapore",
+          "Belgium > United States"
+        ],
+        "query": "Is it true or false that Ukraine > Singapore?",
+        "assistant_prefill": "<think>\n\n</think>\n\n"
+      },
+      "source_file": "nxhop/final_countries/content_ctxonly/qwen3-32b/N=11__hop=3__surface=fixed_gt.jsonl",
+      "source_line": 13,
+      "trial_id": 13
+    },
+    {
+      "condition": "unrelated_context",
+      "test": "uninformative",
+      "model": "Qwen/Qwen3-32B",
+      "model_key": "qwen3-32b",
+      "item_pool": "countries_by_population_11_disjoint",
+      "instruction_id": "iwl_population_T2_ctxonly",
+      "assignment_strategy": "natural",
+      "surface_form_mode": "disjoint_context",
+      "symbolic_distance": 3,
+      "rank_low": 2,
+      "rank_high": 5,
+      "gold_true": true,
+      "query_items": [
+        "Ukraine",
+        "Singapore"
+      ],
+      "context_ordering": [
+        "Jamaica",
+        "Panama",
+        "Singapore",
+        "Belgium",
+        "Netherlands",
+        "Ukraine",
+        "Spain",
+        "Germany",
+        "Mexico",
+        "Brazil",
+        "United States"
+      ],
+      "prompt": "<|im_start|>system\nIn the following question, > means \"has a larger population\" and < means \"has a smaller population\". Answer whether the statement is true or false. Base your answer only on the comparisons given — not on outside knowledge.<|im_end|>\n<|im_start|>user\nDenmark > Croatia\nAlbania > Slovenia\nAlbania < Armenia\nAustralia < Argentina\nAustralia > Portugal\nPortugal > Greece\nArgentina < Thailand\nArmenia < Croatia\nGreece > Denmark\nThailand < Philippines\n\nIs it true or false that Ukraine > Singapore?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+      "prompt_sha256": "f0e7b78b32e1a1737486c526def195259c72f876ecc581ff883652e7eb7f3464",
+      "parts": {
+        "system": "In the following question, > means \"has a larger population\" and < means \"has a smaller population\". Answer whether the statement is true or false. Base your answer only on the comparisons given — not on outside knowledge.",
+        "premises": [
+          "Denmark > Croatia",
+          "Albania > Slovenia",
+          "Albania < Armenia",
+          "Australia < Argentina",
+          "Australia > Portugal",
+          "Portugal > Greece",
+          "Argentina < Thailand",
+          "Armenia < Croatia",
+          "Greece > Denmark",
+          "Thailand < Philippines"
+        ],
+        "query": "Is it true or false that Ukraine > Singapore?",
+        "assistant_prefill": "<think>\n\n</think>\n\n"
+      },
+      "source_file": "nxhop/final_countries/uninformative_ctxonly/qwen3-32b/N=11__hop=3__surface=disjoint_context__assign=natural.jsonl",
+      "source_line": 2,
+      "trial_id": 2
+    }
+  ],
+  "context_only_sentence": "Base your answer only on the comparisons given — not on outside knowledge.",
+  "shared_query_items": [
+    "Ukraine",
+    "Singapore"
+  ],
+  "reasoning": [
+    {
+      "condition": "icl_people",
+      "test": "budget_icl",
+      "model": "Qwen/Qwen3-32B",
+      "model_key": "qwen3-32b",
+      "reasoning_kind": "native",
+      "trigger_id": "none",
+      "budget": 128,
+      "item_pool": "novel_names_11",
+      "instruction_id": "iwl_height_T2",
+      "symbolic_distance": 3,
+      "gold_true": true,
+      "query_items": [
+        "Anna",
+        "Tom"
+      ],
+      "reasoning_prompt": "<|im_start|>system\nIn the following question, > means \"is taller\" and < means \"is shorter\". Answer whether the statement is true or false.<|im_end|>\n<|im_start|>user\nBob > Tom\nTom > Mike\nDan > Sue\nMary > John\nJohn > Anna\nSue > Joe\nAmy > Bob\nLisa > Mary\nJoe > Lisa\nAnna > Amy\n\nIs it true or false that Anna > Tom?<|im_end|>\n<|im_start|>assistant\n",
+      "trace": "<think>\nOkay, let's try to figure out if Anna is taller than Tom based on the given information. Hmm, let's start by listing all the relationships provided.\n\nFirst, Bob is taller than Tom (Bob > Tom). Then Tom is taller than Mike (Tom > Mike). Dan is taller than Sue (Dan > Sue). Mary is taller than John (Mary > John), and John is taller than Anna (John > Anna). Sue is taller than Joe (Sue > Joe). Amy is taller than Bob (Amy > Bob). Lisa is taller than Mary (Lisa > Mary). Joe is taller than Lisa (Joe > Lisa",
+      "scoring_suffix": "\nTherefore the answer is:",
+      "cot_n_tokens": 128,
+      "cot_finish_reason": "length",
+      "truncated": true,
+      "parts": {
+        "system": "In the following question, > means \"is taller\" and < means \"is shorter\". Answer whether the statement is true or false.",
+        "premises": [
+          "Bob > Tom",
+          "Tom > Mike",
+          "Dan > Sue",
+          "Mary > John",
+          "John > Anna",
+          "Sue > Joe",
+          "Amy > Bob",
+          "Lisa > Mary",
+          "Joe > Lisa",
+          "Anna > Amy"
+        ],
+        "query": "Is it true or false that Anna > Tom?",
+        "assistant_prefill": ""
+      },
+      "prompt_sha256": "a05444715a896be9073769a7f85aa3ef38058a646afeae8fab9fddbc1b4580ba",
+      "source_file": "cot_sweep/final_countries/budget_icl/qwen3-32b/b128__N=11__hop=3__surface=fixed_gt.jsonl",
+      "source_line": 1
+    },
+    {
+      "condition": "reversed",
+      "test": "budget_reversed",
+      "model": "Qwen/Qwen2.5-32B-Instruct",
+      "model_key": "qwen2.5-32b-instruct",
+      "reasoning_kind": "prompted",
+      "trigger_id": "passive",
+      "budget": 128,
+      "item_pool": "countries_by_population_11",
+      "instruction_id": "iwl_population_T2_ctxonly",
+      "symbolic_distance": 3,
+      "gold_true": true,
+      "query_items": [
+        "Spain",
+        "Brazil"
+      ],
+      "reasoning_prompt": "<|im_start|>system\nIn the following question, > means \"has a larger population\" and < means \"has a smaller population\". Answer whether the statement is true or false. Base your answer only on the comparisons given — not on outside knowledge.<|im_end|>\n<|im_start|>user\nPanama > Singapore\nBrazil > United States\nMexico > Brazil\nUkraine > Spain\nNetherlands > Ukraine\nSingapore > Belgium\nJamaica > Panama\nSpain > Germany\nBelgium > Netherlands\nGermany > Mexico\n\nIs it true or false that Spain > Brazil?\nLet's think step by step.<|im_end|>\n<|im_start|>assistant\n",
+      "trace": "To determine if the statement \"Spain > Brazil\" is true or false based on the given comparisons, we need to analyze the relationships step by step.\n\n1. **Identify direct and indirect relationships:**\n   - From the given information:\n     - Brazil > United States\n     - Mexico > Brazil\n     - Germany > Mexico\n     - Spain > Germany\n\n2. **Establish the chain of inequalities:**\n   - Since Germany > Mexico and Mexico > Brazil, it follows that Germany > Brazil.\n   - Since Spain > Germany, it follows that Spain > Brazil.\n\nTherefore, based on the given comparisons, the statement \"Spain >",
+      "scoring_suffix": "\nTherefore the answer is:",
+      "cot_n_tokens": 128,
+      "cot_finish_reason": "length",
+      "truncated": true,
+      "parts": {
+        "system": "In the following question, > means \"has a larger population\" and < means \"has a smaller population\". Answer whether the statement is true or false. Base your answer only on the comparisons given — not on outside knowledge.",
+        "premises": [
+          "Panama > Singapore",
+          "Brazil > United States",
+          "Mexico > Brazil",
+          "Ukraine > Spain",
+          "Netherlands > Ukraine",
+          "Singapore > Belgium",
+          "Jamaica > Panama",
+          "Spain > Germany",
+          "Belgium > Netherlands",
+          "Germany > Mexico"
+        ],
+        "query": "Is it true or false that Spain > Brazil?\nLet's think step by step.",
+        "assistant_prefill": ""
+      },
+      "prompt_sha256": "63984fece952cde496b46feb919b329095139251732bfbf2103d0355b15ef51c",
+      "source_file": "cot_sweep/final_countries/budget_reversed_ctxonly/qwen2.5-32b-instruct/b128__N=11__hop=3__surface=fixed_gt__assign=reversed.jsonl",
+      "source_line": 1
+    }
+  ],
+  "scoring": {
+    "answer_cue": "Therefore the answer is:",
+    "rule": "the answer is scored by comparing the total probability of the True token family with that of the False token family at the position after the answer cue; a direct answer is the same comparison with no reasoning tokens generated",
+    "direct_budget": 0
+  },
+  "geometry": {
+    "n_items": 11,
+    "queryable_ranks": [
+      1,
+      9
+    ],
+    "innermost_ranks": [
+      2,
+      8
+    ],
+    "note": "the two ends of the ordering are never queried, and the figures keep the innermost seven ranks (2-8), giving symbolic distances 1-6",
+    "rank_direction": "rank 0 is the LOWEST item on the dimension and rank 10 the highest, so `context_ordering` reads from smallest to largest; a query is answered against the ordering shown in context, which is why the reversed and shuffled examples answer the same question differently"
+  },
+  "condition_of_assignment": {
+    "natural": "congruent",
+    "reversed": "reversed",
+    "random": "shuffled"
+  }
+}

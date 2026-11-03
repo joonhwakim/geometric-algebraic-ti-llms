@@ -1,0 +1,105 @@
+{
+ "pool": "us_states_by_population_11",
+ "built": "2026-09-08",
+ "source_table": "data/items/sources/us_states_population_2024.csv",
+ "source_citation": "US Census Bureau, Vintage 2024 Population Estimates (NST-EST2024-ALLDATA)",
+ "units": "people",
+ "spacing": "geometric",
+ "step_ratio": 1.3333864964364877,
+ "sens_ratio": 5.62,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "New Mexico",
+   "raw": "New Mexico",
+   "value": 2130256.0,
+   "target": 2219627.8328762306,
+   "dev_pct": -4.026433240405941,
+   "familiarity": null
+  },
+  {
+   "name": "Kansas",
+   "raw": "Kansas",
+   "value": 2970606.0,
+   "target": 2959621.779471751,
+   "dev_pct": 0.3711359540748374,
+   "familiarity": null
+  },
+  {
+   "name": "Oklahoma",
+   "raw": "Oklahoma",
+   "value": 4095393.0,
+   "target": 3946319.7153069614,
+   "dev_pct": 3.7775267957842846,
+   "familiarity": null
+  },
+  {
+   "name": "Alabama",
+   "raw": "Alabama",
+   "value": 5157699.0,
+   "target": 5261969.419011386,
+   "dev_pct": -1.9815854237894135,
+   "familiarity": null
+  },
+  {
+   "name": "Indiana",
+   "raw": "Indiana",
+   "value": 6924275.0,
+   "target": 7016238.967971534,
+   "dev_pct": -1.3107302700398367,
+   "familiarity": null
+  },
+  {
+   "name": "New Jersey",
+   "raw": "New Jersey",
+   "value": 9500851.0,
+   "target": 9355358.29566472,
+   "dev_pct": 1.5551804616900797,
+   "familiarity": null
+  },
+  {
+   "name": "Illinois",
+   "raw": "Illinois",
+   "value": 12710158.0,
+   "target": 12474308.42076441,
+   "dev_pct": 1.890682603638371,
+   "familiarity": null
+  },
+  {
+   "name": "New York",
+   "raw": "New York",
+   "value": 19867248.0,
+   "target": 16633074.400631234,
+   "dev_pct": 19.44423214535749,
+   "familiarity": null
+  },
+  {
+   "name": "Florida",
+   "raw": "Florida",
+   "value": 23372215.0,
+   "target": 22178316.800025113,
+   "dev_pct": 5.383177680884851,
+   "familiarity": null
+  },
+  {
+   "name": "Texas",
+   "raw": "Texas",
+   "value": 31290831.0,
+   "target": 29572268.13484398,
+   "dev_pct": 5.811400252830448,
+   "familiarity": null
+  },
+  {
+   "name": "California",
+   "raw": "California",
+   "value": 39431263.0,
+   "target": 39431263.0,
+   "dev_pct": 0.0,
+   "familiarity": null
+  }
+ ],
+ "dropped": {
+  "compound": [],
+  "excluded": []
+ }
+}

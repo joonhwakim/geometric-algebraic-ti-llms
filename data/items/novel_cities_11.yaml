@@ -1,0 +1,19 @@
+name: novel_cities_11
+description: >
+  11 invented city names, the second set of novel items of the ICL test. They take the same
+  population instruction as country population, so the ICL test differs from the IWL test only
+  in that the items carry no real-world prior. The names were checked not to be real places of
+  note.
+natural_order: false
+items:
+  - Ostrelia
+  - Kavendale
+  - Morvath
+  - Tessalin
+  - Brunmark
+  - Halvora
+  - Quillsby
+  - Zendria
+  - Pelmont
+  - Corvane
+  - Ilbrook

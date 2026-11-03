@@ -1,0 +1,105 @@
+{
+ "pool": "animals_by_mass_11",
+ "built": "2026-09-03",
+ "source_table": "data/items/sources/animals_pantheria_mass.csv",
+ "source_citation": "PanTHERIA (Jones et al. 2009, Ecology 90:2648), adult body mass",
+ "units": "kg (adult body mass)",
+ "spacing": "geometric",
+ "step_ratio": 1.6155557875145712,
+ "sens_ratio": 17.78,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "wolf",
+   "raw": "wolf",
+   "value": 31.7565,
+   "target": 31.576180918588765,
+   "dev_pct": 0.5710604517884588,
+   "familiarity": null
+  },
+  {
+   "name": "cheetah",
+   "raw": "cheetah",
+   "value": 50.5779,
+   "target": 51.013081830633254,
+   "dev_pct": -0.8530788868590348,
+   "familiarity": null
+  },
+  {
+   "name": "jaguar",
+   "raw": "jaguar",
+   "value": 83.9431,
+   "target": 82.41447959043396,
+   "dev_pct": 1.8547959256221231,
+   "familiarity": null
+  },
+  {
+   "name": "gorilla",
+   "raw": "gorilla",
+   "value": 112.589,
+   "target": 133.14518947732708,
+   "dev_pct": -15.438927653355089,
+   "familiarity": null
+  },
+  {
+   "name": "elk",
+   "raw": "elk",
+   "value": 240.8671,
+   "target": 215.10348143981997,
+   "dev_pct": 11.977313610978431,
+   "familiarity": null
+  },
+  {
+   "name": "zebra",
+   "raw": "zebra",
+   "value": 279.1607,
+   "target": 347.5116743546343,
+   "dev_pct": -19.668684363358214,
+   "familiarity": null
+  },
+  {
+   "name": "buffalo",
+   "raw": "buffalo",
+   "value": 592.666,
+   "target": 561.4244967325085,
+   "dev_pct": 5.564684734869456,
+   "familiarity": null
+  },
+  {
+   "name": "giraffe",
+   "raw": "giraffe",
+   "value": 964.6547,
+   "target": 907.0125949486594,
+   "dev_pct": 6.35516037730473,
+   "familiarity": null
+  },
+  {
+   "name": "hippopotamus",
+   "raw": "hippopotamus",
+   "value": 1536.3104,
+   "target": 1465.3294471179163,
+   "dev_pct": 4.844026919795592,
+   "familiarity": null
+  },
+  {
+   "name": "rhinoceros",
+   "raw": "rhinoceros",
+   "value": 2285.9394,
+   "target": 2367.3214689068764,
+   "dev_pct": -3.4377278276640126,
+   "familiarity": null
+  },
+  {
+   "name": "elephant",
+   "raw": "elephant",
+   "value": 3824.5399,
+   "target": 3824.5399,
+   "dev_pct": 0.0,
+   "familiarity": null
+  }
+ ],
+ "dropped": {
+  "compound": [],
+  "excluded": []
+ }
+}

@@ -1,0 +1,24 @@
+name: countries_by_area_11
+description: >
+  11 countries ordered from smallest to largest surface area. Geometric spacing (neighbors
+  about 1.62 times apart, 17.78-fold over six ranks), set from a pilot in which Qwen3-32B
+  answered without context or reasoning, so that symbolic distance 1 sits near chance and
+  distance 6 near ceiling. Drawn from the same familiarity-screened countries as
+  countries_by_population_11, so the two dimensions share item familiarity and differ in the
+  value ordered.
+  Built from
+  data/items/sources/countries_area_worldbank.csv (geometric spacing). Each item's value and
+  provenance: data/items/sources/countries_by_area_11_provenance.json.
+natural_order: true
+items:
+  - Tajikistan
+  - Romania
+  - Japan
+  - Kenya
+  - Tanzania
+  - Mongolia
+  - Algeria
+  - India
+  - Australia
+  - United States
+  - Russia

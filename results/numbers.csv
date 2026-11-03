@@ -1,0 +1,98 @@
+id,site,printed,computed,source,match
+llm-1,"Methods, large language models",22,22,models,True
+llm-2,"Methods, large language models",10,10,native_models,True
+llm-3,"Methods, large language models",12,12,prompted_models,True
+llm-4,"Methods, large language models",11,11,items,True
+llm-5,"Methods, large language models",10,10,relations,True
+llm-6,"Methods, large language models",10,10,premise_orders,True
+llm-7,"Extended methods, large language models",42,42,iwl_trials_per_set,True
+llm-8,"Extended methods, large language models",420,420,icl_trials,True
+llm-9,"Extended methods, large language models",19,19,spacing_sets,True
+llm-10,"Extended methods, large language models",2,2,spacing_ratio_min,True
+llm-11,"Extended methods, large language models",56.2,56.2,spacing_ratio_max,True
+llm-12,"Extended methods, large language models",378,378,competence_trials,True
+llm-13,"Extended methods, large language models","Llama-3.2-1B, Llama-3.2-3B, Phi-4-reasoning, and Qwen3-1.7B","Llama-3.2-1B, Llama-3.2-3B, Phi-4-reasoning, and Qwen3-1.7B",not_competent,True
+llm-14,"Results, symbolic distance effects",15,15,slopes_lower_right,True
+llm-15,"Results, symbolic distance effects",18,18,slopes_drawn,True
+llm-16,"Results, symbolic distance effects",18,18,budget_upper_right,True
+llm-17,"Results, symbolic distance effects",19,19,budget_drawn,True
+llm-18,Symbolic distance effects (SDE) figure caption,15,15,slopes_lower_right,True
+llm-19,Symbolic distance effects (SDE) figure caption,18,18,slopes_drawn,True
+llm-20,Symbolic distance effects (SDE) figure caption,18,18,budget_upper_right,True
+llm-21,Symbolic distance effects (SDE) figure caption,19,19,budget_drawn,True
+llm-22,"Results, content effects",81,81,congruent_above_reversed,True
+llm-23,"Results, content effects",110,110,model_dimensions,True
+llm-24,"Results, content effects",98,98,recovery_positive,True
+llm-25,"Results, content effects",110,110,recovery_points,True
+llm-26,"Content effects in transitive inference figure, prior-strength panel",-0.30,-0.30,prior_strength_rho,True
+llm-27,"Extended results, large language models",82,82,iwl_d6_above_d1,True
+llm-28,"Extended results, large language models",110,110,iwl_panels,True
+llm-29,"Extended results, large language models",15,15,icl_d6_below_d1,True
+llm-30,"Extended results, large language models",22,22,icl_panels,True
+llm-31,"Extended results, large language models",15,15,icl_budget_rises,True
+llm-32,"Extended results, large language models",17,17,icl_budget_compared,True
+llm-33,"Extended results, large language models",61,61,iwl_budget_falls,True
+llm-34,"Extended results, large language models",75,75,iwl_budget_compared,True
+llm-35,"Extended results, large language models, reasoning requirements caption",two,two,city_iwl_trials_d6,True
+llm-36,"Extended results, large language models",81,81,congruent_above_reversed,True
+llm-37,"Extended results, large language models",110,110,model_dimensions,True
+llm-38,"Extended results, large language models",89,89,recovered_10_points,True
+llm-39,"Extended results, large language models",110,110,model_dimensions,True
+llm-40,"Extended results, large language models",98,98,near_above_far_256,True
+llm-41,"Extended results, large language models",110,110,model_dimensions,True
+llm-42,"Extended results, large language models, recovery with reasoning caption",120,120,context_ladder_trials_d1,True
+llm-43,"Extended results, large language models, recovery with reasoning caption",20,20,context_ladder_trials_d6,True
+llm-44,"Extended results, large language models",57,57,reversed_budget_rises,True
+llm-45,"Extended results, large language models",66,66,reversed_budget_compared,True
+llm-46,"Extended results, large language models",60,60,shuffled_budget_rises,True
+llm-47,"Extended results, large language models",66,66,shuffled_budget_compared,True
+llm-48,"Extended results, large language models",52,52,congruent_budget_rises,True
+llm-49,"Extended results, large language models",89,89,congruent_budget_compared,True
+llm-50,"Extended results, large language models, reasoning traces",>= 0.90,>= 0.90,composed_icl_qwen3_512,True
+llm-51,"Extended results, large language models, reasoning traces",>= 0.90,>= 0.90,composed_icl_qwen25_512,True
+llm-52,"Extended results, large language models, reasoning traces",>= 0.90,>= 0.90,composed_reversed_qwen3_512,True
+llm-53,"Extended results, large language models, reasoning traces",< 0.90,< 0.90,composed_reversed_qwen25_512,True
+llm-54,"Extended results, large language models, example traces",seven,seven,qwen3_incorrect_trials,True
+llm-55,"Extended results, large language models, example traces",one,one,qwen3_incorrect_finished,True
+llm-56,"Extended results, large language models, example traces",693,693,trace_tokens_qwen3_correct,True
+llm-57,"Extended results, large language models, example traces","1,022","1,022",trace_tokens_qwen3_incorrect,True
+llm-58,"Extended results, large language models, example traces",267,267,trace_tokens_qwen25_correct,True
+llm-59,"Extended results, large language models, example traces",311,311,trace_tokens_qwen25_incorrect,True
+llm-60,"Extended methods, large language models, interventions",64,64,blocks,True
+llm-61,"Extended methods, large language models, interventions",252,252,head_scoring_trials,True
+llm-62,"Extended methods, large language models, interventions",32,32,heads_ablated,True
+llm-63,"Extended methods, large language models, interventions",64,64,random_heads_outside_top,True
+llm-64,"Methods, large language models",1,1,parameters_min_b,True
+llm-65,"Methods, large language models",70,70,parameters_max_b,True
+llm-66,"Methods, large language models",seven,seven,innermost_ranks,True
+llm-67,"Methods, large language models",five,five,dimensions,True
+llm-68,"Methods, large language models, mechanistic interventions","4,096","4,096",heads_total,True
+llm-69,"Extended methods, large language models",17.8,17.8,ratio_d6_countries,True
+llm-70,"Extended methods, large language models",17.8,17.8,ratio_d6_animals,True
+llm-71,"Extended methods, large language models",17.8,17.8,ratio_d6_countryarea,True
+llm-72,"Extended methods, large language models",5.6,5.6,ratio_d6_usstates,True
+llm-73,"Extended methods, large language models, main LLM item sets table, spacing row",1.62,1.62,step_countries,True
+llm-74,"Extended methods, large language models, main LLM item sets table, spacing row",1.33,1.33,step_usstates,True
+llm-75,"Extended methods, large language models, main LLM item sets table, spacing row",even,even,step_citieslinear,True
+llm-76,"Extended methods, large language models, main LLM item sets table, spacing row",1.62,1.62,step_animals,True
+llm-77,"Extended methods, large language models, main LLM item sets table, spacing row",1.62,1.62,step_countryarea,True
+llm-78,"Extended results, large language models, example traces",four,four,example_trace_distance,True
+llm-79,"Extended methods, large language models, interventions",16,16,smaller_head_set,True
+llm-80,"Extended methods, large language models, interventions",US states,US states,impaired_by_smaller_head_set,True
+llm-81,"Extended results, large language models, reasoning requirements under content conditions caption",120,120,context_ladder_trials_d1,True
+llm-82,"Extended results, large language models, reasoning requirements under content conditions caption",20,20,context_ladder_trials_d6,True
+llm-83,"Symbolic distance effects (SDE) figure, reasoning-budget panel",0.98,0.98,icl_test_accuracy_largest_budget,True
+llm-84,"Symbolic distance effects (SDE) figure, reasoning-budget panel",1.00,1.00,iwl_test_accuracy_largest_budget,True
+llm-85,"Content effects in transitive inference figure, reasoning-budget panel",1.00,1.00,congruent_accuracy_largest_budget,True
+llm-86,"Content effects in transitive inference figure, reasoning-budget panel",0.92,0.92,reversed_accuracy_largest_budget,True
+llm-87,"Content effects in transitive inference figure, reasoning-budget panel",0.95,0.95,shuffled_accuracy_largest_budget,True
+llm-88,"Methods, large language models, mechanistic interventions",32,32,heads_ablated,True
+llm-89,"Results, independent mechanisms underlie the geometric and algebraic strategies",32,32,heads_ablated,True
+llm-90,Mechanisms underlying the geometric and algebraic strategies figure caption,32,32,heads_ablated,True
+llm-91,"Extended methods, large language models",22,22,models,True
+llm-92,"Extended methods, large language models",1,1,parameters_min_b,True
+llm-93,"Extended methods, large language models",70,70,parameters_max_b,True
+llm-94,"Extended methods, large language models",Ten,Ten,native_models,True
+llm-95,"Extended methods, large language models",12,12,prompted_models,True
+llm-96,"Extended methods, large language models, interventions","4,096","4,096",heads_total,True
+llm-97,"Extended methods, large language models, IWL and ICL tests",10,10,premise_orders,True

@@ -1,0 +1,1011 @@
+package_version: 0.1.0
+experiment: components
+exported: '2026-10-16'
+runs_root: <GEO_ALG_TI_LLMS_PUBLISHED_RUNS>
+runs_layout:
+  run: head_ablation/{dim}/{model}
+  trials: ablate
+  summary: summary.csv
+  figure_data: rank_intervention/{dim}/{model}/intervene_scrub_ctxonly/fig_app_representation_data.csv
+model: qwen3-32b
+models:
+- qwen3-32b
+instruction: context_only
+dimensions:
+  countries: country population
+  cities: city population (constant-ratio spacing; the interventions' city item set)
+  usstates: US state population
+dims:
+  countries:
+    dimension: country population
+    item_set: countries_by_population_11
+    iwl_sets:
+    - countries_by_population_11
+    - countries_by_population_11_rep2
+    - countries_by_population_11_rep3
+  cities:
+    dimension: city population (constant-ratio spacing; the interventions' city item set)
+    item_set: cities_by_population_11
+    iwl_sets:
+    - cities_by_population_11
+    - cities_by_population_11_rep2
+  usstates:
+    dimension: US state population
+    item_set: us_states_by_population_11
+    iwl_sets:
+    - us_states_by_population_11
+    - us_states_by_population_11_rep2
+    - us_states_by_population_11_rep3
+tests:
+- iwl
+- content_reversed
+- cot_reversed
+- cot_icl
+conditions:
+  iwl:
+  - intact
+  - top8
+  - top16
+  - top32
+  - rand8_s0
+  - rand16_s0
+  - rand32_s0
+  content_reversed:
+  - intact
+  - top8
+  - top16
+  - top32
+  - rand8_s0
+  - rand16_s0
+  - rand32_s0
+  cot_reversed:
+  - intact
+  - top16
+  - top32
+  - rand16_s0
+  - rand32_s0
+  cot_icl:
+  - intact
+  - top16
+  - top32
+  - rand16_s0
+  - rand32_s0
+condition_glossary:
+  intact: no head ablated
+  top<k>: the k highest-scoring heads mean-ablated
+  rand<k>_s0: k random heads outside the top 64 mean-ablated (seed 100 k + 0)
+budgets_kept:
+- 0
+- 1024
+budgets_dropped:
+- 256
+- 512
+innermost_ranks: rank_low >= 2 and rank_high <= 8 (innermost 7 of 11; distances 1-6)
+row_order: dim (as declared), test (as declared), condition (as declared), budget, pool, premise_order,
+  d, trial_id
+trial_key: (dim, test, condition, budget, pool, d, trial_id) is unique
+text_columns_dropped:
+- prompt
+- trace_text
+- items
+- A
+- B
+- cell_id
+- lp_yes
+- lp_no
+- predicted
+- correct
+- world_truth
+- written_truth
+- stored_predicted
+- layers
+- n_edits
+- trace_n_tokens
+- cut
+- stage2_source
+record_guards:
+- test and condition equal the file name's; assignment and item set fit the test
+- d == rank_high - rank_low; direct tests at budget 0, reasoning tests at 256/512/1024
+- k as the condition names it
+- is_correct, agree_written and agree_world equal the agreement of predicted with correct, written_truth
+  and world_truth (agree_world null exactly for the given names)
+- no (pool, d, trial_id, budget) repeated in a file
+- every condition of a test scores the same trials; every reasoning trial has its three readouts
+checks:
+  trial_files_read: 72
+  records_read: 19908
+  same_trials_in_every_condition:
+    countries|iwl|0:
+      trials: 216
+      conditions: 7
+    countries|content_reversed|0:
+      trials: 216
+      conditions: 7
+    countries|cot_reversed|256:
+      trials: 126
+      conditions: 5
+    countries|cot_reversed|512:
+      trials: 126
+      conditions: 5
+    countries|cot_reversed|1024:
+      trials: 126
+      conditions: 5
+    countries|cot_icl|256:
+      trials: 126
+      conditions: 5
+    countries|cot_icl|512:
+      trials: 126
+      conditions: 5
+    countries|cot_icl|1024:
+      trials: 126
+      conditions: 5
+    cities|iwl|0:
+      trials: 144
+      conditions: 7
+    cities|content_reversed|0:
+      trials: 216
+      conditions: 7
+    cities|cot_reversed|256:
+      trials: 126
+      conditions: 5
+    cities|cot_reversed|512:
+      trials: 126
+      conditions: 5
+    cities|cot_reversed|1024:
+      trials: 126
+      conditions: 5
+    cities|cot_icl|256:
+      trials: 126
+      conditions: 5
+    cities|cot_icl|512:
+      trials: 126
+      conditions: 5
+    cities|cot_icl|1024:
+      trials: 126
+      conditions: 5
+    usstates|iwl|0:
+      trials: 216
+      conditions: 7
+    usstates|content_reversed|0:
+      trials: 216
+      conditions: 7
+    usstates|cot_reversed|256:
+      trials: 126
+      conditions: 5
+    usstates|cot_reversed|512:
+      trials: 126
+      conditions: 5
+    usstates|cot_reversed|1024:
+      trials: 126
+      conditions: 5
+    usstates|cot_icl|256:
+      trials: 126
+      conditions: 5
+    usstates|cot_icl|512:
+      trials: 126
+      conditions: 5
+    usstates|cot_icl|1024:
+      trials: 126
+      conditions: 5
+  reasoning_trials_have_three_readouts: true
+  reasoning_records_outside_innermost: 0
+  innermost_trials_per_condition:
+    countries|iwl|budget=0: 126
+    countries|content_reversed|budget=0: 126
+    countries|cot_reversed|budget=1024: 126
+    countries|cot_icl|budget=1024: 126
+    cities|iwl|budget=0: 84
+    cities|content_reversed|budget=0: 126
+    cities|cot_reversed|budget=1024: 126
+    cities|cot_icl|budget=1024: 126
+    usstates|iwl|budget=0: 126
+    usstates|content_reversed|budget=0: 126
+    usstates|cot_reversed|budget=1024: 126
+    usstates|cot_icl|budget=1024: 126
+  iwl_sets:
+    countries:
+    - countries_by_population_11
+    - countries_by_population_11_rep2
+    - countries_by_population_11_rep3
+    cities:
+    - cities_by_population_11
+    - cities_by_population_11_rep2
+    usstates:
+    - us_states_by_population_11
+    - us_states_by_population_11_rep2
+    - us_states_by_population_11_rep3
+jobs:
+  countries:
+    run_manifest_json:
+      dim: countries
+      model: Qwen/Qwen3-32B
+      heads: head_ablation/countries/qwen3-32b/selected_heads.json
+      arms:
+      - cot_natural
+      conditions:
+      - intact
+      - top16
+      - top32
+      - rand16_s0
+      - rand32_s0
+      n_perms: 3
+      budget: 1024
+      batch: 16
+      ctxonly: true
+      started: '2026-10-03T16:52:08'
+      job: '6985678'
+    history_jobs:
+    - job: '6985678'
+      tests:
+      - cot_natural
+      conditions:
+      - intact
+      - top16
+      - top32
+      - rand16_s0
+      - rand32_s0
+      events:
+      - event: started
+        started: '2026-10-03T16:52:08'
+      - event: finished
+        started: '2026-10-03T16:52:08'
+        finished: '2026-10-03T17:42:57'
+    - job: '6985669'
+      tests:
+      - cot_reversed
+      conditions:
+      - intact
+      - top16
+      - top32
+      - rand16_s0
+      - rand32_s0
+      events:
+      - event: started
+        started: '2026-10-03T16:52:08'
+      - event: finished
+        started: '2026-10-03T16:52:08'
+        finished: '2026-10-03T17:43:37'
+    - job: '6985668'
+      tests:
+      - cot_icl
+      conditions:
+      - intact
+      - top16
+      - top32
+      - rand16_s0
+      - rand32_s0
+      events:
+      - event: started
+        started: '2026-10-03T16:52:08'
+      - event: finished
+        started: '2026-10-03T16:52:08'
+        finished: '2026-10-03T17:45:50'
+    - job: '6985667'
+      tests:
+      - iwl
+      - icl
+      - content_natural
+      - content_reversed
+      - content_shuffled
+      conditions:
+      - intact
+      - top8
+      - top16
+      - top32
+      - rand8_s0
+      - rand16_s0
+      - rand32_s0
+      events:
+      - event: started
+        started: '2026-10-03T16:52:08'
+      - event: finished
+        started: '2026-10-03T16:52:08'
+        finished: '2026-10-03T17:03:33'
+  cities:
+    run_manifest_json:
+      dim: cities
+      model: Qwen/Qwen3-32B
+      heads: head_ablation/cities/qwen3-32b/selected_heads.json
+      arms:
+      - cot_icl
+      conditions:
+      - intact
+      - top16
+      - top32
+      - rand16_s0
+      - rand32_s0
+      n_perms: 3
+      perms: null
+      pools: null
+      budget: 1024
+      batch: 16
+      ctxonly: true
+      started: '2026-10-07T22:26:41'
+      job: '7106399'
+    history_jobs:
+    - job: '7106399'
+      tests:
+      - cot_icl
+      conditions:
+      - intact
+      - top16
+      - top32
+      - rand16_s0
+      - rand32_s0
+      events:
+      - event: started
+        started: '2026-10-07T22:26:41'
+      - event: finished
+        started: '2026-10-07T22:26:41'
+        finished: '2026-10-07T23:21:31'
+    - job: '7106400'
+      tests:
+      - cot_reversed
+      conditions:
+      - intact
+      - top16
+      - top32
+      - rand16_s0
+      - rand32_s0
+      events:
+      - event: started
+        started: '2026-10-07T22:26:44'
+      - event: finished
+        started: '2026-10-07T22:26:44'
+        finished: '2026-10-07T23:48:17'
+    - job: '7106398'
+      tests:
+      - iwl
+      - icl
+      - content_natural
+      - content_reversed
+      - content_shuffled
+      conditions:
+      - intact
+      - top8
+      - top16
+      - top32
+      - rand8_s0
+      - rand16_s0
+      - rand32_s0
+      events:
+      - event: started
+        started: '2026-10-07T22:26:45'
+      - event: finished
+        started: '2026-10-07T22:26:45'
+        finished: '2026-10-07T22:37:23'
+  usstates:
+    run_manifest_json:
+      dim: usstates
+      model: Qwen/Qwen3-32B
+      heads: head_ablation/usstates/qwen3-32b/selected_heads.json
+      arms:
+      - cot_icl
+      conditions:
+      - intact
+      - top16
+      - top32
+      - rand16_s0
+      - rand32_s0
+      n_perms: 3
+      perms: null
+      pools: null
+      budget: 1024
+      batch: 16
+      ctxonly: true
+      started: '2026-10-07T22:28:02'
+      job: '7106404'
+    history_jobs:
+    - job: '7106404'
+      tests:
+      - cot_icl
+      conditions:
+      - intact
+      - top16
+      - top32
+      - rand16_s0
+      - rand32_s0
+      events:
+      - event: started
+        started: '2026-10-07T22:28:02'
+      - event: finished
+        started: '2026-10-07T22:28:02'
+        finished: '2026-10-07T23:23:12'
+    - job: '7106403'
+      tests:
+      - iwl
+      - icl
+      - content_natural
+      - content_reversed
+      - content_shuffled
+      conditions:
+      - intact
+      - top8
+      - top16
+      - top32
+      - rand8_s0
+      - rand16_s0
+      - rand32_s0
+      events:
+      - event: started
+        started: '2026-10-07T22:28:03'
+      - event: finished
+        started: '2026-10-07T22:28:03'
+        finished: '2026-10-07T22:39:25'
+    - job: '7106405'
+      tests:
+      - cot_reversed
+      conditions:
+      - intact
+      - top16
+      - top32
+      - rand16_s0
+      - rand32_s0
+      events:
+      - event: started
+        started: '2026-10-07T22:38:23'
+      - event: started
+        started: '2026-10-07T22:44:14'
+      - event: finished
+        started: '2026-10-07T22:44:14'
+        finished: '2026-10-08T00:04:03'
+reproduces_stored_summaries:
+  rules:
+    summary_csv: acc = k/n over the innermost trials of (test, condition, budget[, d]), nulls dropped;
+      exact float equality of acc and n with every covered trial set; lo and hi equal the Wilson interval
+      at z = 1.96 within 1e-12; budgets 256 and 512 are checked against the raw records
+    figure_data_csv: 'B, C, E: the stored value is k/n with the recomputed k and n; D: the stored difference
+      is (k1 - k0)/n with the recomputed counts; A: equal to the probe table within 1e-15; standard errors
+      sqrt(p(1-p)/n) within 1e-12'
+  countries|summary_csv:
+    rows: 138
+    test_or_condition_not_exported: 65
+    compared_table: 43
+    compared_raw_256_512: 30
+    max_abs_wilson_error: 0.0
+    mismatches: []
+  countries|figure_data_csv:
+    values_by_panel:
+      D: 8
+      E: 8
+      not_this_experiment: 240
+    points_not_bit_identical: 1
+    max_abs_float_difference: 1.1102230246251565e-16
+    max_abs_se_error: 3.8163916471489756e-17
+    mismatches: []
+  cities|summary_csv:
+    rows: 108
+    test_or_condition_not_exported: 35
+    compared_table: 43
+    compared_raw_256_512: 30
+    max_abs_wilson_error: 0.0
+    mismatches: []
+  cities|figure_data_csv:
+    values_by_panel:
+      D: 8
+      E: 8
+      not_this_experiment: 240
+    points_not_bit_identical: 1
+    max_abs_float_difference: 1.1102230246251565e-16
+    max_abs_se_error: 0.0
+    mismatches: []
+  usstates|summary_csv:
+    rows: 108
+    test_or_condition_not_exported: 35
+    compared_table: 43
+    compared_raw_256_512: 30
+    max_abs_wilson_error: 0.0
+    mismatches: []
+  usstates|figure_data_csv:
+    values_by_panel:
+      D: 8
+      E: 8
+      not_this_experiment: 240
+    points_not_bit_identical: 1
+    max_abs_float_difference: 1.1102230246251565e-16
+    max_abs_se_error: 0.0
+    mismatches: []
+tables:
+- table: heads
+  path: heads.parquet
+  rows: 1080
+  sha256: f3c36d029343e7d8a8f23c668b96abe2dac4ffac8426bce497419cc87f629b95
+  bytes: 5219
+  columns:
+    dim: string
+    set: string
+    rank: int8
+    layer: int8
+    head: int8
+  tests: []
+  conditions: []
+  models: []
+  dims:
+  - cities
+  - countries
+  - usstates
+  selected_heads:
+    countries:
+      model: Qwen/Qwen3-32B
+      L: 64
+      H: 64
+      D: 128
+      n_chains: 252
+      n_deriv_tokens: 4736
+      n_ctrl_tokens: 135007
+      arms:
+      - cot_reversed
+      - cot_icl
+      n_copy_tokens: 39415
+      ranking: rel_mass_deriv (relevant-premise mass at composed-inference tokens)
+      sets:
+        top8: 8
+        rand8_s0: 8
+        rand8_s1: 8
+        top16: 16
+        rand16_s0: 16
+        rand16_s1: 16
+        top32: 32
+        rand32_s0: 32
+        rand32_s1: 32
+        top64: 64
+        rand64_s0: 64
+        rand64_s1: 64
+      top_sets_are_prefixes_of_each_other: true
+    cities:
+      model: Qwen/Qwen3-32B
+      L: 64
+      H: 64
+      D: 128
+      n_chains: 252
+      n_deriv_tokens: 4878
+      n_ctrl_tokens: 141084
+      arms:
+      - cot_reversed
+      - cot_icl
+      n_copy_tokens: 40994
+      ranking: rel_mass_deriv (relevant-premise mass at composed-inference tokens)
+      sets:
+        top8: 8
+        rand8_s0: 8
+        rand8_s1: 8
+        top16: 16
+        rand16_s0: 16
+        rand16_s1: 16
+        top32: 32
+        rand32_s0: 32
+        rand32_s1: 32
+        top64: 64
+        rand64_s0: 64
+        rand64_s1: 64
+      top_sets_are_prefixes_of_each_other: true
+    usstates:
+      model: Qwen/Qwen3-32B
+      L: 64
+      H: 64
+      D: 128
+      n_chains: 252
+      n_deriv_tokens: 5456
+      n_ctrl_tokens: 140561
+      arms:
+      - cot_reversed
+      - cot_icl
+      n_copy_tokens: 42689
+      ranking: rel_mass_deriv (relevant-premise mass at composed-inference tokens)
+      sets:
+        top8: 8
+        rand8_s0: 8
+        rand8_s1: 8
+        top16: 16
+        rand16_s0: 16
+        rand16_s1: 16
+        top32: 32
+        rand32_s0: 32
+        rand32_s1: 32
+        top64: 64
+        rand64_s0: 64
+        rand64_s1: 64
+      top_sets_are_prefixes_of_each_other: true
+  note: 'every head set of selected_heads.json: top<k> = the k highest-scoring heads in rank order; rand<k>_s<seed>
+    = k random heads outside the top 64 (seed 100 k + seed), in rank order; layer and head 0-based'
+- table: trials
+  path: trials.parquet
+  rows: 8778
+  sha256: f84598f061667247dc62a2d4641bdbbc7c1acdc4160f3fa0f764a01c9f1a835c
+  bytes: 11384
+  columns:
+    dim: string
+    test: string
+    condition: string
+    budget: int16
+    pool: string
+    premise_order: int8
+    trial_id: int16
+    rank_low: int8
+    rank_high: int8
+    d: int8
+    k: Int8
+    is_correct: bool
+    agree_world: boolean
+    agree_written: bool
+  tests:
+  - content_reversed
+  - cot_icl
+  - cot_reversed
+  - iwl
+  conditions:
+  - intact
+  - rand16_s0
+  - rand32_s0
+  - rand8_s0
+  - top16
+  - top32
+  - top8
+  models: []
+  dims:
+  - cities
+  - countries
+  - usstates
+  column_definitions:
+    dim: 'dimension: countries | cities | usstates'
+    test: iwl = IWL test (no context, familiar items); content_reversed = reversed context, direct answer;
+      cot_reversed = reversed context after a reasoning chain; cot_icl = ICL test (given names) after
+      a reasoning chain
+    condition: the head set ablated (see condition_glossary); intact = none
+    budget: reasoning tokens; 0 = direct answer; reasoning tests kept at 1024 only
+    pool: item set; the IWL test pools the main item set and its replicates
+    premise_order: premise order index within the item set
+    trial_id: trial id within an item set and distance
+    rank_low: lower queried rank in the ordering shown
+    rank_high: higher queried rank
+    d: symbolic distance (rank_high - rank_low)
+    k: number of heads ablated (0 = intact)
+    is_correct: the answer equals the gold answer in the ordering shown (accuracy)
+    agree_world: the answer equals the truth in the real ordering; null for the given names
+    agree_written: the answer equals the truth in the written ordering of the representation experiment's
+      writes (the same ordering under every condition)
+  trial_sets:
+    cities|content_reversed|intact: [126, 12fd8d9994d1e95ac59aafc105b9cc9f9af2ab8452fd17743ed113d0cbcd9d4c]
+    cities|content_reversed|rand16_s0: [126, 4ef33cb4fe6c927b18f22febe95909c959b8a1e3627594a86546d24c47fd9b3b]
+    cities|content_reversed|rand32_s0: [126, 203d94d369aecba9446761ae7e7840cd540484016e0169e322a7dfac69c0dac0]
+    cities|content_reversed|rand8_s0: [126, 7f634b19cb238f8a4b28d63c9015022e46d222e6fb302ffac172db73d72e6fe9]
+    cities|content_reversed|top16: [126, 18e3be66c77fce5ba6d4d749c1b69088f6ae9b57eae1c48d165ed690c1996590]
+    cities|content_reversed|top32: [126, 9a853d4a1df969b1fad1f819d896f884c29f9e070c3bfcbe116711810338b41a]
+    cities|content_reversed|top8: [126, 73fccea475adc689d1671181a7961fba9b84c0798f9641c8288e16001817133f]
+    cities|cot_icl|intact: [126, 076280c9e21628ea7214355c3b4dbdb4b6510acfb2d670f500270ba57a7224f3]
+    cities|cot_icl|rand16_s0: [126, 472113b8e4f279e321f6f80205a4673395b0039fda9d14fde35abdf32e3db11a]
+    cities|cot_icl|rand32_s0: [126, 6c2c64548ff7ac62f1507ef6a6eedb08997c9b67095448941bea8d71fe0a84a0]
+    cities|cot_icl|top16: [126, 8968e57c2767570bbd81ec265c5b7faad7f92e1e2d19ce48c3e0eeff925eb031]
+    cities|cot_icl|top32: [126, 83be45c60c50909437776102bb601bdef4e7f09dc8b5957ecb39f35f60e3db1e]
+    cities|cot_reversed|intact: [126, 0ae05dd4a33c855037c20ba25b47f108089e89e2a049e733f3dbaafb89dd402e]
+    cities|cot_reversed|rand16_s0: [126, 1123f7d288ed879b64fabbe8bb5146d3cf54ab78516da2fece58721279d039b1]
+    cities|cot_reversed|rand32_s0: [126, bf70822c3fb14d55b84f319c64e88e90aa9be6cc6f340100d1d55077c4404dfb]
+    cities|cot_reversed|top16: [126, 15c7d25cc854ac0fb46d8ac49f1946def0964d797e5491a26fab0da0045dd709]
+    cities|cot_reversed|top32: [126, bb97785d50d5940d8d594dc3b94c9a335852a64587fd9dbdcbfa764ffff6fd24]
+    cities|iwl|intact: [84, fc11144dca428a75e91cc05a64b75bb9e92ee17125a785415b40608bb5160560]
+    cities|iwl|rand16_s0: [84, a20f916d01fa326f441b698ec80905cd0beae3d4b33414cf2cdc6635d4f42505]
+    cities|iwl|rand32_s0: [84, 0276214427edb0b964c578b0ccbfac508e165c8e8b971a6d1be83454c6dcf5cb]
+    cities|iwl|rand8_s0: [84, 74417274c1a34282738be321d747cb1a85a9081275bfbe3af0b4c7e02bf9a312]
+    cities|iwl|top16: [84, 596ab9ec5b1599f849a7b5bc204291080f52c5ea731f32e2c6acc24ba1714ce8]
+    cities|iwl|top32: [84, f78c851ac1ad49b34aa18800ace9444b153c4fcfdddff893ac68e81633e0e1b8]
+    cities|iwl|top8: [84, d9c82d79e6c0793f8d6fd9d976fd4fa2340b629b9efefa81bd1759f99d2e6d3e]
+    countries|content_reversed|intact: [126, 1ba6be8172f5e13280fec666cd99c58a4858edea6a2077e0c6e66e052f741695]
+    countries|content_reversed|rand16_s0: [126, 0195ddc68a3be85e83195443cd85f6046a803d50e161a3fce3f0dfe1a3d46f9f]
+    countries|content_reversed|rand32_s0: [126, b2b946bb9f7ff4584763c8ca1a37d0dfe00aec40377cf1a7e981bbcf10fd823b]
+    countries|content_reversed|rand8_s0: [126, 848f34b6f11de8aa5b5ee464615e3ff8c207eab05ad7238f8c2e9bc99e8ece6a]
+    countries|content_reversed|top16: [126, a11ae0dc98393ad5f40bd97b48cf1436bd1c28d0ee45544aaf5fd9adf3036ecd]
+    countries|content_reversed|top32: [126, 0b4b666fbcdf6e03754d52e9152586710a559568d876f940a402e41a81c939fe]
+    countries|content_reversed|top8: [126, 77c355b528e08e66b99bd674593dd853643029bfa2cb37e461f8e0fbf44acbf3]
+    countries|cot_icl|intact: [126, 339db0b761fec90be8f251b9f2b381e1e2102df428c6ce82f69c8564d6ab63fd]
+    countries|cot_icl|rand16_s0: [126, 1e08cd2a688ec7908d3595ca2dea3e1265a9213b5a14b582c072179db1b7bc9c]
+    countries|cot_icl|rand32_s0: [126, cba66b727d7f52f36198b10945872830773f8a0c982be418b3440a7a8c6788a6]
+    countries|cot_icl|top16: [126, 4d4b8943426b3f51dad76b0a6757c3e44ad5322a17df4b7d2156c9315468a3da]
+    countries|cot_icl|top32: [126, e1b54e830996a95725426c44efcb199fd70d849e32664977797f27538f9dcd87]
+    countries|cot_reversed|intact: [126, 31803509da58fab6bf2957c10b97b8aa98e2dbd9a79f2fcc71dd7899f9e06789]
+    countries|cot_reversed|rand16_s0: [126, 7d8b81afaab280c3b951e7057db861f355572256e03a8d10c6a7f5d74af2e5e6]
+    countries|cot_reversed|rand32_s0: [126, 09b5ddfe6568920da874a493766cd857ad3997cf35db36a48858065ecdb11abc]
+    countries|cot_reversed|top16: [126, 22ae552220b5aac1a7a7bc084e6a337abd00c79d2240fb8d30122c08b037a0cb]
+    countries|cot_reversed|top32: [126, 33bb195e94395bf72600d6390906ac445fa827537fc4b2bf377ce763a64cc96d]
+    countries|iwl|intact: [126, ca51f65321d5f006144c70163d290ed2164ff906a47db799c985e66bd5c7d9d9]
+    countries|iwl|rand16_s0: [126, 3de59bc9203126237b02c899d765b211661e52a1a5b8c2de2e2011ff994852d2]
+    countries|iwl|rand32_s0: [126, 61cad037de07411aba4eab0209e486b34a14ab194620483cbedc70618fbe1284]
+    countries|iwl|rand8_s0: [126, 08257a34f235694b6267f495c4280c0feb89b7d8933293e41299919683629b1f]
+    countries|iwl|top16: [126, cc23149371175203e856e7dca795900d9b9c6040112e9b9844419eef15c8b6ee]
+    countries|iwl|top32: [126, 8dba57f0a8e2afb8fc38b4761beb93a97b1a5cd8866b12c1b7c3818e33d9e7af]
+    countries|iwl|top8: [126, 51abe33ff1d76ea3bdc1f775d5612ab35ca472f7112203575bbcb2f66f555fa4]
+    usstates|content_reversed|intact: [126, 2a358957b8640953d53fe96b4411f48b358cc430f9cafa94aeb512c5ec776ead]
+    usstates|content_reversed|rand16_s0: [126, b24652368c03998d483c37fac53984dc2ed022ad3b937a42051d8936148dfc8b]
+    usstates|content_reversed|rand32_s0: [126, de976dc6f7a5914f7c42c4fd579482f78d76bc3d57ffabd9cbe15dcfd2278cfc]
+    usstates|content_reversed|rand8_s0: [126, b8660a61f9042a5d39f774496fe6db414f244bb68ea694a6796705fb06af1791]
+    usstates|content_reversed|top16: [126, 9851785b27e64053c8eebe4963299a86efc7350bbf51d23a877c483a9cbec279]
+    usstates|content_reversed|top32: [126, 5d70e7ebc088063e299a2cc2592931cc32f90a5363b4e055df1ab9a102ae9f6d]
+    usstates|content_reversed|top8: [126, f3549b1b7aec5cc82d6cd76289394284b24ca052e1dd6b8b42b48372484a5e4d]
+    usstates|cot_icl|intact: [126, 9bb23a0289c700e85d41ca74f90ed37f818349c45bff6a114502bfe11dc69c03]
+    usstates|cot_icl|rand16_s0: [126, be003df7734c0550e7b275c498e333cffb464c7834ded0735ed03971d43a4921]
+    usstates|cot_icl|rand32_s0: [126, 2f348ce78b113fc3bffdf3d7997fa7c5349253a1ea52b5c91a09f3fe4cd07519]
+    usstates|cot_icl|top16: [126, 76b865b02633d48d7266dfc4695e619239c5cc8608b8790749490c178fce9d2f]
+    usstates|cot_icl|top32: [126, b5dc4369199298ebc035f46d0df9ab58ba1a41366c1e5d90821c9a726dc35807]
+    usstates|cot_reversed|intact: [126, 451823807b645b2516cf4bb8253eb71a138048c14b6fca4776c3a6dda91391a5]
+    usstates|cot_reversed|rand16_s0: [126, 89405dde66f42fc1762f6dac888180860e445176e3cdd9a4a8d776bf9eda3e56]
+    usstates|cot_reversed|rand32_s0: [126, 98f56f8d5b498d460aeb1ec5d09c6838980555088ac699d5423ba5f9fe29c6f8]
+    usstates|cot_reversed|top16: [126, 809b958ba9abc2f2119ac7acd50f66213158d5ee2d6d1d734e32bcff079f6123]
+    usstates|cot_reversed|top32: [126, 05ef38800b17ed55121a998f487d1f1cadd2f38dc815521f66994b2fdb988c3d]
+    usstates|iwl|intact: [126, 71bfd3e213176ada35226c9e42f23fb9451fff2d534222aa3fa71d2d4b323bee]
+    usstates|iwl|rand16_s0: [126, b4a8c1ce7b833d8ea52ed23f4865c1934293a81a319d989e6cc518d8393d4c82]
+    usstates|iwl|rand32_s0: [126, c0506483862ae9af3b52b4722250c411f38be500744df649ee728c8410c5025f]
+    usstates|iwl|rand8_s0: [126, ff009b6c7acb41b1e7fd02e6933971d7125bd507619f2ab8161f576329a654a3]
+    usstates|iwl|top16: [126, 45b06f76dd1cea10bf3c4b53614b8817fe1d3a385edcdb5e8d5376a0c0956506]
+    usstates|iwl|top32: [126, e5991a35f4dd09bae3116aae1bbaf5d9ef168128e20cba3137483e89330357dd]
+    usstates|iwl|top8: [126, 4b34d1ba371a8997d27be30c5e621721f86f836cef2a1fff77a0e2ed18a1d533]
+  panel_numbers:
+    countries:
+    - panel: D
+      condition: top16
+      d_iwl_direct: 0.0
+      d_icl_chain: 0.0
+      n_direct: 126
+      n_chain: 126
+    - panel: D
+      condition: top32
+      d_iwl_direct: -0.039682539682539764
+      d_icl_chain: -0.11111111111111105
+      n_direct: 126
+      n_chain: 126
+    - panel: D
+      condition: rand16_s0
+      d_iwl_direct: -0.015873015873015928
+      d_icl_chain: -0.015873015873015817
+      n_direct: 126
+      n_chain: 126
+    - panel: D
+      condition: rand32_s0
+      d_iwl_direct: -0.023809523809523836
+      d_icl_chain: -0.015873015873015817
+      n_direct: 126
+      n_chain: 126
+    - panel: E
+      test: iwl
+      budget: 0
+      condition: top32
+      source: heads
+      value: 0.7936507936507936
+      n: 126
+      se: 0.03605212401424587
+    - panel: E
+      test: content_reversed
+      budget: 0
+      condition: top32
+      source: heads
+      value: 0.5317460317460317
+      n: 126
+      se: 0.04445366675364683
+    - panel: E
+      test: cot_reversed
+      budget: 1024
+      condition: top32
+      source: heads
+      value: 0.8015873015873016
+      n: 126
+      se: 0.035528336502197964
+    - panel: E
+      test: cot_icl
+      budget: 1024
+      condition: top32
+      source: heads
+      value: 0.8650793650793651
+      n: 126
+      se: 0.03043560169834105
+    - panel: E
+      test: iwl
+      budget: 0
+      condition: rand32_s0
+      source: heads
+      value: 0.8095238095238095
+      n: 126
+      se: 0.03498242317583109
+    - panel: E
+      test: content_reversed
+      budget: 0
+      condition: rand32_s0
+      source: heads
+      value: 0.5793650793650794
+      n: 126
+      se: 0.04397881742794042
+    - panel: E
+      test: cot_reversed
+      budget: 1024
+      condition: rand32_s0
+      source: heads
+      value: 0.9841269841269841
+      n: 126
+      se: 0.011134482133527029
+    - panel: E
+      test: cot_icl
+      budget: 1024
+      condition: rand32_s0
+      source: heads
+      value: 0.9603174603174603
+      n: 126
+      se: 0.01739089246386022
+    cities:
+    - panel: D
+      condition: top16
+      d_iwl_direct: 0.0
+      d_icl_chain: 0.015873015873015928
+      n_direct: 84
+      n_chain: 126
+    - panel: D
+      condition: top32
+      d_iwl_direct: -0.04761904761904756
+      d_icl_chain: -0.23809523809523803
+      n_direct: 84
+      n_chain: 126
+    - panel: D
+      condition: rand16_s0
+      d_iwl_direct: -0.0357142857142857
+      d_icl_chain: 0.0
+      n_direct: 84
+      n_chain: 126
+    - panel: D
+      condition: rand32_s0
+      d_iwl_direct: -0.04761904761904756
+      d_icl_chain: 0.023809523809523836
+      n_direct: 84
+      n_chain: 126
+    - panel: E
+      test: iwl
+      budget: 0
+      condition: top32
+      source: heads
+      value: 0.6547619047619048
+      n: 84
+      se: 0.05187539475862043
+    - panel: E
+      test: content_reversed
+      budget: 0
+      condition: top32
+      source: heads
+      value: 0.5079365079365079
+      n: 126
+      se: 0.04453792853410804
+    - panel: E
+      test: cot_reversed
+      budget: 1024
+      condition: top32
+      source: heads
+      value: 0.7301587301587301
+      n: 126
+      se: 0.03954372293130258
+    - panel: E
+      test: cot_icl
+      budget: 1024
+      condition: top32
+      source: heads
+      value: 0.7380952380952381
+      n: 126
+      se: 0.03916901285742562
+    - panel: E
+      test: iwl
+      budget: 0
+      condition: rand32_s0
+      source: heads
+      value: 0.6547619047619048
+      n: 84
+      se: 0.05187539475862043
+    - panel: E
+      test: content_reversed
+      budget: 0
+      condition: rand32_s0
+      source: heads
+      value: 0.5555555555555556
+      n: 126
+      se: 0.04426772627164421
+    - panel: E
+      test: cot_reversed
+      budget: 1024
+      condition: rand32_s0
+      source: heads
+      value: 0.9444444444444444
+      n: 126
+      se: 0.02040641351923481
+    - panel: E
+      test: cot_icl
+      budget: 1024
+      condition: rand32_s0
+      source: heads
+      value: 1.0
+      n: 126
+      se: 0.0
+    usstates:
+    - panel: D
+      condition: top16
+      d_iwl_direct: 0.0
+      d_icl_chain: -0.0714285714285714
+      n_direct: 126
+      n_chain: 126
+    - panel: D
+      condition: top32
+      d_iwl_direct: -0.039682539682539764
+      d_icl_chain: -0.11904761904761907
+      n_direct: 126
+      n_chain: 126
+    - panel: D
+      condition: rand16_s0
+      d_iwl_direct: 0.015873015873015817
+      d_icl_chain: -0.007936507936507908
+      n_direct: 126
+      n_chain: 126
+    - panel: D
+      condition: rand32_s0
+      d_iwl_direct: 0.0
+      d_icl_chain: -0.015873015873015817
+      n_direct: 126
+      n_chain: 126
+    - panel: E
+      test: iwl
+      budget: 0
+      condition: top32
+      source: heads
+      value: 0.7301587301587301
+      n: 126
+      se: 0.03954372293130258
+    - panel: E
+      test: content_reversed
+      budget: 0
+      condition: top32
+      source: heads
+      value: 0.5079365079365079
+      n: 126
+      se: 0.04453792853410804
+    - panel: E
+      test: cot_reversed
+      budget: 1024
+      condition: top32
+      source: heads
+      value: 0.7936507936507936
+      n: 126
+      se: 0.03605212401424587
+    - panel: E
+      test: cot_icl
+      budget: 1024
+      condition: top32
+      source: heads
+      value: 0.8571428571428571
+      n: 126
+      se: 0.031173984319427486
+    - panel: E
+      test: iwl
+      budget: 0
+      condition: rand32_s0
+      source: heads
+      value: 0.7698412698412699
+      n: 126
+      se: 0.037499808368870256
+    - panel: E
+      test: content_reversed
+      budget: 0
+      condition: rand32_s0
+      source: heads
+      value: 0.4523809523809524
+      n: 126
+      se: 0.0443410686327124
+    - panel: E
+      test: cot_reversed
+      budget: 1024
+      condition: rand32_s0
+      source: heads
+      value: 0.9444444444444444
+      n: 126
+      se: 0.02040641351923481
+    - panel: E
+      test: cot_icl
+      budget: 1024
+      condition: rand32_s0
+      source: heads
+      value: 0.9603174603174603
+      n: 126
+      se: 0.01739089246386022
+  note: 'one row per scored trial read-out: innermost 7 ranks, budgets [0, 1024]; is_correct = the answer
+    equals the gold answer in the ordering shown, agree_world = equals the truth in the real ordering
+    (null for the given names), agree_written = equals the truth in the written ordering a write moves
+    toward'

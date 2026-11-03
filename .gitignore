@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+.pytest_cache/
+
+# Local environment; only the template in scripts/slurm/ is committed
+.env
+
+# Per-trial run directories are large and live on cluster storage; the tidy tables are committed
+runs/
+*.npz
+*.pt
+
+# Figures drawn from the committed tables
+figures/out/
+
+# Cluster logs
+slurm_logs/
+slurm-*.out
+slurm-*.err
+
+# macOS
+.DS_Store

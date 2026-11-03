@@ -1,0 +1,107 @@
+{
+ "pool": "countries_by_population_scale2",
+ "built": "2026-09-13",
+ "source_table": "data/items/sources/countries_band_familiarity.csv",
+ "source_citation": "",
+ "units": "people",
+ "spacing": "geometric",
+ "step_ratio": 1.122462048309373,
+ "sens_ratio": 2.0,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "Iran",
+   "raw": "Iran",
+   "value": 87134000.0,
+   "target": 90813562.40835342,
+   "dev_pct": -4.051776310467649,
+   "familiarity": 6146240.0
+  },
+  {
+   "name": "Vietnam",
+   "raw": "Vietnam",
+   "value": 102300000.0,
+   "target": 101934777.27515146,
+   "dev_pct": 0.3582905997456558,
+   "familiarity": 3665363.0
+  },
+  {
+   "name": "Philippines",
+   "raw": "Philippines",
+   "value": 114849400.0,
+   "target": 114417918.89422624,
+   "dev_pct": 0.377109730664342,
+   "familiarity": 4746464.0
+  },
+  {
+   "name": "Mexico",
+   "raw": "Mexico",
+   "value": 131231919.0,
+   "target": 128429771.60530889,
+   "dev_pct": 2.1818518865724412,
+   "familiarity": 3947216.0
+  },
+  {
+   "name": "Russia",
+   "raw": "Russia",
+   "value": 146028325.0,
+   "target": 144157544.49999997,
+   "dev_pct": 1.297733328136725,
+   "familiarity": 6758604.0
+  },
+  {
+   "name": "Bangladesh",
+   "raw": "Bangladesh",
+   "value": 169828911.0,
+   "target": 161811372.67871955,
+   "dev_pct": 4.954867008760545,
+   "familiarity": 5104191.0
+  },
+  {
+   "name": "Brazil",
+   "raw": "Brazil",
+   "value": 214211951.0,
+   "target": 181627124.8167069,
+   "dev_pct": 17.940506527412584,
+   "familiarity": 3842992.0
+  },
+  {
+   "name": "Nigeria",
+   "raw": "Nigeria",
+   "value": 223800000.0,
+   "target": 203869554.55030295,
+   "dev_pct": 9.776077400894792,
+   "familiarity": 3101186.0
+  },
+  {
+   "name": "Pakistan",
+   "raw": "Pakistan",
+   "value": 241499431.0,
+   "target": 228835837.78845254,
+   "dev_pct": 5.533920444425464,
+   "familiarity": 5118030.0
+  },
+  {
+   "name": "Indonesia",
+   "raw": "Indonesia",
+   "value": 288315089.0,
+   "target": 256859543.21061784,
+   "dev_pct": 12.2462048309373,
+   "familiarity": 4578852.0
+  },
+  {
+   "name": "United States",
+   "raw": "United States",
+   "value": 341784857.0,
+   "target": 288315089.0,
+   "dev_pct": 18.545601683719024,
+   "familiarity": 16464150.0
+  }
+ ],
+ "dropped": {
+  "compound": [],
+  "excluded": [
+   "Georgia (3,941,100)"
+  ]
+ }
+}

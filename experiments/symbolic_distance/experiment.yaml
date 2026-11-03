@@ -1,0 +1,120 @@
+# Symbolic distance: the IWL test (familiar items, no context), the ICL test
+# (novel items, full premise chain) and their reasoning-budget ladders.
+name: symbolic_distance
+question: >-
+  How does accuracy change with the symbolic distance between the queried items
+  when the ordering is known from the weights (IWL: familiar items, no context)
+  and when it is known only from the context (ICL: invented people or cities),
+  and how does a reasoning budget change each curve?
+
+geometry:
+  master_seed: 42
+  template_id: T2
+  query_wrapper_id: is_it_true_or_false
+  separator: "\n"
+  N_values: [11]
+  hop_values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]   # hop > 8 is infeasible at N=11 and skipped
+  all_pairs: true
+  n_premise_orders: 10
+
+budgets: [32, 64, 128, 256, 384, 512, 640, 768, 896, 1024]
+
+triggers:
+  native_thinking: none      # Qwen3, DeepSeek-R1 distills, Phi-4-reasoning, gpt-oss
+  prompted: passive          # "Let's think step by step."
+
+dimensions:
+  countries:
+    name: country population
+    item_set: countries_by_population_11
+    replicates: 3
+    instruction: iwl_population_T2
+    instruction_context_only: iwl_population_T2_ctxonly
+  cities:
+    name: city population (constant-ratio spacing; the interventions' city item set)
+    item_set: cities_by_population_11
+    replicates: 2
+    instruction: iwl_population_T2
+    instruction_context_only: iwl_population_T2_ctxonly
+  citieslinear:
+    name: city population (the paper's City population item set, evenly spaced)
+    item_set: cities_by_population_11_linear
+    replicates: 1
+    instruction: iwl_population_T2
+    instruction_context_only: iwl_population_T2_ctxonly
+  animals:
+    name: animal body mass
+    item_set: animals_by_mass_11
+    replicates: 2
+    instruction: iwl_mass_T2
+    instruction_context_only: iwl_mass_T2_ctxonly
+  usstates:
+    name: US state population
+    item_set: us_states_by_population_11
+    replicates: 3
+    instruction: iwl_population_T2
+    instruction_context_only: iwl_population_T2_ctxonly
+  countryarea:
+    name: country surface area
+    item_set: countries_by_area_11
+    replicates: 3
+    instruction: iwl_area_T2
+    instruction_context_only: iwl_area_T2_ctxonly
+
+tests:
+  iwl:
+    runner: direct
+    condition: no_context
+    assignment: natural
+    surface: zero_context
+    item_set: dimension
+    instruction: dimension
+    item_sets: all
+    n_premise_orders: 1     # no premise order to shuffle; one premise order is the whole trial set
+    published_as: iwl
+  icl:
+    runner: direct
+    condition: icl_people
+    assignment: random
+    surface: fixed_gt
+    item_set: novel_names_11
+    instruction: iwl_height_T2
+    dimensions: [countries]
+    published_as: icl
+  icl_cities:
+    runner: direct
+    condition: icl_cities
+    assignment: random
+    surface: fixed_gt
+    item_set: novel_cities_11
+    instruction: dimension
+    dimensions: [countries]
+    published_as: icl_cities
+  budget_iwl:
+    runner: ladder
+    condition: no_context
+    assignment: natural
+    surface: zero_context
+    item_set: dimension
+    instruction: dimension
+    item_sets: all
+    n_premise_orders: 1
+    published_as: budget_iwl
+  budget_icl:
+    runner: ladder
+    condition: icl_people
+    assignment: random
+    surface: fixed_gt
+    item_set: novel_names_11
+    instruction: iwl_height_T2
+    dimensions: [countries]
+    published_as: budget_icl
+  budget_icl_cities:
+    runner: ladder
+    condition: icl_cities
+    assignment: random
+    surface: fixed_gt
+    item_set: novel_cities_11
+    instruction: dimension
+    dimensions: [countries]
+    published_as: budget_icl_cities

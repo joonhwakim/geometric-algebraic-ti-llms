@@ -1,0 +1,19 @@
+name: us_states_by_population_scale10
+description: >
+  Built as us_states_by_population_11, with a value ratio of 10.0 between items six ranks apart.
+  Built from
+  data/items/sources/us_states_population_2024.csv (geometric spacing). Each item's value and
+  provenance: data/items/sources/us_states_by_population_scale10_provenance.json.
+natural_order: true
+items:
+  - North Dakota
+  - Montana
+  - West Virginia
+  - Mississippi
+  - Oklahoma
+  - Minnesota
+  - Virginia
+  - Illinois
+  - New York
+  - Florida
+  - California

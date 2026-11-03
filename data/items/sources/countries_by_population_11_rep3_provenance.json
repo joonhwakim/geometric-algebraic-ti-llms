@@ -1,0 +1,130 @@
+{
+ "pool": "countries_by_population_11_rep3",
+ "built": "2026-09-03",
+ "source_table": "data/items/sources/countries_full_familiarity.csv",
+ "source_citation": "Wikipedia, List of countries and dependencies by population (national census authorities / UN Population Division), retrieved 2026-09-03; full 237-row table, parse validated against the 69-row extract",
+ "units": "people",
+ "spacing": "geometric",
+ "step_ratio": 1.6158585245056627,
+ "sens_ratio": 17.8,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "Namibia",
+   "raw": "Namibia",
+   "value": 3022401.0,
+   "target": 2816563.0654203664,
+   "dev_pct": 7.308124469384559,
+   "familiarity": 1623881.0
+  },
+  {
+   "name": "Costa Rica",
+   "raw": "Costa Rica",
+   "value": 5217296.0,
+   "target": 4551167.4390672995,
+   "dev_pct": 14.63643273623909,
+   "familiarity": 1313835.0
+  },
+  {
+   "name": "Hong Kong",
+   "raw": "Hong Kong",
+   "value": 7510800.0,
+   "target": 7354042.702869502,
+   "dev_pct": 2.131579914124409,
+   "familiarity": 3856471.0
+  },
+  {
+   "name": "Jordan",
+   "raw": "Jordan",
+   "value": 11937000.0,
+   "target": 11883092.591010349,
+   "dev_pct": 0.45364797569979803,
+   "familiarity": 2582220.0
+  },
+  {
+   "name": "Senegal",
+   "raw": "Senegal",
+   "value": 19575061.0,
+   "target": 19201396.460674156,
+   "dev_pct": 1.9460279365156405,
+   "familiarity": 1521120.0
+  },
+  {
+   "name": "Ivory Coast",
+   "raw": "Ivory Coast",
+   "value": 32494020.0,
+   "target": 31026740.153393194,
+   "dev_pct": 4.729081557884317,
+   "familiarity": 1502000.0
+  },
+  {
+   "name": "Myanmar",
+   "raw": "Myanmar",
+   "value": 51375327.0,
+   "target": 50134822.564482525,
+   "dev_pct": 2.474336941996673,
+   "familiarity": 3242894.0
+  },
+  {
+   "name": "Iran",
+   "raw": "Iran",
+   "value": 87134000.0,
+   "target": 81010780.41539793,
+   "dev_pct": 7.558524375649906,
+   "familiarity": 6146240.0
+  },
+  {
+   "name": "Russia",
+   "raw": "Russia",
+   "value": 146028325.0,
+   "target": 130901960.11107716,
+   "dev_pct": 11.555491511423762,
+   "familiarity": 6758604.0
+  },
+  {
+   "name": "Bangladesh",
+   "raw": "Bangladesh",
+   "value": 169828911.0,
+   "target": 341784857.0,
+   "dev_pct": -50.31116577525844,
+   "familiarity": 5104191.0
+  },
+  {
+   "name": "Pakistan",
+   "raw": "Pakistan",
+   "value": 241499431.0,
+   "target": 211519048.11998424,
+   "dev_pct": 14.173845403752658,
+   "familiarity": 5118030.0
+  }
+ ],
+ "dropped": {
+  "compound": [],
+  "excluded": [
+   "Jamaica (2,774,538)",
+   "Lithuania (2,886,179)",
+   "Georgia (3,941,100)",
+   "Panama (4,064,780)",
+   "Kuwait (4,881,254)",
+   "Mauritania (4,927,532)",
+   "Singapore (6,110,200)",
+   "Kyrgyzstan (7,404,300)",
+   "Haiti (11,867,032)",
+   "Belgium (11,936,546)",
+   "Netherlands (18,153,386)",
+   "Romania (19,041,322)",
+   "Ukraine (28,700,000)",
+   "Nepal (30,034,040)",
+   "Spain (49,801,559)",
+   "South Korea (51,088,284)",
+   "Germany (83,467,117)",
+   "Turkey (86,092,168)",
+   "Japan (122,680,000)",
+   "Mexico (131,231,919)",
+   "Brazil (214,211,951)",
+   "Nigeria (223,800,000)",
+   "Indonesia (288,315,089)",
+   "United States (341,784,857)"
+  ]
+ }
+}

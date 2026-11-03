@@ -1,0 +1,105 @@
+{
+ "pool": "us_states_by_population_scale3p16",
+ "built": "2026-09-13",
+ "source_table": "data/items/sources/us_states_population_2024.csv",
+ "source_citation": "",
+ "units": "people",
+ "spacing": "geometric",
+ "step_ratio": 1.211382179268193,
+ "sens_ratio": 3.16,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "Mississippi",
+   "raw": "Mississippi",
+   "value": 2943045.0,
+   "target": 2919617.1676682984,
+   "dev_pct": 0.8024282289863325,
+   "familiarity": null
+  },
+  {
+   "name": "Utah",
+   "raw": "Utah",
+   "value": 3503613.0,
+   "target": 3536772.2071988517,
+   "dev_pct": -0.9375556370681296,
+   "familiarity": null
+  },
+  {
+   "name": "Oregon",
+   "raw": "Oregon",
+   "value": 4272371.0,
+   "target": 4284382.823931722,
+   "dev_pct": -0.28036299334938697,
+   "familiarity": null
+  },
+  {
+   "name": "Alabama",
+   "raw": "Alabama",
+   "value": 5157699.0,
+   "target": 5190025.002073624,
+   "dev_pct": -0.622848677235825,
+   "familiarity": null
+  },
+  {
+   "name": "Maryland",
+   "raw": "Maryland",
+   "value": 6263220.0,
+   "target": 6287103.797468354,
+   "dev_pct": -0.379885528181853,
+   "familiarity": null
+  },
+  {
+   "name": "Arizona",
+   "raw": "Arizona",
+   "value": 7582384.0,
+   "target": 7616085.499462546,
+   "dev_pct": -0.44250421643669974,
+   "familiarity": null
+  },
+  {
+   "name": "New Jersey",
+   "raw": "New Jersey",
+   "value": 9500851.0,
+   "target": 9225990.249831822,
+   "dev_pct": 2.979200527262519,
+   "familiarity": null
+  },
+  {
+   "name": "Georgia",
+   "raw": "Georgia",
+   "value": 11180878.0,
+   "target": 11176200.174748372,
+   "dev_pct": 0.041855238618549825,
+   "familiarity": null
+  },
+  {
+   "name": "Pennsylvania",
+   "raw": "Pennsylvania",
+   "value": 13078751.0,
+   "target": 13538649.723624242,
+   "dev_pct": -3.3969319910961504,
+   "familiarity": null
+  },
+  {
+   "name": "New York",
+   "raw": "New York",
+   "value": 19867248.0,
+   "target": 16400479.006552653,
+   "dev_pct": 21.138217926819287,
+   "familiarity": null
+  },
+  {
+   "name": "Florida",
+   "raw": "Florida",
+   "value": 23372215.0,
+   "target": 19867248.0,
+   "dev_pct": 17.64193510847602,
+   "familiarity": null
+  }
+ ],
+ "dropped": {
+  "compound": [],
+  "excluded": []
+ }
+}

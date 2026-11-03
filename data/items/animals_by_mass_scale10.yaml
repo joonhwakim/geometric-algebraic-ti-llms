@@ -1,0 +1,19 @@
+name: animals_by_mass_scale10
+description: >
+  Built as animals_by_mass_11, with a value ratio of 10.0 between items six ranks apart.
+  Built from
+  data/items/sources/animals_pantheria_mass.csv (geometric spacing). Each item's value and
+  provenance: data/items/sources/animals_by_mass_scale10_provenance.json.
+natural_order: true
+items:
+  - jaguar
+  - gorilla
+  - tiger
+  - zebra
+  - moose
+  - buffalo
+  - giraffe
+  - walrus
+  - hippopotamus
+  - rhinoceros
+  - elephant

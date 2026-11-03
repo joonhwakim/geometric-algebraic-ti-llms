@@ -1,0 +1,2305 @@
+package_version: 0.1.0
+experiment: representation
+exported: '2026-10-30'
+runs_root: <GEO_ALG_TI_LLMS_PUBLISHED_RUNS>
+runs_layout:
+  run: rank_intervention/{dim}/{model}
+  trials: intervene_scrub_ctxonly
+  summary: intervene_scrub_ctxonly/summary.csv
+  figure_data: rank_intervention/{dim}/{model}/intervene_scrub_ctxonly/fig_app_representation_data.csv
+model: qwen3-32b
+models:
+- qwen3-32b
+instruction: context_only
+dimensions:
+  countries: country population
+  cities: city population (constant-ratio spacing; the interventions' city item set)
+  usstates: US state population
+dims:
+  countries:
+    dimension: country population
+    item_set: countries_by_population_11
+    iwl_sets:
+    - countries_by_population_11
+    - countries_by_population_11_rep2
+    - countries_by_population_11_rep3
+  cities:
+    dimension: city population (constant-ratio spacing; the interventions' city item set)
+    item_set: cities_by_population_11
+    iwl_sets:
+    - cities_by_population_11
+    - cities_by_population_11_rep2
+  usstates:
+    dimension: US state population
+    item_set: us_states_by_population_11
+    iwl_sets:
+    - us_states_by_population_11
+    - us_states_by_population_11_rep2
+    - us_states_by_population_11_rep3
+tests:
+- iwl
+- content_reversed
+- cot_reversed
+- cot_icl
+conditions:
+  iwl:
+  - intact
+  - erase
+  - invert
+  - rand_erase
+  - write_0.25
+  - write_0.5
+  - write_0.75
+  - write_1.0
+  - write_rand
+  content_reversed:
+  - intact
+  - erase
+  - invert
+  - rand_erase
+  - write_0.25
+  - write_0.5
+  - write_0.75
+  - write_1.0
+  - write_rand
+  cot_reversed:
+  - intact
+  - erase
+  - rand_erase
+  - write_1.0
+  - write_rand
+  cot_icl:
+  - intact
+  - erase
+  - rand_erase
+condition_glossary:
+  intact: no edit (a' = a)
+  erase: the coordinate on the rank direction set to zero (a' = 0)
+  invert: the coordinate negated (a' = -a)
+  rand_erase: the coordinate on a random unit direction set to zero (control for erase)
+  write_<eta>: a' = (1 - eta) a + eta (alpha + beta z_new), z_new a random ordering of the trial's items
+    with |Spearman rho| <= 0.2 to the real one
+  write_rand: the write at eta = 1 along the random direction (control for the writes)
+budgets_kept:
+- 0
+- 1024
+budgets_dropped:
+- 256
+- 512
+innermost_ranks: rank_low >= 2 and rank_high <= 8 (innermost 7 of 11; distances 1-6)
+row_order: dim (as declared), test (as declared), condition (as declared), budget, pool, premise_order,
+  d, trial_id
+trial_key: (dim, test, condition, budget, pool, d, trial_id) is unique
+text_columns_dropped:
+- prompt
+- trace_text
+- items
+- A
+- B
+- cell_id
+- lp_yes
+- lp_no
+- predicted
+- correct
+- world_truth
+- written_truth
+- stored_predicted
+- layers
+- n_edits
+- trace_n_tokens
+- cut
+- stage2_source
+record_guards:
+- test and condition equal the file name's; assignment and item set fit the test
+- d == rank_high - rank_low; direct tests at budget 0, reasoning tests at 256/512/1024
+- eta as the condition names it
+- is_correct, agree_written and agree_world equal the agreement of predicted with correct, written_truth
+  and world_truth (agree_world null exactly for the given names)
+- no (pool, d, trial_id, budget) repeated in a file
+- every condition of a test scores the same trials; every reasoning trial has its three readouts
+checks:
+  trial_files_read: 78
+  records_read: 20088
+  same_trials_in_every_condition:
+    countries|iwl|0:
+      trials: 216
+      conditions: 9
+    countries|content_reversed|0:
+      trials: 216
+      conditions: 9
+    countries|cot_reversed|256:
+      trials: 126
+      conditions: 5
+    countries|cot_reversed|512:
+      trials: 126
+      conditions: 5
+    countries|cot_reversed|1024:
+      trials: 126
+      conditions: 5
+    countries|cot_icl|256:
+      trials: 126
+      conditions: 3
+    countries|cot_icl|512:
+      trials: 126
+      conditions: 3
+    countries|cot_icl|1024:
+      trials: 126
+      conditions: 3
+    cities|iwl|0:
+      trials: 144
+      conditions: 9
+    cities|content_reversed|0:
+      trials: 216
+      conditions: 9
+    cities|cot_reversed|256:
+      trials: 126
+      conditions: 5
+    cities|cot_reversed|512:
+      trials: 126
+      conditions: 5
+    cities|cot_reversed|1024:
+      trials: 126
+      conditions: 5
+    cities|cot_icl|256:
+      trials: 126
+      conditions: 3
+    cities|cot_icl|512:
+      trials: 126
+      conditions: 3
+    cities|cot_icl|1024:
+      trials: 126
+      conditions: 3
+    usstates|iwl|0:
+      trials: 216
+      conditions: 9
+    usstates|content_reversed|0:
+      trials: 216
+      conditions: 9
+    usstates|cot_reversed|256:
+      trials: 126
+      conditions: 5
+    usstates|cot_reversed|512:
+      trials: 126
+      conditions: 5
+    usstates|cot_reversed|1024:
+      trials: 126
+      conditions: 5
+    usstates|cot_icl|256:
+      trials: 126
+      conditions: 3
+    usstates|cot_icl|512:
+      trials: 126
+      conditions: 3
+    usstates|cot_icl|1024:
+      trials: 126
+      conditions: 3
+  reasoning_trials_have_three_readouts: true
+  reasoning_records_outside_innermost: 0
+  innermost_trials_per_condition:
+    countries|iwl|budget=0: 126
+    countries|content_reversed|budget=0: 126
+    countries|cot_reversed|budget=1024: 126
+    countries|cot_icl|budget=1024: 126
+    cities|iwl|budget=0: 84
+    cities|content_reversed|budget=0: 126
+    cities|cot_reversed|budget=1024: 126
+    cities|cot_icl|budget=1024: 126
+    usstates|iwl|budget=0: 126
+    usstates|content_reversed|budget=0: 126
+    usstates|cot_reversed|budget=1024: 126
+    usstates|cot_icl|budget=1024: 126
+  iwl_sets:
+    countries:
+    - countries_by_population_11
+    - countries_by_population_11_rep2
+    - countries_by_population_11_rep3
+    cities:
+    - cities_by_population_11
+    - cities_by_population_11_rep2
+    usstates:
+    - us_states_by_population_11
+    - us_states_by_population_11_rep2
+    - us_states_by_population_11_rep3
+jobs:
+  countries:
+    run_manifest_json:
+      dim: countries
+      model: Qwen/Qwen3-32B
+      axis: rank_intervention/countries/qwen3-32b/rank_axis.npz
+      arms:
+      - iwl
+      - content_reversed
+      - cot_reversed
+      - cot_icl
+      conditions:
+      - intact
+      - erase
+      - invert
+      - rand_erase
+      - write_0.25
+      - write_0.5
+      - write_0.75
+      - write_1.0
+      - write_rand
+      ctxonly: true
+      n_perms: 3
+      budget: 1024
+      batch: 16
+      started: '2026-10-29T22:12:08'
+      job: '8111201'
+      finished: '2026-10-30T00:16:59'
+      layers: 0-64 (65 layers)
+    history_jobs:
+    - job: '8111201'
+      tests:
+      - iwl
+      - content_reversed
+      - cot_reversed
+      - cot_icl
+      conditions:
+      - intact
+      - erase
+      - invert
+      - rand_erase
+      - write_0.25
+      - write_0.5
+      - write_0.75
+      - write_1.0
+      - write_rand
+      events:
+      - event: started
+        started: '2026-10-29T22:12:08'
+      - event: finished
+        started: '2026-10-29T22:12:08'
+        finished: '2026-10-30T00:16:59'
+  cities:
+    run_manifest_json:
+      dim: cities
+      model: Qwen/Qwen3-32B
+      axis: rank_intervention/cities/qwen3-32b/rank_axis.npz
+      arms:
+      - iwl
+      - content_reversed
+      - cot_reversed
+      - cot_icl
+      conditions:
+      - intact
+      - erase
+      - invert
+      - rand_erase
+      - write_0.25
+      - write_0.5
+      - write_0.75
+      - write_1.0
+      - write_rand
+      ctxonly: true
+      n_perms: 3
+      budget: 1024
+      batch: 16
+      started: '2026-10-29T22:13:38'
+      job: '8111202'
+      finished: '2026-10-30T00:29:54'
+      layers: 0-64 (65 layers)
+    history_jobs:
+    - job: '8111202'
+      tests:
+      - iwl
+      - content_reversed
+      - cot_reversed
+      - cot_icl
+      conditions:
+      - intact
+      - erase
+      - invert
+      - rand_erase
+      - write_0.25
+      - write_0.5
+      - write_0.75
+      - write_1.0
+      - write_rand
+      events:
+      - event: started
+        started: '2026-10-29T22:13:38'
+      - event: finished
+        started: '2026-10-29T22:13:38'
+        finished: '2026-10-30T00:29:54'
+  usstates:
+    run_manifest_json:
+      dim: usstates
+      model: Qwen/Qwen3-32B
+      axis: rank_intervention/usstates/qwen3-32b/rank_axis.npz
+      arms:
+      - iwl
+      - content_reversed
+      - cot_reversed
+      - cot_icl
+      conditions:
+      - intact
+      - erase
+      - invert
+      - rand_erase
+      - write_0.25
+      - write_0.5
+      - write_0.75
+      - write_1.0
+      - write_rand
+      ctxonly: true
+      n_perms: 3
+      budget: 1024
+      batch: 16
+      started: '2026-10-29T22:19:25'
+      job: '8111203'
+      finished: '2026-10-30T00:42:24'
+      layers: 0-64 (65 layers)
+    history_jobs:
+    - job: '8111203'
+      tests:
+      - iwl
+      - content_reversed
+      - cot_reversed
+      - cot_icl
+      conditions:
+      - intact
+      - erase
+      - invert
+      - rand_erase
+      - write_0.25
+      - write_0.5
+      - write_0.75
+      - write_1.0
+      - write_rand
+      events:
+      - event: started
+        started: '2026-10-29T22:19:25'
+      - event: finished
+        started: '2026-10-29T22:19:25'
+        finished: '2026-10-30T00:42:24'
+reproduces_stored_summaries:
+  rules:
+    summary_csv: acc = k/n over the innermost trials of (test, condition, budget[, d]), nulls dropped;
+      exact float equality of acc and n with every covered trial set; lo and hi equal the Wilson interval
+      at z = 1.96 within 1e-12; budgets 256 and 512 are checked against the raw records
+    figure_data_csv: 'B, C, E: the stored value is k/n with the recomputed k and n; D: the stored difference
+      is (k1 - k0)/n with the recomputed counts; A: equal to the probe table within 1e-15; standard errors
+      sqrt(p(1-p)/n) within 1e-12'
+  countries|summary_csv:
+    status: stored summaries not present
+    mismatches: []
+  countries|figure_data_csv:
+    status: stored summaries not present
+    mismatches: []
+  cities|summary_csv:
+    status: stored summaries not present
+    mismatches: []
+  cities|figure_data_csv:
+    status: stored summaries not present
+    mismatches: []
+  usstates|summary_csv:
+    status: stored summaries not present
+    mismatches: []
+  usstates|figure_data_csv:
+    status: stored summaries not present
+    mismatches: []
+tables:
+- table: probe
+  path: probe.parquet
+  rows: 195
+  sha256: 254ef3af0a2d41579e0a546c61ecf77cc6a095030895b9e87fcefd45aad19234
+  bytes: 16123
+  columns:
+    dim: string
+    layer: int8
+    n_occ: int32
+    acc_axis_heldout: float64
+    acc_ridge_heldout: float64
+    alpha: float64
+    beta: float64
+    r_a_z: float64
+    a_std: float64
+    n_items: int16
+    n_occurrences: int32
+  tests: []
+  conditions: []
+  models: []
+  dims:
+  - cities
+  - countries
+  - usstates
+  fit_manifests:
+    countries:
+      dim: countries
+      model: Qwen/Qwen3-32B
+      n_items: 123
+      n_occurrences: 861
+      familiarity_floor: 1200000
+      kinds:
+      - prem
+      - qA
+      - qB
+      fit_date: '2026-10-29'
+      method: Ledoit-Wolf covariance, eigenvalues floored at 1e-8*max; u = Sigma^-1/2 b normalized; a
+        = u^T Sigma^-1/2 (x-mu); edit x + (a'-a) Sigma^1/2 u; alpha/beta by OLS of a on z
+    cities:
+      dim: cities
+      model: Qwen/Qwen3-32B
+      n_items: 48
+      n_occurrences: 336
+      familiarity_floor: 1200000
+      kinds:
+      - prem
+      - qA
+      - qB
+      fit_date: '2026-10-29'
+      method: Ledoit-Wolf covariance, eigenvalues floored at 1e-8*max; u = Sigma^-1/2 b normalized; a
+        = u^T Sigma^-1/2 (x-mu); edit x + (a'-a) Sigma^1/2 u; alpha/beta by OLS of a on z
+    usstates:
+      dim: usstates
+      model: Qwen/Qwen3-32B
+      n_items: 50
+      n_occurrences: 350
+      familiarity_floor: 1200000
+      kinds:
+      - prem
+      - qA
+      - qB
+      fit_date: '2026-10-29'
+      method: Ledoit-Wolf covariance, eigenvalues floored at 1e-8*max; u = Sigma^-1/2 b normalized; a
+        = u^T Sigma^-1/2 (x-mu); edit x + (a'-a) Sigma^1/2 u; alpha/beta by OLS of a on z
+  note: 'probe_by_layer.csv of every dimension stacked: held-out pairwise ordering accuracy of the axis
+    coordinate (acc_axis_heldout) and of a ridge probe (acc_ridge_heldout), 5-fold over items, per hidden
+    state (layer 0 = token embeddings); alpha/beta the OLS of the coordinate on the standardized rank;
+    n_items / n_occurrences from fit_manifest.json'
+- table: trials
+  path: trials.parquet
+  rows: 9450
+  sha256: 8399a4aeb0bb11242febc3cd6764fb982655bc6c5e349779a0caace70074bf86
+  bytes: 11984
+  columns:
+    dim: string
+    test: string
+    condition: string
+    budget: int16
+    pool: string
+    premise_order: int8
+    trial_id: int16
+    rank_low: int8
+    rank_high: int8
+    d: int8
+    eta: Float32
+    is_correct: bool
+    agree_world: boolean
+    agree_written: bool
+  tests:
+  - content_reversed
+  - cot_icl
+  - cot_reversed
+  - iwl
+  conditions:
+  - erase
+  - intact
+  - invert
+  - rand_erase
+  - write_0.25
+  - write_0.5
+  - write_0.75
+  - write_1.0
+  - write_rand
+  models: []
+  dims:
+  - cities
+  - countries
+  - usstates
+  column_definitions:
+    dim: 'dimension: countries | cities | usstates'
+    test: iwl = IWL test (no context, familiar items); content_reversed = reversed context, direct answer;
+      cot_reversed = reversed context after a reasoning chain; cot_icl = ICL test (given names) after
+      a reasoning chain
+    condition: the intervention (see condition_glossary); intact = no edit
+    budget: reasoning tokens; 0 = direct answer; reasoning tests kept at 1024 only
+    pool: item set; the IWL test pools the main item set and its replicates
+    premise_order: premise order index within the item set
+    trial_id: trial id within an item set and distance
+    rank_low: lower queried rank in the ordering shown
+    rank_high: higher queried rank
+    d: symbolic distance (rank_high - rank_low)
+    eta: write strength (write conditions; write_rand carries 1.0); null elsewhere
+    is_correct: the answer equals the gold answer in the ordering shown (accuracy)
+    agree_world: the answer equals the truth in the real ordering; null for the given names
+    agree_written: the answer equals the truth in the written ordering (the same ordering under every
+      condition)
+  trial_sets:
+    cities|content_reversed|erase: [126, 8c9af71fa0e467b741cf7bbdf3dcdc8bd968719ceee8ae79a5a292d9c846838e]
+    cities|content_reversed|intact: [126, 4f229a7a06bd154debea722d56662d674cd41da215095a623fedc4efa648d362]
+    cities|content_reversed|invert: [126, cbe48bdffcea2ef73657dab202283237d02e168f21f1864e2045125ead4b27da]
+    cities|content_reversed|rand_erase: [126, 15fbc015a0585ccf1757b1df6fb5c81cf26c629b3f940be610f91df47d2ace42]
+    cities|content_reversed|write_0.25: [126, 728ae5184b209a5ec40bdfa1d5ff3ef1635fb30b366e1253ba4318ce16dc44da]
+    cities|content_reversed|write_0.5: [126, 1bdd4c75d3b3d4b18d79c345118e9a00f60b055077967d351cb418be21b49919]
+    cities|content_reversed|write_0.75: [126, 27f8de5d79ef6ca37f47746b45b6e4a9e1d0d8e32e89faf4dc7a4659d314ac99]
+    cities|content_reversed|write_1.0: [126, a2ba9f0de1e1747b9fc4ad2440aeec2aa7c9aab2599362bebcd77622f2a65736]
+    cities|content_reversed|write_rand: [126, 4392f6c505773f0239cbb2ecc17c5decc7b31c10401578a531460b2a8a5c4f78]
+    cities|cot_icl|erase: [126, bbed5eabeeeb5d8744112e208a1165db219de28f5d1117cf8dc30354603f881b]
+    cities|cot_icl|intact: [126, f43e289f125a69ce73c4bcbb5e9ed8724fdcb9a121f9aede82de6690e44215b8]
+    cities|cot_icl|rand_erase: [126, 7d651e0f7a797ff4627a902143c1107ac7b801d98f730ae2cdf44110d8fbb82e]
+    cities|cot_reversed|erase: [126, a468a7405ed63b17b7ea06caccee9d5f797dfa56a461ed35a418f8f0082fb505]
+    cities|cot_reversed|intact: [126, 864a51839104d4116d15456fccd21d8cdf6997b7d2527a672be02a42dccc1d95]
+    cities|cot_reversed|rand_erase: [126, 6a7ed215f018c04731a4865a1be067f9c916df3e30c69488e4dd2c9273c02515]
+    cities|cot_reversed|write_1.0: [126, c077a444ac995a1e3f2bcb5648dc15f9d34575f9f01f21d246cea94d748fb7e2]
+    cities|cot_reversed|write_rand: [126, 15ca7b1ee6163b1b47b8c18ed334bcbca3793ddcf0959feb7045842da5b3d074]
+    cities|iwl|erase: [84, 56411c718f621b231e0746c0432b0e12bba0ad107a681d932678f862ff7041ff]
+    cities|iwl|intact: [84, ca40f73a5263af29807b7d9c902a2d9aca81c0347ef210023cff52419cc5e372]
+    cities|iwl|invert: [84, 0bee332ac1f73f496de8d983000919dee8d8ead2054c66a8ba1a728936938be6]
+    cities|iwl|rand_erase: [84, 7da62940a4e2ef464b732db2248e12425a8a6d4c03410badd930ea44994b92a1]
+    cities|iwl|write_0.25: [84, ff73f22f249fe9fa248872c77f9926b676dbcf882463d03076993a78eae459b5]
+    cities|iwl|write_0.5: [84, 0f7921b154a8a19c372fade7f80687b61e5b598587949a9e9b9db376e3c4775d]
+    cities|iwl|write_0.75: [84, 3cede7287ff9348e16f16ee6e5bc6068eb4e44552f2f73c813a7631743c171df]
+    cities|iwl|write_1.0: [84, 76dd011c35333bf8e0231dc47162d89c1ca6bc68d2cb93a31b1227092c3b417b]
+    cities|iwl|write_rand: [84, 9a2e03094e0b2c40f56373fd2e9a43e7957b6303a9624e472ed43a200222a23c]
+    countries|content_reversed|erase: [126, 4855a7c45492f11b94b41f8baab840590909a970f8686e61ac37a098fae971de]
+    countries|content_reversed|intact: [126, 920a5c8b13ce27ef17196a9a7d6df8405ce7f4c1e9d4a8648b1e8b421018e168]
+    countries|content_reversed|invert: [126, 077664c1cc3fbf47994d52d898c5da76a92ed8fe73a9cdf736a246ee7d5e8508]
+    countries|content_reversed|rand_erase: [126, 6ff5c770cb3438b36c644db19b0c4b35c3f29899ff634c6ae45deb8bdc7cd785]
+    countries|content_reversed|write_0.25: [126, aeeb8bd9eb2d6dca0f0f792aa1e17a88c2d26388a0ca01dd6d49bfc18ff1a936]
+    countries|content_reversed|write_0.5: [126, 8f474aa5aa11e0f717af4ad4505cb0790b4b109b23d6f08bb5d3d73fa567c69d]
+    countries|content_reversed|write_0.75: [126, fc43687a8ce8bbef48e9fec222e1600f1681a3d27c60c4ace0d2c4eacaac21bb]
+    countries|content_reversed|write_1.0: [126, fa60e9fc18f9eacdb3fac1bd0ba66012a727d7c01c218f9d21cad6e345454eaa]
+    countries|content_reversed|write_rand: [126, 66803af2627cb1beddf5414700ce18df399cec09c14e885c5829208a358daf65]
+    countries|cot_icl|erase: [126, d46cc93d95736d8196fca606e3a037997df891b8c4b96bcf63e46d66b23f66fb]
+    countries|cot_icl|intact: [126, 0b0d4958c4519e1a20e44a30e212f7ad89c2cc2ff68aa99c51d9f98b4fdd89d7]
+    countries|cot_icl|rand_erase: [126, ef8d8c72b1d5a9e0c3f59b037fedd45cb26177c78c811c1f19d0afcd083f16ba]
+    countries|cot_reversed|erase: [126, c798327bb268c9123e00792de0273c7d5d30f603a72107ff64ff3c1b7df100ca]
+    countries|cot_reversed|intact: [126, c737eb8c36dd9ca7eadc7288d221a4c7f200343eb7a87b3e5d3b2914a094fb10]
+    countries|cot_reversed|rand_erase: [126, e4e5ad22e0263c7ffe393a3c80be793dff937786c458219f29097464aea40721]
+    countries|cot_reversed|write_1.0: [126, 8d85743842028618e90f14867675b6823a6235c97dd30c5b2ea3b974e930fbe0]
+    countries|cot_reversed|write_rand: [126, 7bf2ad87ae0bb2854ff09a535b9a548db3c5707c92d36fbe5f7171ed87595c9f]
+    countries|iwl|erase: [126, 56a557770558b291380837dcb6d1d4e5d246a1131ece70ad665da540bdef9a27]
+    countries|iwl|intact: [126, 2e0cdab290a0fb5302193fb97828f5135599b0121005ddfb9c59e245a97ca851]
+    countries|iwl|invert: [126, 00f0689e882803c5529d1fa889703da42d3e9551f9ccf2da6bf343ea09456be1]
+    countries|iwl|rand_erase: [126, 8eeb863ef66393641a5675c79f3a09807240d002007a8a3201a06ed759c74a17]
+    countries|iwl|write_0.25: [126, 22d321e1e393b998b9abfab2a1dc648b6b4ecc4ac28a8276a67351e26ecfda0b]
+    countries|iwl|write_0.5: [126, d223a919f6bb4c3aacdaca1a7143eac9aa9f40c4518e36101aaa836a00bec57d]
+    countries|iwl|write_0.75: [126, 98c4f76789962a2092c03268f3fe059b9472beaba55354bfba1011b8e3b440d2]
+    countries|iwl|write_1.0: [126, 4d79a17976fec92455c4b17f4ff9bb615e74f2dbf0abbd9399cc85350918ecac]
+    countries|iwl|write_rand: [126, c6e23b37efd7b6518cc82dd7ecbc2a74cb8c07eac8b3331b903251339b332416]
+    usstates|content_reversed|erase: [126, a5ec45b3197664238fec6b94a4123dc52b6b7bf8a5b6dba8b0053e866e79ec68]
+    usstates|content_reversed|intact: [126, c3c13421d12e1a27f5dda93151cacc38ce729474b3b61e23171fee74b1877b2b]
+    usstates|content_reversed|invert: [126, 918871df03c1fbaf7b9a71eb95b49c05d4f5b551a395ff832d0497f35ce4dea3]
+    usstates|content_reversed|rand_erase: [126, 614081ef62231a40de164f13b49281fe87aa8b29927589f71b3643d40036bf70]
+    usstates|content_reversed|write_0.25: [126, c78ea2f178d3e803bb1c1501895be4e6de7e3411ae40e4936e9cb135c826024f]
+    usstates|content_reversed|write_0.5: [126, 9d06431d6d2f8e7391a6c0c09a9915cbc52f2d8836ef8788e25b847217f84d29]
+    usstates|content_reversed|write_0.75: [126, d39d8bfc51d6538f9e4b73b2e46a4f58b1ffeef7deee22a77bcbbb1200fe4471]
+    usstates|content_reversed|write_1.0: [126, 238d7d90d51b7fc97c2acd69a00fadb54b21f9ab4549bab366841b04eaa17008]
+    usstates|content_reversed|write_rand: [126, f79d7437636d99ed7ddff9b250f9b5ae1e23ed24b813d172fc2713ac3b0e388f]
+    usstates|cot_icl|erase: [126, 074e656ac73b9f50423bfb34fdcd932873978b7dee6bf3b9fad51ddf54cb87fd]
+    usstates|cot_icl|intact: [126, 6b7385bf69ef252dca2d4cb993005ffcecfb416c68c1a1e3244f8a2ecd804173]
+    usstates|cot_icl|rand_erase: [126, f92f076a74725444d2494cdf7dd7b462bc2b03bf05d35e4b28d3246a68626214]
+    usstates|cot_reversed|erase: [126, af09431626b968ae6f03007a96dba533a3ebf266cfe1c825742ae31d2cfb4f22]
+    usstates|cot_reversed|intact: [126, 43738f60d208240e98461924963508709095e6878051b0db12c0c61805fb5d86]
+    usstates|cot_reversed|rand_erase: [126, 61670979265064ee75a5deb8e887c8c8b2626d9db711cf3e8d9d006f5ef4c8ae]
+    usstates|cot_reversed|write_1.0: [126, 108efa067015270c7e43d49c114236ffaa6e427538033fe0984e188be7dfc296]
+    usstates|cot_reversed|write_rand: [126, 971498d86c5a8546123763ec09afcdc385fd14ec7dadcfcc14d9fc126392a14a]
+    usstates|iwl|erase: [126, 15e7c3082353ea7d08643bea056df525547d23cf83e6912ba3d73c18ded0da65]
+    usstates|iwl|intact: [126, c9eef1853dafbeda4dddd1f126022cbce15421c407b0a04feb61dfa3f4cc7972]
+    usstates|iwl|invert: [126, 21b14cbfbcd9638c3fa2aaea032f26b1ba0cd94491a0b19acfd14f24be373fea]
+    usstates|iwl|rand_erase: [126, 6d9ff532bb244860cacec6c37fc0d0a3babc718d98910d9f4c149a35ffe33dda]
+    usstates|iwl|write_0.25: [126, bf78cf066d738327f15d73d5a61a23d1f5e9be05d60b5a3cf6855106c31db73e]
+    usstates|iwl|write_0.5: [126, 794ec84e39d8935e3c7c7cda489898c87e3efc00d68affe2fd79050369441268]
+    usstates|iwl|write_0.75: [126, cba0496a38c9271c58d0d90a7b0d7087728c2e9e444d6e4f9c4ffdbf7b155b14]
+    usstates|iwl|write_1.0: [126, 66437923d0abc642286bed04b15011c67ccd0c860fdc4f88438d97fd9b529055]
+    usstates|iwl|write_rand: [126, 045b58a3c201158b9e116830162e6786adaa2fea7da154cdd5bdbaec1a2dbbd1]
+  panel_numbers:
+    countries:
+    - panel: A
+      layer: 0
+      value: 0.7172753623188406
+      n: 861
+    - panel: A
+      layer: 1
+      value: 0.698231884057971
+      n: 861
+    - panel: A
+      layer: 2
+      value: 0.7076521739130436
+      n: 861
+    - panel: A
+      layer: 3
+      value: 0.7046376811594203
+      n: 861
+    - panel: A
+      layer: 4
+      value: 0.7735942028985507
+      n: 861
+    - panel: A
+      layer: 5
+      value: 0.7781739130434783
+      n: 861
+    - panel: A
+      layer: 6
+      value: 0.8008115942028985
+      n: 861
+    - panel: A
+      layer: 7
+      value: 0.8084347826086956
+      n: 861
+    - panel: A
+      layer: 8
+      value: 0.8025797101449275
+      n: 861
+    - panel: A
+      layer: 9
+      value: 0.8096521739130434
+      n: 861
+    - panel: A
+      layer: 10
+      value: 0.8143188405797102
+      n: 861
+    - panel: A
+      layer: 11
+      value: 0.820376811594203
+      n: 861
+    - panel: A
+      layer: 12
+      value: 0.8346666666666668
+      n: 861
+    - panel: A
+      layer: 13
+      value: 0.8301159420289854
+      n: 861
+    - panel: A
+      layer: 14
+      value: 0.83168115942029
+      n: 861
+    - panel: A
+      layer: 15
+      value: 0.8280289855072465
+      n: 861
+    - panel: A
+      layer: 16
+      value: 0.8403188405797101
+      n: 861
+    - panel: A
+      layer: 17
+      value: 0.8400869565217391
+      n: 861
+    - panel: A
+      layer: 18
+      value: 0.8431014492753623
+      n: 861
+    - panel: A
+      layer: 19
+      value: 0.8507826086956521
+      n: 861
+    - panel: A
+      layer: 20
+      value: 0.862463768115942
+      n: 861
+    - panel: A
+      layer: 21
+      value: 0.8586376811594203
+      n: 861
+    - panel: A
+      layer: 22
+      value: 0.8600869565217393
+      n: 861
+    - panel: A
+      layer: 23
+      value: 0.8594202898550725
+      n: 861
+    - panel: A
+      layer: 24
+      value: 0.8625797101449274
+      n: 861
+    - panel: A
+      layer: 25
+      value: 0.8606376811594203
+      n: 861
+    - panel: A
+      layer: 26
+      value: 0.8579130434782609
+      n: 861
+    - panel: A
+      layer: 27
+      value: 0.8671014492753624
+      n: 861
+    - panel: A
+      layer: 28
+      value: 0.8644927536231883
+      n: 861
+    - panel: A
+      layer: 29
+      value: 0.8644347826086957
+      n: 861
+    - panel: A
+      layer: 30
+      value: 0.867159420289855
+      n: 861
+    - panel: A
+      layer: 31
+      value: 0.8640579710144927
+      n: 861
+    - panel: A
+      layer: 32
+      value: 0.8737391304347826
+      n: 861
+    - panel: A
+      layer: 33
+      value: 0.8737971014492754
+      n: 861
+    - panel: A
+      layer: 34
+      value: 0.8647246376811595
+      n: 861
+    - panel: A
+      layer: 35
+      value: 0.8656521739130435
+      n: 861
+    - panel: A
+      layer: 36
+      value: 0.860463768115942
+      n: 861
+    - panel: A
+      layer: 37
+      value: 0.8619130434782608
+      n: 861
+    - panel: A
+      layer: 38
+      value: 0.8655942028985507
+      n: 861
+    - panel: A
+      layer: 39
+      value: 0.8519130434782609
+      n: 861
+    - panel: A
+      layer: 40
+      value: 0.8598550724637681
+      n: 861
+    - panel: A
+      layer: 41
+      value: 0.8475652173913044
+      n: 861
+    - panel: A
+      layer: 42
+      value: 0.8602028985507246
+      n: 861
+    - panel: A
+      layer: 43
+      value: 0.8615362318840578
+      n: 861
+    - panel: A
+      layer: 44
+      value: 0.861826086956522
+      n: 861
+    - panel: A
+      layer: 45
+      value: 0.858927536231884
+      n: 861
+    - panel: A
+      layer: 46
+      value: 0.8553623188405798
+      n: 861
+    - panel: A
+      layer: 47
+      value: 0.8597391304347826
+      n: 861
+    - panel: A
+      layer: 48
+      value: 0.8611304347826086
+      n: 861
+    - panel: A
+      layer: 49
+      value: 0.861304347826087
+      n: 861
+    - panel: A
+      layer: 50
+      value: 0.8581449275362318
+      n: 861
+    - panel: A
+      layer: 51
+      value: 0.855304347826087
+      n: 861
+    - panel: A
+      layer: 52
+      value: 0.8465217391304348
+      n: 861
+    - panel: A
+      layer: 53
+      value: 0.840695652173913
+      n: 861
+    - panel: A
+      layer: 54
+      value: 0.840231884057971
+      n: 861
+    - panel: A
+      layer: 55
+      value: 0.843072463768116
+      n: 861
+    - panel: A
+      layer: 56
+      value: 0.8393623188405798
+      n: 861
+    - panel: A
+      layer: 57
+      value: 0.8312753623188405
+      n: 861
+    - panel: A
+      layer: 58
+      value: 0.8332753623188406
+      n: 861
+    - panel: A
+      layer: 59
+      value: 0.8333333333333334
+      n: 861
+    - panel: A
+      layer: 60
+      value: 0.8334782608695651
+      n: 861
+    - panel: A
+      layer: 61
+      value: 0.8337101449275363
+      n: 861
+    - panel: A
+      layer: 62
+      value: 0.8408985507246378
+      n: 861
+    - panel: A
+      layer: 63
+      value: 0.839072463768116
+      n: 861
+    - panel: A
+      layer: 64
+      value: 0.8364057971014492
+      n: 861
+    - panel: B
+      condition: intact
+      d: 1
+      value: 0.6944444444444444
+      n: 36
+      se: 0.07677372199896759
+    - panel: B
+      condition: intact
+      d: 2
+      value: 0.7333333333333333
+      n: 30
+      se: 0.08073734277593311
+    - panel: B
+      condition: intact
+      d: 3
+      value: 0.9166666666666666
+      n: 24
+      se: 0.056416933365527513
+    - panel: B
+      condition: intact
+      d: 4
+      value: 1.0
+      n: 18
+      se: 0.0
+    - panel: B
+      condition: intact
+      d: 5
+      value: 1.0
+      n: 12
+      se: 0.0
+    - panel: B
+      condition: intact
+      d: 6
+      value: 1.0
+      n: 6
+      se: 0.0
+    - panel: B
+      condition: invert
+      d: 1
+      value: 0.5555555555555556
+      n: 36
+      se: 0.08281733249999221
+    - panel: B
+      condition: invert
+      d: 2
+      value: 0.6333333333333333
+      n: 30
+      se: 0.08798147953257401
+    - panel: B
+      condition: invert
+      d: 3
+      value: 0.7083333333333334
+      n: 24
+      se: 0.09278048066588464
+    - panel: B
+      condition: invert
+      d: 4
+      value: 0.8333333333333334
+      n: 18
+      se: 0.0878410461157883
+    - panel: B
+      condition: invert
+      d: 5
+      value: 0.8333333333333334
+      n: 12
+      se: 0.1075828707279838
+    - panel: B
+      condition: invert
+      d: 6
+      value: 1.0
+      n: 6
+      se: 0.0
+    - panel: B
+      condition: erase
+      d: 1
+      value: 0.5277777777777778
+      n: 36
+      se: 0.08320463312783069
+    - panel: B
+      condition: erase
+      d: 2
+      value: 0.6
+      n: 30
+      se: 0.08944271909999159
+    - panel: B
+      condition: erase
+      d: 3
+      value: 0.7083333333333334
+      n: 24
+      se: 0.09278048066588464
+    - panel: B
+      condition: erase
+      d: 4
+      value: 0.6666666666666666
+      n: 18
+      se: 0.11111111111111112
+    - panel: B
+      condition: erase
+      d: 5
+      value: 0.8333333333333334
+      n: 12
+      se: 0.1075828707279838
+    - panel: B
+      condition: erase
+      d: 6
+      value: 0.8333333333333334
+      n: 6
+      se: 0.15214515486254612
+    - panel: B
+      condition: rand_erase
+      d: 1
+      value: 0.6666666666666666
+      n: 36
+      se: 0.07856742013183862
+    - panel: B
+      condition: rand_erase
+      d: 2
+      value: 0.7333333333333333
+      n: 30
+      se: 0.08073734277593311
+    - panel: B
+      condition: rand_erase
+      d: 3
+      value: 0.9166666666666666
+      n: 24
+      se: 0.056416933365527513
+    - panel: B
+      condition: rand_erase
+      d: 4
+      value: 1.0
+      n: 18
+      se: 0.0
+    - panel: B
+      condition: rand_erase
+      d: 5
+      value: 1.0
+      n: 12
+      se: 0.0
+    - panel: B
+      condition: rand_erase
+      d: 6
+      value: 1.0
+      n: 6
+      se: 0.0
+    - panel: C
+      series: direct
+      eta: '0'
+      condition: intact
+      value: 0.5238095238095238
+      n: 126
+      se: 0.04449300877630064
+    - panel: C
+      series: direct
+      eta: '0.25'
+      condition: write_0.25
+      value: 0.5714285714285714
+      n: 126
+      se: 0.044086671417740544
+    - panel: C
+      series: direct
+      eta: '0.5'
+      condition: write_0.5
+      value: 0.5714285714285714
+      n: 126
+      se: 0.044086671417740544
+    - panel: C
+      series: direct
+      eta: '0.75'
+      condition: write_0.75
+      value: 0.5793650793650794
+      n: 126
+      se: 0.04397881742794042
+    - panel: C
+      series: direct
+      eta: '1.0'
+      condition: write_1.0
+      value: 0.5793650793650794
+      n: 126
+      se: 0.04397881742794042
+    - panel: C
+      series: direct
+      eta: control
+      condition: write_rand
+      value: 0.5396825396825397
+      n: 126
+      se: 0.04440303293340746
+    - panel: C
+      series: cot
+      eta: '0'
+      condition: intact
+      value: 0.5158730158730159
+      n: 126
+      se: 0.044521088936102064
+    - panel: C
+      series: cot
+      eta: '1.0'
+      condition: write_1.0
+      value: 0.5476190476190477
+      n: 126
+      se: 0.0443410686327124
+    - panel: C
+      series: cot
+      eta: control
+      condition: write_rand
+      value: 0.5079365079365079
+      n: 126
+      se: 0.04453792853410804
+    - panel: E
+      test: iwl
+      budget: 0
+      condition: intact
+      source: leace
+      value: 0.8333333333333334
+      n: 126
+      se: 0.033200794703733154
+    - panel: E
+      test: content_reversed
+      budget: 0
+      condition: intact
+      source: leace
+      value: 0.5714285714285714
+      n: 126
+      se: 0.044086671417740544
+    - panel: E
+      test: cot_reversed
+      budget: 1024
+      condition: intact
+      source: leace
+      value: 0.8968253968253969
+      n: 126
+      se: 0.027099113268800663
+    - panel: E
+      test: cot_icl
+      budget: 1024
+      condition: intact
+      source: leace
+      value: 0.9761904761904762
+      n: 126
+      se: 0.013581801077903567
+    - panel: E
+      test: iwl
+      budget: 0
+      condition: erase
+      source: leace
+      value: 0.6428571428571429
+      n: 126
+      se: 0.042686736047656916
+    - panel: E
+      test: content_reversed
+      budget: 0
+      condition: erase
+      source: leace
+      value: 0.5873015873015873
+      n: 126
+      se: 0.04385930181830388
+    - panel: E
+      test: cot_reversed
+      budget: 1024
+      condition: erase
+      source: leace
+      value: 0.9682539682539683
+      n: 126
+      se: 0.015619031231875906
+    - panel: E
+      test: cot_icl
+      budget: 1024
+      condition: erase
+      source: leace
+      value: 0.9841269841269841
+      n: 126
+      se: 0.011134482133527029
+    - panel: E
+      test: iwl
+      budget: 0
+      condition: rand_erase
+      source: leace
+      value: 0.8253968253968254
+      n: 126
+      se: 0.033819890130305515
+    - panel: E
+      test: content_reversed
+      budget: 0
+      condition: rand_erase
+      source: leace
+      value: 0.5793650793650794
+      n: 126
+      se: 0.04397881742794042
+    - panel: E
+      test: cot_reversed
+      budget: 1024
+      condition: rand_erase
+      source: leace
+      value: 0.9444444444444444
+      n: 126
+      se: 0.02040641351923481
+    - panel: E
+      test: cot_icl
+      budget: 1024
+      condition: rand_erase
+      source: leace
+      value: 0.9682539682539683
+      n: 126
+      se: 0.015619031231875906
+    cities:
+    - panel: A
+      layer: 0
+      value: 0.5888888888888889
+      n: 336
+    - panel: A
+      layer: 1
+      value: 0.7055555555555555
+      n: 336
+    - panel: A
+      layer: 2
+      value: 0.6888888888888889
+      n: 336
+    - panel: A
+      layer: 3
+      value: 0.6599999999999999
+      n: 336
+    - panel: A
+      layer: 4
+      value: 0.6466666666666667
+      n: 336
+    - panel: A
+      layer: 5
+      value: 0.7022222222222223
+      n: 336
+    - panel: A
+      layer: 6
+      value: 0.7433333333333334
+      n: 336
+    - panel: A
+      layer: 7
+      value: 0.7466666666666667
+      n: 336
+    - panel: A
+      layer: 8
+      value: 0.7444444444444445
+      n: 336
+    - panel: A
+      layer: 9
+      value: 0.7611111111111111
+      n: 336
+    - panel: A
+      layer: 10
+      value: 0.7555555555555555
+      n: 336
+    - panel: A
+      layer: 11
+      value: 0.7811111111111112
+      n: 336
+    - panel: A
+      layer: 12
+      value: 0.7688888888888888
+      n: 336
+    - panel: A
+      layer: 13
+      value: 0.7755555555555556
+      n: 336
+    - panel: A
+      layer: 14
+      value: 0.7788888888888889
+      n: 336
+    - panel: A
+      layer: 15
+      value: 0.7833333333333333
+      n: 336
+    - panel: A
+      layer: 16
+      value: 0.7822222222222222
+      n: 336
+    - panel: A
+      layer: 17
+      value: 0.7777777777777778
+      n: 336
+    - panel: A
+      layer: 18
+      value: 0.7766666666666666
+      n: 336
+    - panel: A
+      layer: 19
+      value: 0.7733333333333333
+      n: 336
+    - panel: A
+      layer: 20
+      value: 0.7966666666666666
+      n: 336
+    - panel: A
+      layer: 21
+      value: 0.7911111111111111
+      n: 336
+    - panel: A
+      layer: 22
+      value: 0.7911111111111111
+      n: 336
+    - panel: A
+      layer: 23
+      value: 0.7922222222222223
+      n: 336
+    - panel: A
+      layer: 24
+      value: 0.8022222222222222
+      n: 336
+    - panel: A
+      layer: 25
+      value: 0.7977777777777778
+      n: 336
+    - panel: A
+      layer: 26
+      value: 0.8066666666666666
+      n: 336
+    - panel: A
+      layer: 27
+      value: 0.7833333333333332
+      n: 336
+    - panel: A
+      layer: 28
+      value: 0.7922222222222223
+      n: 336
+    - panel: A
+      layer: 29
+      value: 0.7922222222222223
+      n: 336
+    - panel: A
+      layer: 30
+      value: 0.7977777777777778
+      n: 336
+    - panel: A
+      layer: 31
+      value: 0.7788888888888889
+      n: 336
+    - panel: A
+      layer: 32
+      value: 0.7633333333333333
+      n: 336
+    - panel: A
+      layer: 33
+      value: 0.7666666666666666
+      n: 336
+    - panel: A
+      layer: 34
+      value: 0.7766666666666666
+      n: 336
+    - panel: A
+      layer: 35
+      value: 0.7722222222222223
+      n: 336
+    - panel: A
+      layer: 36
+      value: 0.7777777777777779
+      n: 336
+    - panel: A
+      layer: 37
+      value: 0.7722222222222223
+      n: 336
+    - panel: A
+      layer: 38
+      value: 0.7777777777777778
+      n: 336
+    - panel: A
+      layer: 39
+      value: 0.7777777777777778
+      n: 336
+    - panel: A
+      layer: 40
+      value: 0.7866666666666667
+      n: 336
+    - panel: A
+      layer: 41
+      value: 0.7777777777777778
+      n: 336
+    - panel: A
+      layer: 42
+      value: 0.7644444444444445
+      n: 336
+    - panel: A
+      layer: 43
+      value: 0.77
+      n: 336
+    - panel: A
+      layer: 44
+      value: 0.7788888888888889
+      n: 336
+    - panel: A
+      layer: 45
+      value: 0.76
+      n: 336
+    - panel: A
+      layer: 46
+      value: 0.7511111111111112
+      n: 336
+    - panel: A
+      layer: 47
+      value: 0.7533333333333333
+      n: 336
+    - panel: A
+      layer: 48
+      value: 0.75
+      n: 336
+    - panel: A
+      layer: 49
+      value: 0.7433333333333334
+      n: 336
+    - panel: A
+      layer: 50
+      value: 0.721111111111111
+      n: 336
+    - panel: A
+      layer: 51
+      value: 0.7633333333333334
+      n: 336
+    - panel: A
+      layer: 52
+      value: 0.7622222222222221
+      n: 336
+    - panel: A
+      layer: 53
+      value: 0.7555555555555556
+      n: 336
+    - panel: A
+      layer: 54
+      value: 0.7377777777777779
+      n: 336
+    - panel: A
+      layer: 55
+      value: 0.7522222222222222
+      n: 336
+    - panel: A
+      layer: 56
+      value: 0.7233333333333334
+      n: 336
+    - panel: A
+      layer: 57
+      value: 0.7322222222222222
+      n: 336
+    - panel: A
+      layer: 58
+      value: 0.7166666666666667
+      n: 336
+    - panel: A
+      layer: 59
+      value: 0.7277777777777779
+      n: 336
+    - panel: A
+      layer: 60
+      value: 0.7422222222222221
+      n: 336
+    - panel: A
+      layer: 61
+      value: 0.7477777777777778
+      n: 336
+    - panel: A
+      layer: 62
+      value: 0.7388888888888889
+      n: 336
+    - panel: A
+      layer: 63
+      value: 0.7533333333333333
+      n: 336
+    - panel: A
+      layer: 64
+      value: 0.7522222222222222
+      n: 336
+    - panel: B
+      condition: intact
+      d: 1
+      value: 0.5833333333333334
+      n: 24
+      se: 0.10063456073742666
+    - panel: B
+      condition: intact
+      d: 2
+      value: 0.65
+      n: 20
+      se: 0.1066536450385077
+    - panel: B
+      condition: intact
+      d: 3
+      value: 0.75
+      n: 16
+      se: 0.10825317547305482
+    - panel: B
+      condition: intact
+      d: 4
+      value: 0.75
+      n: 12
+      se: 0.125
+    - panel: B
+      condition: intact
+      d: 5
+      value: 0.875
+      n: 8
+      se: 0.11692679333668567
+    - panel: B
+      condition: intact
+      d: 6
+      value: 1.0
+      n: 4
+      se: 0.0
+    - panel: B
+      condition: invert
+      d: 1
+      value: 0.4583333333333333
+      n: 24
+      se: 0.10170707302692229
+    - panel: B
+      condition: invert
+      d: 2
+      value: 0.5
+      n: 20
+      se: 0.11180339887498948
+    - panel: B
+      condition: invert
+      d: 3
+      value: 0.625
+      n: 16
+      se: 0.12103072956898178
+    - panel: B
+      condition: invert
+      d: 4
+      value: 0.4166666666666667
+      n: 12
+      se: 0.14231876063832774
+    - panel: B
+      condition: invert
+      d: 5
+      value: 0.75
+      n: 8
+      se: 0.15309310892394862
+    - panel: B
+      condition: invert
+      d: 6
+      value: 0.25
+      n: 4
+      se: 0.21650635094610965
+    - panel: B
+      condition: erase
+      d: 1
+      value: 0.5
+      n: 24
+      se: 0.10206207261596575
+    - panel: B
+      condition: erase
+      d: 2
+      value: 0.5
+      n: 20
+      se: 0.11180339887498948
+    - panel: B
+      condition: erase
+      d: 3
+      value: 0.625
+      n: 16
+      se: 0.12103072956898178
+    - panel: B
+      condition: erase
+      d: 4
+      value: 0.4166666666666667
+      n: 12
+      se: 0.14231876063832774
+    - panel: B
+      condition: erase
+      d: 5
+      value: 0.625
+      n: 8
+      se: 0.1711632992203644
+    - panel: B
+      condition: erase
+      d: 6
+      value: 0.5
+      n: 4
+      se: 0.25
+    - panel: B
+      condition: rand_erase
+      d: 1
+      value: 0.5416666666666666
+      n: 24
+      se: 0.10170707302692229
+    - panel: B
+      condition: rand_erase
+      d: 2
+      value: 0.65
+      n: 20
+      se: 0.1066536450385077
+    - panel: B
+      condition: rand_erase
+      d: 3
+      value: 0.75
+      n: 16
+      se: 0.10825317547305482
+    - panel: B
+      condition: rand_erase
+      d: 4
+      value: 0.6666666666666666
+      n: 12
+      se: 0.13608276348795434
+    - panel: B
+      condition: rand_erase
+      d: 5
+      value: 0.875
+      n: 8
+      se: 0.11692679333668567
+    - panel: B
+      condition: rand_erase
+      d: 6
+      value: 1.0
+      n: 4
+      se: 0.0
+    - panel: C
+      series: direct
+      eta: '0'
+      condition: intact
+      value: 0.5238095238095238
+      n: 126
+      se: 0.04449300877630064
+    - panel: C
+      series: direct
+      eta: '0.25'
+      condition: write_0.25
+      value: 0.6190476190476191
+      n: 126
+      se: 0.04326254881709504
+    - panel: C
+      series: direct
+      eta: '0.5'
+      condition: write_0.5
+      value: 0.6190476190476191
+      n: 126
+      se: 0.04326254881709504
+    - panel: C
+      series: direct
+      eta: '0.75'
+      condition: write_0.75
+      value: 0.6190476190476191
+      n: 126
+      se: 0.04326254881709504
+    - panel: C
+      series: direct
+      eta: '1.0'
+      condition: write_1.0
+      value: 0.6190476190476191
+      n: 126
+      se: 0.04326254881709504
+    - panel: C
+      series: direct
+      eta: control
+      condition: write_rand
+      value: 0.5396825396825397
+      n: 126
+      se: 0.04440303293340746
+    - panel: C
+      series: cot
+      eta: '0'
+      condition: intact
+      value: 0.48412698412698413
+      n: 126
+      se: 0.04452108893610206
+    - panel: C
+      series: cot
+      eta: '1.0'
+      condition: write_1.0
+      value: 0.5158730158730159
+      n: 126
+      se: 0.044521088936102064
+    - panel: C
+      series: cot
+      eta: control
+      condition: write_rand
+      value: 0.5317460317460317
+      n: 126
+      se: 0.04445366675364683
+    - panel: E
+      test: iwl
+      budget: 0
+      condition: intact
+      source: leace
+      value: 0.7023809523809523
+      n: 84
+      se: 0.04988581606235273
+    - panel: E
+      test: content_reversed
+      budget: 0
+      condition: intact
+      source: leace
+      value: 0.5476190476190477
+      n: 126
+      se: 0.0443410686327124
+    - panel: E
+      test: cot_reversed
+      budget: 1024
+      condition: intact
+      source: leace
+      value: 0.9206349206349206
+      n: 126
+      se: 0.024080925656952374
+    - panel: E
+      test: cot_icl
+      budget: 1024
+      condition: intact
+      source: leace
+      value: 0.9761904761904762
+      n: 126
+      se: 0.013581801077903567
+    - panel: E
+      test: iwl
+      budget: 0
+      condition: erase
+      source: leace
+      value: 0.5238095238095238
+      n: 84
+      se: 0.054492584311555174
+    - panel: E
+      test: content_reversed
+      budget: 0
+      condition: erase
+      source: leace
+      value: 0.5873015873015873
+      n: 126
+      se: 0.04385930181830388
+    - panel: E
+      test: cot_reversed
+      budget: 1024
+      condition: erase
+      source: leace
+      value: 0.9682539682539683
+      n: 126
+      se: 0.015619031231875906
+    - panel: E
+      test: cot_icl
+      budget: 1024
+      condition: erase
+      source: leace
+      value: 1.0
+      n: 126
+      se: 0.0
+    - panel: E
+      test: iwl
+      budget: 0
+      condition: rand_erase
+      source: leace
+      value: 0.6785714285714286
+      n: 84
+      se: 0.050956592743464736
+    - panel: E
+      test: content_reversed
+      budget: 0
+      condition: rand_erase
+      source: leace
+      value: 0.5555555555555556
+      n: 126
+      se: 0.04426772627164421
+    - panel: E
+      test: cot_reversed
+      budget: 1024
+      condition: rand_erase
+      source: leace
+      value: 0.9603174603174603
+      n: 126
+      se: 0.01739089246386022
+    - panel: E
+      test: cot_icl
+      budget: 1024
+      condition: rand_erase
+      source: leace
+      value: 0.9920634920634921
+      n: 126
+      se: 0.007904951119936452
+    usstates:
+    - panel: A
+      layer: 0
+      value: 0.711111111111111
+      n: 350
+    - panel: A
+      layer: 1
+      value: 0.768888888888889
+      n: 350
+    - panel: A
+      layer: 2
+      value: 0.7377777777777778
+      n: 350
+    - panel: A
+      layer: 3
+      value: 0.7733333333333334
+      n: 350
+    - panel: A
+      layer: 4
+      value: 0.7866666666666666
+      n: 350
+    - panel: A
+      layer: 5
+      value: 0.768888888888889
+      n: 350
+    - panel: A
+      layer: 6
+      value: 0.8044444444444444
+      n: 350
+    - panel: A
+      layer: 7
+      value: 0.8177777777777777
+      n: 350
+    - panel: A
+      layer: 8
+      value: 0.8222222222222222
+      n: 350
+    - panel: A
+      layer: 9
+      value: 0.8444444444444443
+      n: 350
+    - panel: A
+      layer: 10
+      value: 0.8666666666666666
+      n: 350
+    - panel: A
+      layer: 11
+      value: 0.8622222222222222
+      n: 350
+    - panel: A
+      layer: 12
+      value: 0.8711111111111111
+      n: 350
+    - panel: A
+      layer: 13
+      value: 0.8844444444444445
+      n: 350
+    - panel: A
+      layer: 14
+      value: 0.8800000000000001
+      n: 350
+    - panel: A
+      layer: 15
+      value: 0.8577777777777778
+      n: 350
+    - panel: A
+      layer: 16
+      value: 0.8755555555555554
+      n: 350
+    - panel: A
+      layer: 17
+      value: 0.8844444444444445
+      n: 350
+    - panel: A
+      layer: 18
+      value: 0.888888888888889
+      n: 350
+    - panel: A
+      layer: 19
+      value: 0.888888888888889
+      n: 350
+    - panel: A
+      layer: 20
+      value: 0.8844444444444445
+      n: 350
+    - panel: A
+      layer: 21
+      value: 0.8755555555555554
+      n: 350
+    - panel: A
+      layer: 22
+      value: 0.8844444444444445
+      n: 350
+    - panel: A
+      layer: 23
+      value: 0.8844444444444445
+      n: 350
+    - panel: A
+      layer: 24
+      value: 0.8977777777777778
+      n: 350
+    - panel: A
+      layer: 25
+      value: 0.9066666666666666
+      n: 350
+    - panel: A
+      layer: 26
+      value: 0.9066666666666666
+      n: 350
+    - panel: A
+      layer: 27
+      value: 0.9022222222222223
+      n: 350
+    - panel: A
+      layer: 28
+      value: 0.9111111111111111
+      n: 350
+    - panel: A
+      layer: 29
+      value: 0.9022222222222223
+      n: 350
+    - panel: A
+      layer: 30
+      value: 0.888888888888889
+      n: 350
+    - panel: A
+      layer: 31
+      value: 0.8755555555555556
+      n: 350
+    - panel: A
+      layer: 32
+      value: 0.8666666666666666
+      n: 350
+    - panel: A
+      layer: 33
+      value: 0.8933333333333333
+      n: 350
+    - panel: A
+      layer: 34
+      value: 0.9066666666666666
+      n: 350
+    - panel: A
+      layer: 35
+      value: 0.9111111111111111
+      n: 350
+    - panel: A
+      layer: 36
+      value: 0.9022222222222223
+      n: 350
+    - panel: A
+      layer: 37
+      value: 0.9022222222222223
+      n: 350
+    - panel: A
+      layer: 38
+      value: 0.8933333333333333
+      n: 350
+    - panel: A
+      layer: 39
+      value: 0.888888888888889
+      n: 350
+    - panel: A
+      layer: 40
+      value: 0.8933333333333333
+      n: 350
+    - panel: A
+      layer: 41
+      value: 0.8933333333333333
+      n: 350
+    - panel: A
+      layer: 42
+      value: 0.8800000000000001
+      n: 350
+    - panel: A
+      layer: 43
+      value: 0.8844444444444445
+      n: 350
+    - panel: A
+      layer: 44
+      value: 0.8711111111111112
+      n: 350
+    - panel: A
+      layer: 45
+      value: 0.8711111111111112
+      n: 350
+    - panel: A
+      layer: 46
+      value: 0.8622222222222223
+      n: 350
+    - panel: A
+      layer: 47
+      value: 0.8755555555555556
+      n: 350
+    - panel: A
+      layer: 48
+      value: 0.8800000000000001
+      n: 350
+    - panel: A
+      layer: 49
+      value: 0.8844444444444445
+      n: 350
+    - panel: A
+      layer: 50
+      value: 0.8755555555555554
+      n: 350
+    - panel: A
+      layer: 51
+      value: 0.8755555555555554
+      n: 350
+    - panel: A
+      layer: 52
+      value: 0.8577777777777778
+      n: 350
+    - panel: A
+      layer: 53
+      value: 0.8622222222222222
+      n: 350
+    - panel: A
+      layer: 54
+      value: 0.8577777777777778
+      n: 350
+    - panel: A
+      layer: 55
+      value: 0.8533333333333333
+      n: 350
+    - panel: A
+      layer: 56
+      value: 0.8400000000000001
+      n: 350
+    - panel: A
+      layer: 57
+      value: 0.8400000000000001
+      n: 350
+    - panel: A
+      layer: 58
+      value: 0.8533333333333333
+      n: 350
+    - panel: A
+      layer: 59
+      value: 0.8666666666666666
+      n: 350
+    - panel: A
+      layer: 60
+      value: 0.8488888888888889
+      n: 350
+    - panel: A
+      layer: 61
+      value: 0.8533333333333333
+      n: 350
+    - panel: A
+      layer: 62
+      value: 0.8577777777777778
+      n: 350
+    - panel: A
+      layer: 63
+      value: 0.8755555555555556
+      n: 350
+    - panel: A
+      layer: 64
+      value: 0.8711111111111111
+      n: 350
+    - panel: B
+      condition: intact
+      d: 1
+      value: 0.5833333333333334
+      n: 36
+      se: 0.08216777476527244
+    - panel: B
+      condition: intact
+      d: 2
+      value: 0.7
+      n: 30
+      se: 0.08366600265340757
+    - panel: B
+      condition: intact
+      d: 3
+      value: 0.7916666666666666
+      n: 24
+      se: 0.08289816934939807
+    - panel: B
+      condition: intact
+      d: 4
+      value: 1.0
+      n: 18
+      se: 0.0
+    - panel: B
+      condition: intact
+      d: 5
+      value: 1.0
+      n: 12
+      se: 0.0
+    - panel: B
+      condition: intact
+      d: 6
+      value: 1.0
+      n: 6
+      se: 0.0
+    - panel: B
+      condition: invert
+      d: 1
+      value: 0.5277777777777778
+      n: 36
+      se: 0.08320463312783069
+    - panel: B
+      condition: invert
+      d: 2
+      value: 0.6333333333333333
+      n: 30
+      se: 0.08798147953257401
+    - panel: B
+      condition: invert
+      d: 3
+      value: 0.5833333333333334
+      n: 24
+      se: 0.10063456073742666
+    - panel: B
+      condition: invert
+      d: 4
+      value: 0.6111111111111112
+      n: 18
+      se: 0.11490438561102645
+    - panel: B
+      condition: invert
+      d: 5
+      value: 0.75
+      n: 12
+      se: 0.125
+    - panel: B
+      condition: invert
+      d: 6
+      value: 0.6666666666666666
+      n: 6
+      se: 0.19245008972987526
+    - panel: B
+      condition: erase
+      d: 1
+      value: 0.5
+      n: 36
+      se: 0.08333333333333333
+    - panel: B
+      condition: erase
+      d: 2
+      value: 0.5333333333333333
+      n: 30
+      se: 0.09108400680852977
+    - panel: B
+      condition: erase
+      d: 3
+      value: 0.5833333333333334
+      n: 24
+      se: 0.10063456073742666
+    - panel: B
+      condition: erase
+      d: 4
+      value: 0.5555555555555556
+      n: 18
+      se: 0.11712139482105108
+    - panel: B
+      condition: erase
+      d: 5
+      value: 0.5833333333333334
+      n: 12
+      se: 0.14231876063832777
+    - panel: B
+      condition: erase
+      d: 6
+      value: 0.6666666666666666
+      n: 6
+      se: 0.19245008972987526
+    - panel: B
+      condition: rand_erase
+      d: 1
+      value: 0.5555555555555556
+      n: 36
+      se: 0.08281733249999221
+    - panel: B
+      condition: rand_erase
+      d: 2
+      value: 0.7
+      n: 30
+      se: 0.08366600265340757
+    - panel: B
+      condition: rand_erase
+      d: 3
+      value: 0.7916666666666666
+      n: 24
+      se: 0.08289816934939807
+    - panel: B
+      condition: rand_erase
+      d: 4
+      value: 1.0
+      n: 18
+      se: 0.0
+    - panel: B
+      condition: rand_erase
+      d: 5
+      value: 1.0
+      n: 12
+      se: 0.0
+    - panel: B
+      condition: rand_erase
+      d: 6
+      value: 1.0
+      n: 6
+      se: 0.0
+    - panel: C
+      series: direct
+      eta: '0'
+      condition: intact
+      value: 0.46825396825396826
+      n: 126
+      se: 0.04445366675364683
+    - panel: C
+      series: direct
+      eta: '0.25'
+      condition: write_0.25
+      value: 0.5634920634920635
+      n: 126
+      se: 0.0441829491885296
+    - panel: C
+      series: direct
+      eta: '0.5'
+      condition: write_0.5
+      value: 0.5714285714285714
+      n: 126
+      se: 0.044086671417740544
+    - panel: C
+      series: direct
+      eta: '0.75'
+      condition: write_0.75
+      value: 0.5793650793650794
+      n: 126
+      se: 0.04397881742794042
+    - panel: C
+      series: direct
+      eta: '1.0'
+      condition: write_1.0
+      value: 0.5793650793650794
+      n: 126
+      se: 0.04397881742794042
+    - panel: C
+      series: direct
+      eta: control
+      condition: write_rand
+      value: 0.5
+      n: 126
+      se: 0.0445435403187374
+    - panel: C
+      series: cot
+      eta: '0'
+      condition: intact
+      value: 0.5
+      n: 126
+      se: 0.0445435403187374
+    - panel: C
+      series: cot
+      eta: '1.0'
+      condition: write_1.0
+      value: 0.5317460317460317
+      n: 126
+      se: 0.04445366675364683
+    - panel: C
+      series: cot
+      eta: control
+      condition: write_rand
+      value: 0.5079365079365079
+      n: 126
+      se: 0.04453792853410804
+    - panel: E
+      test: iwl
+      budget: 0
+      condition: intact
+      source: leace
+      value: 0.7698412698412699
+      n: 126
+      se: 0.037499808368870256
+    - panel: E
+      test: content_reversed
+      budget: 0
+      condition: intact
+      source: leace
+      value: 0.48412698412698413
+      n: 126
+      se: 0.04452108893610206
+    - panel: E
+      test: cot_reversed
+      budget: 1024
+      condition: intact
+      source: leace
+      value: 0.9285714285714286
+      n: 126
+      se: 0.02294343122998646
+    - panel: E
+      test: cot_icl
+      budget: 1024
+      condition: intact
+      source: leace
+      value: 0.9761904761904762
+      n: 126
+      se: 0.013581801077903567
+    - panel: E
+      test: iwl
+      budget: 0
+      condition: erase
+      source: leace
+      value: 0.5476190476190477
+      n: 126
+      se: 0.0443410686327124
+    - panel: E
+      test: content_reversed
+      budget: 0
+      condition: erase
+      source: leace
+      value: 0.5634920634920635
+      n: 126
+      se: 0.0441829491885296
+    - panel: E
+      test: cot_reversed
+      budget: 1024
+      condition: erase
+      source: leace
+      value: 0.9444444444444444
+      n: 126
+      se: 0.02040641351923481
+    - panel: E
+      test: cot_icl
+      budget: 1024
+      condition: erase
+      source: leace
+      value: 0.9920634920634921
+      n: 126
+      se: 0.007904951119936452
+    - panel: E
+      test: iwl
+      budget: 0
+      condition: rand_erase
+      source: leace
+      value: 0.7619047619047619
+      n: 126
+      se: 0.03794376537569504
+    - panel: E
+      test: content_reversed
+      budget: 0
+      condition: rand_erase
+      source: leace
+      value: 0.5317460317460317
+      n: 126
+      se: 0.04445366675364683
+    - panel: E
+      test: cot_reversed
+      budget: 1024
+      condition: rand_erase
+      source: leace
+      value: 0.9206349206349206
+      n: 126
+      se: 0.024080925656952374
+    - panel: E
+      test: cot_icl
+      budget: 1024
+      condition: rand_erase
+      source: leace
+      value: 1.0
+      n: 126
+      se: 0.0
+  note: 'one row per scored trial read-out: innermost 7 ranks, budgets [0, 1024]; is_correct = the answer
+    equals the gold answer in the ordering shown, agree_world = equals the truth in the real ordering
+    (null for the given names), agree_written = equals the truth in the written ordering a write moves
+    toward'

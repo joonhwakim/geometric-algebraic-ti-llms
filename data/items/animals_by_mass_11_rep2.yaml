@@ -1,0 +1,19 @@
+name: animals_by_mass_11_rep2
+description: >
+  Built as animals_by_mass_11, with a value ratio of 17.78 between items six ranks apart.
+  Built from
+  data/items/sources/animals_pantheria_mass.csv (geometric spacing). Each item's value and
+  provenance: data/items/sources/animals_by_mass_11_rep2_provenance.json.
+natural_order: true
+items:
+  - rabbit
+  - skunk
+  - hare
+  - raccoon
+  - otter
+  - coyote
+  - lynx
+  - chimpanzee
+  - leopard
+  - deer
+  - tiger

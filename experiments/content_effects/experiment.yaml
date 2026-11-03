@@ -1,0 +1,98 @@
+# Content effects: familiar items under a congruent, reversed, shuffled or
+# uninformative context, with the context-only instruction, and the
+# reasoning-budget ladders of the three informative contexts.
+name: content_effects
+question: >-
+  When the context orders familiar items, does the model follow the context
+  (congruent, reversed, shuffled) or its prior (an uninformative context over
+  other items of the same dimension), and does reasoning recover the context?
+
+geometry:
+  master_seed: 42
+  template_id: T2
+  query_wrapper_id: is_it_true_or_false
+  separator: "\n"
+  N_values: [11]
+  hop_values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  all_pairs: true
+  n_premise_orders: 10
+
+budgets: [32, 64, 128, 256, 384, 512, 640, 768, 896, 1024]
+
+triggers:
+  native_thinking: none
+  prompted: passive
+
+dimensions:
+  countries:
+    name: country population
+    item_set: countries_by_population_11
+    instruction: iwl_population_T2
+    instruction_context_only: iwl_population_T2_ctxonly
+  cities:
+    name: city population (constant-ratio spacing; the interventions' city item set)
+    item_set: cities_by_population_11
+    instruction: iwl_population_T2
+    instruction_context_only: iwl_population_T2_ctxonly
+  citieslinear:
+    name: city population (the paper's City population item set, evenly spaced)
+    item_set: cities_by_population_11_linear
+    instruction: iwl_population_T2
+    instruction_context_only: iwl_population_T2_ctxonly
+  animals:
+    name: animal body mass
+    item_set: animals_by_mass_11
+    instruction: iwl_mass_T2
+    instruction_context_only: iwl_mass_T2_ctxonly
+  usstates:
+    name: US state population
+    item_set: us_states_by_population_11
+    instruction: iwl_population_T2
+    instruction_context_only: iwl_population_T2_ctxonly
+  countryarea:
+    name: country surface area
+    item_set: countries_by_area_11
+    instruction: iwl_area_T2
+    instruction_context_only: iwl_area_T2_ctxonly
+
+tests:
+  content:
+    runner: direct
+    condition: {natural: congruent, reversed: reversed, random: shuffled}
+    assignment: [natural, reversed, random]
+    surface: fixed_gt
+    item_set: dimension
+    instruction: dimension_context_only
+    published_as: content_ctxonly
+  uninformative:
+    runner: direct
+    condition: unrelated_context
+    assignment: natural
+    surface: disjoint_context
+    item_set: dimension_disjoint
+    instruction: dimension_context_only
+    published_as: uninformative_ctxonly
+  budget_natural:
+    runner: ladder
+    condition: congruent
+    assignment: natural
+    surface: fixed_gt
+    item_set: dimension
+    instruction: dimension_context_only
+    published_as: budget_natural_ctxonly
+  budget_reversed:
+    runner: ladder
+    condition: reversed
+    assignment: reversed
+    surface: fixed_gt
+    item_set: dimension
+    instruction: dimension_context_only
+    published_as: budget_reversed_ctxonly
+  budget_shuffled:
+    runner: ladder
+    condition: shuffled
+    assignment: random
+    surface: fixed_gt
+    item_set: dimension
+    instruction: dimension_context_only
+    published_as: budget_shuffled_ctxonly

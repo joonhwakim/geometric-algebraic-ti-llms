@@ -1,0 +1,105 @@
+{
+ "pool": "us_states_by_population_scale2",
+ "built": "2026-09-13",
+ "source_table": "data/items/sources/us_states_population_2024.csv",
+ "source_citation": "",
+ "units": "people",
+ "spacing": "geometric",
+ "step_ratio": 1.122462048309373,
+ "sens_ratio": 2.0,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "Oklahoma",
+   "raw": "Oklahoma",
+   "value": 4095393.0,
+   "target": 4119548.422808404,
+   "dev_pct": -0.5863609388510767,
+   "familiarity": null
+  },
+  {
+   "name": "Louisiana",
+   "raw": "Louisiana",
+   "value": 4597740.0,
+   "target": 4624036.760775168,
+   "dev_pct": -0.5686970527189336,
+   "familiarity": null
+  },
+  {
+   "name": "Alabama",
+   "raw": "Alabama",
+   "value": 5157699.0,
+   "target": 5190305.773957534,
+   "dev_pct": -0.6282245281412691,
+   "familiarity": null
+  },
+  {
+   "name": "Minnesota",
+   "raw": "Minnesota",
+   "value": 5793151.0,
+   "target": 5825921.250388339,
+   "dev_pct": -0.5624904453721339,
+   "familiarity": null
+  },
+  {
+   "name": "Maryland",
+   "raw": "Maryland",
+   "value": 6263220.0,
+   "target": 6539375.499999998,
+   "dev_pct": -4.222964409980712,
+   "familiarity": null
+  },
+  {
+   "name": "Tennessee",
+   "raw": "Tennessee",
+   "value": 7227750.0,
+   "target": 7340200.818394128,
+   "dev_pct": -1.531985584268115,
+   "familiarity": null
+  },
+  {
+   "name": "Washington",
+   "raw": "Washington",
+   "value": 7958180.0,
+   "target": 8239096.845616811,
+   "dev_pct": -3.409558728105719,
+   "familiarity": null
+  },
+  {
+   "name": "New Jersey",
+   "raw": "New Jersey",
+   "value": 9500851.0,
+   "target": 9248073.521550339,
+   "dev_pct": 2.733298755255634,
+   "familiarity": null
+  },
+  {
+   "name": "Michigan",
+   "raw": "Michigan",
+   "value": 10140459.0,
+   "target": 10380611.54791507,
+   "dev_pct": -2.313472060933671,
+   "familiarity": null
+  },
+  {
+   "name": "Ohio",
+   "raw": "Ohio",
+   "value": 11883304.0,
+   "target": 11651842.50077668,
+   "dev_pct": 1.9864798138825788,
+   "familiarity": null
+  },
+  {
+   "name": "Pennsylvania",
+   "raw": "Pennsylvania",
+   "value": 13078751.0,
+   "target": 13078751.0,
+   "dev_pct": 0.0,
+   "familiarity": null
+  }
+ ],
+ "dropped": {
+  "compound": [],
+  "excluded": []
+ }
+}

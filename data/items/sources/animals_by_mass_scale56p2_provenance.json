@@ -1,0 +1,105 @@
+{
+ "pool": "animals_by_mass_scale56p2",
+ "built": "2026-09-13",
+ "source_table": "data/items/sources/animals_pantheria_mass.csv",
+ "source_citation": "",
+ "units": "kg (adult body mass)",
+ "spacing": "geometric",
+ "step_ratio": 1.957143722926634,
+ "sens_ratio": 56.2,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "fox",
+   "raw": "fox",
+   "value": 4.8204,
+   "target": 4.638227040809984,
+   "dev_pct": 3.9276421267683905,
+   "familiarity": null
+  },
+  {
+   "name": "otter",
+   "raw": "otter",
+   "value": 8.8687,
+   "target": 9.077676938429839,
+   "dev_pct": -2.302097109725797,
+   "familiarity": null
+  },
+  {
+   "name": "beaver",
+   "raw": "beaver",
+   "value": 18.1244,
+   "target": 17.766318438803825,
+   "dev_pct": 2.015507953601022,
+   "familiarity": null
+  },
+  {
+   "name": "wolf",
+   "raw": "wolf",
+   "value": 31.7565,
+   "target": 34.77123861202062,
+   "dev_pct": -8.670207712929749,
+   "familiarity": null
+  },
+  {
+   "name": "deer",
+   "raw": "deer",
+   "value": 75.9013,
+   "target": 68.05231138790036,
+   "dev_pct": 11.5337575638837,
+   "familiarity": null
+  },
+  {
+   "name": "gorilla",
+   "raw": "gorilla",
+   "value": 112.589,
+   "target": 133.18815406347787,
+   "dev_pct": -15.466205841144289,
+   "familiarity": null
+  },
+  {
+   "name": "zebra",
+   "raw": "zebra",
+   "value": 279.1607,
+   "target": 260.66835969352115,
+   "dev_pct": 7.094202122659265,
+   "familiarity": null
+  },
+  {
+   "name": "camel",
+   "raw": "camel",
+   "value": 492.7145,
+   "target": 510.165443939757,
+   "dev_pct": -3.4206440571497616,
+   "familiarity": null
+  },
+  {
+   "name": "giraffe",
+   "raw": "giraffe",
+   "value": 964.6547,
+   "target": 998.4670962607748,
+   "dev_pct": -3.3864306983576182,
+   "familiarity": null
+  },
+  {
+   "name": "rhinoceros",
+   "raw": "rhinoceros",
+   "value": 2285.9394,
+   "target": 1954.1436099955588,
+   "dev_pct": 16.97908937231054,
+   "familiarity": null
+  },
+  {
+   "name": "elephant",
+   "raw": "elephant",
+   "value": 3824.5399,
+   "target": 3824.5399,
+   "dev_pct": 0.0,
+   "familiarity": null
+  }
+ ],
+ "dropped": {
+  "compound": [],
+  "excluded": []
+ }
+}

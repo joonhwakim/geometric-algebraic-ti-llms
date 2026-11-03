@@ -1,0 +1,18 @@
+name: novel_names_11
+description: >
+  11 common English given names, the novel items of the ICL test. They are ordered by height,
+  which carries no real-world prior for arbitrary people, so the ordering can be recovered only
+  from the relations shown. natural_order is false: there is no true ordering.
+natural_order: false
+items:
+  - John
+  - Mary
+  - Tom
+  - Sue
+  - Bob
+  - Anna
+  - Mike
+  - Lisa
+  - Joe
+  - Amy
+  - Dan

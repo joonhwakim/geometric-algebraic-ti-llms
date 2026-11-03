@@ -1,0 +1,34 @@
+name: countries_by_population_11_disjoint
+description: >
+  countries_by_population_11 (items 0-10, the queried set) followed by 11 further real, familiar
+  items from the same source table, disjoint from it and from its replicate item sets (items 11-21, natural
+  order), for the `disjoint_context` surface mode: the generator takes items[N:2N]
+  as the premise chain, so the context is on-topic and truthful but mentions none
+  of the queried items -- relevant yet uninformative for the query. Filler = the
+  queried item set's own spacing rule re-applied to the leftover candidates, same
+  exclusions and familiarity floor as the queried item set. Provenance in
+  data/items/sources/countries_by_population_11_disjoint_provenance.json.
+natural_order: true
+items:
+  - Jamaica
+  - Panama
+  - Singapore
+  - Belgium
+  - Netherlands
+  - Ukraine
+  - Spain
+  - Germany
+  - Mexico
+  - Brazil
+  - United States
+  - Slovenia
+  - Albania
+  - Armenia
+  - Croatia
+  - Denmark
+  - Greece
+  - Portugal
+  - Australia
+  - Argentina
+  - Thailand
+  - Philippines

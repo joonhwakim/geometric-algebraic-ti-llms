@@ -1,0 +1,117 @@
+{
+ "pool": "us_states_by_population_11_rep2",
+ "built": "2026-09-13",
+ "source_table": "data/items/sources/us_states_population_2024.csv",
+ "source_citation": "",
+ "units": "people",
+ "spacing": "geometric",
+ "step_ratio": 1.3333864964364877,
+ "sens_ratio": 5.62,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "Alaska",
+   "raw": "Alaska",
+   "value": 740133.0,
+   "target": 736216.8373571456,
+   "dev_pct": 0.531930600353088,
+   "familiarity": null
+  },
+  {
+   "name": "South Dakota",
+   "raw": "South Dakota",
+   "value": 924669.0,
+   "target": 981661.589381196,
+   "dev_pct": -5.805726738999947,
+   "familiarity": null
+  },
+  {
+   "name": "Maine",
+   "raw": "Maine",
+   "value": 1405012.0,
+   "target": 1308934.3073512667,
+   "dev_pct": 7.340146263195909,
+   "familiarity": null
+  },
+  {
+   "name": "West Virginia",
+   "raw": "West Virginia",
+   "value": 1769979.0,
+   "target": 1745315.3301446263,
+   "dev_pct": 1.4131354620789307,
+   "familiarity": null
+  },
+  {
+   "name": "Nebraska",
+   "raw": "Nebraska",
+   "value": 2005465.0,
+   "target": 2327179.893238435,
+   "dev_pct": -13.824238262506903,
+   "familiarity": null
+  },
+  {
+   "name": "Arkansas",
+   "raw": "Arkansas",
+   "value": 3088354.0,
+   "target": 3103030.2444226365,
+   "dev_pct": -0.47296491708437044,
+   "familiarity": null
+  },
+  {
+   "name": "Oregon",
+   "raw": "Oregon",
+   "value": 4272371.0,
+   "target": 4137538.625947157,
+   "dev_pct": 3.2587580743606357,
+   "familiarity": null
+  },
+  {
+   "name": "South Carolina",
+   "raw": "South Carolina",
+   "value": 5478831.0,
+   "target": 5516938.132322319,
+   "dev_pct": -0.6907297382774511,
+   "familiarity": null
+  },
+  {
+   "name": "Tennessee",
+   "raw": "Tennessee",
+   "value": 7227750.0,
+   "target": 7356210.8073141165,
+   "dev_pct": -1.7462904568530144,
+   "familiarity": null
+  },
+  {
+   "name": "Michigan",
+   "raw": "Michigan",
+   "value": 10140459.0,
+   "target": 9808672.155412797,
+   "dev_pct": 3.3825867490546164,
+   "familiarity": null
+  },
+  {
+   "name": "Pennsylvania",
+   "raw": "Pennsylvania",
+   "value": 13078751.0,
+   "target": 13078751.0,
+   "dev_pct": 0.0,
+   "familiarity": null
+  }
+ ],
+ "dropped": {
+  "compound": [],
+  "excluded": [
+   "New Mexico (2,130,256)",
+   "Kansas (2,970,606)",
+   "Oklahoma (4,095,393)",
+   "Alabama (5,157,699)",
+   "Indiana (6,924,275)",
+   "New Jersey (9,500,851)",
+   "Illinois (12,710,158)",
+   "New York (19,867,248)",
+   "Florida (23,372,215)",
+   "Texas (31,290,831)",
+   "California (39,431,263)"
+  ]
+ }
+}

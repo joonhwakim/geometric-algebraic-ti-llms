@@ -1,0 +1,92 @@
+{
+  "pool": "countries_by_area_11_disjoint",
+  "built": "2026-09-12",
+  "queried_pool": "countries_by_area_11",
+  "source_table": "data/items/sources/countries_area_worldbank.csv",
+  "excluded_pools": [
+    "countries_by_area_11"
+  ],
+  "familiarity_floor": 1769297.0,
+  "selection": "the queried item set's spacing rule re-applied to the leftover candidates",
+  "spacing": "geometric",
+  "step_ratio": 1.6155557875145712,
+  "filler": [
+    {
+      "name": "Greece",
+      "value": 131960.0,
+      "target": 129080.87551012171,
+      "dev_pct": 2.23048106739292,
+      "familiarity": 2718368.0
+    },
+    {
+      "name": "Belarus",
+      "value": 207629.0,
+      "target": 208537.35548782503,
+      "dev_pct": -0.435584063919936,
+      "familiarity": 2297202.0
+    },
+    {
+      "name": "Finland",
+      "value": 338480.0,
+      "target": 336903.73157133925,
+      "dev_pct": 0.467869091656814,
+      "familiarity": 2575491.0
+    },
+    {
+      "name": "Sweden",
+      "value": 528660.0,
+      "target": 544286.7733753326,
+      "dev_pct": -2.8710551385301764,
+      "familiarity": 2919930.0
+    },
+    {
+      "name": "Venezuela",
+      "value": 912050.0,
+      "target": 879325.6467941505,
+      "dev_pct": 3.7215283467684657,
+      "familiarity": 2052816.0
+    },
+    {
+      "name": "South Africa",
+      "value": 1219090.0,
+      "target": 1420599.6377882834,
+      "dev_pct": -14.184829590834724,
+      "familiarity": 4270992.0
+    },
+    {
+      "name": "Saudi Arabia",
+      "value": 2149690.0,
+      "target": 2295057.966569965,
+      "dev_pct": -6.333956208836922,
+      "familiarity": 4181184.0
+    },
+    {
+      "name": "Argentina",
+      "value": 2780400.0,
+      "target": 3707794.18057353,
+      "dev_pct": -25.012018882614417,
+      "familiarity": 3288172.0
+    },
+    {
+      "name": "Brazil",
+      "value": 8510420.0,
+      "target": 5990148.347338413,
+      "dev_pct": 42.073609976310735,
+      "familiarity": 3842992.0
+    },
+    {
+      "name": "China",
+      "value": 9562910.0,
+      "target": 9677418.830613418,
+      "dev_pct": -1.1832579804356702,
+      "familiarity": 6403011.0
+    },
+    {
+      "name": "Canada",
+      "value": 15634410.0,
+      "target": 15634410.0,
+      "dev_pct": 0.0,
+      "familiarity": 5775469.0
+    }
+  ]
+}

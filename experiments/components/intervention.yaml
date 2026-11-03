@@ -1,0 +1,41 @@
+# Context-reading heads (components): every attention head of Qwen3-32B scored by the
+# attention mass from the composed inferences of a reasoning chain onto the context
+# relations mentioning either item; the 32 highest mean-ablated against 32 random heads,
+# scored on the stored trials of the same four tests as the representation experiment.
+# Not a test declaration for the behavioral runners (experiment.yaml); read by
+# `geo-alg-ti-llms export --experiment components` and the `components` subcommands.
+# The settings of the runs are described in README.md.
+name: components
+question: >-
+  Do the heads that read the context while a chain composes an inference carry the
+  algebraic strategy? Ablating them should hurt every condition whose answer depends on
+  the shown ordering and spare the IWL test, which has no context to read.
+
+model: qwen3-32b
+instruction: context_only
+
+dimensions:
+  countries:
+    name: country population
+    item_set: countries_by_population_11
+  cities:
+    name: city population (constant-ratio spacing; the interventions' city item set)
+    item_set: cities_by_population_11
+  usstates:
+    name: US state population
+    item_set: us_states_by_population_11
+
+# The scored tests (in order) and the head sets ablated on each.
+conditions:
+  iwl: [intact, top8, top16, top32, rand8_s0, rand16_s0, rand32_s0]
+  content_reversed: [intact, top8, top16, top32, rand8_s0, rand16_s0, rand32_s0]
+  cot_reversed: [intact, top16, top32, rand16_s0, rand32_s0]
+  cot_icl: [intact, top16, top32, rand16_s0, rand32_s0]
+headline_conditions: [top32, rand32_s0]              # the bars of the main-text panel
+
+published_as:
+  run: head_ablation/{dim}/{model}
+  trials: ablate
+  summary: summary.csv
+  figure_data: rank_intervention/{dim}/{model}/intervene_scrub_ctxonly/fig_app_representation_data.csv   # relative to the published-runs root
+budgets_kept: [0, 1024]

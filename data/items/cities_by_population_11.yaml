@@ -1,0 +1,26 @@
+name: cities_by_population_11
+description: >
+  11 world cities ordered from smallest to largest built-up urban area population. Geometric
+  spacing (neighbors about 1.33 times apart, 5.6-fold over six ranks), set from a pilot in
+  which Qwen3-32B answered without context or reasoning, so that symbolic distance 1 sits near
+  chance and distance 6 near ceiling. Selection as for countries_by_population_11: at least 1M
+  annual English Wikipedia page views, then the candidate closest to each spacing target
+  (adjacent ratios 1.27-1.41). Excluded as ambiguous: Hyderabad (India and Pakistan), Kuwait
+  (city or country), Birmingham (UK or Alabama) and Jerusalem. This constant-ratio set is the
+  city population set of the mechanistic interventions.
+  Built from
+  data/items/sources/cities_band_familiarity.csv (geometric spacing). Each item's value and
+  provenance: data/items/sources/cities_by_population_11_provenance.json.
+natural_order: true
+items:
+  - Vienna
+  - Vancouver
+  - Seattle
+  - Sydney
+  - Toronto
+  - Chicago
+  - Chongqing
+  - Los Angeles
+  - Kolkata
+  - Mumbai
+  - Jakarta

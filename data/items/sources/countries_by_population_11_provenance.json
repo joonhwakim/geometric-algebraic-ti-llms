@@ -1,0 +1,107 @@
+{
+ "pool": "countries_by_population_11",
+ "built": "2026-09-03",
+ "source_table": "data/items/sources/countries_band_familiarity.csv",
+ "source_citation": "Wikipedia, List of countries and dependencies by population (national census authorities / UN Population Division), retrieved 2026-09-03",
+ "units": "people",
+ "spacing": "geometric",
+ "step_ratio": 1.6158585245056627,
+ "sens_ratio": 17.8,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "Jamaica",
+   "raw": "Jamaica",
+   "value": 2774538.0,
+   "target": 2816563.0654203664,
+   "dev_pct": -1.4920690374846692,
+   "familiarity": 2092498.0
+  },
+  {
+   "name": "Panama",
+   "raw": "Panama",
+   "value": 4064780.0,
+   "target": 4551167.4390672995,
+   "dev_pct": -10.687091731500391,
+   "familiarity": 1236996.0
+  },
+  {
+   "name": "Singapore",
+   "raw": "Singapore",
+   "value": 6110200.0,
+   "target": 7354042.702869502,
+   "dev_pct": -16.91372695434801,
+   "familiarity": 5813350.0
+  },
+  {
+   "name": "Belgium",
+   "raw": "Belgium",
+   "value": 11936546.0,
+   "target": 11883092.591010349,
+   "dev_pct": 0.44982742144152815,
+   "familiarity": 2728841.0
+  },
+  {
+   "name": "Netherlands",
+   "raw": "Netherlands",
+   "value": 18153386.0,
+   "target": 19201396.460674156,
+   "dev_pct": -5.4579908436376305,
+   "familiarity": 4433164.0
+  },
+  {
+   "name": "Ukraine",
+   "raw": "Ukraine",
+   "value": 28700000.0,
+   "target": 31026740.153393194,
+   "dev_pct": -7.499144743824251,
+   "familiarity": 3936206.0
+  },
+  {
+   "name": "Spain",
+   "raw": "Spain",
+   "value": 49801559.0,
+   "target": 50134822.564482525,
+   "dev_pct": -0.6647347042145951,
+   "familiarity": 3677649.0
+  },
+  {
+   "name": "Germany",
+   "raw": "Germany",
+   "value": 83467117.0,
+   "target": 81010780.41539793,
+   "dev_pct": 3.0321107536635834,
+   "familiarity": 5379114.0
+  },
+  {
+   "name": "Mexico",
+   "raw": "Mexico",
+   "value": 131231919.0,
+   "target": 130901960.11107716,
+   "dev_pct": 0.25206565940101505,
+   "familiarity": 3947216.0
+  },
+  {
+   "name": "Brazil",
+   "raw": "Brazil",
+   "value": 214211951.0,
+   "target": 211519048.11998424,
+   "dev_pct": 1.2731254721268463,
+   "familiarity": 3842992.0
+  },
+  {
+   "name": "United States",
+   "raw": "United States",
+   "value": 341784857.0,
+   "target": 341784857.0,
+   "dev_pct": 0.0,
+   "familiarity": 16464150.0
+  }
+ ],
+ "dropped": {
+  "compound": [],
+  "excluded": [
+   "Georgia (3,941,100)"
+  ]
+ }
+}

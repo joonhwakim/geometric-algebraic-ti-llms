@@ -1,0 +1,4197 @@
+package_version: 0.1.0
+experiment: symbolic_distance
+exported: '2026-10-28'
+runs_root: <GEO_ALG_TI_LLMS_PUBLISHED_RUNS>
+runs_layout: '<runs_root>/<nxhop | cot_sweep>/final_<dim>/<published_as>/<model>/*.jsonl (nxhop: the direct
+  tests; cot_sweep: the ladders)'
+models:
+- deepseek-r1-distill-llama-8b
+- deepseek-r1-distill-qwen-14b
+- deepseek-r1-distill-qwen-32b
+- gemma-2-9b-it
+- glm-4-32b-0414
+- glm-4-9b-0414
+- gpt-oss-20b
+- llama-3.1-70b-instruct
+- llama-3.1-8b-instruct
+- llama-3.2-1b
+- llama-3.2-3b
+- mistral-7b-instruct-v0.3
+- olmo-2-32b-instruct
+- olmo-2-7b-instruct
+- phi-4-reasoning
+- qwen2.5-32b-instruct
+- qwen2.5-7b-instruct
+- qwen3-1.7b
+- qwen3-14b
+- qwen3-32b
+- qwen3-4b
+- qwen3-8b
+reasoning_kind:
+  deepseek-r1-distill-llama-8b: native
+  deepseek-r1-distill-qwen-14b: native
+  deepseek-r1-distill-qwen-32b: native
+  gemma-2-9b-it: prompted
+  glm-4-32b-0414: prompted
+  glm-4-9b-0414: prompted
+  gpt-oss-20b: native
+  llama-3.1-70b-instruct: prompted
+  llama-3.1-8b-instruct: prompted
+  llama-3.2-1b: prompted
+  llama-3.2-3b: prompted
+  mistral-7b-instruct-v0.3: prompted
+  olmo-2-32b-instruct: prompted
+  olmo-2-7b-instruct: prompted
+  phi-4-reasoning: native
+  qwen2.5-32b-instruct: prompted
+  qwen2.5-7b-instruct: prompted
+  qwen3-1.7b: native
+  qwen3-14b: native
+  qwen3-32b: native
+  qwen3-4b: native
+  qwen3-8b: native
+dimensions:
+  countries: country population
+  cities: city population (constant-ratio spacing; the interventions' city item set)
+  citieslinear: city population (the paper's City population item set, evenly spaced)
+  animals: animal body mass
+  usstates: US state population
+  countryarea: country surface area
+dims:
+  countries:
+    dimension: countries
+    item_set: countries_by_population_11
+  countries_rep2:
+    dimension: countries
+    item_set: countries_by_population_11_rep2
+  countries_rep3:
+    dimension: countries
+    item_set: countries_by_population_11_rep3
+  cities:
+    dimension: cities
+    item_set: cities_by_population_11
+  cities_rep2:
+    dimension: cities
+    item_set: cities_by_population_11_rep2
+  citieslinear:
+    dimension: citieslinear
+    item_set: cities_by_population_11_linear
+  animals:
+    dimension: animals
+    item_set: animals_by_mass_11
+  animals_rep2:
+    dimension: animals
+    item_set: animals_by_mass_11_rep2
+  usstates:
+    dimension: usstates
+    item_set: us_states_by_population_11
+  usstates_rep2:
+    dimension: usstates
+    item_set: us_states_by_population_11_rep2
+  usstates_rep3:
+    dimension: usstates
+    item_set: us_states_by_population_11_rep3
+  countryarea:
+    dimension: countryarea
+    item_set: countries_by_area_11
+  countryarea_rep2:
+    dimension: countryarea
+    item_set: countries_by_area_11_rep2
+  countryarea_rep3:
+    dimension: countryarea
+    item_set: countries_by_area_11_rep3
+tests:
+  iwl:
+    runner: direct
+    published_as: iwl
+    conditions:
+      natural: no_context
+    surface: zero_context
+    context_only_instruction: false
+    premise_orders: 1
+    rows_per_model_and_set: 72
+    item_sets:
+      countries: countries_by_population_11
+      countries_rep2: countries_by_population_11_rep2
+      countries_rep3: countries_by_population_11_rep3
+      cities: cities_by_population_11
+      cities_rep2: cities_by_population_11_rep2
+      citieslinear: cities_by_population_11_linear
+      animals: animals_by_mass_11
+      animals_rep2: animals_by_mass_11_rep2
+      usstates: us_states_by_population_11
+      usstates_rep2: us_states_by_population_11_rep2
+      usstates_rep3: us_states_by_population_11_rep3
+      countryarea: countries_by_area_11
+      countryarea_rep2: countries_by_area_11_rep2
+      countryarea_rep3: countries_by_area_11_rep3
+  icl:
+    runner: direct
+    published_as: icl
+    conditions:
+      random: icl_people
+    surface: fixed_gt
+    context_only_instruction: false
+    premise_orders: 10
+    rows_per_model_and_set: 720
+    item_sets:
+      countries: novel_names_11
+  icl_cities:
+    runner: direct
+    published_as: icl_cities
+    conditions:
+      random: icl_cities
+    surface: fixed_gt
+    context_only_instruction: false
+    premise_orders: 10
+    rows_per_model_and_set: 720
+    item_sets:
+      countries: novel_cities_11
+  budget_iwl:
+    runner: ladder
+    published_as: budget_iwl
+    conditions:
+      natural: no_context
+    surface: zero_context
+    context_only_instruction: false
+    premise_orders: 1
+    rows_per_model_and_set: 792
+    item_sets:
+      countries: countries_by_population_11
+      countries_rep2: countries_by_population_11_rep2
+      countries_rep3: countries_by_population_11_rep3
+      cities: cities_by_population_11
+      cities_rep2: cities_by_population_11_rep2
+      citieslinear: cities_by_population_11_linear
+      animals: animals_by_mass_11
+      animals_rep2: animals_by_mass_11_rep2
+      usstates: us_states_by_population_11
+      usstates_rep2: us_states_by_population_11_rep2
+      usstates_rep3: us_states_by_population_11_rep3
+      countryarea: countries_by_area_11
+      countryarea_rep2: countries_by_area_11_rep2
+      countryarea_rep3: countries_by_area_11_rep3
+  budget_icl:
+    runner: ladder
+    published_as: budget_icl
+    conditions:
+      random: icl_people
+    surface: fixed_gt
+    context_only_instruction: false
+    premise_orders: 10
+    rows_per_model_and_set: 7920
+    item_sets:
+      countries: novel_names_11
+  budget_icl_cities:
+    runner: ladder
+    published_as: budget_icl_cities
+    conditions:
+      random: icl_cities
+    surface: fixed_gt
+    context_only_instruction: false
+    premise_orders: 10
+    rows_per_model_and_set: 7920
+    item_sets:
+      countries: novel_cities_11
+conditions:
+  icl_cities: invented city names under the population instruction, all adjacent relations shown (icl_cities
+    / budget_icl_cities; run with country population)
+  icl_people: novel given names ordered by height, all adjacent relations shown (icl / budget_icl; run
+    with country population)
+  no_context: familiar items of the dimension, query alone (iwl / budget_iwl; the main item set and its
+    replicate item sets built to the same spacing from disjoint items)
+innermost_ranks: rank_low >= 2 and rank_high <= 8 (innermost 7 of 11; distances 1-6)
+trial_key_format: <dim>:<surface_form_mode>|<assignment_strategy>|<symbolic_distance>|<trial_id>
+row_order: 'within (model, test, dim, budget): the stored files in name order, then the rows in file order'
+text_columns_dropped:
+- prompt
+- cot_trace
+- cot_stage1_prompt
+- extra (rank_to_item, actual_items, exemplar_items)
+- prompt_spec
+- cell_id
+- timestamp_iso
+- duration_seconds
+row_guards:
+- N == 11 and master_seed == 42 on every row
+- the file's hop, symbolic_distance, extra.hop and prompt_spec.hop agree
+- item_pool and surface_form_mode are the test's; the assignment is one the test declares
+- prompt_spec.instructions_v1_id ends in '_ctxonly' exactly when the test's instruction is the context-only
+  one, and the context-only sentence is in the prompt exactly then
+- every prompt contains 'true or false that' and 'Answer whether the statement is true or false.'
+- an IWL test row (surface zero_context) shows no '<item> > <item>' or '<item> < <item>' relation before
+  the question, in its prompt or, for a reasoning row, its reasoning-pass prompt
+- rank_high - rank_low == symbolic_distance (a ladder row's ranks read from the question before the trace)
+- a reasoning row's prompt_spec.max_new_tokens is its file's budget; its trigger is the model's (none
+  on native thinking models, passive otherwise)
+- no reasoning trace carries byte-level BPE markers (U+0120, U+010A)
+- every ladder row's queried ranks equal its direct twin's; every budget-0 row equals the twin in gold,
+  answer, correctness and logit gap (1e-6) and takes its premise order index
+- every trial of a ladder carries every budget; every direct trial of a condition with a ladder is in
+  it
+- (model, test, dim, budget, trial_key) is unique
+- rows per (model, test, dim) = assignments x premise orders x 72 queryable pairs (x 11 budgets for a
+  ladder); innermost trials per (dim, condition, distance) = 2 x premise orders x (7 - distance)
+ladder_budgets:
+- 0
+- 32
+- 64
+- 128
+- 256
+- 384
+- 512
+- 640
+- 768
+- 896
+- 1024
+checks:
+  per_test_directories_note: 'one entry per <model>/<dim>/<test> directory read (a ladder''s direct twin
+    is read for its checks even when not exported): rows kept and files read; for a ladder also the trials
+    and the trials whose identical direct copies disagree across the budgets (n_direct_disagreements,
+    a bf16 tie flip; the export fails above 1% of a directory''s trials)'
+  per_test_directories:
+    deepseek-r1-distill-llama-8b/countries/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-llama-8b/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-llama-8b/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-llama-8b/cities/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-llama-8b/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-llama-8b/citieslinear/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-llama-8b/animals/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-llama-8b/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-llama-8b/usstates/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-llama-8b/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-llama-8b/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-llama-8b/countryarea/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-llama-8b/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-llama-8b/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-llama-8b/countries/icl:
+      rows: 720
+      files: 8
+    deepseek-r1-distill-llama-8b/countries/icl_cities:
+      rows: 720
+      files: 8
+    deepseek-r1-distill-llama-8b/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-llama-8b/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-llama-8b/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-llama-8b/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-llama-8b/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-llama-8b/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-llama-8b/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-llama-8b/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-llama-8b/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-llama-8b/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-llama-8b/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-llama-8b/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-llama-8b/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-llama-8b/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-llama-8b/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    deepseek-r1-distill-llama-8b/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-14b/countries/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-14b/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-14b/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-14b/cities/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-14b/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-14b/citieslinear/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-14b/animals/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-14b/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-14b/usstates/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-14b/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-14b/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-14b/countryarea/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-14b/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-14b/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-14b/countries/icl:
+      rows: 720
+      files: 8
+    deepseek-r1-distill-qwen-14b/countries/icl_cities:
+      rows: 720
+      files: 8
+    deepseek-r1-distill-qwen-14b/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-14b/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-14b/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-14b/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-14b/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-14b/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-14b/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-14b/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-14b/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-14b/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-14b/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-14b/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-14b/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-14b/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-14b/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-14b/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-32b/countries/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-32b/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-32b/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-32b/cities/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-32b/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-32b/citieslinear/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-32b/animals/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-32b/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-32b/usstates/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-32b/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-32b/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-32b/countryarea/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-32b/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-32b/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    deepseek-r1-distill-qwen-32b/countries/icl:
+      rows: 720
+      files: 8
+    deepseek-r1-distill-qwen-32b/countries/icl_cities:
+      rows: 720
+      files: 8
+    deepseek-r1-distill-qwen-32b/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-32b/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-32b/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-32b/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-32b/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-32b/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-32b/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-32b/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-32b/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-32b/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-32b/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-32b/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-32b/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-32b/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-32b/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    deepseek-r1-distill-qwen-32b/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    gemma-2-9b-it/countries/iwl:
+      rows: 72
+      files: 8
+    gemma-2-9b-it/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    gemma-2-9b-it/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    gemma-2-9b-it/cities/iwl:
+      rows: 72
+      files: 8
+    gemma-2-9b-it/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    gemma-2-9b-it/citieslinear/iwl:
+      rows: 72
+      files: 8
+    gemma-2-9b-it/animals/iwl:
+      rows: 72
+      files: 8
+    gemma-2-9b-it/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    gemma-2-9b-it/usstates/iwl:
+      rows: 72
+      files: 8
+    gemma-2-9b-it/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    gemma-2-9b-it/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    gemma-2-9b-it/countryarea/iwl:
+      rows: 72
+      files: 8
+    gemma-2-9b-it/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    gemma-2-9b-it/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    gemma-2-9b-it/countries/icl:
+      rows: 720
+      files: 8
+    gemma-2-9b-it/countries/icl_cities:
+      rows: 720
+      files: 8
+    gemma-2-9b-it/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gemma-2-9b-it/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gemma-2-9b-it/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gemma-2-9b-it/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gemma-2-9b-it/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gemma-2-9b-it/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gemma-2-9b-it/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gemma-2-9b-it/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gemma-2-9b-it/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gemma-2-9b-it/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gemma-2-9b-it/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gemma-2-9b-it/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gemma-2-9b-it/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gemma-2-9b-it/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gemma-2-9b-it/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    gemma-2-9b-it/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    glm-4-32b-0414/countries/iwl:
+      rows: 72
+      files: 8
+    glm-4-32b-0414/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    glm-4-32b-0414/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    glm-4-32b-0414/cities/iwl:
+      rows: 72
+      files: 8
+    glm-4-32b-0414/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    glm-4-32b-0414/citieslinear/iwl:
+      rows: 72
+      files: 8
+    glm-4-32b-0414/animals/iwl:
+      rows: 72
+      files: 8
+    glm-4-32b-0414/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    glm-4-32b-0414/usstates/iwl:
+      rows: 72
+      files: 8
+    glm-4-32b-0414/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    glm-4-32b-0414/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    glm-4-32b-0414/countryarea/iwl:
+      rows: 72
+      files: 8
+    glm-4-32b-0414/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    glm-4-32b-0414/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    glm-4-32b-0414/countries/icl:
+      rows: 720
+      files: 8
+    glm-4-32b-0414/countries/icl_cities:
+      rows: 720
+      files: 8
+    glm-4-32b-0414/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-32b-0414/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-32b-0414/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-32b-0414/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-32b-0414/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-32b-0414/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-32b-0414/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-32b-0414/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-32b-0414/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-32b-0414/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-32b-0414/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-32b-0414/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-32b-0414/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-32b-0414/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-32b-0414/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    glm-4-32b-0414/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    glm-4-9b-0414/countries/iwl:
+      rows: 72
+      files: 8
+    glm-4-9b-0414/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    glm-4-9b-0414/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    glm-4-9b-0414/cities/iwl:
+      rows: 72
+      files: 8
+    glm-4-9b-0414/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    glm-4-9b-0414/citieslinear/iwl:
+      rows: 72
+      files: 8
+    glm-4-9b-0414/animals/iwl:
+      rows: 72
+      files: 8
+    glm-4-9b-0414/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    glm-4-9b-0414/usstates/iwl:
+      rows: 72
+      files: 8
+    glm-4-9b-0414/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    glm-4-9b-0414/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    glm-4-9b-0414/countryarea/iwl:
+      rows: 72
+      files: 8
+    glm-4-9b-0414/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    glm-4-9b-0414/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    glm-4-9b-0414/countries/icl:
+      rows: 720
+      files: 8
+    glm-4-9b-0414/countries/icl_cities:
+      rows: 720
+      files: 8
+    glm-4-9b-0414/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-9b-0414/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-9b-0414/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-9b-0414/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-9b-0414/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-9b-0414/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-9b-0414/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-9b-0414/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-9b-0414/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-9b-0414/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-9b-0414/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-9b-0414/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-9b-0414/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-9b-0414/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    glm-4-9b-0414/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    glm-4-9b-0414/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    gpt-oss-20b/countries/iwl:
+      rows: 72
+      files: 8
+    gpt-oss-20b/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    gpt-oss-20b/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    gpt-oss-20b/cities/iwl:
+      rows: 72
+      files: 8
+    gpt-oss-20b/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    gpt-oss-20b/citieslinear/iwl:
+      rows: 72
+      files: 8
+    gpt-oss-20b/animals/iwl:
+      rows: 72
+      files: 8
+    gpt-oss-20b/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    gpt-oss-20b/usstates/iwl:
+      rows: 72
+      files: 8
+    gpt-oss-20b/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    gpt-oss-20b/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    gpt-oss-20b/countryarea/iwl:
+      rows: 72
+      files: 8
+    gpt-oss-20b/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    gpt-oss-20b/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    gpt-oss-20b/countries/icl:
+      rows: 720
+      files: 8
+    gpt-oss-20b/countries/icl_cities:
+      rows: 720
+      files: 8
+    gpt-oss-20b/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gpt-oss-20b/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gpt-oss-20b/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gpt-oss-20b/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gpt-oss-20b/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gpt-oss-20b/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gpt-oss-20b/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gpt-oss-20b/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gpt-oss-20b/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gpt-oss-20b/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gpt-oss-20b/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gpt-oss-20b/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gpt-oss-20b/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gpt-oss-20b/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    gpt-oss-20b/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    gpt-oss-20b/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    llama-3.1-70b-instruct/countries/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-70b-instruct/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-70b-instruct/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-70b-instruct/cities/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-70b-instruct/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-70b-instruct/citieslinear/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-70b-instruct/animals/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-70b-instruct/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-70b-instruct/usstates/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-70b-instruct/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-70b-instruct/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-70b-instruct/countryarea/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-70b-instruct/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-70b-instruct/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-70b-instruct/countries/icl:
+      rows: 720
+      files: 8
+    llama-3.1-70b-instruct/countries/icl_cities:
+      rows: 720
+      files: 8
+    llama-3.1-70b-instruct/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-70b-instruct/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-70b-instruct/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-70b-instruct/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-70b-instruct/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-70b-instruct/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-70b-instruct/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-70b-instruct/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-70b-instruct/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-70b-instruct/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-70b-instruct/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-70b-instruct/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-70b-instruct/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-70b-instruct/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-70b-instruct/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    llama-3.1-70b-instruct/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    llama-3.1-8b-instruct/countries/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-8b-instruct/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-8b-instruct/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-8b-instruct/cities/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-8b-instruct/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-8b-instruct/citieslinear/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-8b-instruct/animals/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-8b-instruct/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-8b-instruct/usstates/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-8b-instruct/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-8b-instruct/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-8b-instruct/countryarea/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-8b-instruct/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-8b-instruct/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    llama-3.1-8b-instruct/countries/icl:
+      rows: 720
+      files: 8
+    llama-3.1-8b-instruct/countries/icl_cities:
+      rows: 720
+      files: 8
+    llama-3.1-8b-instruct/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-8b-instruct/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-8b-instruct/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-8b-instruct/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-8b-instruct/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-8b-instruct/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-8b-instruct/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-8b-instruct/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-8b-instruct/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-8b-instruct/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-8b-instruct/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-8b-instruct/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-8b-instruct/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-8b-instruct/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.1-8b-instruct/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    llama-3.1-8b-instruct/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    llama-3.2-1b/countries/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-1b/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-1b/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-1b/cities/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-1b/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-1b/citieslinear/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-1b/animals/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-1b/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-1b/usstates/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-1b/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-1b/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-1b/countryarea/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-1b/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-1b/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-1b/countries/icl:
+      rows: 720
+      files: 8
+    llama-3.2-1b/countries/icl_cities:
+      rows: 720
+      files: 8
+    llama-3.2-1b/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-1b/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-1b/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-1b/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-1b/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-1b/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-1b/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-1b/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-1b/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-1b/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-1b/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-1b/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-1b/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-1b/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-1b/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    llama-3.2-1b/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    llama-3.2-3b/countries/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-3b/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-3b/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-3b/cities/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-3b/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-3b/citieslinear/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-3b/animals/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-3b/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-3b/usstates/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-3b/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-3b/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-3b/countryarea/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-3b/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-3b/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    llama-3.2-3b/countries/icl:
+      rows: 720
+      files: 8
+    llama-3.2-3b/countries/icl_cities:
+      rows: 720
+      files: 8
+    llama-3.2-3b/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-3b/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-3b/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-3b/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-3b/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-3b/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-3b/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-3b/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-3b/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-3b/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-3b/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-3b/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-3b/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-3b/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    llama-3.2-3b/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    llama-3.2-3b/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    mistral-7b-instruct-v0.3/countries/iwl:
+      rows: 72
+      files: 8
+    mistral-7b-instruct-v0.3/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    mistral-7b-instruct-v0.3/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    mistral-7b-instruct-v0.3/cities/iwl:
+      rows: 72
+      files: 8
+    mistral-7b-instruct-v0.3/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    mistral-7b-instruct-v0.3/citieslinear/iwl:
+      rows: 72
+      files: 8
+    mistral-7b-instruct-v0.3/animals/iwl:
+      rows: 72
+      files: 8
+    mistral-7b-instruct-v0.3/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    mistral-7b-instruct-v0.3/usstates/iwl:
+      rows: 72
+      files: 8
+    mistral-7b-instruct-v0.3/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    mistral-7b-instruct-v0.3/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    mistral-7b-instruct-v0.3/countryarea/iwl:
+      rows: 72
+      files: 8
+    mistral-7b-instruct-v0.3/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    mistral-7b-instruct-v0.3/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    mistral-7b-instruct-v0.3/countries/icl:
+      rows: 720
+      files: 8
+    mistral-7b-instruct-v0.3/countries/icl_cities:
+      rows: 720
+      files: 8
+    mistral-7b-instruct-v0.3/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    mistral-7b-instruct-v0.3/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    mistral-7b-instruct-v0.3/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    mistral-7b-instruct-v0.3/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    mistral-7b-instruct-v0.3/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    mistral-7b-instruct-v0.3/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    mistral-7b-instruct-v0.3/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    mistral-7b-instruct-v0.3/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    mistral-7b-instruct-v0.3/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    mistral-7b-instruct-v0.3/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    mistral-7b-instruct-v0.3/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    mistral-7b-instruct-v0.3/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    mistral-7b-instruct-v0.3/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    mistral-7b-instruct-v0.3/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    mistral-7b-instruct-v0.3/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    mistral-7b-instruct-v0.3/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    olmo-2-32b-instruct/countries/iwl:
+      rows: 72
+      files: 8
+    olmo-2-32b-instruct/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    olmo-2-32b-instruct/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    olmo-2-32b-instruct/cities/iwl:
+      rows: 72
+      files: 8
+    olmo-2-32b-instruct/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    olmo-2-32b-instruct/citieslinear/iwl:
+      rows: 72
+      files: 8
+    olmo-2-32b-instruct/animals/iwl:
+      rows: 72
+      files: 8
+    olmo-2-32b-instruct/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    olmo-2-32b-instruct/usstates/iwl:
+      rows: 72
+      files: 8
+    olmo-2-32b-instruct/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    olmo-2-32b-instruct/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    olmo-2-32b-instruct/countryarea/iwl:
+      rows: 72
+      files: 8
+    olmo-2-32b-instruct/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    olmo-2-32b-instruct/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    olmo-2-32b-instruct/countries/icl:
+      rows: 720
+      files: 8
+    olmo-2-32b-instruct/countries/icl_cities:
+      rows: 720
+      files: 8
+    olmo-2-32b-instruct/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-32b-instruct/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-32b-instruct/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-32b-instruct/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-32b-instruct/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-32b-instruct/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-32b-instruct/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-32b-instruct/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-32b-instruct/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-32b-instruct/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-32b-instruct/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-32b-instruct/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-32b-instruct/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-32b-instruct/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-32b-instruct/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    olmo-2-32b-instruct/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    olmo-2-7b-instruct/countries/iwl:
+      rows: 72
+      files: 8
+    olmo-2-7b-instruct/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    olmo-2-7b-instruct/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    olmo-2-7b-instruct/cities/iwl:
+      rows: 72
+      files: 8
+    olmo-2-7b-instruct/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    olmo-2-7b-instruct/citieslinear/iwl:
+      rows: 72
+      files: 8
+    olmo-2-7b-instruct/animals/iwl:
+      rows: 72
+      files: 8
+    olmo-2-7b-instruct/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    olmo-2-7b-instruct/usstates/iwl:
+      rows: 72
+      files: 8
+    olmo-2-7b-instruct/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    olmo-2-7b-instruct/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    olmo-2-7b-instruct/countryarea/iwl:
+      rows: 72
+      files: 8
+    olmo-2-7b-instruct/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    olmo-2-7b-instruct/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    olmo-2-7b-instruct/countries/icl:
+      rows: 720
+      files: 8
+    olmo-2-7b-instruct/countries/icl_cities:
+      rows: 720
+      files: 8
+    olmo-2-7b-instruct/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-7b-instruct/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-7b-instruct/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-7b-instruct/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-7b-instruct/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-7b-instruct/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-7b-instruct/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-7b-instruct/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-7b-instruct/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-7b-instruct/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-7b-instruct/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-7b-instruct/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-7b-instruct/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-7b-instruct/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    olmo-2-7b-instruct/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    olmo-2-7b-instruct/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    phi-4-reasoning/countries/iwl:
+      rows: 72
+      files: 8
+    phi-4-reasoning/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    phi-4-reasoning/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    phi-4-reasoning/cities/iwl:
+      rows: 72
+      files: 8
+    phi-4-reasoning/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    phi-4-reasoning/citieslinear/iwl:
+      rows: 72
+      files: 8
+    phi-4-reasoning/animals/iwl:
+      rows: 72
+      files: 8
+    phi-4-reasoning/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    phi-4-reasoning/usstates/iwl:
+      rows: 72
+      files: 8
+    phi-4-reasoning/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    phi-4-reasoning/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    phi-4-reasoning/countryarea/iwl:
+      rows: 72
+      files: 8
+    phi-4-reasoning/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    phi-4-reasoning/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    phi-4-reasoning/countries/icl:
+      rows: 720
+      files: 8
+    phi-4-reasoning/countries/icl_cities:
+      rows: 720
+      files: 8
+    phi-4-reasoning/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    phi-4-reasoning/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    phi-4-reasoning/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    phi-4-reasoning/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    phi-4-reasoning/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    phi-4-reasoning/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    phi-4-reasoning/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    phi-4-reasoning/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    phi-4-reasoning/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    phi-4-reasoning/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    phi-4-reasoning/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    phi-4-reasoning/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    phi-4-reasoning/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    phi-4-reasoning/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    phi-4-reasoning/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    phi-4-reasoning/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    qwen2.5-32b-instruct/countries/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-32b-instruct/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-32b-instruct/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-32b-instruct/cities/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-32b-instruct/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-32b-instruct/citieslinear/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-32b-instruct/animals/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-32b-instruct/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-32b-instruct/usstates/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-32b-instruct/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-32b-instruct/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-32b-instruct/countryarea/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-32b-instruct/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-32b-instruct/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-32b-instruct/countries/icl:
+      rows: 720
+      files: 8
+    qwen2.5-32b-instruct/countries/icl_cities:
+      rows: 720
+      files: 8
+    qwen2.5-32b-instruct/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-32b-instruct/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-32b-instruct/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-32b-instruct/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-32b-instruct/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-32b-instruct/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-32b-instruct/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-32b-instruct/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-32b-instruct/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-32b-instruct/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-32b-instruct/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-32b-instruct/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-32b-instruct/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-32b-instruct/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-32b-instruct/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    qwen2.5-32b-instruct/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    qwen2.5-7b-instruct/countries/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-7b-instruct/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-7b-instruct/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-7b-instruct/cities/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-7b-instruct/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-7b-instruct/citieslinear/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-7b-instruct/animals/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-7b-instruct/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-7b-instruct/usstates/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-7b-instruct/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-7b-instruct/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-7b-instruct/countryarea/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-7b-instruct/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-7b-instruct/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    qwen2.5-7b-instruct/countries/icl:
+      rows: 720
+      files: 8
+    qwen2.5-7b-instruct/countries/icl_cities:
+      rows: 720
+      files: 8
+    qwen2.5-7b-instruct/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-7b-instruct/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-7b-instruct/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-7b-instruct/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-7b-instruct/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-7b-instruct/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-7b-instruct/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-7b-instruct/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-7b-instruct/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-7b-instruct/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-7b-instruct/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-7b-instruct/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-7b-instruct/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-7b-instruct/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen2.5-7b-instruct/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    qwen2.5-7b-instruct/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    qwen3-1.7b/countries/iwl:
+      rows: 72
+      files: 8
+    qwen3-1.7b/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-1.7b/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    qwen3-1.7b/cities/iwl:
+      rows: 72
+      files: 8
+    qwen3-1.7b/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-1.7b/citieslinear/iwl:
+      rows: 72
+      files: 8
+    qwen3-1.7b/animals/iwl:
+      rows: 72
+      files: 8
+    qwen3-1.7b/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-1.7b/usstates/iwl:
+      rows: 72
+      files: 8
+    qwen3-1.7b/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-1.7b/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    qwen3-1.7b/countryarea/iwl:
+      rows: 72
+      files: 8
+    qwen3-1.7b/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-1.7b/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    qwen3-1.7b/countries/icl:
+      rows: 720
+      files: 8
+    qwen3-1.7b/countries/icl_cities:
+      rows: 720
+      files: 8
+    qwen3-1.7b/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-1.7b/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-1.7b/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-1.7b/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-1.7b/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-1.7b/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-1.7b/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-1.7b/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-1.7b/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-1.7b/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-1.7b/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-1.7b/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-1.7b/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-1.7b/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-1.7b/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    qwen3-1.7b/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    qwen3-14b/countries/iwl:
+      rows: 72
+      files: 8
+    qwen3-14b/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-14b/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    qwen3-14b/cities/iwl:
+      rows: 72
+      files: 8
+    qwen3-14b/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-14b/citieslinear/iwl:
+      rows: 72
+      files: 8
+    qwen3-14b/animals/iwl:
+      rows: 72
+      files: 8
+    qwen3-14b/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-14b/usstates/iwl:
+      rows: 72
+      files: 8
+    qwen3-14b/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-14b/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    qwen3-14b/countryarea/iwl:
+      rows: 72
+      files: 8
+    qwen3-14b/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-14b/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    qwen3-14b/countries/icl:
+      rows: 720
+      files: 8
+    qwen3-14b/countries/icl_cities:
+      rows: 720
+      files: 8
+    qwen3-14b/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-14b/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-14b/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-14b/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-14b/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-14b/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-14b/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-14b/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-14b/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-14b/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-14b/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-14b/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-14b/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-14b/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-14b/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    qwen3-14b/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    qwen3-32b/countries/iwl:
+      rows: 72
+      files: 8
+    qwen3-32b/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-32b/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    qwen3-32b/cities/iwl:
+      rows: 72
+      files: 8
+    qwen3-32b/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-32b/citieslinear/iwl:
+      rows: 72
+      files: 8
+    qwen3-32b/animals/iwl:
+      rows: 72
+      files: 8
+    qwen3-32b/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-32b/usstates/iwl:
+      rows: 72
+      files: 8
+    qwen3-32b/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-32b/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    qwen3-32b/countryarea/iwl:
+      rows: 72
+      files: 8
+    qwen3-32b/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-32b/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    qwen3-32b/countries/icl:
+      rows: 720
+      files: 8
+    qwen3-32b/countries/icl_cities:
+      rows: 720
+      files: 8
+    qwen3-32b/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-32b/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-32b/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-32b/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-32b/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-32b/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-32b/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-32b/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-32b/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-32b/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-32b/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-32b/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-32b/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-32b/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-32b/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    qwen3-32b/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    qwen3-4b/countries/iwl:
+      rows: 72
+      files: 8
+    qwen3-4b/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-4b/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    qwen3-4b/cities/iwl:
+      rows: 72
+      files: 8
+    qwen3-4b/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-4b/citieslinear/iwl:
+      rows: 72
+      files: 8
+    qwen3-4b/animals/iwl:
+      rows: 72
+      files: 8
+    qwen3-4b/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-4b/usstates/iwl:
+      rows: 72
+      files: 8
+    qwen3-4b/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-4b/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    qwen3-4b/countryarea/iwl:
+      rows: 72
+      files: 8
+    qwen3-4b/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-4b/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    qwen3-4b/countries/icl:
+      rows: 720
+      files: 8
+    qwen3-4b/countries/icl_cities:
+      rows: 720
+      files: 8
+    qwen3-4b/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-4b/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-4b/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-4b/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-4b/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-4b/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-4b/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-4b/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-4b/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-4b/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-4b/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-4b/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-4b/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-4b/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-4b/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    qwen3-4b/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    qwen3-8b/countries/iwl:
+      rows: 72
+      files: 8
+    qwen3-8b/countries_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-8b/countries_rep3/iwl:
+      rows: 72
+      files: 8
+    qwen3-8b/cities/iwl:
+      rows: 72
+      files: 8
+    qwen3-8b/cities_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-8b/citieslinear/iwl:
+      rows: 72
+      files: 8
+    qwen3-8b/animals/iwl:
+      rows: 72
+      files: 8
+    qwen3-8b/animals_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-8b/usstates/iwl:
+      rows: 72
+      files: 8
+    qwen3-8b/usstates_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-8b/usstates_rep3/iwl:
+      rows: 72
+      files: 8
+    qwen3-8b/countryarea/iwl:
+      rows: 72
+      files: 8
+    qwen3-8b/countryarea_rep2/iwl:
+      rows: 72
+      files: 8
+    qwen3-8b/countryarea_rep3/iwl:
+      rows: 72
+      files: 8
+    qwen3-8b/countries/icl:
+      rows: 720
+      files: 8
+    qwen3-8b/countries/icl_cities:
+      rows: 720
+      files: 8
+    qwen3-8b/countries/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-8b/countries_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-8b/countries_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-8b/cities/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-8b/cities_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-8b/citieslinear/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-8b/animals/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-8b/animals_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-8b/usstates/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-8b/usstates_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-8b/usstates_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-8b/countryarea/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-8b/countryarea_rep2/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-8b/countryarea_rep3/budget_iwl:
+      rows: 792
+      files: 80
+      n_trials: 72
+      n_direct_disagreements: 0
+    qwen3-8b/countries/budget_icl:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+    qwen3-8b/countries/budget_icl_cities:
+      rows: 7920
+      files: 80
+      n_trials: 720
+      n_direct_disagreements: 0
+tables:
+- table: direct
+  path: direct.parquet
+  rows: 53856
+  sha256: 068b627af8dbef8851e0f49226f699fa5145d8441e10f6bd6fbe15e1704f008b
+  bytes: 912657
+  columns:
+    model: string
+    reasoning_kind: string
+    test: string
+    condition: string
+    item_pool: string
+    dim: string
+    d: int8
+    signed_distance: int8
+    rank_low: int8
+    rank_high: int8
+    innermost: bool
+    premise_order: int8
+    trial_id: int16
+    trial_key: string
+    mode: string
+    budget: int16
+    gold_true: bool
+    predicted_true: bool
+    is_correct: bool
+    logprob_true: float32
+    logprob_false: float32
+    logit_gap: float32
+    cot_n_tokens: float32
+    cot_finish_reason: string
+    truncated: bool
+  tests:
+  - icl
+  - icl_cities
+  - iwl
+  conditions:
+  - icl_cities
+  - icl_people
+  - no_context
+  models:
+  - deepseek-r1-distill-llama-8b
+  - deepseek-r1-distill-qwen-14b
+  - deepseek-r1-distill-qwen-32b
+  - gemma-2-9b-it
+  - glm-4-32b-0414
+  - glm-4-9b-0414
+  - gpt-oss-20b
+  - llama-3.1-70b-instruct
+  - llama-3.1-8b-instruct
+  - llama-3.2-1b
+  - llama-3.2-3b
+  - mistral-7b-instruct-v0.3
+  - olmo-2-32b-instruct
+  - olmo-2-7b-instruct
+  - phi-4-reasoning
+  - qwen2.5-32b-instruct
+  - qwen2.5-7b-instruct
+  - qwen3-1.7b
+  - qwen3-14b
+  - qwen3-32b
+  - qwen3-4b
+  - qwen3-8b
+  dims:
+  - animals
+  - animals_rep2
+  - cities
+  - cities_rep2
+  - citieslinear
+  - countries
+  - countries_rep2
+  - countries_rep3
+  - countryarea
+  - countryarea_rep2
+  - countryarea_rep3
+  - usstates
+  - usstates_rep2
+  - usstates_rep3
+  innermost_direct_trials_per_dim_condition_distance:
+    animals|no_context|d=1: 12
+    animals|no_context|d=2: 10
+    animals|no_context|d=3: 8
+    animals|no_context|d=4: 6
+    animals|no_context|d=5: 4
+    animals|no_context|d=6: 2
+    animals_rep2|no_context|d=1: 12
+    animals_rep2|no_context|d=2: 10
+    animals_rep2|no_context|d=3: 8
+    animals_rep2|no_context|d=4: 6
+    animals_rep2|no_context|d=5: 4
+    animals_rep2|no_context|d=6: 2
+    cities|no_context|d=1: 12
+    cities|no_context|d=2: 10
+    cities|no_context|d=3: 8
+    cities|no_context|d=4: 6
+    cities|no_context|d=5: 4
+    cities|no_context|d=6: 2
+    cities_rep2|no_context|d=1: 12
+    cities_rep2|no_context|d=2: 10
+    cities_rep2|no_context|d=3: 8
+    cities_rep2|no_context|d=4: 6
+    cities_rep2|no_context|d=5: 4
+    cities_rep2|no_context|d=6: 2
+    citieslinear|no_context|d=1: 12
+    citieslinear|no_context|d=2: 10
+    citieslinear|no_context|d=3: 8
+    citieslinear|no_context|d=4: 6
+    citieslinear|no_context|d=5: 4
+    citieslinear|no_context|d=6: 2
+    countries|icl_cities|d=1: 120
+    countries|icl_cities|d=2: 100
+    countries|icl_cities|d=3: 80
+    countries|icl_cities|d=4: 60
+    countries|icl_cities|d=5: 40
+    countries|icl_cities|d=6: 20
+    countries|icl_people|d=1: 120
+    countries|icl_people|d=2: 100
+    countries|icl_people|d=3: 80
+    countries|icl_people|d=4: 60
+    countries|icl_people|d=5: 40
+    countries|icl_people|d=6: 20
+    countries|no_context|d=1: 12
+    countries|no_context|d=2: 10
+    countries|no_context|d=3: 8
+    countries|no_context|d=4: 6
+    countries|no_context|d=5: 4
+    countries|no_context|d=6: 2
+    countries_rep2|no_context|d=1: 12
+    countries_rep2|no_context|d=2: 10
+    countries_rep2|no_context|d=3: 8
+    countries_rep2|no_context|d=4: 6
+    countries_rep2|no_context|d=5: 4
+    countries_rep2|no_context|d=6: 2
+    countries_rep3|no_context|d=1: 12
+    countries_rep3|no_context|d=2: 10
+    countries_rep3|no_context|d=3: 8
+    countries_rep3|no_context|d=4: 6
+    countries_rep3|no_context|d=5: 4
+    countries_rep3|no_context|d=6: 2
+    countryarea|no_context|d=1: 12
+    countryarea|no_context|d=2: 10
+    countryarea|no_context|d=3: 8
+    countryarea|no_context|d=4: 6
+    countryarea|no_context|d=5: 4
+    countryarea|no_context|d=6: 2
+    countryarea_rep2|no_context|d=1: 12
+    countryarea_rep2|no_context|d=2: 10
+    countryarea_rep2|no_context|d=3: 8
+    countryarea_rep2|no_context|d=4: 6
+    countryarea_rep2|no_context|d=5: 4
+    countryarea_rep2|no_context|d=6: 2
+    countryarea_rep3|no_context|d=1: 12
+    countryarea_rep3|no_context|d=2: 10
+    countryarea_rep3|no_context|d=3: 8
+    countryarea_rep3|no_context|d=4: 6
+    countryarea_rep3|no_context|d=5: 4
+    countryarea_rep3|no_context|d=6: 2
+    usstates|no_context|d=1: 12
+    usstates|no_context|d=2: 10
+    usstates|no_context|d=3: 8
+    usstates|no_context|d=4: 6
+    usstates|no_context|d=5: 4
+    usstates|no_context|d=6: 2
+    usstates_rep2|no_context|d=1: 12
+    usstates_rep2|no_context|d=2: 10
+    usstates_rep2|no_context|d=3: 8
+    usstates_rep2|no_context|d=4: 6
+    usstates_rep2|no_context|d=5: 4
+    usstates_rep2|no_context|d=6: 2
+    usstates_rep3|no_context|d=1: 12
+    usstates_rep3|no_context|d=2: 10
+    usstates_rep3|no_context|d=3: 8
+    usstates_rep3|no_context|d=4: 6
+    usstates_rep3|no_context|d=5: 4
+    usstates_rep3|no_context|d=6: 2
+  trial_sets:
+    deepseek-r1-distill-llama-8b|icl|countries: [720, e66df65fb7c5ea8fe916e51c63230bf00eadb001312f2bf13d440fe0e5d38f67]
+    deepseek-r1-distill-llama-8b|icl_cities|countries: [720, 8f057aafafa799b449e5a57e87c012c66f27b06b182ce3af55e5a6d148e41a27]
+    deepseek-r1-distill-llama-8b|iwl|animals: [72, 0cc1d065facd19e1ebcdbb55a103ecaed12d5f727ac53b4f7fbbdf4164be9d00]
+    deepseek-r1-distill-llama-8b|iwl|animals_rep2: [72, 51596ced93d04ef59e4ead2390d822dd66399ca4c661c975d27e40e2d0364f7a]
+    deepseek-r1-distill-llama-8b|iwl|cities: [72, cd201b3b2da1d0aadd3d90fa29d8b7d3cc3bd96b111dd67029d23012d6ca40f4]
+    deepseek-r1-distill-llama-8b|iwl|cities_rep2: [72, 5ce81afdd9977d4d0b8b76ba9b256b721e90ea419036486449ca9007274b9f99]
+    deepseek-r1-distill-llama-8b|iwl|citieslinear: [72, 5425de72898c2e7c708991fde2b17934ffd22c51a5b7e50eb19bb8c1102b8052]
+    deepseek-r1-distill-llama-8b|iwl|countries: [72, eb5b4caaf3f01818d1890f8aeb3d4af70c7f08a8fc497e168d253fc0470f1add]
+    deepseek-r1-distill-llama-8b|iwl|countries_rep2: [72, 3d51156850d588329c97946293484650f9c1e85fa26199d0c450a0cc9cef4518]
+    deepseek-r1-distill-llama-8b|iwl|countries_rep3: [72, 61eea63f226d1cd1f05a2f6544ed8d852c778b7d2da6aa89f33cf40a83d8144b]
+    deepseek-r1-distill-llama-8b|iwl|countryarea: [72, 32c7b308c9d71367c67e1d17a36d80482304757dcaaf6b08fb24385463fa41ff]
+    deepseek-r1-distill-llama-8b|iwl|countryarea_rep2: [72, 5bfc1e38ade4fdc23abdae1fb4a23859fb8d12fd27d9b243f9229000c99da2b5]
+    deepseek-r1-distill-llama-8b|iwl|countryarea_rep3: [72, 39d044a0640f86479c700157e8ca485ef855644cf204407ec362894c09394166]
+    deepseek-r1-distill-llama-8b|iwl|usstates: [72, 2042f7646ada54f16319c21e95c2a070b045864d0ecc2d33a68985fd0e7868df]
+    deepseek-r1-distill-llama-8b|iwl|usstates_rep2: [72, 6a99ea51f116dd73ea16f9f7ccfd3f3ef6d1d5fe6ca12e461079de09a6834b75]
+    deepseek-r1-distill-llama-8b|iwl|usstates_rep3: [72, 937151db94ee702eaf7ebfec7d163ebcbc5c08e0c4695fa6cff2b4fe37815d60]
+    deepseek-r1-distill-qwen-14b|icl|countries: [720, f6b92a91d1ed5191b3dd3ce44a2a39f567c60785ea64a7b58e9cac61982c03b9]
+    deepseek-r1-distill-qwen-14b|icl_cities|countries: [720, 235083191d1ecd168056ad5313aff016629f09efedf58a12f24ff0307b8d521f]
+    deepseek-r1-distill-qwen-14b|iwl|animals: [72, f4292bcb0d8c3749713e18a45d57cd3c66dde7f211fe3f3a2b3785863f6e855d]
+    deepseek-r1-distill-qwen-14b|iwl|animals_rep2: [72, 59aae9ff4dae20c22bc9e6940beeac97980c5deee9fe5a370b379dbcd7ecc0c9]
+    deepseek-r1-distill-qwen-14b|iwl|cities: [72, b7562bbe961fb9e0989cf290755edad3d9297cbf842610aeab81787be867d4a5]
+    deepseek-r1-distill-qwen-14b|iwl|cities_rep2: [72, 44ad32029de3c464ca94f7a6bed6d6bc47bfdbb95c64551a11cc6af23c7f2fac]
+    deepseek-r1-distill-qwen-14b|iwl|citieslinear: [72, 6544cbb5a63a36562b36ed23a5ffea92e38cd01e2f0161f47c53365773719955]
+    deepseek-r1-distill-qwen-14b|iwl|countries: [72, 16d03d42783eb28ae76fab3726b6b814ad2194f924ebd8fa9892c94a7dd291af]
+    deepseek-r1-distill-qwen-14b|iwl|countries_rep2: [72, 0e91f8cb388e7d9e81b05de5c9aea0b13bfbcfef682ae057fdf24479a3563980]
+    deepseek-r1-distill-qwen-14b|iwl|countries_rep3: [72, 1b0af39d1027cd5d0f1e3c6180a81421840cf349ff3797af52692d7a6f637ca6]
+    deepseek-r1-distill-qwen-14b|iwl|countryarea: [72, c6b3cbde24c2808b93ece84c5f759c11e55c4c6aa508933ff257643c4da7007f]
+    deepseek-r1-distill-qwen-14b|iwl|countryarea_rep2: [72, 5d1642725d43cfc3d7221835ad8a5410d976460b752bb17784678e00e55bb6bc]
+    deepseek-r1-distill-qwen-14b|iwl|countryarea_rep3: [72, 8f89fecc72ad2c0ca75d79a6355c0f556b2394948724658138e01f36e8fa3864]
+    deepseek-r1-distill-qwen-14b|iwl|usstates: [72, a73ba0b9b4d12b18abe4149dd8d33f9920b3fd2750fc50fbc9ca8c106ba410d5]
+    deepseek-r1-distill-qwen-14b|iwl|usstates_rep2: [72, 5fa3903fb456e6a7cd2f5546be67996a55ffc81be605aadc04e7dadc662ccdf5]
+    deepseek-r1-distill-qwen-14b|iwl|usstates_rep3: [72, 259410b8f757caeae3870f853e3e8d663c4def19570c26ee201adedd9e4e7210]
+    deepseek-r1-distill-qwen-32b|icl|countries: [720, f6e0643a03705a298b16ea93f3357c3dc94e48bd112d81d3eb6151bbd37ed4a7]
+    deepseek-r1-distill-qwen-32b|icl_cities|countries: [720, 1346493eb11c3f48774155d83d84c49e9f84a69f7c016f659deb5ec529de803e]
+    deepseek-r1-distill-qwen-32b|iwl|animals: [72, 9e1df0e35bf3725bf29fc9bcc03fb1dade0a4a6c38c7f06887f362bc2ded39fd]
+    deepseek-r1-distill-qwen-32b|iwl|animals_rep2: [72, 91770a9eda28ba0b06031aae31d1de9abb2e5cf99ee76f9d6b1d2d5b82de843b]
+    deepseek-r1-distill-qwen-32b|iwl|cities: [72, bec99860420b60609e222e6e52e0ec5ce405fd76b61e5ee7c038e9b9f1d6ae0b]
+    deepseek-r1-distill-qwen-32b|iwl|cities_rep2: [72, cc4798ee2603fbf5f3ec8441ac642b2f2bb79c95818d3c1859795ee9187d1aa4]
+    deepseek-r1-distill-qwen-32b|iwl|citieslinear: [72, d4a1d689cea35a7b2f50005beaf9f806ad1fd3ff3106e57e09eeb174ffb69e28]
+    deepseek-r1-distill-qwen-32b|iwl|countries: [72, a1d138955215685efd4f99672a9a13a00cc79d96f173e3e62f6399e5c40c4d73]
+    deepseek-r1-distill-qwen-32b|iwl|countries_rep2: [72, 7dcb18e26618569b9c8a151f40a051ca98776d5fe927e58eaaba06675e44b792]
+    deepseek-r1-distill-qwen-32b|iwl|countries_rep3: [72, e49fdf918c611c9ff0067ad8cef923ef5fb4f2d950c9e0e8b91e64477c96ff08]
+    deepseek-r1-distill-qwen-32b|iwl|countryarea: [72, b3a497266302513fd5923993ab06b088dddda4b12b2f9a926ab3488d1b5fa3c0]
+    deepseek-r1-distill-qwen-32b|iwl|countryarea_rep2: [72, e66e425c7c234a9d7bf512d94816b48a4a9af6c0d3150b0db673814ed0d6b991]
+    deepseek-r1-distill-qwen-32b|iwl|countryarea_rep3: [72, af9a0837c78378976df482d450c92d76a222801f86f51a100eff96000606c4df]
+    deepseek-r1-distill-qwen-32b|iwl|usstates: [72, b6d892a87739dd814739f970c65d8ae2d6a35fb948fac699cc639da6e9a63417]
+    deepseek-r1-distill-qwen-32b|iwl|usstates_rep2: [72, 1133c7aa2798f49260c8f79a37831276a091b5a55529c7843e15b7f591c5c52f]
+    deepseek-r1-distill-qwen-32b|iwl|usstates_rep3: [72, 91d28b623f6c72a5bfcc82223931a1a30a144a20702423236c7acd0916b98d77]
+    gemma-2-9b-it|icl|countries: [720, 218339ca36df54e5731a653f0199dea4c69e51d2eb4aeb34b4428c48775cfa8b]
+    gemma-2-9b-it|icl_cities|countries: [720, c39c5e68ec1ad7441c88e4d75f27477299ff9be0eaa7c4bec2e1aaa572b4f630]
+    gemma-2-9b-it|iwl|animals: [72, 363b7997bdc306c4ccb197ac7aa01e02d1f67a3885bd2d125146171fa72aaa97]
+    gemma-2-9b-it|iwl|animals_rep2: [72, 590bd78740ba9690046cbdce6821abb4d34bc03af05ea214d7582e2fa053771a]
+    gemma-2-9b-it|iwl|cities: [72, 23a1e83f2356107b31b26dc0aaf9bd1ef79a2268f177ef3bc03f8a5f8e500d0b]
+    gemma-2-9b-it|iwl|cities_rep2: [72, e90df937152aed65fd0908120f154ab9fcdec050614b081a3cf7d7670e36c955]
+    gemma-2-9b-it|iwl|citieslinear: [72, 647eb0db01b0da4356fd44f310711e141ee8e8009b306425e116ec7df0159df8]
+    gemma-2-9b-it|iwl|countries: [72, bf43adad5186add5380c938f4d4e993dbd5cc92a355d60a2b2964e1606615ef4]
+    gemma-2-9b-it|iwl|countries_rep2: [72, 01db1c5068ab3f5e9a0e7ff393845694711ae5833e3ef0643ca9075fb635b86b]
+    gemma-2-9b-it|iwl|countries_rep3: [72, 6ce00491657fa8b47b041cb1f3d495467cca4a38169dc7d746ea45719e273ca1]
+    gemma-2-9b-it|iwl|countryarea: [72, a509186b6c2dc6aba99da7f886748ab4418b67b9c9d46c099667925cdb69241a]
+    gemma-2-9b-it|iwl|countryarea_rep2: [72, 97259d68bd584e526220877a1eb480983e5e415721377dcc52a76f232c5b2c31]
+    gemma-2-9b-it|iwl|countryarea_rep3: [72, 115d8ca3571fc0f6cbb28753d66e357b77ebbfb984390f660aaaf5fdb6eeda73]
+    gemma-2-9b-it|iwl|usstates: [72, 74413b99fdc1e356fd2a9de9aecffcedd627476725ddf6980af3610993ad9724]
+    gemma-2-9b-it|iwl|usstates_rep2: [72, b4a362e2651d0f13c39f736406d10f743fb6795796711bc118f593f4a10f13df]
+    gemma-2-9b-it|iwl|usstates_rep3: [72, 004707561b151373b8f1f71d2a6450340b27dc70ea6e06a80ab5d2c2e694130f]
+    glm-4-32b-0414|icl|countries: [720, 8187b1b58dc14c87120bc86ec92499d1e6c03d5ed42a0a56e7c35fafe621e9ba]
+    glm-4-32b-0414|icl_cities|countries: [720, e80086d899199831f8e09da67690d14c50d5a4a383f5600dfde52ae01225cfd0]
+    glm-4-32b-0414|iwl|animals: [72, 7c05bf68fc333e7bba151dbaff7caad16324dcf4c72893c22cf87f8de99da86a]
+    glm-4-32b-0414|iwl|animals_rep2: [72, 680445bd1d077f8ec6aa4d751b51e7d5445f8a8306c1d806575d25ba45d29d7f]
+    glm-4-32b-0414|iwl|cities: [72, d2565890ecffa11537001fdf379cf8607d8f5949ab2bb34125b4dcaec6c5d4e1]
+    glm-4-32b-0414|iwl|cities_rep2: [72, d3957e5cae3f11e92c4ed9a9552bc3511e09cb371573e1647cb51815dcb68f33]
+    glm-4-32b-0414|iwl|citieslinear: [72, 20538f6b4376246e4f5a8098b055323b943e3670cd1888d263c8d6d11ce4a6d0]
+    glm-4-32b-0414|iwl|countries: [72, 96828093f29fbf54a86a50f809593861a1c1f5adc318e3be5e284b50cda20e3f]
+    glm-4-32b-0414|iwl|countries_rep2: [72, d59e6981c49dff5300b99571794b7caa3f8c8ddaad1df76657d6281509353302]
+    glm-4-32b-0414|iwl|countries_rep3: [72, 6f27580df9f3c214ef55fd42588aa79bd8951f597806683159d9a6e0c3c6dc6f]
+    glm-4-32b-0414|iwl|countryarea: [72, 3feb5ab1991944184739950bb41a534be1d41dae1b082fa5ca32346bcfe75170]
+    glm-4-32b-0414|iwl|countryarea_rep2: [72, 382d85cef5b5185388300ba7b4d3e7485a2dc41da0fdc040d4b500149d2f7ba6]
+    glm-4-32b-0414|iwl|countryarea_rep3: [72, fe599e7cd1cbd10f3c38032d7856a4840b6978027f73eac511f706c0c39d2a03]
+    glm-4-32b-0414|iwl|usstates: [72, 2ea95e572c1d09232ac4f162604280cd1fb550e383306b605403696db0f2187e]
+    glm-4-32b-0414|iwl|usstates_rep2: [72, 29eeffa7f8ff1157934afb80d00e0554a95e9e98b63c14d4ef8302facfc1cabd]
+    glm-4-32b-0414|iwl|usstates_rep3: [72, 08a0eced402da9482d58cb57bf7e587161534e90fba04925d355c2f7304771c9]
+    glm-4-9b-0414|icl|countries: [720, b29270c2126c759d475641b96f5785b9b8c2e7e4ffdb5904c228e2fe2e080034]
+    glm-4-9b-0414|icl_cities|countries: [720, 5932d6568265f46104a9de42e202cdfd30b53303966f1f3252ce14fdb7abc82b]
+    glm-4-9b-0414|iwl|animals: [72, d14ef4af34c39c69e9e9383ae1b7b3ed7568e9fd96d10dd122c944697b26367f]
+    glm-4-9b-0414|iwl|animals_rep2: [72, 0fa0e6a793db6e0c62822ec6837d2eccc66d2d5a26fd4a415f5b19c6d5c794fc]
+    glm-4-9b-0414|iwl|cities: [72, b23ca1aa58069a0f76bc94e1416016c16d6731525b8cea5f5c1c233cd1342a22]
+    glm-4-9b-0414|iwl|cities_rep2: [72, 49b622fb373cdb5ab0123d05485fecf6aa96cfbc8bb071da9d1b30123d4e595e]
+    glm-4-9b-0414|iwl|citieslinear: [72, e0a03956d5670d6872715fcafa9532f1116db609426ff5b60a9d947b80c318e3]
+    glm-4-9b-0414|iwl|countries: [72, 593c5abf0dd6680b5e6afdaf6a0f91b2669043ee2bc0884c9d56ad0e180f0232]
+    glm-4-9b-0414|iwl|countries_rep2: [72, 611c39a3cca81c93a6dbf7811d68f09ddb741260cac4e79864fe3ed18f9db0c5]
+    glm-4-9b-0414|iwl|countries_rep3: [72, 2a00096caf30798fea507cc1e5f656b51351bddd38b2e1d3254479daccadae23]
+    glm-4-9b-0414|iwl|countryarea: [72, 145ba35c04eba40f1dbc21009a0959f56c5847ba68bf14c962ccd3ce3e0c4963]
+    glm-4-9b-0414|iwl|countryarea_rep2: [72, 9ed5f54fa20085658327135c9b80e094dc22b51a9c1bb1db644558c9d4f91b54]
+    glm-4-9b-0414|iwl|countryarea_rep3: [72, 679dadab642401099db34585f96c099b929e266ae169a6d51c7906eabeff9e20]
+    glm-4-9b-0414|iwl|usstates: [72, 350a0eaa958e3252781eb392cc8a1b9faa9a5fb5e86665d22108bec87baff7f3]
+    glm-4-9b-0414|iwl|usstates_rep2: [72, 3f8e74d72359a56fed8d0092dcfc0365050a42d650a4b6b286785c1cf8b58d50]
+    glm-4-9b-0414|iwl|usstates_rep3: [72, 199c5ff7ad0a019ac831eb5a9a9a242141e78fc69a28140e64ae879c9ed023ea]
+    gpt-oss-20b|icl|countries: [720, 1379c04bfa20c1cf6fd1956265fc93cd87711e269fbe99e2e457eb9be467933c]
+    gpt-oss-20b|icl_cities|countries: [720, bfcd93ddd700683932b926cbcf8c9ca41460284d61d095894ec4b6697c7d6b52]
+    gpt-oss-20b|iwl|animals: [72, fb824f3e264fa05506076d88fe72f777b90192fd8124e2f6059ddffa3e774196]
+    gpt-oss-20b|iwl|animals_rep2: [72, fdc5d7ba456eed7d17fdd7051849486e45aebac6376bd94b86ae9aa30e2f4d6d]
+    gpt-oss-20b|iwl|cities: [72, de7008a287fbeb7e461669c0ca16da1a43b7c8780ac3e6e953725d511987aed9]
+    gpt-oss-20b|iwl|cities_rep2: [72, 2db0118511a9f07601e23ce2c1ef7768e3530564897565f3b42e24552e43125a]
+    gpt-oss-20b|iwl|citieslinear: [72, 5903e54c8809b886c5e645604a0d9da105415ec81b8e01eb22a5da9716405797]
+    gpt-oss-20b|iwl|countries: [72, bee39eb8ea2c4005195e5d463d353bc94e8b6ec50fa7272b4e379b69b413367e]
+    gpt-oss-20b|iwl|countries_rep2: [72, 6c6c0a5ba92b5319582d54f45040e5e44d7ec617d6d042de2037daea8e9e81c9]
+    gpt-oss-20b|iwl|countries_rep3: [72, 465a63cd45ae8c4f6f0b2539265ad291bfda768ab9616a4273cf6ef3c4c47815]
+    gpt-oss-20b|iwl|countryarea: [72, 4bf55cbbcd723ac3ed3f0d110ddff89b629cd351b0e112eeb70c8d5d19528a04]
+    gpt-oss-20b|iwl|countryarea_rep2: [72, e3deb5fe83a4d12ddf7c6b2d487c4a11e9c41488fcde224c1124b073cd7e6828]
+    gpt-oss-20b|iwl|countryarea_rep3: [72, dc0855b4c512a73a9cf1d50ee6ec1eb401c7d71bd8ee401c81e941d64744b14d]
+    gpt-oss-20b|iwl|usstates: [72, 733c6460ade51323517d4ba7a8717ddddbdd432eb316ecc4f4fcab4d2a9e8157]
+    gpt-oss-20b|iwl|usstates_rep2: [72, decb29b4188cacc56b144b034fc7503eb5c00d216776e5910d9c1eb2fa735750]
+    gpt-oss-20b|iwl|usstates_rep3: [72, 7c22bcc5c5f6bd6db26a9a02bcb9809b38c3690a0aa8d9adc36dea5f2ebf4e75]
+    llama-3.1-70b-instruct|icl|countries: [720, 6eae8d8f3ac79d4a1219e7018126cff0e98a3891d02425a98df63a328ee1e226]
+    llama-3.1-70b-instruct|icl_cities|countries: [720, 8c13b19b7d3b210f37c548acb820e2f4abc25a07c8c01ea573a5903302809da5]
+    llama-3.1-70b-instruct|iwl|animals: [72, b847ffe0607363b68307ba41d390743927a52144498092d2f8d8189e2cc57443]
+    llama-3.1-70b-instruct|iwl|animals_rep2: [72, 949a1c911b78d014f28672906052a85033d3f6e89bd2f6a41fbf764fa489ce20]
+    llama-3.1-70b-instruct|iwl|cities: [72, 7fb46006d8046704b16771ac1fbc31a39ce4870bf9c7532ec6720337449af3bb]
+    llama-3.1-70b-instruct|iwl|cities_rep2: [72, 0946ae97b02b36c841ea8d54f37bfe7a052292a9152bee069f901174c84dacfb]
+    llama-3.1-70b-instruct|iwl|citieslinear: [72, 5218f4a46963eddf3269f274e26039157306ba469533ce6d7e12622f930d236b]
+    llama-3.1-70b-instruct|iwl|countries: [72, ae8d57b94a9b336a8026ca9386c20728fe73d094514e504af5f2ddc9c96d3c16]
+    llama-3.1-70b-instruct|iwl|countries_rep2: [72, f36ab62406e486eb8ea793e68acdc8c0572fe5528ec7401c38ecb07ca0a303b4]
+    llama-3.1-70b-instruct|iwl|countries_rep3: [72, 54459bf3aa8dccb15c203179229086707197f1dc9ff0e706f2b5f0531aff41e1]
+    llama-3.1-70b-instruct|iwl|countryarea: [72, 34dade4931979b506cc044a2e7fec44404b491c95336689578bee7367f5f5da4]
+    llama-3.1-70b-instruct|iwl|countryarea_rep2: [72, f62108a7add5ca686e1fdbe49b45fcfad9eb020938aa4969aa819e1aba4607ec]
+    llama-3.1-70b-instruct|iwl|countryarea_rep3: [72, c835fc20fb39fc0618638e91764cc812575cfa4ac10b4e31cb88e202e1f65c0f]
+    llama-3.1-70b-instruct|iwl|usstates: [72, bbd22bf42435b0653f6f2352563b60edc813be83e246341832fe3d2042accb45]
+    llama-3.1-70b-instruct|iwl|usstates_rep2: [72, e11334ccb8759d9b3aa56367d22ac6aaa179f5403d07d9f1beeb3c1602253f4d]
+    llama-3.1-70b-instruct|iwl|usstates_rep3: [72, b08cf35addb702fe4a9bb71586407f54a8a2fcdd03639b2fe36163fa606ff508]
+    llama-3.1-8b-instruct|icl|countries: [720, 4cdd2bfdf293c0d72306bb92cd809c5654a2e0c676940d5f0a37216b30e6bd54]
+    llama-3.1-8b-instruct|icl_cities|countries: [720, caecd4f274dfb71a4888f48a8ed9072a26b71c61e0d84d73a10d3c2ee37ee1ac]
+    llama-3.1-8b-instruct|iwl|animals: [72, eda401909eb7e3af0455476212c8a74a43e12badddbbab045c6381ff96c107ad]
+    llama-3.1-8b-instruct|iwl|animals_rep2: [72, 73640446935d616b270e5d2beff4b37cb455b3d64bb64dca7f48bfb48d91a9ae]
+    llama-3.1-8b-instruct|iwl|cities: [72, 85e11c30a40f49770733eaa1754b03b10edc6e7b2e29d913439a5fc36672b012]
+    llama-3.1-8b-instruct|iwl|cities_rep2: [72, 60771ebebbb678dbec6ff3aad3fe6cdc1b9c5aa3e4f1a2bb9ffaf2bfcabe3fa3]
+    llama-3.1-8b-instruct|iwl|citieslinear: [72, 9efea221538e9864119ed822f048ca5814ab4e95163d115aa7e3126e4995f07e]
+    llama-3.1-8b-instruct|iwl|countries: [72, 5f351dcb1f7367be513d9ec69b0ef4ec84a18c56ce1a743b0720976b11086cec]
+    llama-3.1-8b-instruct|iwl|countries_rep2: [72, 9a59c21a60633443eb88773ac767675b815c01ee1661b0b890b5f18fddbebe0b]
+    llama-3.1-8b-instruct|iwl|countries_rep3: [72, 3b835b892844b905701bba1dd0a264e413b683d1813eeef0fdb58aead26d94e1]
+    llama-3.1-8b-instruct|iwl|countryarea: [72, d8b3c01987c5a34f378d29ca991f174cf4aa467d3cff2b5f474cde25c938a9d6]
+    llama-3.1-8b-instruct|iwl|countryarea_rep2: [72, 1bf547f5f1bfb68389bf28385024fb845a8adf93f50adb0936fb1fdd5e136d22]
+    llama-3.1-8b-instruct|iwl|countryarea_rep3: [72, f53528b0ff3c99266fb866cdd29c8463d1f19a362454d11817f101044b9c1ef7]
+    llama-3.1-8b-instruct|iwl|usstates: [72, eaa369a9e632ac073923d80764c170fad137e6f87d7680746c9234432ccff04e]
+    llama-3.1-8b-instruct|iwl|usstates_rep2: [72, 4e5e1c51c95389a52b374a66e2870d540d725d63cb886c65aa64b842a94d234f]
+    llama-3.1-8b-instruct|iwl|usstates_rep3: [72, cb97a50a992c8c9995ee2ed4ab5666f9d899ef003522374536e0f1379c771c0c]
+    llama-3.2-1b|icl|countries: [720, 3ff145ee9aa01101d8f6bafbd9b54bb9f9b4d125cd3305ee90708ffda90532b0]
+    llama-3.2-1b|icl_cities|countries: [720, 8cda6ee42911ac4282a6ebe1a09ae6c40a211e9b050397ecbf5acc3b6f0c76d3]
+    llama-3.2-1b|iwl|animals: [72, dce7aacbdc227a7307fd2a4ea32e9e08ebbe199a9d5ffc2a3311c7d5ea2ffeeb]
+    llama-3.2-1b|iwl|animals_rep2: [72, 80395008a70dc0ee81e38610599355b63859b38fe12c6fa8d73e076fbffc27e4]
+    llama-3.2-1b|iwl|cities: [72, 6d4e7bb00c78a31d6b9ff723d31abe15ce241fd9a05b7fae3a5641abdb0f5edd]
+    llama-3.2-1b|iwl|cities_rep2: [72, d4ba9761e18418c90c9c32d0f3b4cb961efa09962556735ba2032b8e24a76cee]
+    llama-3.2-1b|iwl|citieslinear: [72, 5684ffe073937015d70c634bf40a2509551907aeed6a0132ff8c9908ad55ffb8]
+    llama-3.2-1b|iwl|countries: [72, 3111bc23d451a03127ce616a59d4ea0d56a4ea083415b1a9de501cd2c8e987b3]
+    llama-3.2-1b|iwl|countries_rep2: [72, 4c026ef9208b8ac2754c5495515c9fe9850497e792e4d1e116be2b950573dd8d]
+    llama-3.2-1b|iwl|countries_rep3: [72, 0561116cb92de4aca30c0842670d1c3770cc74688d483c5d24011b053a2ba554]
+    llama-3.2-1b|iwl|countryarea: [72, 4b03818bb5d18971ab9f89576421dfe40f9a83a969a0e0170ed62104f61746bf]
+    llama-3.2-1b|iwl|countryarea_rep2: [72, 03a895d8c4794c943e00d09a9255cf7f60f0c77084ba57d2b683e3a26a2fc1b5]
+    llama-3.2-1b|iwl|countryarea_rep3: [72, 5e580891e6d164095e089012ee5ad11f0906481face43643ab267d5d93dfe4c6]
+    llama-3.2-1b|iwl|usstates: [72, 58642fc5b7f6c16a4ac2fb453e0ee81febb6e77dd464af866e079a1685fd1762]
+    llama-3.2-1b|iwl|usstates_rep2: [72, 65f11b0e58efa8866726b6a3cdbf5ce25b9b5e2d2bec578cac1307c29c74d8bc]
+    llama-3.2-1b|iwl|usstates_rep3: [72, afc1ee233e8f58eb92df8b2b563e3e1001167533a9b98a8740e2313c2f838aff]
+    llama-3.2-3b|icl|countries: [720, 2bb102f144163e8472997fd6c7adb004fdca5673dfaffcbe6277abe2e17c2902]
+    llama-3.2-3b|icl_cities|countries: [720, 614d78d76893a6bffaa61bdeaed717a239cdbb50931221bd8b738f79b6e864be]
+    llama-3.2-3b|iwl|animals: [72, e6bc5bb031a6bf649419a77132603a89283631c5f2d1f6c4ff65b85a7cc451e0]
+    llama-3.2-3b|iwl|animals_rep2: [72, c2dddf9880cc9daf613e8d2a4b98cf12ed15b229c19799872f854623b479f6a7]
+    llama-3.2-3b|iwl|cities: [72, e06883118396eb9d6c5c1e2cfffe4f25f2786f02c0b09d0b12c96b22bdf3998c]
+    llama-3.2-3b|iwl|cities_rep2: [72, 9bcd247248319befda5add80ceb8923c4132ba109c982c40e9b926ff15a2b0b4]
+    llama-3.2-3b|iwl|citieslinear: [72, f1a2271aba45fc9b4c2d637f900746227b4034f90f8757d2a67d7fa4727c3daa]
+    llama-3.2-3b|iwl|countries: [72, 7dd29f923b4151d15cef852d64ce20b6c074b3c0d1d7c0b8d75936683a57677a]
+    llama-3.2-3b|iwl|countries_rep2: [72, c564e84c89390841995d5222fe2f1ee509c78c053fcb5f4367b1487cfde5eb78]
+    llama-3.2-3b|iwl|countries_rep3: [72, 2d42a8b3561988933c0143dc760969d806faab3a5102451a55b3c1c4cb4a2d6d]
+    llama-3.2-3b|iwl|countryarea: [72, c92edeac3d9199160b0f6d445152f77453262567ab19ec9fd5010691b7ff77d6]
+    llama-3.2-3b|iwl|countryarea_rep2: [72, aaec25c603980774248172be4950d6877bb6c98ef062e239598f762f99337acb]
+    llama-3.2-3b|iwl|countryarea_rep3: [72, 4377fc54ea4613d285d6eab0c8962395d523c314a75d460dd13b1941cde64c31]
+    llama-3.2-3b|iwl|usstates: [72, 15ccb991f72e2ec2888dc334ff162442dda428566c7a8a1a06cf25facae4ac6b]
+    llama-3.2-3b|iwl|usstates_rep2: [72, 822814adeeedb9f5162f9a475aa544d2395f97006c2f5b8de6814d1bca564992]
+    llama-3.2-3b|iwl|usstates_rep3: [72, 97b7ad243c1579aa4d5f2715dcde9ceb10d66ed729ae08ffe5a89e1a6badda10]
+    mistral-7b-instruct-v0.3|icl|countries: [720, e2b6449c1f21db9a32220492c1eb7d534e4e049d52b67b32119bcee803f0b930]
+    mistral-7b-instruct-v0.3|icl_cities|countries: [720, cc5affade9ccee0430b290fde0d333522759f42478e3c297c4e9ca3dec2ad3d6]
+    mistral-7b-instruct-v0.3|iwl|animals: [72, 6aaed591e6bfbb45e45b69c20dc7b5fbb92e703a1a1dfa8ea78dcdf00a7030be]
+    mistral-7b-instruct-v0.3|iwl|animals_rep2: [72, 4cda84e6575b358eeb883e6010b9abf33732d59ca54c4eb9478acac86cc26f37]
+    mistral-7b-instruct-v0.3|iwl|cities: [72, e032e8f3a68d547e318ccc487a7027fe4ce798eb514d04a276ff2ad2735e4eef]
+    mistral-7b-instruct-v0.3|iwl|cities_rep2: [72, 0526ba01905e60ea5b02926debc33feb07c025385682b71516fb53e74a7fb0c9]
+    mistral-7b-instruct-v0.3|iwl|citieslinear: [72, 0064093bcf4e2d4bfd3487a6466b825b2d318e0aaa906d815c24280d42ddb2b5]
+    mistral-7b-instruct-v0.3|iwl|countries: [72, 30bfdb5ffde288be7dff7751222b52408ed855af8f39f912cde43c3aed9d3957]
+    mistral-7b-instruct-v0.3|iwl|countries_rep2: [72, cc57d2d2e390bc1927f87a3c29d5791327fd989eb62aa85ed96ae418a54846fb]
+    mistral-7b-instruct-v0.3|iwl|countries_rep3: [72, ed946fd634e38c042f2fce33f39ee12dee812cc8da61785285fca6dbf8d7d3bb]
+    mistral-7b-instruct-v0.3|iwl|countryarea: [72, 8d3d455f1106949ce85af7cd77899b0ad18f9a673670de10f749a0f4cdd60459]
+    mistral-7b-instruct-v0.3|iwl|countryarea_rep2: [72, 6163692eb197225c109471f5c587ecbf26864719c356cd604737fc166317aac1]
+    mistral-7b-instruct-v0.3|iwl|countryarea_rep3: [72, 87138174a5212c5e9306a3bf68d223ee745fbd3f146b52dc787d490440007e0d]
+    mistral-7b-instruct-v0.3|iwl|usstates: [72, 97e24a12c9b8034e7d95635fcffeb63dfa63c7be6d551cae7505829424e8c3cb]
+    mistral-7b-instruct-v0.3|iwl|usstates_rep2: [72, 7f9c1e987b666d1f49dc3dd6569608b3eafdd34ab0d2b01420eacae6dbe7afe1]
+    mistral-7b-instruct-v0.3|iwl|usstates_rep3: [72, bdf98127b58ec4ea2336d6b783c491b2f9822f4774bcbb396418b8c5c03f79ac]
+    olmo-2-32b-instruct|icl|countries: [720, 18ad6cfd9965b4e2472d808711b2cc3cbe589738d475f4052e1b20eba6c53720]
+    olmo-2-32b-instruct|icl_cities|countries: [720, a0781a03bb8c781a4be91102dc82fd67b44b346282c4713191841540d58edadf]
+    olmo-2-32b-instruct|iwl|animals: [72, 6ff115f918c6aed9af3a0e4a3acb794bcac5c834583796cb60202537327b9ee7]
+    olmo-2-32b-instruct|iwl|animals_rep2: [72, 42764542f662f28aeb7baa8676d55f16ca6908c3c890a65eb428bb86f3219387]
+    olmo-2-32b-instruct|iwl|cities: [72, b0f2ee075da69839a7ad66c3873ad17e0446cfd7cbc2b35e8a291e5dfeea83af]
+    olmo-2-32b-instruct|iwl|cities_rep2: [72, 993ff7804137b7c5bdbd2b6fcf55615753030212e77b9823ea8ad82d7e199047]
+    olmo-2-32b-instruct|iwl|citieslinear: [72, 1e7db6db2fafdfe0ad6c7de1ed1a8a4e4b3ca77b2210ac2cc58ad82c66f739d3]
+    olmo-2-32b-instruct|iwl|countries: [72, b47a1aa19722976a7ba8b4c1ff443b3b1ee899f73e5ed51b9c6e77a3dee1bd55]
+    olmo-2-32b-instruct|iwl|countries_rep2: [72, 7e5a6e202f6a6f8685bd5f24c0b2fd5b9992aa5a5c864e1b117f65705a1fbafb]
+    olmo-2-32b-instruct|iwl|countries_rep3: [72, a778abc06e9a38a7a19e0b28ba1cc4c596ff8e04119d8e058d464312e780094e]
+    olmo-2-32b-instruct|iwl|countryarea: [72, 623123c687c0ea0abb9fd680964a9adb27e06c65a114f14f5616a1d0d3cb5c62]
+    olmo-2-32b-instruct|iwl|countryarea_rep2: [72, ef29216c57373436de205baf0db0cc7e9661802a34d8f366b6f2c2d52c0e3256]
+    olmo-2-32b-instruct|iwl|countryarea_rep3: [72, e432b1a1097bca45d7fdf556fe574968c04b9f7ca3e68c861fefc055b6f0e9e9]
+    olmo-2-32b-instruct|iwl|usstates: [72, d903a59c0d169c7e4cd314596de6f4f9df862a785f9e6f72b74435a788266dad]
+    olmo-2-32b-instruct|iwl|usstates_rep2: [72, 8769756766394271c59be6204acb569737b489bba69b203b3bce6e756156336c]
+    olmo-2-32b-instruct|iwl|usstates_rep3: [72, 32ca331281fbaedf8e6dffd3034ae6263a9ef95286e64786841776ae60a7f0bc]
+    olmo-2-7b-instruct|icl|countries: [720, 5c2a500257f5da16dbc74c2e0fcb0797372f4af764fd2f1f09cbc9685fda9f71]
+    olmo-2-7b-instruct|icl_cities|countries: [720, a3eed641164e12e45f8d9712fb924cdef6bd100eac871bb187029edaea6dd510]
+    olmo-2-7b-instruct|iwl|animals: [72, 327288221b67a7814de0704f6ca46be8735ac21bc8d6d0ca92c87e6cde149a46]
+    olmo-2-7b-instruct|iwl|animals_rep2: [72, 8ed45e5c455756a1bcb39f78a71c62140ed042bfedae42b7e307926f9cd120b5]
+    olmo-2-7b-instruct|iwl|cities: [72, 35394183bbcd135f6a9754fb77a26c2572ad7f6dda970c70abfdf85f4e96ad8a]
+    olmo-2-7b-instruct|iwl|cities_rep2: [72, c7bd9586fec966a325a5a35fde1f807f8d43a1df610b00a6b03e64c8b5bb922b]
+    olmo-2-7b-instruct|iwl|citieslinear: [72, cea78c264327e8c6b07fb3d0bf894b9c3fd1f3d728ebbd64bfa3c9c1b94be38e]
+    olmo-2-7b-instruct|iwl|countries: [72, a95e9b61d99f9e772b838753eac02d54ed36fec048d92dd5955a1939039bc759]
+    olmo-2-7b-instruct|iwl|countries_rep2: [72, 21e96c211bacd6028dca3cdade39bd16071051b22a1a79215d5b3913788edb9e]
+    olmo-2-7b-instruct|iwl|countries_rep3: [72, 9ced980071f6f219423361a6900b93152393d7667730f6b2ac564c24cc8dec7c]
+    olmo-2-7b-instruct|iwl|countryarea: [72, dd6878fbb2123dad4d1c8b3a2468e54f3b7483f2828bb103d039859fda81c710]
+    olmo-2-7b-instruct|iwl|countryarea_rep2: [72, 0a73064c975b8ce480119dc5e1e3e4be2101f7f6622d9636c9cd9dad8c791dab]
+    olmo-2-7b-instruct|iwl|countryarea_rep3: [72, bfbe579e29a4550befbf54d5d450ca6530ea0b3c81265ee88ca6f22691d83870]
+    olmo-2-7b-instruct|iwl|usstates: [72, b69453662d7cd8e3ef87adb4b4a15629d9e93741997389e24142a93879ff91ca]
+    olmo-2-7b-instruct|iwl|usstates_rep2: [72, 4bb0d90f912202918e2311fa698c7ae5cbcd1192b3b2feb47578c67b703570b4]
+    olmo-2-7b-instruct|iwl|usstates_rep3: [72, 2386e5367b76280bc033b5e5e8d706bd1db725adfb9a4a5a8c00065a6c0ee0ea]
+    phi-4-reasoning|icl|countries: [720, b1da494b1280dc89a395372329cc6a19ece4205fa4ff4948d378a69a3a3e76f4]
+    phi-4-reasoning|icl_cities|countries: [720, f85b5aea48fd6a3fcf97269d948848006a93d899cc8dd2637a16453c69614d91]
+    phi-4-reasoning|iwl|animals: [72, f70cb6431844e08abbb5074410d5a9a380f0f71eba490bd4ba7d9f3c4a1e74f0]
+    phi-4-reasoning|iwl|animals_rep2: [72, da826d60137488074654192258d55c98158733fcdc3342c8b547fb119a6af762]
+    phi-4-reasoning|iwl|cities: [72, 0d4a66d028ae3d619f2122ae67b0fc5833af08bba4b18ba05ac8e6812e4c4fc7]
+    phi-4-reasoning|iwl|cities_rep2: [72, 21cbae287efc5a32c60bc2ca507a5904dbbbaad5ca5546d5c5cdafb2fb8f2a81]
+    phi-4-reasoning|iwl|citieslinear: [72, 011f47e5300ed20de92667235bcbb9ec94bb1a38ffb43aa0ef2736d784393708]
+    phi-4-reasoning|iwl|countries: [72, f5574664eadf1ff1abb5598b9cda487a115acd21d28c77a765fcb304535f1c27]
+    phi-4-reasoning|iwl|countries_rep2: [72, 86e785671c2b94b5fa2e322e0f5477f8c66544b00b7b6636fe89eec2c437dac0]
+    phi-4-reasoning|iwl|countries_rep3: [72, 7508ac9b3363e3c793825fc2c63a72d401eaf9617b71dd3ad55ecbb73470e11d]
+    phi-4-reasoning|iwl|countryarea: [72, 44f6950de9a14f7bb2adfc3a74e2bfee2b0ff97aedf94cba0ddf5992edf8fb43]
+    phi-4-reasoning|iwl|countryarea_rep2: [72, 4c3b8ca94e728a19d76dbb7b19f6aea75a20cd44e93bf93b9a130bde3fc95d04]
+    phi-4-reasoning|iwl|countryarea_rep3: [72, 7371affc5eaaeb5b40277c3e517b58477532624e46694f641cab3db09075420d]
+    phi-4-reasoning|iwl|usstates: [72, a219cdca6c15a4772f726b87fc40132a4f2675a5b379e0713dec913a502ded24]
+    phi-4-reasoning|iwl|usstates_rep2: [72, 9437b9c38fcbafb3fc32379bf82527ea46b9d485ff32e4fa97464be84e053b21]
+    phi-4-reasoning|iwl|usstates_rep3: [72, 751901e3c9969eaccb9a336d39271c2315958de93d80977f40059e6e03269249]
+    qwen2.5-32b-instruct|icl|countries: [720, 02c0bf3eea2b62ccb582d7a670e85ca6152091f5b5f7207e6322f392fcd1f82e]
+    qwen2.5-32b-instruct|icl_cities|countries: [720, 5f1d2c7ac42460c3b9ad9a206b90319f1cb04eaf6d075327a873bd45173b0881]
+    qwen2.5-32b-instruct|iwl|animals: [72, 88c52be63b6086eeececf3883db41e8fe0f6760a9564829ee8929d5b086c29c3]
+    qwen2.5-32b-instruct|iwl|animals_rep2: [72, f0e561b8a477af7a418f028d9660a37bc58e63c48de0856f126574942aead046]
+    qwen2.5-32b-instruct|iwl|cities: [72, 6944f3dcfea229ae03bc92554ddbbcac2232712aa5877fdd00115c5781f388e6]
+    qwen2.5-32b-instruct|iwl|cities_rep2: [72, 7cf69e038ebbf45d26fc1d475e6576ef08a29a23193581c9e98563882e814642]
+    qwen2.5-32b-instruct|iwl|citieslinear: [72, 6211f9076b39c762866290f0c54cee5b663b18242aad590dc82f5e3dad232601]
+    qwen2.5-32b-instruct|iwl|countries: [72, 3c54bd1e8c0a3c25f26e51c7a84ccb55044dc5095adbb45836082133f4059b8f]
+    qwen2.5-32b-instruct|iwl|countries_rep2: [72, 47144e3797d6d464ff057425bb49a51582c65a674fd17a54f9e667ef49964a04]
+    qwen2.5-32b-instruct|iwl|countries_rep3: [72, 3ed58a46e8817f1d7303f3716b1ac78652e8227b55c65e83add82ea2511eb6f2]
+    qwen2.5-32b-instruct|iwl|countryarea: [72, 26c503e3c61cabea9aa2212530719784bbf7910e932c8aed2389c302a50934ef]
+    qwen2.5-32b-instruct|iwl|countryarea_rep2: [72, 71fac3ac1f87896d2cf66fd484ee603c4615ebe61b71b5dd8df1c0311bbb9cef]
+    qwen2.5-32b-instruct|iwl|countryarea_rep3: [72, 1e82895f052a2a3c9fd4acf0aa0fd6f149e098ad71936ac872dd94da75735794]
+    qwen2.5-32b-instruct|iwl|usstates: [72, 231f3220f96b08d680cb0e99f19bbe1c915b6b859090bc280826403d30c002cd]
+    qwen2.5-32b-instruct|iwl|usstates_rep2: [72, 5e9967eab1bba74b2418298f6b07f2874489592c6eb319972ce22cfc688a9e32]
+    qwen2.5-32b-instruct|iwl|usstates_rep3: [72, 35a8962c3d736053969edca89062986d92b3b6ae9b48e1d33cb324af655a3421]
+    qwen2.5-7b-instruct|icl|countries: [720, 90a32c2f96b9692f4658ddd83d41e0382016237bd6cc22b4267584fc9104dd94]
+    qwen2.5-7b-instruct|icl_cities|countries: [720, 5bb16fc87e0f20418a9ff640f4a41d7b3786d2325b5cd056e4d10d48848303b5]
+    qwen2.5-7b-instruct|iwl|animals: [72, f32d6a9e500da04ce2a75b022a15cb1914c1d86393cb47daac3e5a6ef5b26c5f]
+    qwen2.5-7b-instruct|iwl|animals_rep2: [72, 75deadf5c0349a9ef49eb558939476dfafaa1137be5b35c72bacd390d44cdc77]
+    qwen2.5-7b-instruct|iwl|cities: [72, 6ad663fdf5cb426bf9278fac8760009b1776219e1ab6e8c576a128ed8afccd8c]
+    qwen2.5-7b-instruct|iwl|cities_rep2: [72, 581e98720e67f4a72c669e8843951f70b4dbb938dc1e6447e3cedc4ed5f17da5]
+    qwen2.5-7b-instruct|iwl|citieslinear: [72, 466b47312478ca174119c0f72d6377dbd64ceadacaab4fa46101b30476a9d7ed]
+    qwen2.5-7b-instruct|iwl|countries: [72, 430604df732bd6ad71b56789d205b9ac4eb9e37cc9581eaae3cc6ef710119c02]
+    qwen2.5-7b-instruct|iwl|countries_rep2: [72, b8fb585c430017af43e87c41f6a904d44ea3d76eb4281d449c28eb50c9715b52]
+    qwen2.5-7b-instruct|iwl|countries_rep3: [72, c195ebdd5e2608673abde8e4a1cd34cbdde006b97a4bc14b0d7a3feb2aa4dbd3]
+    qwen2.5-7b-instruct|iwl|countryarea: [72, 734df2cabb39ce5386a42ea04d0dfc4941392d6b2604af50cacc66cb4c463ca2]
+    qwen2.5-7b-instruct|iwl|countryarea_rep2: [72, 47f09a440407844506b3a7ee1ee50738210f72c4f9d5e199d81fbb0396a41e20]
+    qwen2.5-7b-instruct|iwl|countryarea_rep3: [72, 4bb88f8a5897d832cb740c7e952444d7c834afcd8c5bc0301a3267172dd66b52]
+    qwen2.5-7b-instruct|iwl|usstates: [72, dcd7d79b1bf7ab54299c9bf78407de59a3fc6c47fbe4cbca089c26e38925463b]
+    qwen2.5-7b-instruct|iwl|usstates_rep2: [72, 8ae74050c7bf7fddc1a7f5b2dde7f3d82caa238c22c7126832df859b363ec76b]
+    qwen2.5-7b-instruct|iwl|usstates_rep3: [72, 54a9e29b583eec05be912953e3f785e8aee5a19877f46c367838b3f80ee5fd91]
+    qwen3-1.7b|icl|countries: [720, 41d6560de14ae33af0751eb727a99e8799bdf975576961629d34e1f303eadcd5]
+    qwen3-1.7b|icl_cities|countries: [720, 38683579cb6e84e18b0d2da37d8c71e4b75fb93eeeacc2a2a224f9440a925654]
+    qwen3-1.7b|iwl|animals: [72, e3cea645f32c1d58e4472ddf3bba616a488174313e280e1decb16184ee9baea4]
+    qwen3-1.7b|iwl|animals_rep2: [72, 03186bd01e4604d6ec27469aeb2a2dda8770c7bb01474f4e387b73b05e9f813d]
+    qwen3-1.7b|iwl|cities: [72, 3d7b0263424b3fe642842b83e69338f8c8b50eace32065d944dff42e95fefb20]
+    qwen3-1.7b|iwl|cities_rep2: [72, 5ccae29bf3a3b463b3e9a3f965d03263939c9787be23c590466b84deb6516d79]
+    qwen3-1.7b|iwl|citieslinear: [72, a00a2c7fb70b65908e0f6453c5cb57b62f886392a53ce52bdb2f1d36d8e0f5e8]
+    qwen3-1.7b|iwl|countries: [72, 2ddc0e681210fb7d65d4563745230dd637b229223590fb44fbd2b71a1227e06a]
+    qwen3-1.7b|iwl|countries_rep2: [72, b5c4a3a182b164aa009905f07a71a21d91b6e516f00f81d7325ddee2a1d54dd0]
+    qwen3-1.7b|iwl|countries_rep3: [72, b84b491bcfb64b96f96b726398905e7528746208494e448d59e7351225a2cae3]
+    qwen3-1.7b|iwl|countryarea: [72, e0fe9f102c8b4b40bd6c1e3cecb4bd56a29def35899391281c36f39c1a32f09d]
+    qwen3-1.7b|iwl|countryarea_rep2: [72, e77c0b22dc6c1a62ce3e94c786fc1f784d1ac34200311a812356077c01b8a201]
+    qwen3-1.7b|iwl|countryarea_rep3: [72, 4c91604155c63dc9e51c9fcb9c42ccbc33d6af8d3c33f51d46f776fdb5943979]
+    qwen3-1.7b|iwl|usstates: [72, e5d31e77898151e50a57d4e387b41d869acb592b7873a8a1c28edb55d96f4244]
+    qwen3-1.7b|iwl|usstates_rep2: [72, 30412663e1ea9f33a7747c339c401e91bffb7890b5369251a021b90f93155139]
+    qwen3-1.7b|iwl|usstates_rep3: [72, 5146c1627e0504501737476f570813020267da21b25f6519b366ec49b22d7302]
+    qwen3-14b|icl|countries: [720, 21727cb1fd80d5a91d29473b3b9f85182462df6a963923916812f454633d13ae]
+    qwen3-14b|icl_cities|countries: [720, f1f9663a8d5651f3f30686a6b9222fa3857a15ef09b1301c818fe53366e4dafe]
+    qwen3-14b|iwl|animals: [72, a58868b176d1731385b93ef2b9778f930264f038f63a77fd3f3e4d666f565662]
+    qwen3-14b|iwl|animals_rep2: [72, 758acd1fa52e3777b8e271330105a89d31ba2a77c05586ebf2c2a54e81002eac]
+    qwen3-14b|iwl|cities: [72, 4cb3c4659e5a8c30f316e59c1f71ff9d64de954f6255d850345dafaaface343b]
+    qwen3-14b|iwl|cities_rep2: [72, 8a560aa393fbee07f309540db9a201fb3832c85e6110c282286f4c0eee686848]
+    qwen3-14b|iwl|citieslinear: [72, a78566f9004b8eda1a377bc38929d8cec6a19b99b598d6c0adf913624490207b]
+    qwen3-14b|iwl|countries: [72, 41861fd027332f5c64033951d52b8e5af3c00373ccdb0f0625115484c4772875]
+    qwen3-14b|iwl|countries_rep2: [72, 8f9df6095a37f4498cef244eab5a986da17741cb21ef7d6f0fc9dceda68d1876]
+    qwen3-14b|iwl|countries_rep3: [72, 9cbba2a0b5f93ae0f5f8aced79f927901c0dfec53231360162dfdfda00eb478a]
+    qwen3-14b|iwl|countryarea: [72, 837533c9ee352c384786d37ab4f8b5d5f215e64b3e2a5e61ec5da831ff4c4027]
+    qwen3-14b|iwl|countryarea_rep2: [72, 0f07e5ea149ab1229a967bff9b8ee6a4cfdd70e74f545e58909753d190a201eb]
+    qwen3-14b|iwl|countryarea_rep3: [72, beaf95b9644f399cb429f81bc748c2e75cb7ead1ea68bb506ed40627dbea9f15]
+    qwen3-14b|iwl|usstates: [72, 3be8d5bab1ea9e8660f9818e5fd43e34504e5cd72811f76103beef5823d85bed]
+    qwen3-14b|iwl|usstates_rep2: [72, 886787b3c8d4b1be8b54d6c218d27717a174f7424179c37f53c1539068c3e76e]
+    qwen3-14b|iwl|usstates_rep3: [72, a180f95035b43eb98e57377ad3c02053704247db1fc4b23372f4690832defb44]
+    qwen3-32b|icl|countries: [720, b101da073e5fb032adacc9f618a936a591c46375d3be387358c65d03630e21bd]
+    qwen3-32b|icl_cities|countries: [720, e1fa0029c10afb4033aca4948d649c1149f27d787084a486a7b18ce9fc1246c3]
+    qwen3-32b|iwl|animals: [72, 6d29815dd2b5918c54367aecdf9f4e99fb27e465f3cf9446a162e288b490d1e8]
+    qwen3-32b|iwl|animals_rep2: [72, 5ed28bbd7f4c5f5cc1e119a0a6031232ffb26c931f2f1eee8a12f47ef0d7c2cd]
+    qwen3-32b|iwl|cities: [72, 848739fb155c6b55d257f410728714a6e930384a50a29108020299111b713de4]
+    qwen3-32b|iwl|cities_rep2: [72, 4b17265d8363908dcdbaeb8171d5d71cb265b7ea352c53e6dfb6f43e58cd300a]
+    qwen3-32b|iwl|citieslinear: [72, aea446b8f84a466d1899625a5a032193221bc318c09f8688704f572bf06293aa]
+    qwen3-32b|iwl|countries: [72, bc5334aa42fa6629e3ace8c7a8fdb2ecafe546f3370ed2c6c41b06c6fc91c864]
+    qwen3-32b|iwl|countries_rep2: [72, f0ca77ff9baee90b1117eb1b98b3d4e2c70daabfeac0eddd0b9f1f8be5098924]
+    qwen3-32b|iwl|countries_rep3: [72, 31ed55ca9138791dc7ef45b63da9a2b7c3daccc5a2f8a90d3d17b5f2348a6c73]
+    qwen3-32b|iwl|countryarea: [72, 3eba09298a712c5a811f403ef3355fbb0f4e88a763bf51c1245be8881133aff4]
+    qwen3-32b|iwl|countryarea_rep2: [72, 3594cdb7105213a15bb3b58b482ffcaaf63071d177519feef5501e45339eae77]
+    qwen3-32b|iwl|countryarea_rep3: [72, a42445f60d99a2f1b2158099e581ab2cde2375f25dec0d077b055bf27d144314]
+    qwen3-32b|iwl|usstates: [72, 1ad8c82dafaa973c2485b564bfe81d49e1ed9c3a2be70ca238f93e4313f96987]
+    qwen3-32b|iwl|usstates_rep2: [72, 6d6b8568a8cded70e805367814a932d3766e2ca71df8b96efc6508800fbe30a8]
+    qwen3-32b|iwl|usstates_rep3: [72, e4fb8fd27545ac44dc043c6b17b0e913f066c33b09b6af296fbf3a71758cd28a]
+    qwen3-4b|icl|countries: [720, bfddb521d481cb9c56e1e1a7c9bb7e34a00d9341bd8900f7095bfa5e73e9d13c]
+    qwen3-4b|icl_cities|countries: [720, e43ea5fe170f70331b3310c6a78c4c58bbb30c791abef9352a46d432532d85bc]
+    qwen3-4b|iwl|animals: [72, 8ddf5a3ba758de5ae5e20e34f5e5cd9a3ef0528f467a02d3dc4ff213b970bf4d]
+    qwen3-4b|iwl|animals_rep2: [72, 593f0ce39e1b43a0d31329445fd7c0d946a9b7dcdd84ab150cf5661a42f5e17e]
+    qwen3-4b|iwl|cities: [72, d334b55b0fc024b87ef10fdd94653875beecdd20e918f6e723566b3843e7b0ca]
+    qwen3-4b|iwl|cities_rep2: [72, 04d052d4d76c18948638dcb4cc20141161f32d8a2693b3f2c128a859bca72dc1]
+    qwen3-4b|iwl|citieslinear: [72, 760f1f6f13caa5f95e23de7c5637a6a39a6cd9d1ab000427c4510d7627456e29]
+    qwen3-4b|iwl|countries: [72, 57243c00d792399cc475ab43f107afe01ba1aa0952b9d4a0dcfc2d8e05a7ccdf]
+    qwen3-4b|iwl|countries_rep2: [72, 43a51c520c6ef5e3c5291a3bb13d6c9b3e0289e768a6491c5844bbfd31cdc9c9]
+    qwen3-4b|iwl|countries_rep3: [72, 633338c9fac51f0d784beebb4236d387fe10f6717966cb8118368a2ed337f876]
+    qwen3-4b|iwl|countryarea: [72, 86d6f96a81d45c5a626e5a170766b77226952cf1da2294f6d2d925a8bbef7047]
+    qwen3-4b|iwl|countryarea_rep2: [72, 19fa31657dc8ad355ad7aaec2c96d92854cfee4aeb81ad52d192f8a03fdb774c]
+    qwen3-4b|iwl|countryarea_rep3: [72, b0785580e4d98b29584b767043eda6f0115183ca268e6280961265fe5ca431b8]
+    qwen3-4b|iwl|usstates: [72, 3dce1ecf420438fe9ce61c8f4979468065ef212a3e2703e79a822d3507f9fdb6]
+    qwen3-4b|iwl|usstates_rep2: [72, 4972948243d7c0270c4dfe16dd477e7089f3dcfa5c7c1dfa271ea93834c61c8b]
+    qwen3-4b|iwl|usstates_rep3: [72, 6b1794309bdcae56fbe884fa3bec5b84e478fd742dc441da3b9683b92ae832f7]
+    qwen3-8b|icl|countries: [720, b8400b7ea527a337657edb1a82acc870ab7a9ec4a2e16ccb464713b6e2af84c9]
+    qwen3-8b|icl_cities|countries: [720, a437add2b3fb4a4c5582c4476725121e4cecb73f7cee8b10ae5bb4fea9a2bbfe]
+    qwen3-8b|iwl|animals: [72, 9a7de0059eb32e8f55401276ecbabaa020da9c10d1a9616f529a55f66a2f51b7]
+    qwen3-8b|iwl|animals_rep2: [72, 7b6be9dc4075a51bb52dbef20eeb7cdfdb65b0f25763f42e360e72a054f71ab0]
+    qwen3-8b|iwl|cities: [72, a2eb1571c3b07befa58a69197c96729c5dadbab7a8bc609e6f9811e883ccf331]
+    qwen3-8b|iwl|cities_rep2: [72, 05cc95c6de58426873b889e88dbe0edb92cf7be99a93e575f32f33cc8c3d805e]
+    qwen3-8b|iwl|citieslinear: [72, a64be1070208f0b6e71cb20b22d7022a40fbafb3353955b565eae8b598ef39a6]
+    qwen3-8b|iwl|countries: [72, 716af69783fe5f1fca61dc115f47ad3a95d9860996c306a94893ec073f326857]
+    qwen3-8b|iwl|countries_rep2: [72, cc6ed866176ff46b632720687c87ae53125791bc21f267798a70028aab33c6a9]
+    qwen3-8b|iwl|countries_rep3: [72, 8980a144424cf8c19abcafe18222bea407d97b0dfb5e17292983299ec49567be]
+    qwen3-8b|iwl|countryarea: [72, 37df53f16c9f7abc0ce76a5dd81d8146f6d5879661debcb6caaa587e0f58e2d9]
+    qwen3-8b|iwl|countryarea_rep2: [72, f948c02eaa9fe538e149cd2eaac5d25c85e5487dccfbda4f51341a25d73f56e9]
+    qwen3-8b|iwl|countryarea_rep3: [72, 5670c2353dde499e2d175e49322ab536767410c4a25011a596178051efaa7484]
+    qwen3-8b|iwl|usstates: [72, 8d5f6556ae990f7db05f5b77a649077214140631323977cae88100827f8095d2]
+    qwen3-8b|iwl|usstates_rep2: [72, d70251013520bd8d55c51b1b6a08f31f54e728de2a750c62b36b21a7859217a5]
+    qwen3-8b|iwl|usstates_rep3: [72, 9a1255631bf8f2f5a943fa58c3c7b6819cf85286248fae0a1b47d2a6c40d3d83]
+  note: 'One row per scored trial of every direct test (budget 0): the answer is the comparison of the
+    True and False token families at the position after the answer cue, with no reasoning tokens generated.'
+- table: ladders
+  path: ladders.parquet
+  rows: 592416
+  sha256: 314dea966039de62fb0a99d93936d3799db655fe5aa00d34f5e167b5cbb2e032
+  bytes: 6359394
+  columns:
+    model: string
+    reasoning_kind: string
+    test: string
+    condition: string
+    item_pool: string
+    dim: string
+    d: int8
+    signed_distance: int8
+    rank_low: int8
+    rank_high: int8
+    innermost: bool
+    premise_order: int8
+    trial_id: int16
+    trial_key: string
+    mode: string
+    budget: int16
+    gold_true: bool
+    predicted_true: bool
+    is_correct: bool
+    logprob_true: float32
+    logprob_false: float32
+    logit_gap: float32
+    cot_n_tokens: float32
+    cot_finish_reason: string
+    truncated: bool
+  tests:
+  - budget_icl
+  - budget_icl_cities
+  - budget_iwl
+  conditions:
+  - icl_cities
+  - icl_people
+  - no_context
+  models:
+  - deepseek-r1-distill-llama-8b
+  - deepseek-r1-distill-qwen-14b
+  - deepseek-r1-distill-qwen-32b
+  - gemma-2-9b-it
+  - glm-4-32b-0414
+  - glm-4-9b-0414
+  - gpt-oss-20b
+  - llama-3.1-70b-instruct
+  - llama-3.1-8b-instruct
+  - llama-3.2-1b
+  - llama-3.2-3b
+  - mistral-7b-instruct-v0.3
+  - olmo-2-32b-instruct
+  - olmo-2-7b-instruct
+  - phi-4-reasoning
+  - qwen2.5-32b-instruct
+  - qwen2.5-7b-instruct
+  - qwen3-1.7b
+  - qwen3-14b
+  - qwen3-32b
+  - qwen3-4b
+  - qwen3-8b
+  dims:
+  - animals
+  - animals_rep2
+  - cities
+  - cities_rep2
+  - citieslinear
+  - countries
+  - countries_rep2
+  - countries_rep3
+  - countryarea
+  - countryarea_rep2
+  - countryarea_rep3
+  - usstates
+  - usstates_rep2
+  - usstates_rep3
+  innermost_direct_trials_per_dim_condition_distance:
+    animals|no_context|d=1: 12
+    animals|no_context|d=2: 10
+    animals|no_context|d=3: 8
+    animals|no_context|d=4: 6
+    animals|no_context|d=5: 4
+    animals|no_context|d=6: 2
+    animals_rep2|no_context|d=1: 12
+    animals_rep2|no_context|d=2: 10
+    animals_rep2|no_context|d=3: 8
+    animals_rep2|no_context|d=4: 6
+    animals_rep2|no_context|d=5: 4
+    animals_rep2|no_context|d=6: 2
+    cities|no_context|d=1: 12
+    cities|no_context|d=2: 10
+    cities|no_context|d=3: 8
+    cities|no_context|d=4: 6
+    cities|no_context|d=5: 4
+    cities|no_context|d=6: 2
+    cities_rep2|no_context|d=1: 12
+    cities_rep2|no_context|d=2: 10
+    cities_rep2|no_context|d=3: 8
+    cities_rep2|no_context|d=4: 6
+    cities_rep2|no_context|d=5: 4
+    cities_rep2|no_context|d=6: 2
+    citieslinear|no_context|d=1: 12
+    citieslinear|no_context|d=2: 10
+    citieslinear|no_context|d=3: 8
+    citieslinear|no_context|d=4: 6
+    citieslinear|no_context|d=5: 4
+    citieslinear|no_context|d=6: 2
+    countries|icl_cities|d=1: 120
+    countries|icl_cities|d=2: 100
+    countries|icl_cities|d=3: 80
+    countries|icl_cities|d=4: 60
+    countries|icl_cities|d=5: 40
+    countries|icl_cities|d=6: 20
+    countries|icl_people|d=1: 120
+    countries|icl_people|d=2: 100
+    countries|icl_people|d=3: 80
+    countries|icl_people|d=4: 60
+    countries|icl_people|d=5: 40
+    countries|icl_people|d=6: 20
+    countries|no_context|d=1: 12
+    countries|no_context|d=2: 10
+    countries|no_context|d=3: 8
+    countries|no_context|d=4: 6
+    countries|no_context|d=5: 4
+    countries|no_context|d=6: 2
+    countries_rep2|no_context|d=1: 12
+    countries_rep2|no_context|d=2: 10
+    countries_rep2|no_context|d=3: 8
+    countries_rep2|no_context|d=4: 6
+    countries_rep2|no_context|d=5: 4
+    countries_rep2|no_context|d=6: 2
+    countries_rep3|no_context|d=1: 12
+    countries_rep3|no_context|d=2: 10
+    countries_rep3|no_context|d=3: 8
+    countries_rep3|no_context|d=4: 6
+    countries_rep3|no_context|d=5: 4
+    countries_rep3|no_context|d=6: 2
+    countryarea|no_context|d=1: 12
+    countryarea|no_context|d=2: 10
+    countryarea|no_context|d=3: 8
+    countryarea|no_context|d=4: 6
+    countryarea|no_context|d=5: 4
+    countryarea|no_context|d=6: 2
+    countryarea_rep2|no_context|d=1: 12
+    countryarea_rep2|no_context|d=2: 10
+    countryarea_rep2|no_context|d=3: 8
+    countryarea_rep2|no_context|d=4: 6
+    countryarea_rep2|no_context|d=5: 4
+    countryarea_rep2|no_context|d=6: 2
+    countryarea_rep3|no_context|d=1: 12
+    countryarea_rep3|no_context|d=2: 10
+    countryarea_rep3|no_context|d=3: 8
+    countryarea_rep3|no_context|d=4: 6
+    countryarea_rep3|no_context|d=5: 4
+    countryarea_rep3|no_context|d=6: 2
+    usstates|no_context|d=1: 12
+    usstates|no_context|d=2: 10
+    usstates|no_context|d=3: 8
+    usstates|no_context|d=4: 6
+    usstates|no_context|d=5: 4
+    usstates|no_context|d=6: 2
+    usstates_rep2|no_context|d=1: 12
+    usstates_rep2|no_context|d=2: 10
+    usstates_rep2|no_context|d=3: 8
+    usstates_rep2|no_context|d=4: 6
+    usstates_rep2|no_context|d=5: 4
+    usstates_rep2|no_context|d=6: 2
+    usstates_rep3|no_context|d=1: 12
+    usstates_rep3|no_context|d=2: 10
+    usstates_rep3|no_context|d=3: 8
+    usstates_rep3|no_context|d=4: 6
+    usstates_rep3|no_context|d=5: 4
+    usstates_rep3|no_context|d=6: 2
+  trial_sets:
+    deepseek-r1-distill-llama-8b|budget_icl|countries: [7920, e12ce01e3f25a33073d2fc283f29077dc85650e890cac6094ff70627067eb030]
+    deepseek-r1-distill-llama-8b|budget_icl_cities|countries: [7920, 7b58e91ff40cf0fdf1e713e4b1deb65443b03d5a597336171d2b7cfba2934403]
+    deepseek-r1-distill-llama-8b|budget_iwl|animals: [792, 39114a801f83ecc23805c756b1df214763437c9fdb73e4f7287885350ca83ba4]
+    deepseek-r1-distill-llama-8b|budget_iwl|animals_rep2: [792, 1cf6ec6e58189371c0363be682fbabf352ea63597ffbe194f604dcc3309091d8]
+    deepseek-r1-distill-llama-8b|budget_iwl|cities: [792, 2c43b7acaae6617e9b75ca8213758ba9dc2a52b985bb926c54af84923e75a127]
+    deepseek-r1-distill-llama-8b|budget_iwl|cities_rep2: [792, 73b5a367087542ad5480fe2fdaee33395127c4948328ce48efe808adda1703ea]
+    deepseek-r1-distill-llama-8b|budget_iwl|citieslinear: [792, 1c3d39cd6d6e7a14bd7f003b348eb68c2229b2f59c149e56f7da46d624b02ff2]
+    deepseek-r1-distill-llama-8b|budget_iwl|countries: [792, f54802d3041f580060c15563e5a358bf33e9704bd90c30ce099ab2d906471295]
+    deepseek-r1-distill-llama-8b|budget_iwl|countries_rep2: [792, 2337347d8fc33c0cd1800b0ab6b5fedee699f94e21f58263ef4b850542b380b5]
+    deepseek-r1-distill-llama-8b|budget_iwl|countries_rep3: [792, 784d55984e1323b5afcb8035b6cae5f955e52ee63491f2634d11fdffe80c3d72]
+    deepseek-r1-distill-llama-8b|budget_iwl|countryarea: [792, 190d7224f3bda7e5639e7f2927544d873667e4b88fbbd2f2fa2e33844dfe12c5]
+    deepseek-r1-distill-llama-8b|budget_iwl|countryarea_rep2: [792, 89b956d65bb42b451ab5d5214a08b45645c1bcc59c60ba1d759909e21f3e0210]
+    deepseek-r1-distill-llama-8b|budget_iwl|countryarea_rep3: [792, cefe5f0bfc865c213058a5deaaaf2c26a8dc8fd5fd69e4837bc93b5dba2f2a03]
+    deepseek-r1-distill-llama-8b|budget_iwl|usstates: [792, ac4fe966069cf5343099727c83a3513d9547887226883b99b6fc6e0f2020b2e8]
+    deepseek-r1-distill-llama-8b|budget_iwl|usstates_rep2: [792, 983b88bbd4c22a54fcab2a8bfe8ee1be1cea43e09d9bc476f75da4ca1fbef7eb]
+    deepseek-r1-distill-llama-8b|budget_iwl|usstates_rep3: [792, fa2555b4b31e6bc56ed0d0d5e8ba5d8eb4ad806aa833038d2388259d9ad3159b]
+    deepseek-r1-distill-qwen-14b|budget_icl|countries: [7920, 9cb365ad9546a3281a859a089d14b9dd6a05d56045f35e7ac435443a0cc0110a]
+    deepseek-r1-distill-qwen-14b|budget_icl_cities|countries: [7920, d11d8bdcd24b25cbe2e5250606748af470ba3c7fc03be51411fbd20d8c778ead]
+    deepseek-r1-distill-qwen-14b|budget_iwl|animals: [792, 7b0cda8e444ded6c41ef233e8b8c8c844ba3b92461eb84dcdca5ee21ae4a9df8]
+    deepseek-r1-distill-qwen-14b|budget_iwl|animals_rep2: [792, 1371fc5954ba4401fe37af26d6b865148bc9eb76b4efa120b989021b2c5af10e]
+    deepseek-r1-distill-qwen-14b|budget_iwl|cities: [792, 5df10f7822977eee76085caa3756225a03854ea69c8c2737c891b895b53cd7b4]
+    deepseek-r1-distill-qwen-14b|budget_iwl|cities_rep2: [792, 656cb3f903b59f3ac00e2bb8167ae6a34a54d3f165d4a1bb91ca9ff1016b2256]
+    deepseek-r1-distill-qwen-14b|budget_iwl|citieslinear: [792, e155b83281f3949a9d782b50acdab7c9c91488a99735763ebea18d0c4b62b797]
+    deepseek-r1-distill-qwen-14b|budget_iwl|countries: [792, 8a61e63dfcaf511fe65b44e7921f1fad931de1c1fa6e94e7a7bdd2e1b95a409e]
+    deepseek-r1-distill-qwen-14b|budget_iwl|countries_rep2: [792, b52a6388f5770cfea414060cbfdb7e7643dd7e58e9fa13619aa8d19366d12556]
+    deepseek-r1-distill-qwen-14b|budget_iwl|countries_rep3: [792, adf4ef5bd9372093db3f600ca1e0b64985f1fcf9895f4688ac77de284b74d468]
+    deepseek-r1-distill-qwen-14b|budget_iwl|countryarea: [792, da8b3973e2f90a2395e95cc935ceb986acd6b7403b0c76d46d2a5cbdcc0aebf1]
+    deepseek-r1-distill-qwen-14b|budget_iwl|countryarea_rep2: [792, cc5619ce2f6eb79dda770c4b2e68a13ad38afbac205768a6563a82656ab458c1]
+    deepseek-r1-distill-qwen-14b|budget_iwl|countryarea_rep3: [792, c8ae74992dd7ad76ed2638d0793401c2f7f8dc11612f0bcd8aca3f64b35709a4]
+    deepseek-r1-distill-qwen-14b|budget_iwl|usstates: [792, 2d82bee33ed84013f04a22f6ae2c12983db04ee1949a7a907738c5213aedf908]
+    deepseek-r1-distill-qwen-14b|budget_iwl|usstates_rep2: [792, be02ecf5ace71ddcae2d75e54921c760cf1de1a1bb78163ff6010df63b1f1c11]
+    deepseek-r1-distill-qwen-14b|budget_iwl|usstates_rep3: [792, e43cefc9e4488815ca70225f788cb854a9f1d77167c4bbef2da5fabe9c8f2ea6]
+    deepseek-r1-distill-qwen-32b|budget_icl|countries: [7920, f1c99b07e90711d9070394d1db3f133eaebff8e58dcb77c537ea547746ac8c70]
+    deepseek-r1-distill-qwen-32b|budget_icl_cities|countries: [7920, afda8a4d1be41c762619214cf37327ee46ba2e9f423515e264fd6f8e04a4c08d]
+    deepseek-r1-distill-qwen-32b|budget_iwl|animals: [792, 354329dbcca6d71eab0c381b26072a4eab7fa4591a5050dd8411497e35090992]
+    deepseek-r1-distill-qwen-32b|budget_iwl|animals_rep2: [792, db1f962956c908ef41e342f4c6fec8c7ecd53307e5ac8788bc82e4b804273a2d]
+    deepseek-r1-distill-qwen-32b|budget_iwl|cities: [792, b9bdc7ee00e8ae0b8a9567b805d2b47099e7d15ec8c1ee6a9aba763eaec00651]
+    deepseek-r1-distill-qwen-32b|budget_iwl|cities_rep2: [792, 121e2dbe08c0f86c81ab82e09c6e8f8e6081a7bfc8fe9998b6fd8e37f30d26a4]
+    deepseek-r1-distill-qwen-32b|budget_iwl|citieslinear: [792, e611ebbe4b442374738f1c3045cd82bf0e9a9caf7d97e998a2d9d699a62c05cf]
+    deepseek-r1-distill-qwen-32b|budget_iwl|countries: [792, bcf4d59afae5fdab4b08ab649dc0665749a7ae584c72f3680711d0e40b36b7ef]
+    deepseek-r1-distill-qwen-32b|budget_iwl|countries_rep2: [792, 2ba7966a62674bb8a3d8b19e9306bb40df4a754179ba80b019c666376cf48a5b]
+    deepseek-r1-distill-qwen-32b|budget_iwl|countries_rep3: [792, 887b77e3f0c85d256001e2669430e492a4527cd5855b84ddeb407553f4bc8c69]
+    deepseek-r1-distill-qwen-32b|budget_iwl|countryarea: [792, ff71b4b9425435147551898633841b193ac62f13139f609c3bc46ecbaf0cd99d]
+    deepseek-r1-distill-qwen-32b|budget_iwl|countryarea_rep2: [792, 0823acfca840729c754fec79700e4e6afe338d3f813130abc4372e98a9b6d9d7]
+    deepseek-r1-distill-qwen-32b|budget_iwl|countryarea_rep3: [792, 49b060ea0fdc6c915a4b9b70e62cf0d26e70cf6dd9909a956437e009c724e262]
+    deepseek-r1-distill-qwen-32b|budget_iwl|usstates: [792, d429a0250bb2b58203ba749b4a7a0aa4632eb53596dc21f235e0be30cb89c560]
+    deepseek-r1-distill-qwen-32b|budget_iwl|usstates_rep2: [792, 96de5757e6cf7b3386325ffc137e56616b4850f545908f7c3f41b02953218b1c]
+    deepseek-r1-distill-qwen-32b|budget_iwl|usstates_rep3: [792, 071afc3016601100ece3c2d80d7a2fb679ae1ba23ba0db7a3075c58f420ba89d]
+    gemma-2-9b-it|budget_icl|countries: [7920, 28f3927305e272e96f2a39d698ffffc583964968539d9788374f052fee8def4f]
+    gemma-2-9b-it|budget_icl_cities|countries: [7920, 0cde86a273938abf1f1d14a9f5e9bf72186a1bd37ec6f32fb65c81aa5de788ec]
+    gemma-2-9b-it|budget_iwl|animals: [792, c6be9c77f7e334fc2375d174d04b69206abf20623724155689cc41bda6867cb8]
+    gemma-2-9b-it|budget_iwl|animals_rep2: [792, c538a21d1d64f5cf8c6e1d7c73d99be2b3681d35c8c6fef7231c91f74465303e]
+    gemma-2-9b-it|budget_iwl|cities: [792, b7ab05101ce1a3a8d0ea3f5cded17ad604f9e00480a1e093c5344371e70af71d]
+    gemma-2-9b-it|budget_iwl|cities_rep2: [792, 56093ecf80b3bc886041f7ebbb360990de0a158d6524846c84d10d49fb85dada]
+    gemma-2-9b-it|budget_iwl|citieslinear: [792, f8b22f3a47bf278ed3d7ab3b76c3b0192a2e61e0ce44d75ac846fdc253590763]
+    gemma-2-9b-it|budget_iwl|countries: [792, 3d1447c700cd2a790fd667e113b1119aa7671326d21aa6d62ddf639f1bcaa1cd]
+    gemma-2-9b-it|budget_iwl|countries_rep2: [792, 432bf75d7411943d5cdfc1c409abc921b10e09550c3bb3dd589e70df40b2979d]
+    gemma-2-9b-it|budget_iwl|countries_rep3: [792, dc358176c40f6e1f5f31dcd3662fe7a5735f0307260e38b43a8367ea1e2a06f2]
+    gemma-2-9b-it|budget_iwl|countryarea: [792, 48ff13500d9e471c9bf28fff02550592ceda720565638bfbf7662b1f130a20fc]
+    gemma-2-9b-it|budget_iwl|countryarea_rep2: [792, 2e3df98ef9b863e63d3c485e5a387c0727d24217992a1c53fe2e4a7b6a97ebba]
+    gemma-2-9b-it|budget_iwl|countryarea_rep3: [792, 2650ccf63679333006badd8c91142c4b0d83c900eaf375ea51f635518f1153da]
+    gemma-2-9b-it|budget_iwl|usstates: [792, 6a45ee14952424262706fd1ed9d166a26314fc9b2653d7a6298acc878e81fcaa]
+    gemma-2-9b-it|budget_iwl|usstates_rep2: [792, 4fe3ac41e84bc94e55b49501a6880f7e7e74ffe3b478dcf1c0a57ba6f7f1334c]
+    gemma-2-9b-it|budget_iwl|usstates_rep3: [792, 1f17c5a0a5f0d3b29d63fa08357f4fb9da15ab896635fb8d89df3d44390cdefe]
+    glm-4-32b-0414|budget_icl|countries: [7920, 10fa8b21cca0c78a6a44ea2907fbd40e16d2f8fba242c5cad863debf12844954]
+    glm-4-32b-0414|budget_icl_cities|countries: [7920, f21014e1ec7d56d6003f67b622f160d8e436f64a5af7569742d9a00f1fa4eb70]
+    glm-4-32b-0414|budget_iwl|animals: [792, 8887890a983d7dc4ac1139d6276cef379ec1412bd0df7217dd55e9dbd313a8a4]
+    glm-4-32b-0414|budget_iwl|animals_rep2: [792, fc47e0ff9b266f2a19695b92ac66bfa7cd457f5875810813f184b8e89345f6f6]
+    glm-4-32b-0414|budget_iwl|cities: [792, c4853a3e49d35b6b2abf6c2847ee7aa3ec6987982e3da16a1c8a82ca90cb6d1a]
+    glm-4-32b-0414|budget_iwl|cities_rep2: [792, 120d1cf901e8ffa1bb8940313c28dd78e248a44aa06420241118fb4de3b320c5]
+    glm-4-32b-0414|budget_iwl|citieslinear: [792, d9a37f73586c2b21094957f0496e663a96a995e0d92b291bd8528ff6f3212c49]
+    glm-4-32b-0414|budget_iwl|countries: [792, 9de3a13a6fe96f6950e1b20169639c352f7aa7ac77a75cbbf7710720e1ef819d]
+    glm-4-32b-0414|budget_iwl|countries_rep2: [792, 9ddfb98593246c7eb36da9738ea2a5adcbbb5c493c614d2aa664d2ca28849d29]
+    glm-4-32b-0414|budget_iwl|countries_rep3: [792, ecdd87b41e055d882ae11546a894a5bd88a3c134ede92336649e171c37746347]
+    glm-4-32b-0414|budget_iwl|countryarea: [792, 63b78a4fe013a55059c3467b99b0edcd991fa98784787b8e4ede55c8dd63e6c4]
+    glm-4-32b-0414|budget_iwl|countryarea_rep2: [792, dee907b73a0abba44bfeaa617399b4ede965ad73c93ce9be1320f2c466ae54cc]
+    glm-4-32b-0414|budget_iwl|countryarea_rep3: [792, 97776800c090a71b533a0bbf7ed3fcfe3663f60bb995a9b18f07a10931c1dbc3]
+    glm-4-32b-0414|budget_iwl|usstates: [792, e7851967cd499ac3426eee3eab0959bf044dfcf69e6e44e5ae9303951eb84009]
+    glm-4-32b-0414|budget_iwl|usstates_rep2: [792, cf7aa5c9fa1aad4bb70faaf4780a786a96dfadc499f6a457d4887408ba19363a]
+    glm-4-32b-0414|budget_iwl|usstates_rep3: [792, fc22a763ed97d7c494ff746249edf05cc78f4fee2a4125575f11af7b595447ca]
+    glm-4-9b-0414|budget_icl|countries: [7920, 69a5e43500443a60c5d38762250f7f5f1ee88dd9af0e74535103633f38e14bd2]
+    glm-4-9b-0414|budget_icl_cities|countries: [7920, e9d952401d3294db9af005ae244c370f728b78b955f0c72f3ddb9382ac433bf6]
+    glm-4-9b-0414|budget_iwl|animals: [792, 2d081f1ac8b6dbd2e055cfa4e2a02cbebbb17e4e271258b1fc1237ac25fb1523]
+    glm-4-9b-0414|budget_iwl|animals_rep2: [792, 981a0b5ce81bfa75a0c572810f044869e2779ee0ffddc2e0966f7ee8276ef041]
+    glm-4-9b-0414|budget_iwl|cities: [792, c33a94810a18b89b29036a555ed01dc32a0a0ea33c90797fecdf67737af82bde]
+    glm-4-9b-0414|budget_iwl|cities_rep2: [792, 3b9b9acc365585243c386e18a5368e6fd6305f13f6b09da8e8f0cd2e5c0c615f]
+    glm-4-9b-0414|budget_iwl|citieslinear: [792, f1ea82dc25e1ad16cf096f7873fb42c142e33ebc7e6471bee2de49b1b3e08188]
+    glm-4-9b-0414|budget_iwl|countries: [792, 5fd004a1a37f1538f8ab69cfd5ad2005a4d6c003bab29e696e860c3aa4a15342]
+    glm-4-9b-0414|budget_iwl|countries_rep2: [792, 0aaf4d5f658c23fcc5496cd919a58498a617f9f5993e9888d98284efd2dd83c8]
+    glm-4-9b-0414|budget_iwl|countries_rep3: [792, b17d4008cdd2cd4f2011a3c749a1210104827f29067b9cbd2a1d4ed2ec10d744]
+    glm-4-9b-0414|budget_iwl|countryarea: [792, 9544b5baf05602dbb0cd5e12593c070270d63bb33cddeb75a08ce18d07978ddc]
+    glm-4-9b-0414|budget_iwl|countryarea_rep2: [792, 6d2cd6e024903e1620da243b96d625a1f404c7cb0a6c2191794ab7ac1f06748c]
+    glm-4-9b-0414|budget_iwl|countryarea_rep3: [792, 843e3fba87f4e8cd739af1baf03521f49fc01f3c68fc90ad7c15d4e1691cbf8d]
+    glm-4-9b-0414|budget_iwl|usstates: [792, 4ed58536b92c33bf43e785cb0b297ed80430073a10f4d5f46cb08f4f3cb48535]
+    glm-4-9b-0414|budget_iwl|usstates_rep2: [792, 239d502710dbcdb05630ba10245d6567eef3a56952a97723a16fbebc0ac4c650]
+    glm-4-9b-0414|budget_iwl|usstates_rep3: [792, b4c304ae25bbf88ffaca4d5ba4449979f2a85d7165dc52bc0d18142dd050427e]
+    gpt-oss-20b|budget_icl|countries: [7920, d681b2333d32bcb9c4e0dccb096d5f1ef2aeb75a7d3485d7175c2f27a2a2f02a]
+    gpt-oss-20b|budget_icl_cities|countries: [7920, 564c6196fc9682641c8d3f71ece15224ba91cf5ef28fec1266018a49372453b4]
+    gpt-oss-20b|budget_iwl|animals: [792, d2d09bd016be149174e6d086fd1beaf3876e7395c7eeb94eebd2703e1e8898cf]
+    gpt-oss-20b|budget_iwl|animals_rep2: [792, 75b8dcb5cda08eb597eedc61e1db247d014fb6e983ac8d4f25d69020d7d21b7e]
+    gpt-oss-20b|budget_iwl|cities: [792, 7e788efb4eaecabf0b102531ef1091a0b3b7ba2b5db35bee5c67aae24f058f0c]
+    gpt-oss-20b|budget_iwl|cities_rep2: [792, c54901821eed37aad0856cf1dc644fd82ef9421f214849c8a5d3a8cdac85013f]
+    gpt-oss-20b|budget_iwl|citieslinear: [792, 3f56fcb9d035f942b1d57fa3245eb117ec3643b48543d1184c8453f0d1e06569]
+    gpt-oss-20b|budget_iwl|countries: [792, ddc1e9373878f6ba298ce09fd1dab0b993b65dd3820e746d9d7b481c6095f8f4]
+    gpt-oss-20b|budget_iwl|countries_rep2: [792, ba7c06c44f939e5ec88d87ae7adb0717e9de0cd29218ab92c8fcc8a48af2fc51]
+    gpt-oss-20b|budget_iwl|countries_rep3: [792, 5fa643bcd665dec821a522a1503e1afbd2f08e5e15f217ee29cd8609c615eb27]
+    gpt-oss-20b|budget_iwl|countryarea: [792, ea1da1555e9652d2cd3da5e5e88b09d72395b8802718fe06091a1688d34beace]
+    gpt-oss-20b|budget_iwl|countryarea_rep2: [792, fc2fe85eff4244aff41b54ae7c33f435ebb454d32391a9e6c6071f1e1b65cc6f]
+    gpt-oss-20b|budget_iwl|countryarea_rep3: [792, 917b116ff47d3a57f2df8c68bab84c11cdfe1ffa7444ff7fc8b8652c2cf54a82]
+    gpt-oss-20b|budget_iwl|usstates: [792, 1078adb626b64e1cc7ea60a4ccbc4a7a22ff06d094cd4b48338ccf53a4fe2a78]
+    gpt-oss-20b|budget_iwl|usstates_rep2: [792, f76701cd9cf56c99cda6f5cccdd99833e82fd5285f6c8202c535cb706afc1ccf]
+    gpt-oss-20b|budget_iwl|usstates_rep3: [792, 12cc097fd4a9f82aaa5228210815f1c69f12f13a8efdc6ae8f51d311249f4b1d]
+    llama-3.1-70b-instruct|budget_icl|countries: [7920, 18afbb7b8b40ee6993a735b75e1004b788eed78d12fbd5e309f87191938e697b]
+    llama-3.1-70b-instruct|budget_icl_cities|countries: [7920, a855745c11676f3ecf8063d0b5b6a7f811b617642a7a853ef179789947d47ab7]
+    llama-3.1-70b-instruct|budget_iwl|animals: [792, a13fcca2bf57cce2d3f1d4f8a3782f3384b4a32671fd404799f903a72f772632]
+    llama-3.1-70b-instruct|budget_iwl|animals_rep2: [792, 3f13da0f382d922aa95745eca8b66b7ba9611741b7276dd1b222c288416b5e1f]
+    llama-3.1-70b-instruct|budget_iwl|cities: [792, cc7f08961a3e9210ecfb4026767e9bd49a29f560359ae4affb3ae4aa666829b3]
+    llama-3.1-70b-instruct|budget_iwl|cities_rep2: [792, ed8ba1eb17be191139fa55d935d32052c9f8cb3b623bf074436b41bf1256f81a]
+    llama-3.1-70b-instruct|budget_iwl|citieslinear: [792, 960a19191aad6d10db58cd918485fe641ada4f615b08d7ac6c18479c954be29b]
+    llama-3.1-70b-instruct|budget_iwl|countries: [792, f656077d34ca303872533bf87218a6a082ff19593dd654224a6571b26741d711]
+    llama-3.1-70b-instruct|budget_iwl|countries_rep2: [792, ed3fc524a7ced2accfac268ee7bc7ba1862fc4dfaf5c303ee162d79b48561b42]
+    llama-3.1-70b-instruct|budget_iwl|countries_rep3: [792, 2802f502cc48d2202077c36c85e8f510cffa375b6de3c2e435cf31eab7991699]
+    llama-3.1-70b-instruct|budget_iwl|countryarea: [792, 49f4c72fc661eda24ef1ae5e41e4e3f725975c99140842ed5d751072e93a2511]
+    llama-3.1-70b-instruct|budget_iwl|countryarea_rep2: [792, f9ba773874ccd92c904483293e1df52f967743e9cf967df731c2fd3a088d2c53]
+    llama-3.1-70b-instruct|budget_iwl|countryarea_rep3: [792, 901ba0d1d0eb3891c98a8770f6101e1a9ec191e52fdb29bc368631ad016a0495]
+    llama-3.1-70b-instruct|budget_iwl|usstates: [792, f98d5af974723308d8205c9e59e74815d672a8185faa07d2f309b403e9cb5672]
+    llama-3.1-70b-instruct|budget_iwl|usstates_rep2: [792, 81821a4330d0c110f8ef5720333641ae86c173e9ef0281991f9e6ea3bb759f46]
+    llama-3.1-70b-instruct|budget_iwl|usstates_rep3: [792, d38074b3e7c7c55978c4df9c3a210bae6f923c693ae9e823804e823a2b1a49fb]
+    llama-3.1-8b-instruct|budget_icl|countries: [7920, 91097219d7e07b0da1a1f8954a7fa39221c395c6b4357b844648ca922f0ac0db]
+    llama-3.1-8b-instruct|budget_icl_cities|countries: [7920, 862a0e642af99fef212a747a37f44d57cf723bedf47a874e6dded5541c27f0a4]
+    llama-3.1-8b-instruct|budget_iwl|animals: [792, c2cb84b247ae65616a4afc46e989be0ab6451fa6f126c529982741e03155664c]
+    llama-3.1-8b-instruct|budget_iwl|animals_rep2: [792, 5bd35c40b7900ce2b3b37aefacbb7bda9e6189be8570a0a79ff18807252cb6a5]
+    llama-3.1-8b-instruct|budget_iwl|cities: [792, e8fa68b1e6c6ce4930513d6f9721e8e8396f4893fec9045f2cc7f6ffaeb01f05]
+    llama-3.1-8b-instruct|budget_iwl|cities_rep2: [792, bfcddcb039ca78a8092cc7e04729a2daa6571134b9dfc7cc73c11357209cda3d]
+    llama-3.1-8b-instruct|budget_iwl|citieslinear: [792, 5c336310dd4f61c858063e2ce81e5b3585e46c20c9d9aa41ba1d1db43f3a6ce2]
+    llama-3.1-8b-instruct|budget_iwl|countries: [792, a322f40e9e7b21e6a0f0a039d9fabe75c3e2cae18dc418033970142095ac6f9e]
+    llama-3.1-8b-instruct|budget_iwl|countries_rep2: [792, 5f8eaf5c0568b15ba855a93e399951b789cb5d2bbead6cd0faf5cfe23a88566d]
+    llama-3.1-8b-instruct|budget_iwl|countries_rep3: [792, df09903df8f46199ec8dbf274f6e3a8aa29714c798958e71e0fc26397eed2b38]
+    llama-3.1-8b-instruct|budget_iwl|countryarea: [792, fcb37e9a9682a186f806eeec7d380472b31d5fe524388f4fcb47dbe4034acba6]
+    llama-3.1-8b-instruct|budget_iwl|countryarea_rep2: [792, 32ff0c0f0220e7c39f78d7c85ca6043cf1dba39bd2f58dae294c7fa9574f2b21]
+    llama-3.1-8b-instruct|budget_iwl|countryarea_rep3: [792, 05ab2d6a2f728c48034adec1bdf4264108a98bdbc81aa9500e3959f3286f785f]
+    llama-3.1-8b-instruct|budget_iwl|usstates: [792, 31f75224459d0241a94f6fe34554ee9c8301ef00ef5f9f589d1cf531ccd8d3e0]
+    llama-3.1-8b-instruct|budget_iwl|usstates_rep2: [792, bd2c78502c0a1d3a484b35bc18d6bf60353afaa4bb72acf4be6fc2a1006b1bc1]
+    llama-3.1-8b-instruct|budget_iwl|usstates_rep3: [792, 66159d3bb67d58f0b7ee614d2fd6db0d3da637d066d45e19b4f6bd41654d0b22]
+    llama-3.2-1b|budget_icl|countries: [7920, 8a9621a3dc64431b1899c38b0a24d4e6ab997e860f187da627f9f7588a5af28a]
+    llama-3.2-1b|budget_icl_cities|countries: [7920, 70a54e9f8527c15de6c40f3e70b4a668abb60af38074eaa31f0dda02a96098bf]
+    llama-3.2-1b|budget_iwl|animals: [792, 3d6781a98bf8034a625a9d7f8d18d08012a3aa38312a599d3bf04cf66a37f8bf]
+    llama-3.2-1b|budget_iwl|animals_rep2: [792, 3fdc13e67353508879d7c805d8dcf1c66be674edf9bc8a571605c8e145694084]
+    llama-3.2-1b|budget_iwl|cities: [792, c27ad1c02fa57ad47370a19f5d3747147b2126c70d55195008ea1f224128c7be]
+    llama-3.2-1b|budget_iwl|cities_rep2: [792, 3c8fbf1caba5509d72de217043f73ac513b99969c72211f5f485b771dc7f4497]
+    llama-3.2-1b|budget_iwl|citieslinear: [792, 9b7711b3518aa83c98e186d12b6501fb8242a6d47a6363c7d8adf9631c5a19c9]
+    llama-3.2-1b|budget_iwl|countries: [792, 47fba2955e26239218e69e2f3431eced57b1f7abc1c2af0c576387aef444eb97]
+    llama-3.2-1b|budget_iwl|countries_rep2: [792, 2aa5c920a05b9b8e2d1dce329a94a54a59bce535a44000e7dc36c9d16e4f803b]
+    llama-3.2-1b|budget_iwl|countries_rep3: [792, f46bc2e98154e45ffc6abaf0db20d083f448c14a147d9d9b3e5a0f28a55f6227]
+    llama-3.2-1b|budget_iwl|countryarea: [792, d9b3387b64ef74819e176a6051bf077f21aa33ed593dba350118607169e7764b]
+    llama-3.2-1b|budget_iwl|countryarea_rep2: [792, 2af8079ae17ddae329d5b8612e28bfabb1702fdd005b14cc6be4f69302496441]
+    llama-3.2-1b|budget_iwl|countryarea_rep3: [792, 3d0e9cd4bd4ad9e43dcd41aa0f7aa59b17f0f415fb93763380298964f748e9f4]
+    llama-3.2-1b|budget_iwl|usstates: [792, 9bb501e9bcd2ce8062bf4fa56fdb2920233b3a7cd6fcd2c6e844ed1f156fa97b]
+    llama-3.2-1b|budget_iwl|usstates_rep2: [792, 36465bee20ea0d0a60854c57564a8eae838b6b5c60737413d3928af7817f1b29]
+    llama-3.2-1b|budget_iwl|usstates_rep3: [792, 1ea2b54c7571f6d9960587a58ae40465499e634168a7b6fb651c4da688e4fbfc]
+    llama-3.2-3b|budget_icl|countries: [7920, 09eaacd08abd4aaa2b80060ed8cd30d6d8b45b980ea0a85e8c7815ca852bf634]
+    llama-3.2-3b|budget_icl_cities|countries: [7920, 70329d147c096da1e7a35b800f6c3a217d9a50abdd0a21eaa7b808847496c6a7]
+    llama-3.2-3b|budget_iwl|animals: [792, 220454d01802632efb38606fcd7d612b6f8f01100457bf8036cdf5df2e8054e0]
+    llama-3.2-3b|budget_iwl|animals_rep2: [792, 702fb1c47724ec9c692ec76cb1eb3c04c4ee7a1db6800bc327c9ab94decd0339]
+    llama-3.2-3b|budget_iwl|cities: [792, b4c331f44e29a3cb83395cb76046a609e3921ae0098bbe8c6009fc1e9a9b0551]
+    llama-3.2-3b|budget_iwl|cities_rep2: [792, c0b0e7acdd87140c58b28a9fc326d32e18cf6526fd3cfe99d4f7c2651d9bc47c]
+    llama-3.2-3b|budget_iwl|citieslinear: [792, a8d32aa03de5d1780808047eafb499b80dd16e8383d63e7a0cc2722f2034cd68]
+    llama-3.2-3b|budget_iwl|countries: [792, 516abc5fdc828f81200acf240e5da2aa7ac858ba870fc18ae35f9a7736df1dd5]
+    llama-3.2-3b|budget_iwl|countries_rep2: [792, a3157b1d70a4b76e0357cf7d703b4e6f091373a21195bf1ee7ad1b2d5251ea98]
+    llama-3.2-3b|budget_iwl|countries_rep3: [792, 98a1d8d795ade96cb7a68b9d1d23a096e0d5f39de8c0f055f4fb18bd998adb95]
+    llama-3.2-3b|budget_iwl|countryarea: [792, 9916a8aa256593968bb9a66691fe14a6f687b0e5e72b5cfbaa87307bc792f22b]
+    llama-3.2-3b|budget_iwl|countryarea_rep2: [792, 127b72e47fabe8c8183531b396eea6fb3ebe52fd7dcfb4285cda2c3036deccc9]
+    llama-3.2-3b|budget_iwl|countryarea_rep3: [792, fa8f6da21423cb8e7f4843e6e10eab77cb9012fdbc59e3ea46b35985af6d1d95]
+    llama-3.2-3b|budget_iwl|usstates: [792, 2f9414017ee114dec5900225eae0965a646300e081d113275f82e9e7017250b0]
+    llama-3.2-3b|budget_iwl|usstates_rep2: [792, a8f58d2e37bb838e8b8d658be7efd883a30d4ba00c32b478d7d32638456ac6ff]
+    llama-3.2-3b|budget_iwl|usstates_rep3: [792, f7a805870b76b18b0687395fa503250e91aaa1b134141e82855ec520d62fd309]
+    mistral-7b-instruct-v0.3|budget_icl|countries: [7920, 01f6d985c7676a6ba5584f791c8be04f48991b860616f9feea61e61d1ba2015e]
+    mistral-7b-instruct-v0.3|budget_icl_cities|countries: [7920, 9477a926c9c0b8bff15ea5a2914695024ee2602fec0e362461cf4ab9affffbf1]
+    mistral-7b-instruct-v0.3|budget_iwl|animals: [792, cadd96ec3b5a23ac4bd104e13f5f95ff6a0645a39d3a2a5dbd268aa436dccc8c]
+    mistral-7b-instruct-v0.3|budget_iwl|animals_rep2: [792, 6ae181b2f29f481b4d84a520dfaeb79b7e9c3e03c6e91389c7aae73b68140a5a]
+    mistral-7b-instruct-v0.3|budget_iwl|cities: [792, 37e56c039395ae28927ac979ec1d504384f3723c0a4df335bfa52838d0b47734]
+    mistral-7b-instruct-v0.3|budget_iwl|cities_rep2: [792, ec7778ef9f875707283def5f69a0cfb26da38ca214d8768e94ee4fe1761d3b0c]
+    mistral-7b-instruct-v0.3|budget_iwl|citieslinear: [792, 86f577749776d18580ad13a9b0252d6c895cb2cc251f1c1ab1c20aa0e34e0306]
+    mistral-7b-instruct-v0.3|budget_iwl|countries: [792, 3ee8ff85a6c6e1c785c865151d2095692e962ae6e1e06674186fe92acc1b326d]
+    mistral-7b-instruct-v0.3|budget_iwl|countries_rep2: [792, d5eead786303106d7f8c9e32496bb417ccb8e9726094d923b6097fa724521abe]
+    mistral-7b-instruct-v0.3|budget_iwl|countries_rep3: [792, 116aac622c92728d4541fa0f4c79336a17f67454545c0eeb0d3f02d4241aaa06]
+    mistral-7b-instruct-v0.3|budget_iwl|countryarea: [792, ab31595f5165858d7dc10ef8e00ab8bb55b86688030b8b762aa25c7228b7bb2f]
+    mistral-7b-instruct-v0.3|budget_iwl|countryarea_rep2: [792, 38d8afc10bbc31967fa90d60618efbde309a5d05c459fe9bd60b2df4faddf49f]
+    mistral-7b-instruct-v0.3|budget_iwl|countryarea_rep3: [792, b58cd3f645ac45191ab2d29290e482236dd1415a0e8bcd0242e1b71bb8ee6ec0]
+    mistral-7b-instruct-v0.3|budget_iwl|usstates: [792, bf7a4dbf8dfb0d33e9f49397c30002b84cb758326b702c3272bd45c11fb058c2]
+    mistral-7b-instruct-v0.3|budget_iwl|usstates_rep2: [792, 1ae57d43d234e4381f7f4d4044a359dfe1a7e382167d256b079d45bf6965da9d]
+    mistral-7b-instruct-v0.3|budget_iwl|usstates_rep3: [792, 1cc6ae080cb959466dd6d92dc4cc8e85b9a910d04a99e866e0bd912d3cc75e39]
+    olmo-2-32b-instruct|budget_icl|countries: [7920, 3df5ffb15a433b003462c1e8b3d9ea47052d55f4df96dcd7d6f52cb5cd7db235]
+    olmo-2-32b-instruct|budget_icl_cities|countries: [7920, 188a24dd4c50dea302f475a30cdfc26090cf9fb0b956df5bf6803c896de622fd]
+    olmo-2-32b-instruct|budget_iwl|animals: [792, cb213888014ec207bfd16643011d71fdae2b666ccf1bea151bed1468ff6f537c]
+    olmo-2-32b-instruct|budget_iwl|animals_rep2: [792, 6bf64e467ab387b05c0eede0696b1522094ffb3b79dc279bb9cdc889374f7ad2]
+    olmo-2-32b-instruct|budget_iwl|cities: [792, c24fb07b938704df25cad3c9023dd3b7f7b83f3a077d1de39e8352aed94ea112]
+    olmo-2-32b-instruct|budget_iwl|cities_rep2: [792, 0357199e1250b2c8369b8f11aaef7c2eee1bff6af932409edc667aba62a9e54f]
+    olmo-2-32b-instruct|budget_iwl|citieslinear: [792, 9a5bc5f71fe83b95cd302afa6a1e6be1fc3231763c408ed1e37180457c3aa6c3]
+    olmo-2-32b-instruct|budget_iwl|countries: [792, 90e2e0507a20f72a765987b92bce414ad37303ccf5b97a3d3d2c4239fba69bee]
+    olmo-2-32b-instruct|budget_iwl|countries_rep2: [792, 1df5de8a8ddc85836706f24dd5e4f6401bd190507268ce55f81c31ece7457e0f]
+    olmo-2-32b-instruct|budget_iwl|countries_rep3: [792, e30eb8b9df795f9006633f0d03e250603bdb6ad76df33dc8e5511c0a6754815a]
+    olmo-2-32b-instruct|budget_iwl|countryarea: [792, 1c42c86b463edf97f450ee14fcee2d581fd39c57648cb2f8c64e2f034459be38]
+    olmo-2-32b-instruct|budget_iwl|countryarea_rep2: [792, 2742078258bd237f63d78d6f9045e6367aae3d72c297443a7aa510bddc68efd7]
+    olmo-2-32b-instruct|budget_iwl|countryarea_rep3: [792, bf7d842e3d2307cbe3f0c881cd3a3eb1c558d60ebc18da08c9261eeef2c9cbcb]
+    olmo-2-32b-instruct|budget_iwl|usstates: [792, e340d8a63c9e8f807d3ffda463b9157f6569fbe212f7dc09f4864ee4362628e5]
+    olmo-2-32b-instruct|budget_iwl|usstates_rep2: [792, 0f05f486fd8985eeea642f4666fccbdb4c75603849625a8588642d5dadcd586a]
+    olmo-2-32b-instruct|budget_iwl|usstates_rep3: [792, cce42629c7c762f49e90445b74c31af4f76e14d71867c73b6da53a3385814c96]
+    olmo-2-7b-instruct|budget_icl|countries: [7920, eead7f9392d07a29324e8a7586dcea1daaf8d8c738e69d7924aaa1afb4b8d4c5]
+    olmo-2-7b-instruct|budget_icl_cities|countries: [7920, fa7fc023a02636c051730da6d15a0ccd00019a59b4ae78c23e3ceaf0b8c8b1a7]
+    olmo-2-7b-instruct|budget_iwl|animals: [792, 4826b6d9922a9105774e0de1eb4d0098cf12419a0c88712cf6e826b3f8edda34]
+    olmo-2-7b-instruct|budget_iwl|animals_rep2: [792, e65747258fb9382cf1376fe21af862051455b2cc09c9b919ac9a2ee64305b06f]
+    olmo-2-7b-instruct|budget_iwl|cities: [792, d6c0fdaba4ea8c8f2c71592ca3124c0ae09ac46e6c86dac59373653f7384af99]
+    olmo-2-7b-instruct|budget_iwl|cities_rep2: [792, b54e0543916d0f92423606c4ff45368e9e29dcfcc630e6f3dce8dd3066054279]
+    olmo-2-7b-instruct|budget_iwl|citieslinear: [792, be54bccc66ad2735989557ed55bf4f19bd7f7ca9fd0ca62491f7a52f37104a4e]
+    olmo-2-7b-instruct|budget_iwl|countries: [792, 5bb9a1ce32c5dc77b00284c5078b71ae95a597939fd4535475c51e5762292cf6]
+    olmo-2-7b-instruct|budget_iwl|countries_rep2: [792, 1e302d2219ecced97f38a10d90ee281a6677bef6090f1b63d622a033598e5e57]
+    olmo-2-7b-instruct|budget_iwl|countries_rep3: [792, ad09a9b3a271e699b8f551a25694dc5bb922ce99906d55207aa0c2155d4406d2]
+    olmo-2-7b-instruct|budget_iwl|countryarea: [792, 4eb8754c19b463cc3f6aae6e02683113d4907aae409040eb64e37e1869c40757]
+    olmo-2-7b-instruct|budget_iwl|countryarea_rep2: [792, 072e6f7006a6b98bd6f2c33b29bd551fac78ade3397aa0ce0dd6b79bcb4e382e]
+    olmo-2-7b-instruct|budget_iwl|countryarea_rep3: [792, 96148dc3ca54e5fbffcdc83af2f09c79afd90f56326710b319cf695d9d835933]
+    olmo-2-7b-instruct|budget_iwl|usstates: [792, 15f6951ae92f1e7f88183493fe4749e612bf4df7cab98069fb17066df7924a94]
+    olmo-2-7b-instruct|budget_iwl|usstates_rep2: [792, 481c437e1ac6e99a86e8920ffe8a88c602b8d9a1053caf1361d01b2839cae038]
+    olmo-2-7b-instruct|budget_iwl|usstates_rep3: [792, 08226d08681bd4bfc93854b01528be97f3b5e0570bd3655c01f589e2536e7a8d]
+    phi-4-reasoning|budget_icl|countries: [7920, 53f1e6d8fc11bfbca1dcb4ae368aa3ee2fa05c2e232dee0294b5d5974f78b3d0]
+    phi-4-reasoning|budget_icl_cities|countries: [7920, 0d51a481af600888b4e88794376b57bfe44da4862fca05993f7f2a0699ac1b7f]
+    phi-4-reasoning|budget_iwl|animals: [792, ddd0d7b02c8cf64ec1434d082f87873b0b287068b8c12f69d2141008e26d6849]
+    phi-4-reasoning|budget_iwl|animals_rep2: [792, cd4c12ab31c12e4e97d1a7c2c05d6d398873b0edf2a3834985501405c6797b2e]
+    phi-4-reasoning|budget_iwl|cities: [792, e5856bd7db3d62f5b3effc3e5624f0cba10f483ae5ac485ad12c53eb7619d7ce]
+    phi-4-reasoning|budget_iwl|cities_rep2: [792, b988bfd47723ebaeed0b9b6010673045af75d6285e8712b2b606b8348e583ad3]
+    phi-4-reasoning|budget_iwl|citieslinear: [792, c33703146b3d3bb7e9867935ef40f1a5927bfb465ac666d35eaaf6a1292921c3]
+    phi-4-reasoning|budget_iwl|countries: [792, fd78a9165fb8c7fbb1be0facab0b9f69d8bce606c4f671a9d3e5c4664061a292]
+    phi-4-reasoning|budget_iwl|countries_rep2: [792, 16b0c3e36bd77d18c87384fb2ed221d9be0051bc8212b4ba564720c7ecbe5026]
+    phi-4-reasoning|budget_iwl|countries_rep3: [792, 4d2a7d06eac121d07d05801c460c92ab7afcf394e7ee474b6e82d99f26c08011]
+    phi-4-reasoning|budget_iwl|countryarea: [792, 7dc5a4a15b3d4784d20621c8a36c20a4cffe987fa6ad535f8fb0f3740a900a77]
+    phi-4-reasoning|budget_iwl|countryarea_rep2: [792, 4cf7884cebc942930787922d4b1ce3f4e696fec737d59e8dabc5a886731f9418]
+    phi-4-reasoning|budget_iwl|countryarea_rep3: [792, 7397395bfb33a8bd541de6d09909d5ba3e3988fab894c9e9eaf11ff1ea2829ad]
+    phi-4-reasoning|budget_iwl|usstates: [792, 9283265957379124f0a473e3cb23ef709b00376b83d1efe7fadb2d0ace0db163]
+    phi-4-reasoning|budget_iwl|usstates_rep2: [792, 9bbaf4063b43dc2f211e5be21f2239db42e0dbe4919f175795ab141f8b91319b]
+    phi-4-reasoning|budget_iwl|usstates_rep3: [792, d5745b3eade52ab672cac2a0ed19d078ca58f635a2edc1fe8efc53240986811e]
+    qwen2.5-32b-instruct|budget_icl|countries: [7920, 3676cfebf9259f8ca47465e69e0d14b8c464ab2c420e96991502f28a29318031]
+    qwen2.5-32b-instruct|budget_icl_cities|countries: [7920, 8a11cfe6bb90a0a171c0374e0a7f38d123375319ad52d512147114fed8ae017d]
+    qwen2.5-32b-instruct|budget_iwl|animals: [792, f882d0d2aff694ff758405751d49941f3677948b78ff9a674c9b1826ed3bf42f]
+    qwen2.5-32b-instruct|budget_iwl|animals_rep2: [792, 52ac57302f80da793aa0604e69e010c19464bebb001ebd93450f24644dc7b971]
+    qwen2.5-32b-instruct|budget_iwl|cities: [792, c2372cc8ea64428fdc7361f2a620b8b33814e3328c3df738e15be39777d9be81]
+    qwen2.5-32b-instruct|budget_iwl|cities_rep2: [792, 45601bc24bd274cf8dca2044f45011a2964f43bdd90772a242ded04ad58a6573]
+    qwen2.5-32b-instruct|budget_iwl|citieslinear: [792, a5cb69d1c9a16238e7a26245a120f071b7c7e2869c7c0aa1723991b915175288]
+    qwen2.5-32b-instruct|budget_iwl|countries: [792, 37b859953bc7ba622c28e407a72279e9116c9f00474e7970ef49e5793959b28c]
+    qwen2.5-32b-instruct|budget_iwl|countries_rep2: [792, e0eeab61edf5f0196d357a14fe6e4fd5e019399549bc5ba929a8fae1038f2604]
+    qwen2.5-32b-instruct|budget_iwl|countries_rep3: [792, 1569842d3ad754ef7fcb4b5659efa591093007bad37bc5d799c6f9d02eb31d90]
+    qwen2.5-32b-instruct|budget_iwl|countryarea: [792, 59fad262290ca1d948926f30673a2180a2709765a8b233606508aba82e1e6d00]
+    qwen2.5-32b-instruct|budget_iwl|countryarea_rep2: [792, e1f50e299cbb31844562a109dd36e792ce356e6a49bd495e049422f14ac38352]
+    qwen2.5-32b-instruct|budget_iwl|countryarea_rep3: [792, 544157b8e0bb88270d873ed225be41e83d7a94b5e8efb29cc0fb1493bfc90612]
+    qwen2.5-32b-instruct|budget_iwl|usstates: [792, 463eea27b088336fce5262126015dde32c9590f9961548698c676543f0e1db23]
+    qwen2.5-32b-instruct|budget_iwl|usstates_rep2: [792, 962c42e3ebcf67f22cbb314e35ccbaa43753c5b044b2e0978a3ae18348294a14]
+    qwen2.5-32b-instruct|budget_iwl|usstates_rep3: [792, c82cc7d60e747601dc2ac922b7eae8b574e0185586b061d33ab794d0546b0222]
+    qwen2.5-7b-instruct|budget_icl|countries: [7920, 79b7afc6c19f5bd68162c9b3e2c719281adcf4112133f166b59bf77ec363d4eb]
+    qwen2.5-7b-instruct|budget_icl_cities|countries: [7920, 31360f868e8d418c0b9e14dcc2c1ebacd121dbc12df2a754f1c0223455d249a5]
+    qwen2.5-7b-instruct|budget_iwl|animals: [792, 0cd9f8eb9050913e3ab4a62e42bca1a5bb742ca9b0c4fb2f0f0d85df6e03824e]
+    qwen2.5-7b-instruct|budget_iwl|animals_rep2: [792, db6cfc7e985a9c215d756d59f6e7c19ca895d6b40a8522ae7813ba93f0b5afa1]
+    qwen2.5-7b-instruct|budget_iwl|cities: [792, 7c48c740f65e868ae21a543273207ce3b312f6e1c679ec1b830214b171e8cfd4]
+    qwen2.5-7b-instruct|budget_iwl|cities_rep2: [792, 13d34f18d66533905a895e8a317683dbe81f1ca19e21c607a191141b0754c0f1]
+    qwen2.5-7b-instruct|budget_iwl|citieslinear: [792, 400657f9ac3ee2351f488554853f2dabc5a5abcc9fe4f18316e654c629c3bd6f]
+    qwen2.5-7b-instruct|budget_iwl|countries: [792, 0da8fe8df49ada7eca1f399397d7e5fb6bdcaa34e45dd60500f866d6b616201d]
+    qwen2.5-7b-instruct|budget_iwl|countries_rep2: [792, c72c00cc81f9773c549a8e78d17db7764d8be2e4a0ccbc1957beab7fcb7cfccc]
+    qwen2.5-7b-instruct|budget_iwl|countries_rep3: [792, ae63651f4aabc4504a4b45b4dfd6751f38349c15efb319235fb28ac80901d9f3]
+    qwen2.5-7b-instruct|budget_iwl|countryarea: [792, bbcf5901b392c73d34c805b6133ed911d74d1da85d90c0a8080301e9c8fefb43]
+    qwen2.5-7b-instruct|budget_iwl|countryarea_rep2: [792, 65b20cf800174dd5f27a61979b30c8d601e690c83d6ea6a79325a442847a1b29]
+    qwen2.5-7b-instruct|budget_iwl|countryarea_rep3: [792, abae6b6fe7d0db0e1fa7d8c0835cbb82d4b51c528265fa8bcb35a505c6405dc4]
+    qwen2.5-7b-instruct|budget_iwl|usstates: [792, 7535b61d9ca154f5437a8ac7e7658536e793c4d3fb93aa5f79138186070ce94d]
+    qwen2.5-7b-instruct|budget_iwl|usstates_rep2: [792, 221833ef1ed98ac05dadda002959d0958b9624e187b3fd8693e16383b6734c05]
+    qwen2.5-7b-instruct|budget_iwl|usstates_rep3: [792, f73d20bea794be6ae1b7926ab8c5b256c9bd2d621e9f81a16ab24e26faafc6db]
+    qwen3-1.7b|budget_icl|countries: [7920, 9ac38e33f1c036af750284558cc3a006876ac35aeb5cb5a5fed7e3dad39647f4]
+    qwen3-1.7b|budget_icl_cities|countries: [7920, 7c82812f685c70618d16fd3aba60aa38ed00ef5fbd7ad0b029e8b00301827be3]
+    qwen3-1.7b|budget_iwl|animals: [792, d72d3334dbec92b5bbd01f540e846a784a63fd6a3ec503b991feb14d0ed84e9d]
+    qwen3-1.7b|budget_iwl|animals_rep2: [792, 73cf1684967e6a72034694e48027f3d93b411f289cf081b2842aedde13d455b2]
+    qwen3-1.7b|budget_iwl|cities: [792, fac7a46617f3c7e508e498133837d10be7d7717ea67588358a7e43dc1d40e075]
+    qwen3-1.7b|budget_iwl|cities_rep2: [792, 937066c63921c0187898bfe3a5456e40d3be1b9cb5c958c3ea42d3266b03f5ec]
+    qwen3-1.7b|budget_iwl|citieslinear: [792, b95843a63410c481918c2559202d42839c055a24f7a446eef0ae1f860e2dbff7]
+    qwen3-1.7b|budget_iwl|countries: [792, e0935802fa790bac5e20ef9d4e28277d8fde40e033edc2206740adcf7fe82780]
+    qwen3-1.7b|budget_iwl|countries_rep2: [792, b4f9eb691adc0ba99253ef4d6de76ea3143639a189ce23ffb241851510dd4d47]
+    qwen3-1.7b|budget_iwl|countries_rep3: [792, f73d9c8ed126f747887a96524e7ad5a581a18244981e2b74eb769c767872eef6]
+    qwen3-1.7b|budget_iwl|countryarea: [792, 8abbe3c7711db9b0889ae01679eb30af7c2ebaa0a984d4e01ced511c3b4553dd]
+    qwen3-1.7b|budget_iwl|countryarea_rep2: [792, 6453d8aeb7de2b0ef24e70ba26a033cd76fccede4189fdbba80be43f23dae02d]
+    qwen3-1.7b|budget_iwl|countryarea_rep3: [792, dc0bdbfa33a1da770fa75d5ef7c15210288e5df2f27d9aeae4268d31d7bdd0d0]
+    qwen3-1.7b|budget_iwl|usstates: [792, c9be183dfeb1044fb8b3b33cd7d2ac670191c31ef7c27f84fc43c4d9d7b9673b]
+    qwen3-1.7b|budget_iwl|usstates_rep2: [792, 731e59192ca832a1960cb006176208ec662c5035604f2ea9e7f0877e4131730e]
+    qwen3-1.7b|budget_iwl|usstates_rep3: [792, 6b81ec0e61690d898ce4fe149a2e53183c554744d7ad9c6fe2f010b5927f5918]
+    qwen3-14b|budget_icl|countries: [7920, 108b490c661d750901748a6a6cba5abc0c4bb3dcb87cb4b1376893c3a3df64b1]
+    qwen3-14b|budget_icl_cities|countries: [7920, 311f2523207aec1fd03e8d7045c9802edfed39373c705cca191c16ec52d91b63]
+    qwen3-14b|budget_iwl|animals: [792, 914e31a1138dbfd403a2b71688981c41c015b0abcb7e73804c4ad362508ae56d]
+    qwen3-14b|budget_iwl|animals_rep2: [792, f8310fc6cac5e26f41cb7c3be3671c467a9d0e068c2847b54ce9e920bc3124eb]
+    qwen3-14b|budget_iwl|cities: [792, 178be137a9d186fba0d4ea149ddbd2fadb44b424c3e72648059407cf90b6eb15]
+    qwen3-14b|budget_iwl|cities_rep2: [792, 53edf1a1dbec40ebadcda30070d7f4ac46b2e33136845828efc5560758cba3c9]
+    qwen3-14b|budget_iwl|citieslinear: [792, 0022b56d6ec4360495ce1ba61bf5de4a0d200a7d6fe2f9afd7e7a4b4a850a974]
+    qwen3-14b|budget_iwl|countries: [792, ea5f75471bd0e5b9d240a136eff7c5b4036b0f470f6caaa371f95f1c0126024e]
+    qwen3-14b|budget_iwl|countries_rep2: [792, 828c8d4968dfc4085233ce920d9b4a498ca04d89939a940ccd1ab35fbd101bdf]
+    qwen3-14b|budget_iwl|countries_rep3: [792, 37eba18e7d972cec571d598958ff441c88502e5e662682b3f8ed854f605a3b6e]
+    qwen3-14b|budget_iwl|countryarea: [792, bb38c8c6bf72476bee48fdce3076f0e22d2972aff16e68feaada941caad3a5c2]
+    qwen3-14b|budget_iwl|countryarea_rep2: [792, 42d66ac4272aac592ce126e42e70a35676940a3075c828eda256421bf6cc48bc]
+    qwen3-14b|budget_iwl|countryarea_rep3: [792, 967f3e7d7721c0c48f999065901f73f3f900e62e9c084f42688b4e5ffa8e5359]
+    qwen3-14b|budget_iwl|usstates: [792, 35d0ed61a7beebd3ab108154e618bf2666d04a67bcdda0f7b8e4ea9a11b76492]
+    qwen3-14b|budget_iwl|usstates_rep2: [792, 12f81eeecaa13f81162180cbb803f972a1486ba2f4e8b8ecc720dc43412248b0]
+    qwen3-14b|budget_iwl|usstates_rep3: [792, 1dcf6b32c3817f0dff699d41f438baf4254e1a99934011967a3d009772c093b2]
+    qwen3-32b|budget_icl|countries: [7920, e70459be24087a0fac147f0b449720f93de149b79e79c93a3b2436382803086c]
+    qwen3-32b|budget_icl_cities|countries: [7920, 34e50127095043cc8e58dc07f5e20d9aebe4c86db3ca4d94b7b4249c97054b78]
+    qwen3-32b|budget_iwl|animals: [792, 3c866e3e4106a1b8a2127293cf7624330d02db3654060b1fa001586f1bbab959]
+    qwen3-32b|budget_iwl|animals_rep2: [792, 0f3ac3c2b92c1d790924adc0bc90ddcc8444b13dfacf5c5aff27d4d21b204210]
+    qwen3-32b|budget_iwl|cities: [792, 7a7cfadaa74ec0488a3a75f4f51e2fdc938c48c4efab0f227b77b7f84d92244d]
+    qwen3-32b|budget_iwl|cities_rep2: [792, 3e1b5cb141efe86f0645899aa9820465aa554c7c4605a34ad832fb82ca3e2f0d]
+    qwen3-32b|budget_iwl|citieslinear: [792, 720dff7d568e22e339a11b8eaf7f36ea734ddbcc47d0a13c9197710fd8ac70a6]
+    qwen3-32b|budget_iwl|countries: [792, 544a4778f423c6a158b321a8e71e36d54227076a0c8eed696885c796d2e75933]
+    qwen3-32b|budget_iwl|countries_rep2: [792, 8826453eb45a5a02f9bd3d8230ae6dfd0aefe6a59930f0c04132adec248ea000]
+    qwen3-32b|budget_iwl|countries_rep3: [792, eccd329491bfb4b68771eae9f317e40430d7fc492b1cf8a538eca7ed4c889306]
+    qwen3-32b|budget_iwl|countryarea: [792, 2096bd4d274cf2e856749508fc00301cc8116f3a43a8280e1811a82eda40cc46]
+    qwen3-32b|budget_iwl|countryarea_rep2: [792, 7adac85fbc6791d0d2ec01250401162c27de1c1eda7d30d478b397117ca3f0f0]
+    qwen3-32b|budget_iwl|countryarea_rep3: [792, 57a1c5c9bbdec22bded0029f7801ee8d0d9d2c29d23564083295085f17a31ba4]
+    qwen3-32b|budget_iwl|usstates: [792, 8e32feca75b1d29dd73fa3796a92dcdf1bf1800ab5d2c99ef5d62f6bb0256bf8]
+    qwen3-32b|budget_iwl|usstates_rep2: [792, 7722994ffa95248be1794b8eb0a499e808f7561bebacc26874b5a4bf25732141]
+    qwen3-32b|budget_iwl|usstates_rep3: [792, 6ccee06cab8fb8b4c59a10289d63b3e10a1b78a1ce93400699bbf067c86ae104]
+    qwen3-4b|budget_icl|countries: [7920, 510eb2f8cb47a42f724ab8b9985384b16ccd976444394382885ce9dfa0dd5868]
+    qwen3-4b|budget_icl_cities|countries: [7920, fb38523df109e7025eca48b6fea8322d4ef81f435f1091b60d08cb610920bb30]
+    qwen3-4b|budget_iwl|animals: [792, 0c0cfa115f3f2a86e1ff4030248b993b5c16909e3883e2beb983d274c5b20d30]
+    qwen3-4b|budget_iwl|animals_rep2: [792, 416a85cb28cb04b82220ff9a8ba924a2f1c1b5e77ffe534e14f9f471042d136a]
+    qwen3-4b|budget_iwl|cities: [792, 12058d2dfa30e5d8f93a51db8ea128a6ab2609b271800d209800c489c06618f8]
+    qwen3-4b|budget_iwl|cities_rep2: [792, 4b391d7966b17c6482a84324d35164e219e08848ed8e5fdff73247ebf17bb957]
+    qwen3-4b|budget_iwl|citieslinear: [792, 4e6ed8886609e37b210334ec107f2be7425e9226c7346e2c51d6cb3f44a2b9aa]
+    qwen3-4b|budget_iwl|countries: [792, 36ce637292ea89cee506f192efa31c9255d64822c27dcdb056bc1891b4821efe]
+    qwen3-4b|budget_iwl|countries_rep2: [792, b330bf03d44992722e442c4988c83fb1e743d3552bc0d5d2743eed57f79eb0c8]
+    qwen3-4b|budget_iwl|countries_rep3: [792, 77b67fc9a9eaa4fe28ae0a8ec14f2e994f5811561c6aa067c1fc1b7034c3122d]
+    qwen3-4b|budget_iwl|countryarea: [792, 3c2bc630b7c7515ffc474413f648f800b3f8631344163189dbb10197d4c1b267]
+    qwen3-4b|budget_iwl|countryarea_rep2: [792, 3a31288c99208375beef656a4b24c7e307356ee775f2a563ebc233312fa23141]
+    qwen3-4b|budget_iwl|countryarea_rep3: [792, a6d133793256cf489823832d80f36fc90f3e6d29e669c410d52656f752d90cf1]
+    qwen3-4b|budget_iwl|usstates: [792, f7420db4ecc3540fb8361f2eb87d9a9e1c3fe1b2fedf49bdc98db1fb598de992]
+    qwen3-4b|budget_iwl|usstates_rep2: [792, 437d32e6a61a6675d7b5ebe9dd79864f93010a88c2bb891a16ec7aaa9b64b367]
+    qwen3-4b|budget_iwl|usstates_rep3: [792, 705bbbd2ecf0def49a9345833f75b6fe286261c27193984bddd82d8366550858]
+    qwen3-8b|budget_icl|countries: [7920, 53af3db7ff6c3a4a3139f0710da0755d3a84125521599677948ed2ea094f9dc6]
+    qwen3-8b|budget_icl_cities|countries: [7920, e3522952db030c0d53f3b4a758ece9537f5e439ac3f287ef641abb3e479bc17f]
+    qwen3-8b|budget_iwl|animals: [792, 361bf01590e12c6619f975a2d310c04b4016058fd1fc975e71956b2e5124a192]
+    qwen3-8b|budget_iwl|animals_rep2: [792, bcc826ed271fee41e22b14c534f47077bfdcaf932275d73b3b846d61ede74b15]
+    qwen3-8b|budget_iwl|cities: [792, b6cafe821136ef172db9ee4908dd08557e09d83db0d3f02f33155a657ef6fa0a]
+    qwen3-8b|budget_iwl|cities_rep2: [792, 937b306ee5ee51a1ed6b77af5d69dc85940aa164fe28a3b0865eb74ff7316198]
+    qwen3-8b|budget_iwl|citieslinear: [792, d08db0f692fd6f86710a5edf7bda8e8922e5ae34123eb85a90375ec80881ecac]
+    qwen3-8b|budget_iwl|countries: [792, 076e61c4adaa928e00bee4ae70da828e0d861ce51aab82f32ddf931c0746512c]
+    qwen3-8b|budget_iwl|countries_rep2: [792, d1f813d98b16ab3b5cf5f3789b58377143163b04164d073a1b9f9703497f4308]
+    qwen3-8b|budget_iwl|countries_rep3: [792, f6becf5f3e5b4a48202d31d3c57cf3f78af488ddadb1fb6de757ea5f98c3940c]
+    qwen3-8b|budget_iwl|countryarea: [792, 697bc436eb68936417303777ebcac335bd093c72f47b5b0ff533ca860d059e8a]
+    qwen3-8b|budget_iwl|countryarea_rep2: [792, 7bf0e89e1c44b41a86c47d2510eb3876a1162867dfdbddcd95aab8aeb9963868]
+    qwen3-8b|budget_iwl|countryarea_rep3: [792, c45273311ded3893006cd968f2aef62a78d24b549f2fc1f6d9b8ad4a1e0ec601]
+    qwen3-8b|budget_iwl|usstates: [792, 5a3c82901b0cea0fe840dfce5e18745ca5df387bb3ab4370628033ac4440bbd0]
+    qwen3-8b|budget_iwl|usstates_rep2: [792, ccd784058baf0e41d1e4d35cccffeeba9ce056c2fde77296927f04b5aa443c76]
+    qwen3-8b|budget_iwl|usstates_rep3: [792, 080e6de0d768fde9409991441c3bd2188ffa4e8f2d24b00b22c37bc38f16bdb5]
+  note: One row per scored trial x reasoning budget of every ladder test. Budget 0 is the direct pass,
+    collapsed to one row per trial from the identical copies the budgets each re-score, and equal to the
+    trial's row in direct.parquet. Every budget is a prefix of one 1,024-token greedy trace.
+- table: prompt_examples
+  path: prompt_examples.json
+  sha256: 3c05ae02bc56e86325d68e55e3ba739a0eccca9bacf7fb06d3e1efff11b64a0a
+  bytes: 19201
+  shared_query_items:
+  - Ukraine
+  - Singapore
+  target_distance: 3
+  target_gold_true: true
+  reasoning_budget: 128
+  examples:
+  - key: in_context_full
+    condition: icl_people
+    model: Qwen/Qwen3-32B
+    source_file: nxhop/final_countries/icl/qwen3-32b/N=11__hop=3__surface=fixed_gt.jsonl
+    source_line: 2
+    prompt_sha256: ee8f678fe00bcc3dc7fa22c99771e9a6fa2ef76369710cea8551f345f3d1a4a3
+  - key: familiar_contexts[0]
+    condition: no_context
+    test: iwl
+    model: Qwen/Qwen3-32B
+    source_file: nxhop/final_countries/iwl/qwen3-32b/N=11__hop=3__surface=zero_context__assign=natural.jsonl
+    source_line: 2
+    prompt_sha256: 137563dc1e35a1e32dbcaec84cdef19691c04bee73d4109e15ee7c7a141bd61d
+  - key: familiar_contexts[1]
+    condition: congruent
+    test: content
+    model: Qwen/Qwen3-32B
+    source_file: nxhop/final_countries/content_ctxonly/qwen3-32b/N=11__hop=3__surface=fixed_gt__assign=natural.jsonl
+    source_line: 2
+    prompt_sha256: 1d514351eb9a520cfd8737f9f2628d85bdaa29db611c5154e140e02b19208e2d
+  - key: familiar_contexts[2]
+    condition: reversed
+    test: content
+    model: Qwen/Qwen3-32B
+    source_file: nxhop/final_countries/content_ctxonly/qwen3-32b/N=11__hop=3__surface=fixed_gt__assign=reversed.jsonl
+    source_line: 9
+    prompt_sha256: 38b6e27f1ec4864b468ed4f99f4a82cb65907ac8ee56c4547a871991bd9f9d27
+  - key: familiar_contexts[3]
+    condition: shuffled
+    test: content
+    model: Qwen/Qwen3-32B
+    source_file: nxhop/final_countries/content_ctxonly/qwen3-32b/N=11__hop=3__surface=fixed_gt.jsonl
+    source_line: 13
+    prompt_sha256: 4ef8831aa0969baf7debad8a05ac70c1c1241eb8140b03d39b17e3aec2cbb4ea
+  - key: familiar_contexts[4]
+    condition: unrelated_context
+    test: uninformative
+    model: Qwen/Qwen3-32B
+    source_file: nxhop/final_countries/uninformative_ctxonly/qwen3-32b/N=11__hop=3__surface=disjoint_context__assign=natural.jsonl
+    source_line: 2
+    prompt_sha256: f0e7b78b32e1a1737486c526def195259c72f876ecc581ff883652e7eb7f3464
+  - key: reasoning[0]
+    condition: icl_people
+    test: budget_icl
+    model: Qwen/Qwen3-32B
+    source_file: cot_sweep/final_countries/budget_icl/qwen3-32b/b128__N=11__hop=3__surface=fixed_gt.jsonl
+    source_line: 1
+    prompt_sha256: a05444715a896be9073769a7f85aa3ef38058a646afeae8fab9fddbc1b4580ba
+  - key: reasoning[1]
+    condition: reversed
+    test: budget_reversed
+    model: Qwen/Qwen2.5-32B-Instruct
+    source_file: cot_sweep/final_countries/budget_reversed_ctxonly/qwen2.5-32b-instruct/b128__N=11__hop=3__surface=fixed_gt__assign=reversed.jsonl
+    source_line: 1
+    prompt_sha256: 63984fece952cde496b46feb919b329095139251732bfbf2103d0355b15ef51c
+  note: Every string is verbatim from a stored trial; a figure must not edit them beyond eliding a reasoning
+    trace, and the sha256 of each prompt lets the figure's text be checked against the stored runs. The
+    context examples are the context-only-instruction runs.

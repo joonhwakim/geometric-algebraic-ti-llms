@@ -1,0 +1,108 @@
+{
+ "pool": "countries_by_area_scale56p2",
+ "built": "2026-09-13",
+ "source_table": "data/items/sources/countries_area_worldbank.csv",
+ "source_citation": "",
+ "units": "km2 (surface area)",
+ "spacing": "geometric",
+ "step_ratio": 1.957143722926634,
+ "sens_ratio": 56.2,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "El Salvador",
+   "raw": "El Salvador",
+   "value": 21040.0,
+   "target": 18960.697266907853,
+   "dev_pct": 10.966383270731074,
+   "familiarity": 1956120.0
+  },
+  {
+   "name": "Switzerland",
+   "raw": "Switzerland",
+   "value": 41291.0,
+   "target": 37108.80963824089,
+   "dev_pct": 11.270074148240345,
+   "familiarity": 3951681.0
+  },
+  {
+   "name": "Ireland",
+   "raw": "Ireland",
+   "value": 70280.0,
+   "target": 72627.27384876253,
+   "dev_pct": -3.2319454171589097,
+   "familiarity": 2736285.0
+  },
+  {
+   "name": "Tajikistan",
+   "raw": "Tajikistan",
+   "value": 141379.0,
+   "target": 142142.01312637926,
+   "dev_pct": -0.5367963416283249,
+   "familiarity": 1769297.0
+  },
+  {
+   "name": "New Zealand",
+   "raw": "New Zealand",
+   "value": 267710.0,
+   "target": 278192.3487544484,
+   "dev_pct": -3.768021946462966,
+   "familiarity": 4113342.0
+  },
+  {
+   "name": "Sweden",
+   "raw": "Sweden",
+   "value": 528660.0,
+   "target": 544462.4091309856,
+   "dev_pct": -2.9023875415398797,
+   "familiarity": 2919930.0
+  },
+  {
+   "name": "Mauritania",
+   "raw": "Mauritania",
+   "value": 1030700.0,
+   "target": 1065591.1864002214,
+   "dev_pct": -3.274350130286905,
+   "familiarity": 1825885.0
+  },
+  {
+   "name": "Saudi Arabia",
+   "raw": "Saudi Arabia",
+   "value": 2149690.0,
+   "target": 2085515.101669138,
+   "dev_pct": 3.0771725546125115,
+   "familiarity": 4181184.0
+  },
+  {
+   "name": "India",
+   "raw": "India",
+   "value": 3287260.0,
+   "target": 4081652.7903004545,
+   "dev_pct": -19.462527341576706,
+   "familiarity": 11381076.0
+  },
+  {
+   "name": "Australia",
+   "raw": "Australia",
+   "value": 7741220.0,
+   "target": 7988381.137702515,
+   "dev_pct": -3.094007827643533,
+   "familiarity": 6958958.0
+  },
+  {
+   "name": "Canada",
+   "raw": "Canada",
+   "value": 15634410.0,
+   "target": 15634410.0,
+   "dev_pct": 0.0,
+   "familiarity": 5775469.0
+  }
+ ],
+ "dropped": {
+  "compound": [],
+  "excluded": [
+   "Kuwait (17,820)",
+   "Georgia (69,700)"
+  ]
+ }
+}

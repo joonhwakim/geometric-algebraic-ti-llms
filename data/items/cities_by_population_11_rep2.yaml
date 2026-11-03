@@ -1,0 +1,19 @@
+name: cities_by_population_11_rep2
+description: >
+  Built as cities_by_population_11, with a value ratio of 5.6 between items six ranks apart.
+  Built from
+  data/items/sources/cities_band_familiarity.csv (geometric spacing). Each item's value and
+  provenance: data/items/sources/cities_by_population_11_rep2_provenance.json.
+natural_order: true
+items:
+  - Beirut
+  - Budapest
+  - Athens
+  - Berlin
+  - Singapore
+  - Hong Kong
+  - Kuala Lumpur
+  - Istanbul
+  - Moscow
+  - Beijing
+  - Delhi

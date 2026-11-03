@@ -1,0 +1,64 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "geometric-algebraic-ti-llms"
+version = "0.1.0"
+description = "Large language model experiments for the paper 'Geometric and algebraic inference in humans and neural networks'"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Joonhwa Kim" },
+    { name = "Jacob Russin" },
+    { name = "Ellie Pavlick" },
+    { name = "Michael J. Frank" },
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+]
+# The analysis side (tables, figures, numbers, tests) needs only these.
+dependencies = [
+    "matplotlib>=3.11",
+    "numpy>=2",
+    "pandas>=2.2",
+    "pyarrow>=17",
+    "pyyaml>=6",
+]
+
+# Running a model needs the inference stack the published runs used (CUDA 12.8; the
+# versions pinned here and in uv.lock); see REPRODUCE.md.
+[project.optional-dependencies]
+inference = [
+    "torch==2.8.0",
+    "transformers==5.6.2",
+    "accelerate==1.13.0",
+    "tokenizers==0.22.2",
+    "safetensors==0.7.0",
+    "huggingface_hub==1.12.0",
+    "scipy==1.17.1",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[project.scripts]
+geo-alg-ti-llms = "geo_alg_ti_llms.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/joonhwakim/geometric-algebraic-ti-llms"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/geo_alg_ti_llms"]
+
+# results (57 MB of tables and manifests) stays in the sdist: the tests shipped with it
+# verify every committed table against its manifest.
+[tool.hatch.build.targets.sdist]
+include = ["src", "configs", "data/items", "experiments", "results", "scripts", "tests", "REPRODUCE.md", "CITATION.cff"]
+
+[tool.pytest.ini_options]
+addopts = "-q -p no:cacheprovider"
+testpaths = ["tests"]
+pythonpath = ["src"]

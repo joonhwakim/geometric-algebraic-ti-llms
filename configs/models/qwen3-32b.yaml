@@ -1,0 +1,12 @@
+name: Qwen/Qwen3-32B
+revision: 9216db5781bf21249d130ec9da846c4624c16137
+short_name: qwen3-32b
+dtype: bfloat16
+quantization: null
+chat_template: true
+thinking_mode: true
+expected_vram_gb: 70
+chat_generation_suffix: null
+# Hybrid reasoning: the template honors enable_thinking (True on the reasoning pass,
+# False on the direct pass, which closes an empty <think> block). The template bakes the
+# trailing newline, hence no chat_generation_suffix.

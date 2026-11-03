@@ -1,0 +1,19 @@
+name: us_states_by_population_11_rep2
+description: >
+  Built as us_states_by_population_11, with a value ratio of 5.62 between items six ranks apart.
+  Built from
+  data/items/sources/us_states_population_2024.csv (geometric spacing). Each item's value and
+  provenance: data/items/sources/us_states_by_population_11_rep2_provenance.json.
+natural_order: true
+items:
+  - Alaska
+  - South Dakota
+  - Maine
+  - West Virginia
+  - Nebraska
+  - Arkansas
+  - Oregon
+  - South Carolina
+  - Tennessee
+  - Michigan
+  - Pennsylvania

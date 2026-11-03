@@ -1,0 +1,92 @@
+{
+  "pool": "animals_by_mass_11_disjoint",
+  "built": "2026-09-12",
+  "queried_pool": "animals_by_mass_11",
+  "source_table": "data/items/sources/animals_pantheria_mass.csv",
+  "excluded_pools": [
+    "animals_by_mass_11"
+  ],
+  "familiarity_floor": null,
+  "selection": "the queried item set's spacing rule re-applied to the leftover candidates",
+  "spacing": "geometric",
+  "step_ratio": 1.6155557875145712,
+  "filler": [
+    {
+      "name": "otter",
+      "value": 8.8687,
+      "target": 8.6111892069947,
+      "dev_pct": 2.990420798048765,
+      "familiarity": null
+    },
+    {
+      "name": "coyote",
+      "value": 11.9891,
+      "target": 13.911856560743301,
+      "dev_pct": -13.820991844963137,
+      "familiarity": null
+    },
+    {
+      "name": "beaver",
+      "value": 18.1244,
+      "target": 1042.9962,
+      "dev_pct": -98.26227554807966,
+      "familiarity": null
+    },
+    {
+      "name": "lynx",
+      "value": 19.3,
+      "target": 22.475380381781395,
+      "dev_pct": -14.128260914130585,
+      "familiarity": null
+    },
+    {
+      "name": "chimpanzee",
+      "value": 45.0,
+      "target": 36.31023085237838,
+      "dev_pct": 23.93201294409404,
+      "familiarity": null
+    },
+    {
+      "name": "leopard",
+      "value": 52.4,
+      "target": 58.66120359955004,
+      "dev_pct": -10.673500056855412,
+      "familiarity": null
+    },
+    {
+      "name": "deer",
+      "value": 75.9013,
+      "target": 94.77044697782367,
+      "dev_pct": -19.910370352309357,
+      "familiarity": null
+    },
+    {
+      "name": "lion",
+      "value": 158.6239,
+      "target": 153.10694410036584,
+      "dev_pct": 3.603334866390928,
+      "familiarity": null
+    },
+    {
+      "name": "moose",
+      "value": 461.9008,
+      "target": 247.35280965001593,
+      "dev_pct": 86.73764031771137,
+      "familiarity": null
+    },
+    {
+      "name": "camel",
+      "value": 492.7145,
+      "target": 399.6122631880733,
+      "dev_pct": 23.29814307227831,
+      "familiarity": null
+    },
+    {
+      "name": "walrus",
+      "value": 1042.9962,
+      "target": 645.5959045552879,
+      "dev_pct": 61.55557875145712,
+      "familiarity": null
+    }
+  ]
+}

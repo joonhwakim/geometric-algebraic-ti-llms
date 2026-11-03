@@ -1,0 +1,119 @@
+{
+ "pool": "countries_by_area_11_rep2",
+ "built": "2026-09-13",
+ "source_table": "data/items/sources/countries_area_worldbank.csv",
+ "source_citation": "",
+ "units": "km2 (surface area)",
+ "spacing": "geometric",
+ "step_ratio": 1.6155557875145712,
+ "sens_ratio": 17.78,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "Israel",
+   "raw": "Israel",
+   "value": 22070.0,
+   "target": 22955.549091289176,
+   "dev_pct": -3.857668957372974,
+   "familiarity": 7495050.0
+  },
+  {
+   "name": "Switzerland",
+   "raw": "Switzerland",
+   "value": 41291.0,
+   "target": 37085.97019000709,
+   "dev_pct": 11.33859998389895,
+   "familiarity": 3951681.0
+  },
+  {
+   "name": "Lithuania",
+   "raw": "Lithuania",
+   "value": 65290.0,
+   "target": 59914.45377605881,
+   "dev_pct": 8.972035769587883,
+   "familiarity": 2307248.0
+  },
+  {
+   "name": "United Arab Emirates",
+   "raw": "United Arab Emirates",
+   "value": 98648.0,
+   "target": 96795.14255368606,
+   "dev_pct": 1.9142049873900193,
+   "familiarity": 4303509.0
+  },
+  {
+   "name": "Bangladesh",
+   "raw": "Bangladesh",
+   "value": 147570.0,
+   "target": 156377.95275590548,
+   "dev_pct": -5.632477341389712,
+   "familiarity": 5104191.0
+  },
+  {
+   "name": "United Kingdom",
+   "raw": "United Kingdom",
+   "value": 243610.0,
+   "target": 252637.30661448327,
+   "dev_pct": -3.5732278559550434,
+   "familiarity": 8447108.0
+  },
+  {
+   "name": "Zimbabwe",
+   "raw": "Zimbabwe",
+   "value": 390760.0,
+   "target": 408149.6628431217,
+   "dev_pct": -4.260609385779563,
+   "familiarity": 1798750.0
+  },
+  {
+   "name": "Afghanistan",
+   "raw": "Afghanistan",
+   "value": 652870.0,
+   "target": 659388.5499783262,
+   "dev_pct": -0.9885749424281712,
+   "familiarity": 3651073.0
+  },
+  {
+   "name": "Mauritania",
+   "raw": "Mauritania",
+   "value": 1030700.0,
+   "target": 1065278.988138326,
+   "dev_pct": -3.246003021119939,
+   "familiarity": 1825885.0
+  },
+  {
+   "name": "Iran",
+   "raw": "Iran",
+   "value": 1745150.0,
+   "target": 1721017.6346045388,
+   "dev_pct": 1.4022148820692604,
+   "familiarity": 6146240.0
+  },
+  {
+   "name": "Argentina",
+   "raw": "Argentina",
+   "value": 2780400.0,
+   "target": 2780400.0,
+   "dev_pct": 0.0,
+   "familiarity": 3288172.0
+  }
+ ],
+ "dropped": {
+  "compound": [],
+  "excluded": [
+   "Kuwait (17,820)",
+   "Georgia (69,700)",
+   "Tajikistan (141,379)",
+   "Romania (238,400)",
+   "Japan (377,969)",
+   "Kenya (591,969)",
+   "Tanzania (947,300)",
+   "Mongolia (1,564,116)",
+   "Algeria (2,381,740)",
+   "India (3,287,260)",
+   "Australia (7,741,220)",
+   "United States (9,831,510)",
+   "Russia (17,125,190)"
+  ]
+ }
+}

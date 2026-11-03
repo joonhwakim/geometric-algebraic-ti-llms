@@ -1,0 +1,105 @@
+{
+ "pool": "us_states_by_population_scale10",
+ "built": "2026-09-13",
+ "source_table": "data/items/sources/us_states_population_2024.csv",
+ "source_citation": "",
+ "units": "people",
+ "spacing": "geometric",
+ "step_ratio": 1.4677992676220695,
+ "sens_ratio": 10.0,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "North Dakota",
+   "raw": "North Dakota",
+   "value": 796568.0,
+   "target": 849520.8087897073,
+   "dev_pct": -6.233256235965297,
+   "familiarity": null
+  },
+  {
+   "name": "Montana",
+   "raw": "Montana",
+   "value": 1137233.0,
+   "target": 1246926.0209712405,
+   "dev_pct": -8.797075297682834,
+   "familiarity": null
+  },
+  {
+   "name": "West Virginia",
+   "raw": "West Virginia",
+   "value": 1769979.0,
+   "target": 1830237.100360488,
+   "dev_pct": -3.29236580050855,
+   "familiarity": null
+  },
+  {
+   "name": "Mississippi",
+   "raw": "Mississippi",
+   "value": 2943045.0,
+   "target": 2686420.6754838643,
+   "dev_pct": 9.552648505800898,
+   "familiarity": null
+  },
+  {
+   "name": "Oklahoma",
+   "raw": "Oklahoma",
+   "value": 4095393.0,
+   "target": 3943126.300000001,
+   "dev_pct": 3.8615729858817542,
+   "familiarity": null
+  },
+  {
+   "name": "Minnesota",
+   "raw": "Minnesota",
+   "value": 5793151.0,
+   "target": 5787717.895281322,
+   "dev_pct": 0.09387300516335229,
+   "familiarity": null
+  },
+  {
+   "name": "Virginia",
+   "raw": "Virginia",
+   "value": 8811195.0,
+   "target": 8495208.08789707,
+   "dev_pct": 3.719590018673111,
+   "familiarity": null
+  },
+  {
+   "name": "Illinois",
+   "raw": "Illinois",
+   "value": 12710158.0,
+   "target": 12469260.2097124,
+   "dev_pct": 1.9319333002607786,
+   "familiarity": null
+  },
+  {
+   "name": "New York",
+   "raw": "New York",
+   "value": 19867248.0,
+   "target": 18302371.003604874,
+   "dev_pct": 8.550132636295617,
+   "familiarity": null
+  },
+  {
+   "name": "Florida",
+   "raw": "Florida",
+   "value": 23372215.0,
+   "target": 26864206.754838634,
+   "dev_pct": -12.998678080117426,
+   "familiarity": null
+  },
+  {
+   "name": "California",
+   "raw": "California",
+   "value": 39431263.0,
+   "target": 39431263.0,
+   "dev_pct": 0.0,
+   "familiarity": null
+  }
+ ],
+ "dropped": {
+  "compound": [],
+  "excluded": []
+ }
+}

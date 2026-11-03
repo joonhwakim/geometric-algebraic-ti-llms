@@ -1,0 +1,25 @@
+name: animals_by_mass_11
+description: >
+  11 mammals ordered from lightest to heaviest adult body mass. Geometric spacing (target:
+  neighbors 1.62 times apart, 17.78-fold over six ranks), set from a pilot in which Qwen3-32B
+  answered without context or reasoning, so that symbolic distance 1 sits near chance and
+  distance 6 near ceiling. No familiarity screen: every candidate is a common English mammal
+  name. The source table has 36 mammals, so the adjacent ratios are irregular (1.16-2.14 against
+  the 1.62 target) and symbolic distance maps onto value ratio less evenly than for the other
+  dimensions.
+  Built from
+  data/items/sources/animals_pantheria_mass.csv (geometric spacing). Each item's value and
+  provenance: data/items/sources/animals_by_mass_11_provenance.json.
+natural_order: true
+items:
+  - wolf
+  - cheetah
+  - jaguar
+  - gorilla
+  - elk
+  - zebra
+  - buffalo
+  - giraffe
+  - hippopotamus
+  - rhinoceros
+  - elephant

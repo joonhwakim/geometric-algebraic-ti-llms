@@ -1,0 +1,23 @@
+name: cities_by_population_11_linear
+description: >
+  11 world cities ordered from smallest to largest built-up urban area population, in equal
+  absolute population steps instead of equal ratios (same source and familiarity floor as
+  cities_by_population_11). Under even spacing the low ranks are separated by large ratios and
+  the high ranks by small ones. This evenly spaced set is the City population dimension of the
+  behavioral experiments.
+  Built from
+  data/items/sources/cities_band_familiarity.csv (linear spacing). Each item's value and
+  provenance: data/items/sources/cities_by_population_11_linear_provenance.json.
+natural_order: true
+items:
+  - Vienna
+  - Milan
+  - Chicago
+  - Chennai
+  - Ho Chi Minh City
+  - Mexico City
+  - Kolkata
+  - Beijing
+  - Mumbai
+  - Delhi
+  - Jakarta

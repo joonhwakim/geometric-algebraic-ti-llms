@@ -1,0 +1,108 @@
+{
+ "pool": "countries_by_area_scale3p16",
+ "built": "2026-09-13",
+ "source_table": "data/items/sources/countries_area_worldbank.csv",
+ "source_citation": "",
+ "units": "km2 (surface area)",
+ "spacing": "geometric",
+ "step_ratio": 1.211382179268193,
+ "sens_ratio": 3.16,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "Turkmenistan",
+   "raw": "Turkmenistan",
+   "value": 491209.0,
+   "target": 483083.5519136465,
+   "dev_pct": 1.6819964277744541,
+   "familiarity": 2081959.0
+  },
+  {
+   "name": "Madagascar",
+   "raw": "Madagascar",
+   "value": 587295.0,
+   "target": 585198.8058857723,
+   "dev_pct": 0.35820204914034437,
+   "familiarity": 1883825.0
+  },
+  {
+   "name": "Myanmar",
+   "raw": "Myanmar",
+   "value": 676590.0,
+   "target": 708899.404779051,
+   "dev_pct": -4.557685415058449,
+   "familiarity": 3242894.0
+  },
+  {
+   "name": "Venezuela",
+   "raw": "Venezuela",
+   "value": 912050.0,
+   "target": 858748.1058431717,
+   "dev_pct": 6.206930040852109,
+   "familiarity": 2052816.0
+  },
+  {
+   "name": "Mauritania",
+   "raw": "Mauritania",
+   "value": 1030700.0,
+   "target": 1040272.1518987342,
+   "dev_pct": -0.9201584298169275,
+   "familiarity": 1825885.0
+  },
+  {
+   "name": "South Africa",
+   "raw": "South Africa",
+   "value": 1219090.0,
+   "target": 1260167.146399101,
+   "dev_pct": -3.2596585712044646,
+   "familiarity": 4270992.0
+  },
+  {
+   "name": "Mongolia",
+   "raw": "Mongolia",
+   "value": 1564116.0,
+   "target": 1526544.024047123,
+   "dev_pct": 2.4612441803851413,
+   "familiarity": 2194446.0
+  },
+  {
+   "name": "Sudan",
+   "raw": "Sudan",
+   "value": 1878000.0,
+   "target": 1849228.2265990407,
+   "dev_pct": 1.5558800686205279,
+   "familiarity": 1781854.0
+  },
+  {
+   "name": "Saudi Arabia",
+   "raw": "Saudi Arabia",
+   "value": 2149690.0,
+   "target": 2240122.1191018014,
+   "dev_pct": -4.036928091137328,
+   "familiarity": 4181184.0
+  },
+  {
+   "name": "Kazakhstan",
+   "raw": "Kazakhstan",
+   "value": 2724902.0,
+   "target": 2713644.0144644226,
+   "dev_pct": 0.4148659689911218,
+   "familiarity": 3274126.0
+  },
+  {
+   "name": "India",
+   "raw": "India",
+   "value": 3287260.0,
+   "target": 3287260.0,
+   "dev_pct": 0.0,
+   "familiarity": 11381076.0
+  }
+ ],
+ "dropped": {
+  "compound": [],
+  "excluded": [
+   "Kuwait (17,820)",
+   "Georgia (69,700)"
+  ]
+ }
+}

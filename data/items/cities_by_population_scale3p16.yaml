@@ -1,0 +1,19 @@
+name: cities_by_population_scale3p16
+description: >
+  Built as cities_by_population_11, with a value ratio of 3.16 between items six ranks apart.
+  Built from
+  data/items/sources/cities_band_familiarity.csv (geometric spacing). Each item's value and
+  provenance: data/items/sources/cities_by_population_scale3p16_provenance.json.
+natural_order: true
+items:
+  - Barcelona
+  - Toronto
+  - Chicago
+  - Kuala Lumpur
+  - Chongqing
+  - Istanbul
+  - Bangalore
+  - Kolkata
+  - Mumbai
+  - Delhi
+  - Jakarta

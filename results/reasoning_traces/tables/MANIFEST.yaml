@@ -1,0 +1,411 @@
+package_version: 0.1.0
+experiment: reasoning_traces
+exported: '2026-10-28'
+runs_root: <GEO_ALG_TI_LLMS_PUBLISHED_RUNS>
+runs_layout: <runs_root>/cot_sweep/final_<dim>/<published_as>/<model>/b<budget>__*.jsonl (the ladders
+  of the experiments named under derived_from)
+models:
+- qwen3-32b
+- qwen2.5-32b-instruct
+reasoning_kind:
+  qwen3-32b: native
+  qwen2.5-32b-instruct: prompted
+derived_from:
+  budget_icl:
+    experiment: symbolic_distance
+    dim: countries
+    condition: icl_people
+    dimension: country population
+    item_set: novel_names_11
+    published_as: budget_icl
+    context_only_instruction: false
+  budget_reversed:
+    experiment: content_effects
+    dim: usstates
+    condition: reversed
+    dimension: US state population
+    item_set: us_states_by_population_11
+    published_as: budget_reversed_ctxonly
+    context_only_instruction: true
+ladder_budgets:
+- 0
+- 32
+- 64
+- 128
+- 256
+- 384
+- 512
+- 640
+- 768
+- 896
+- 1024
+innermost_ranks: rank_low >= 2 and rank_high <= 8 (innermost 7 of 11; distances 1-6)
+trial_key_format: <dim>:<surface_form_mode>|<assignment_strategy>|<symbolic_distance>|<trial_id>
+tables:
+- table: chain_steps
+  path: chain_steps.parquet
+  rows: 31680
+  sha256: 05fb0adc73bb1882b92d38e1e9a4a481507263f11d937347461503e3ed1d8977
+  bytes: 20751
+  columns:
+    model: string
+    condition: string
+    dim: string
+    d: int8
+    rank_low: int8
+    rank_high: int8
+    innermost: bool
+    trial_key: string
+    budget: int16
+    is_correct: bool
+    inferences_needed: int8
+    inferences_composed: int8
+  conditions:
+  - icl_people
+  - reversed
+  models:
+  - qwen2.5-32b-instruct
+  - qwen3-32b
+  dims:
+  - countries
+  - usstates
+  row_order: condition, model, d, trial_key, budget
+  definition:
+    inferences_needed: d - 1, the inferences (compositions of adjacent relations) a distance-d query needs
+    inferences_composed: (d - 1) - (fewest links connecting the two queried items - 1), where the links
+      are the ten adjacent relations of the context plus every relation in the first B tokens of the chain
+      that runs in the direction of the ordering shown (a run of three or more items agreeing at every
+      link links all its pairs); a mention of the queried pair within 70 characters after one of the question
+      cues is ignored; budget 0 (direct answer) is 0
+    reader: geo_alg_ti_llms.traces (normalize_tracked, _chains, composed_inferences)
+    question_cues:
+    - statement
+    - whether
+    - ' if '
+    - question
+    - determine
+    - check
+    - asked
+    - claim
+    - figure out
+    - true or false
+    - verify
+    - conclusion
+    - answer
+    - need to
+    - evaluate
+    - assess
+    - compare
+  innermost_mean_at_1024_by_model_condition_distance:
+    qwen2.5-32b-instruct | icl_people | d=2:
+      trials: 100
+      mean_at_1024: 0.91
+      needed: 1
+    qwen2.5-32b-instruct | icl_people | d=3:
+      trials: 80
+      mean_at_1024: 1.988
+      needed: 2
+    qwen2.5-32b-instruct | icl_people | d=4:
+      trials: 60
+      mean_at_1024: 2.7
+      needed: 3
+    qwen2.5-32b-instruct | icl_people | d=5:
+      trials: 40
+      mean_at_1024: 3.8
+      needed: 4
+    qwen2.5-32b-instruct | icl_people | d=6:
+      trials: 20
+      mean_at_1024: 4.95
+      needed: 5
+    qwen2.5-32b-instruct | reversed | d=2:
+      trials: 100
+      mean_at_1024: 0.84
+      needed: 1
+    qwen2.5-32b-instruct | reversed | d=3:
+      trials: 80
+      mean_at_1024: 1.712
+      needed: 2
+    qwen2.5-32b-instruct | reversed | d=4:
+      trials: 60
+      mean_at_1024: 2.283
+      needed: 3
+    qwen2.5-32b-instruct | reversed | d=5:
+      trials: 40
+      mean_at_1024: 2.975
+      needed: 4
+    qwen2.5-32b-instruct | reversed | d=6:
+      trials: 20
+      mean_at_1024: 2.95
+      needed: 5
+    qwen3-32b | icl_people | d=2:
+      trials: 100
+      mean_at_1024: 1.0
+      needed: 1
+    qwen3-32b | icl_people | d=3:
+      trials: 80
+      mean_at_1024: 1.988
+      needed: 2
+    qwen3-32b | icl_people | d=4:
+      trials: 60
+      mean_at_1024: 3.0
+      needed: 3
+    qwen3-32b | icl_people | d=5:
+      trials: 40
+      mean_at_1024: 3.975
+      needed: 4
+    qwen3-32b | icl_people | d=6:
+      trials: 20
+      mean_at_1024: 5.0
+      needed: 5
+    qwen3-32b | reversed | d=2:
+      trials: 100
+      mean_at_1024: 0.99
+      needed: 1
+    qwen3-32b | reversed | d=3:
+      trials: 80
+      mean_at_1024: 2.0
+      needed: 2
+    qwen3-32b | reversed | d=4:
+      trials: 60
+      mean_at_1024: 3.0
+      needed: 3
+    qwen3-32b | reversed | d=5:
+      trials: 40
+      mean_at_1024: 4.0
+      needed: 4
+    qwen3-32b | reversed | d=6:
+      trials: 20
+      mean_at_1024: 4.95
+      needed: 5
+  trial_sets:
+    qwen2.5-32b-instruct|icl_people|countries: [7920, 17394e3d6076da2ccdefdc875683e48fbadec8d46f113d498c3f86bc482c7df3]
+    qwen2.5-32b-instruct|reversed|usstates: [7920, 37d2c5b56a44cfc607bc9ab6626112ff40e3c572d65f84fd5dd83f9e3a2597ee]
+    qwen3-32b|icl_people|countries: [7920, 73530caf9aa1114f21d3fade69c031d4184e0a990a1a4f60fbb448800050eaa6]
+    qwen3-32b|reversed|usstates: [7920, fdb1a2586ba494203b299899de154e89d6ebd8669a07f30013488339a4673f44]
+  checks:
+    self_test:
+    - text: ''
+      query: Belgium vs Spain
+      needed: 2
+      composed: 0
+    - text: Belgium > Netherlands, Netherlands > Ukraine, Ukraine > Spain, Belgium > Spain
+      query: Belgium vs Spain
+      needed: 2
+      composed: 2
+    - text: Belgium > Netherlands > Ukraine > Spain
+      query: Belgium vs Spain
+      needed: 2
+      composed: 2
+    - text: Spain < Ukraine < Netherlands < Belgium
+      query: Belgium vs Spain
+      needed: 2
+      composed: 2
+    - text: Belgium is larger than Ukraine.
+      query: Belgium vs Spain
+      needed: 2
+      composed: 1
+    - text: '**Belgium** has a larger population than Ukraine.'
+      query: Belgium vs Spain
+      needed: 2
+      composed: 1
+    - text: 'To determine if Belgium > Spain: Belgium > Netherlands, Netherlands > Ukraine.'
+      query: Belgium vs Spain
+      needed: 2
+      composed: 0
+    - text: Spain > Belgium
+      query: Belgium vs Spain
+      needed: 2
+      composed: 0
+    - text: Jamaica > Panama > Singapore
+      query: Belgium vs Spain
+      needed: 2
+      composed: 0
+    - text: So Belgium > Ukraine. Later, Ukraine > Germany.
+      query: Belgium vs Germany
+      needed: 3
+      composed: 2
+    - text: Belgium > Ukraine > Netherlands
+      query: Belgium vs Spain
+      needed: 2
+      composed: 1
+    committed_tables_matched:
+    - table: symbolic_distance/ladders
+      sha256: 314dea966039de62fb0a99d93936d3799db655fe5aa00d34f5e167b5cbb2e032
+      rows_matched: 15840
+    - table: content_effects/ladders
+      sha256: 725a4d05a4490f22dca768a17d830d45008c6f7886caf6e23489b6da09c093ff
+      rows_matched: 15840
+    raw_directories:
+    - dir: cot_sweep/final_countries/budget_icl/qwen3-32b
+      n_files: 80
+      sha256: 713cbd6b252e5511b0973cf2d4e28120dfa1a8198a8d13a0e329a296db805983
+    - dir: cot_sweep/final_countries/budget_icl/qwen2.5-32b-instruct
+      n_files: 80
+      sha256: 90a1d25e35cd0303a1f5e2cc2a7e4b2e24b5b27238d2ced0396822fc5525febe
+    - dir: cot_sweep/final_usstates/budget_reversed_ctxonly/qwen3-32b
+      n_files: 80
+      sha256: 9e89ae0ae2ed910c251f922de6ca11be35d932e8918c651e32f1417e30bf38f4
+    - dir: cot_sweep/final_usstates/budget_reversed_ctxonly/qwen2.5-32b-instruct
+      n_files: 80
+      sha256: fd70fb98d602a30941d79880ad751f90ec6de2cd0bd1288bdf74acac075afcee
+    ladder_direct_collapse:
+      countries/budget_icl/qwen3-32b:
+        n_trials: 720
+        n_direct_disagreements: 0
+        twins:
+          n_twins: 720
+          max_abs_logit_gap_delta: 0.0
+          n_ladder_rows_ranks_checked: 7920
+          conditions_without_ladder: []
+      countries/budget_icl/qwen2.5-32b-instruct:
+        n_trials: 720
+        n_direct_disagreements: 0
+        twins:
+          n_twins: 720
+          max_abs_logit_gap_delta: 0.0
+          n_ladder_rows_ranks_checked: 7920
+          conditions_without_ladder: []
+      usstates/budget_reversed/qwen3-32b:
+        n_trials: 720
+        n_direct_disagreements: 0
+        twins:
+          n_twins: 720
+          max_abs_logit_gap_delta: 0.0
+          n_ladder_rows_ranks_checked: 7920
+          conditions_without_ladder:
+          - congruent
+          - shuffled
+      usstates/budget_reversed/qwen2.5-32b-instruct:
+        n_trials: 720
+        n_direct_disagreements: 0
+        twins:
+          n_twins: 720
+          max_abs_logit_gap_delta: 0.0
+          n_ladder_rows_ranks_checked: 7920
+          conditions_without_ladder:
+          - congruent
+          - shuffled
+    rows_expected: 31680
+    trials_with_a_count_dropping_between_budgets: 0
+    rules:
+    - every ladder row is read and checked as the trial export reads it (collapse, direct twin, complete
+      ladder, unique keys, the model's trigger)
+    - every row joins one committed ladder row (model, condition, dim, trial_key, budget) of its experiment
+      with the same rank_low, rank_high, innermost, is_correct and logit_gap
+    - every stored trace row names the ladder row's trial id and distance
+    - every trial has all eleven budgets; budget 0 counts 0; every count lies in 0 .. d - 1
+  note: One row per reasoning trial and budget of the two ladders. Rows at every distance and rank are
+    kept; the paper's panels use the innermost ranks at distances 2-6 (distance 1 needs no inference).
+    Each count is read from the first B tokens of the trial's single 1,024-token greedy chain (cot_trace
+    of the b<B> file); it reads the text only and says nothing about how the answer was scored. Answers
+    and correctness are the stored ones, unchanged.
+- table: trace_examples
+  path: trace_examples.json
+  sha256: 959416960504d0c153c86f60009794ac1f5d4b9f9d0aef73bf5d7a38abd604a7
+  bytes: 18950
+  n_examples: 4
+  selection:
+    ladder: usstates/budget_reversed (US state population, reversed context, context-only instruction;
+      experiment content_effects, stored as budget_reversed_ctxonly)
+    budget: 1024
+    distance: 4
+    ranks: innermost (rank_low >= 2 and rank_high <= 8)
+    rule: within each model and outcome (correct, incorrect at the 1,024-token budget), the chains that
+      ended within the budget are eligible, and a correct example must also have composed all d - 1 inferences
+      by 1,024 tokens; the example is the eligible trial whose chain length (tokens) is nearest the eligible
+      trials' median, ties to the lower trial id
+    groups:
+      qwen3-32b | correct:
+        trials: 53
+        finished_within_budget: 38
+        eligible: 38
+      qwen3-32b | incorrect:
+        trials: 7
+        finished_within_budget: 1
+        eligible: 1
+      qwen2.5-32b-instruct | correct:
+        trials: 49
+        finished_within_budget: 49
+        eligible: 38
+      qwen2.5-32b-instruct | incorrect:
+        trials: 11
+        finished_within_budget: 11
+        eligible: 11
+  examples:
+  - id: qwen3-32b-correct
+    trial_key: usstates:fixed_gt|reversed|4|36
+    query: Oklahoma > Illinois
+    query_true_in_ordering_shown: true
+    scored_answer_true: true
+    is_correct: true
+    cot_n_tokens: 693
+    cot_finish_reason: stop
+    inferences_composed: 3
+    inferences_needed: 3
+    source_file: cot_sweep/final_usstates/budget_reversed_ctxonly/qwen3-32b/b1024__N=11__hop=4__surface=fixed_gt__assign=reversed.jsonl
+    source_line: 73
+    sha256_scored_prompt: 6c0e3fa1394ed7d0ec5ad5b2478c32a60ea3b99835f7f23f52c75c4b9d1c6211
+    sha256_trace: 985ede193cd73eba3eb75fe59f586568b602a58556132e28a6bd1f789003c942
+  - id: qwen3-32b-incorrect
+    trial_key: usstates:fixed_gt|reversed|4|42
+    query: Indiana > Florida
+    query_true_in_ordering_shown: true
+    scored_answer_true: false
+    is_correct: false
+    cot_n_tokens: 1022
+    cot_finish_reason: stop
+    inferences_composed: 3
+    inferences_needed: 3
+    source_file: cot_sweep/final_usstates/budget_reversed_ctxonly/qwen3-32b/b1024__N=11__hop=4__surface=fixed_gt__assign=reversed.jsonl
+    source_line: 85
+    sha256_scored_prompt: 29d83d2011f91616ae4ac7986dda8e7c30a6de8fef71abe13c03807ef175b480
+    sha256_trace: 58a810f6c546706e10bafeb337d63717fb483b0a851d9cbaa37afa5090ff7144
+  - id: qwen2.5-32b-instruct-correct
+    trial_key: usstates:fixed_gt|reversed|4|13
+    query: Florida > Indiana
+    query_true_in_ordering_shown: false
+    scored_answer_true: false
+    is_correct: true
+    cot_n_tokens: 267
+    cot_finish_reason: eos
+    inferences_composed: 3
+    inferences_needed: 3
+    source_file: cot_sweep/final_usstates/budget_reversed_ctxonly/qwen2.5-32b-instruct/b1024__N=11__hop=4__surface=fixed_gt__assign=reversed.jsonl
+    source_line: 27
+    sha256_scored_prompt: 013731e4a7c2e37fb9f5b70ab2a4464a134de92d1aa21912b0ec03e441236c56
+    sha256_trace: 82577dcb70d4b794020e0693df331c603a037521aab68f2c9260b46413044458
+  - id: qwen2.5-32b-instruct-incorrect
+    trial_key: usstates:fixed_gt|reversed|4|5
+    query: New York > Alabama
+    query_true_in_ordering_shown: false
+    scored_answer_true: true
+    is_correct: false
+    cot_n_tokens: 311
+    cot_finish_reason: eos
+    inferences_composed: 1
+    inferences_needed: 3
+    source_file: cot_sweep/final_usstates/budget_reversed_ctxonly/qwen2.5-32b-instruct/b1024__N=11__hop=4__surface=fixed_gt__assign=reversed.jsonl
+    source_line: 11
+    sha256_scored_prompt: 51c6dddfdec2ced342e884827df4233bc7bf09c8dad37c09a2cd489a5751c48b
+    sha256_trace: 06a2cc771701fd79605f76519a41786ba0fc48e4c64b15de7976216c07e86e08
+  checks:
+    committed_tables_matched:
+    - table: content_effects/ladders
+      sha256: 725a4d05a4490f22dca768a17d830d45008c6f7886caf6e23489b6da09c093ff
+      rows_matched: 4
+    chain_steps:
+      path: chain_steps.parquet
+      sha256: 05fb0adc73bb1882b92d38e1e9a4a481507263f11d937347461503e3ed1d8977
+    rules:
+    - every example joins one committed ladder row (model, condition, dim, trial_key, budget) with the
+      same rank_low, rank_high, innermost, is_correct and logit_gap
+    - the stored scored prompt is the reasoning-pass prompt, the chain and the scoring suffix, byte for
+      byte
+    - the reasoning-pass prompt carries the context-only sentence; only a prompted-reasoning model's ends
+      its user turn with the step-by-step trigger
+    - the queried statement's items are the trial's queried ranks
+    - the example's count at the full budget is the count of its stored chain
+  note: 'Four reasoning trials of the reversed context on US state population under the context-only instruction
+    (distance 4, 1,024-token budget), one correct and one incorrect for each model, chosen by the rule
+    in ''selection'': the reasoning-pass prompt, the chain and the scoring suffix verbatim, with the stored
+    answer. Strings are verbatim; a figure or appendix must not edit them beyond eliding a chain.'

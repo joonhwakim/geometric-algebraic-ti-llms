@@ -1,0 +1,26 @@
+name: countries_by_population_11_rep3
+description: >
+  Replicate of countries_by_population_11 at the same spacing targets (vmax set to the main item
+  set's top value, step 1.616x), drawn from items disjoint from the main item set. The IWL test
+  has no premises, so its prompts are deterministic and further premise orders would repeat the
+  same trials: the innermost seven ranks leave only 2*(7-d) trials per distance (12 at d=1, 2 at
+  d=6) in one item set. Replicates add independent item pairs at the same value ratios, which
+  raises power and decorrelates item identity from symbolic distance. Spacing matters inside the
+  analyzed ranks (2-8); the top ranks are compressed because few countries exceed 200 million,
+  but ranks 9-10 lie outside the analyzed ranks.
+  Built from
+  data/items/sources/countries_full_familiarity.csv (geometric spacing). Each item's value and
+  provenance: data/items/sources/countries_by_population_11_rep3_provenance.json.
+natural_order: true
+items:
+  - Namibia
+  - Costa Rica
+  - Hong Kong
+  - Jordan
+  - Senegal
+  - Ivory Coast
+  - Myanmar
+  - Iran
+  - Russia
+  - Bangladesh
+  - Pakistan

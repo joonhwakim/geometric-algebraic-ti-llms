@@ -1,0 +1,19 @@
+name: countries_by_population_scale3p16
+description: >
+  Built as countries_by_population_11, with a value ratio of 3.16 between items six ranks apart.
+  Built from
+  data/items/sources/countries_band_familiarity.csv (geometric spacing). Each item's value and
+  provenance: data/items/sources/countries_by_population_scale3p16_provenance.json.
+natural_order: true
+items:
+  - Spain
+  - Italy
+  - Thailand
+  - Iran
+  - Egypt
+  - Mexico
+  - Bangladesh
+  - Brazil
+  - Pakistan
+  - Indonesia
+  - United States

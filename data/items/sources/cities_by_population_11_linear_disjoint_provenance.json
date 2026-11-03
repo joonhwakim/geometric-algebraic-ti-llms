@@ -1,0 +1,92 @@
+{
+  "pool": "cities_by_population_11_linear_disjoint",
+  "built": "2026-09-12",
+  "queried_pool": "cities_by_population_11_linear",
+  "source_table": "data/items/sources/cities_band_familiarity.csv",
+  "excluded_pools": [
+    "cities_by_population_11_linear"
+  ],
+  "familiarity_floor": 1052208.0,
+  "selection": "the queried item set's spacing rule re-applied to the leftover candidates",
+  "spacing": "linear",
+  "step_ratio": null,
+  "filler": [
+    {
+      "name": "Copenhagen",
+      "value": 1715000.0,
+      "target": 1715000.0,
+      "dev_pct": 0.0,
+      "familiarity": 1208603.0
+    },
+    {
+      "name": "Damascus",
+      "value": 3406000.0,
+      "target": 3571900.0,
+      "dev_pct": -4.644586914527283,
+      "familiarity": 1297157.0
+    },
+    {
+      "name": "Barcelona",
+      "value": 5489000.0,
+      "target": 5428800.0,
+      "dev_pct": 1.108900677866198,
+      "familiarity": 1928158.0
+    },
+    {
+      "name": "Toronto",
+      "value": 6400000.0,
+      "target": 20284000.0,
+      "dev_pct": -68.44803786235457,
+      "familiarity": 1771010.0
+    },
+    {
+      "name": "Hong Kong",
+      "value": 7117000.0,
+      "target": 7285700.0,
+      "dev_pct": -2.31549473626419,
+      "familiarity": 3856471.0
+    },
+    {
+      "name": "Kuala Lumpur",
+      "value": 9899000.0,
+      "target": 9142600.0,
+      "dev_pct": 8.27335768818498,
+      "familiarity": 1180905.0
+    },
+    {
+      "name": "Paris",
+      "value": 11282000.0,
+      "target": 10999500.0,
+      "dev_pct": 2.568298559025406,
+      "familiarity": 2408397.0
+    },
+    {
+      "name": "Istanbul",
+      "value": 14749000.0,
+      "target": 12856400.0,
+      "dev_pct": 14.721072773093557,
+      "familiarity": 1888305.0
+    },
+    {
+      "name": "Los Angeles",
+      "value": 15582000.0,
+      "target": 14713300.0,
+      "dev_pct": 5.904181930634178,
+      "familiarity": 3274247.0
+    },
+    {
+      "name": "Moscow",
+      "value": 18509000.0,
+      "target": 16570200.0,
+      "dev_pct": 11.700522624953225,
+      "familiarity": 1628382.0
+    },
+    {
+      "name": "Bangkok",
+      "value": 20284000.0,
+      "target": 18427100.0,
+      "dev_pct": 10.077006148552936,
+      "familiarity": 1352019.0
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+name: us_states_by_population_11
+description: >
+  11 US states ordered from smallest to largest resident population. Geometric spacing
+  (neighbors about 1.33 times apart, 5.62-fold over six ranks), set from a pilot in which
+  Qwen3-32B answered without context or reasoning, so that symbolic distance 1 sits near chance
+  and distance 6 near ceiling. No familiarity screen: every state name is unambiguous and well
+  known.
+  Built from
+  data/items/sources/us_states_population_2024.csv (geometric spacing). Each item's value and
+  provenance: data/items/sources/us_states_by_population_11_provenance.json.
+natural_order: true
+items:
+  - New Mexico
+  - Kansas
+  - Oklahoma
+  - Alabama
+  - Indiana
+  - New Jersey
+  - Illinois
+  - New York
+  - Florida
+  - Texas
+  - California

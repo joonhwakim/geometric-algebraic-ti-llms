@@ -1,0 +1,942 @@
+rank,country,urban_area,population_2025
+2,China,"Shanghai-Changzhou, SH-SZ-ZG",45115000
+3,Japan,Tokyo-Yokohama,37325000
+4,Indonesia,Jakarta,36877000
+5,India,"Delhi, DL-UP-HR",33224000
+6,India,"Mumbai, MH",26237000
+7,Philippines,Manila,25521000
+8,Bangladesh,Dhaka,25305000
+9,South Korea,Seoul-Incheon,23825000
+10,Egypt,Cairo,22684000
+11,China,"Beijing, BJ-HEB",22363000
+12,Brazil,Sao Paulo,21747000
+13,Pakistan,Karachi,21258000
+14,United States,"New York, NY-NJ-CT",20892000
+15,India,"Kolkata, WB",20327000
+16,Thailand,Bangkok,20284000
+17,Mexico,Mexico City,18942000
+18,Russia,Moscow,18509000
+19,India,"Bangalore, KA",16216000
+20,Vietnam,Ho Chi Minh City,16024000
+21,Argentina,Buenos Aires,15933000
+22,United States,"Los Angeles, CA",15582000
+23,Nigeria,Lagos,15283000
+24,South Africa,Johannesburg-Pretoria,15026000
+25,Japan,Osaka-Kobe-Kyoto,14998000
+26,Turkey,Istanbul,14749000
+27,Pakistan,Lahore,14256000
+28,Iran,Tehran,14137000
+29,Congo (Dem. Rep.),Kinshasa,13060000
+30,Brazil,Rio de Janeiro,12546000
+31,China,"Hangzhou-Shaoxing, ZG",12422000
+32,China,"Shantou-Jieyang, GD",12187000
+33,China,"Tianjin, TJ",12095000
+34,India,"Chennai, TN",11950000
+35,Angola,Luanda,11892000
+36,China,"Chongqing, CQ",11524000
+37,United Kingdom,London,11360000
+38,France,Paris,11282000
+39,Peru,Lima,10914000
+40,Colombia,Bogota,10734000
+41,India,"Hyderabad, TL",10101000
+42,China,"Wuhan, HUB",10041000
+43,Malaysia,Kuala Lumpur,9899000
+44,China: Taiwan,Taipei,9866000
+45,Japan,Nagoya,9617000
+46,China,"Nanjing, JS",8929000
+47,Tanzania,Dar es Salaam,8877000
+48,United States,"Chicago, IL-IN",8790000
+49,Saudi Arabia,Riyadh,8589000
+50,China,"Xi'an, SAA",8312000
+51,China,"Chengdu, SC",8040000
+52,India,"Ahmadabad, GJ",7961000
+53,Ethiopia,Addis Ababa,7922000
+54,China,"Shenyang-Fushun, LN",7768000
+55,Nigeria,Onitsha,7756000
+56,Sudan,Khartoum,7677000
+57,United States,"Washington-Baltimore, DC-VA-MD",7636000
+58,Indonesia,Bandung,7490000
+59,United States,"Boston-Providence, MA-NH-RI",7375000
+60,Kenya,Nairobi,7264000
+61,Chile,Santiago,7192000
+62,Iraq,Baghdad,7160000
+63,China: Hong Kong SAR,Hong Kong,7117000
+64,United States,"Dallas-Fort Worth, TX",6980000
+65,Spain,Madrid,6966000
+66,India,"Pune, MH",6944000
+67,Germany,Essen-Dusseldorf,6874000
+68,China,"Zhengzhou, HEN",6860000
+69,Indonesia,Surabaya,6820000
+69,Myanmar,Yangon,6820000
+71,United States,"Houston, TN",6804000
+72,Jordan,Amman,6694000
+73,China,"Quanzhou, FJ",6487000
+74,Cote d'Ivoire,Abidjan,6461000
+75,Canada,"Toronto, ON",6400000
+76,United States,"San Francisco-San Jose, CA",6376000
+77,Ghana,Accra,6336000
+78,India,"Surat, GJ",6244000
+79,China,"Xiamen-Zhangzhou, FJ",6237000
+80,United States,"Miami, FL",6129000
+81,Singapore,Singapore,6056000
+82,Afghanistan,Kabul,6009000
+83,Egypt,Alexandria,5916000
+84,China,"Hefei, AH",5875000
+85,Russia,St. Petersburg,5869000
+86,China,"Qingdao, SD",5806000
+87,Vietnam,Hanoi,5700000
+88,United States,"Philadelphia, PA-NJ-DE-MD",5697000
+89,Pakistan,Faisalabad,5650000
+90,Turkey,Ankara,5638000
+91,Italy,Milan,5631000
+92,United States,"Atlanta, GA",5495000
+93,Spain,Barcelona,5489000
+94,Saudi Arabia,Jiddah,5482000
+95,China,"Taiyuan, SAX",5371000
+96,Brazil,Belo Horizonte,5368000
+97,Iran,Mashhad,5321000
+98,Pakistan,Rawalpindi-Islamabad,5203000
+99,Ghana,Kumasi,5192000
+100,Australia,"Melbourne, VIC",5185000
+101,United Arab Emirates,Dubai,5097000
+102,Cameroon,Yaounde,5095000
+103,Uganda,Kampala,5074000
+104,Australia,"Sydney, NSW",5037000
+105,China,"Harbin, HL",4954000
+106,Nigeria,Kano,4949000
+107,South Africa,Cape Town,4850000
+108,India,"Lucknow, UP",4741000
+109,Somalia,Mogadishu,4698000
+110,China,"Urumqi, XJ",4656000
+111,Morocco,Casablanca,4608000
+112,United States,"Phoenix, AZ",4600000
+113,Mexico,Monterrey,4580000
+114,Dominican Republic,Santo Domingo,4574000
+115,Mexico,Guadalajara,4528000
+116,Bangladesh,Chittagong,4417000
+117,India,"Jaipur, RJ",4381000
+118,Germany,Berlin,4371000
+119,China,"Jinan, SD",4209000
+120,Mali,Bamako,4183000
+121,China,"Dalian, LN",4157000
+122,United States,"Detroit, MI",4143000
+123,Indonesia,Medan,4129000
+124,Cameroon,Douala,4093000
+125,China,"Ningbo, ZJ",4068000
+126,Kuwait,Kuwait,4055000
+127,China,"Nanning, GX",4054000
+128,Uzbekistan,Tashkent,4036000
+129,Canada,"Montreal, QC",4029000
+130,Brazil,Recife,4010000
+131,South Korea,Busan,3998000
+132,China,"Fuzhou, FJ",3997000
+133,India,"Kanpur, UP",3964000
+134,United States,"Seattle, WA",3952000
+135,China,"Kunming, YN",3909000
+136,China,"Nanchang, JX",3899000
+137,Nigeria,Ibadan,3861000
+138,Nigeria,Port Harcourt,3825000
+139,Yemen,Sana,3813000
+140,Senegal,Dakar,3804000
+141,China,"Changchun, JL",3801000
+142,China,"Shijiazhuang, HEB",3788000
+143,China,"Changsha, HUN",3709000
+144,Algeria,Algiers,3699000
+145,Italy,Naples,3676000
+146,Congo (Dem. Rep.),Mbuji-Mayi,3663000
+147,China,"Wenzhou, ZJ",3640000
+148,Brazil,Brasilia,3625000
+149,Sri Lanka,Colombo,3613000
+150,India,"Indore, MP",3580000
+151,Brazil,Porto Alegre,3556000
+152,Nepal,Kathmandu,3528000
+153,South Africa,Durban,3527000
+154,Zambia,Lusaka,3518000
+155,Brazil,Fortaleza,3496000
+156,Burkina Faso,Ouagadougou,3481000
+157,Brazil,Salvador,3478000
+158,Syria,Damascus,3406000
+159,India,"Kozhikode, KL",3403000
+160,India,"Nagpur, MH",3400000
+161,Pakistan,Gujranwala,3391000
+162,Greece,Athens,3360000
+163,China,"Guiyang, GZ",3350000
+164,Ecuador,Guayaquil,3328000
+165,Italy,Rome,3293000
+166,India,"Patna, BR",3284000
+167,India,"Varanasi, UP",3267000
+168,Colombia,Medellin,3255000
+169,United States,"Orlando, FL",3204000
+170,United States,"Tampa-St. Petersburg, FL",3180000
+171,Madagascar,Antananarivo,3154000
+172,Syria,Aleppo,3151000
+173,Israel,Tel Aviv,3147000
+174,Congo (Republic),Brazzaville,3118000
+175,Saudi Arabia,Ad-Dammam,3102000
+176,Netherlands,Rotterdam-Hague,3099000
+177,China,"Putian, FJ",3085000
+178,Azerbaijan,Baku,3075000
+179,United States,"San Diego, CA",3053000
+180,Australia,"Brisbane-Gold Coast, QLD-NSW",3039000
+181,Congo (Dem. Rep.),Lubumbashi,3025000
+181,India,"Thiruvananthapuram, KL",3025000
+183,Guinea,Conakry,3024000
+184,Pakistan,Hyderabad,2941000
+185,Mozambique,Maputo,2911000
+185,Portugal,Lisbon,2911000
+187,United States,"Minneapolis-St. Paul, MN",2904000
+188,Ecuador,Quito,2895000
+189,China,"Tangshan, HEB",2892000
+189,United States,"Denver, CO",2892000
+191,Brazil,Curitiba,2890000
+192,Pakistan,Multan,2887000
+193,Brazil,Campinas,2866000
+194,China,"Lanzhou, GS",2860000
+194,Guatemala,Guatemala City,2860000
+196,Canada,"Vancouver, BC",2833000
+197,Ukraine,Kiyev,2817000
+198,Tunisia,Tunis,2802000
+199,Brazil,Goiania,2797000
+200,India,"Agra, UP",2751000
+201,Pakistan,Peshawar,2741000
+202,United Kingdom,Manchester,2726000
+203,Togo,Lome,2714000
+204,North Korea,Pyongyang,2712000
+205,Philippines,Cebu,2709000
+206,Colombia,Cali,2668000
+207,United Kingdom,Birmingham,2648000
+208,China,"Handan, HEB",2645000
+209,United States,"Cleveland, OH",2642000
+210,Nigeria,Abuja,2627000
+211,India,"Kochi, KL",2584000
+212,Venezuela,Caracas,2574000
+213,Turkey,Izmir,2567000
+214,Iran,Esfahan,2546000
+215,Kazakhstan,Almaty,2541000
+216,India,"Allahabad, UP",2493000
+217,Hungary,Budapest,2489000
+218,China: Taiwan,Taichung,2466000
+219,China,"Baotou, NM",2455000
+219,United States,"Salt Lake City, UT",2455000
+221,India,"Bhopal, MP",2451000
+222,China,"Zibo, SD",2449000
+223,Japan,Fukuoka,2447000
+224,Brazil,Manaus,2423000
+225,Cambodia,Phnom Penh,2418000
+226,China,"Wuhu, AH",2414000
+227,Turkey,Bursa,2412000
+228,Zimbabwe,Harare,2394000
+229,Indonesia,Semarang,2390000
+230,China: Taiwan,Kaohsiung,2379000
+231,Saudi Arabia,Mecca,2342000
+232,China,"Huaian, JS",2338000
+233,Bolivia,Santa Cruz de la Sierra,2330000
+234,Sweden,Stockholm,2321000
+235,Belgium,Brussels,2309000
+236,South Korea,Daegu,2308000
+237,United States,"Las Vegas, NV",2280000
+238,Venezuela,Maracaibo,2277000
+239,Germany,Cologne-Bonn,2270000
+240,India,"Ludhiana, PB",2246000
+241,India,"Chandigarh, CH-HR-PB",2228000
+242,India,"Vadodara, GJ",2221000
+243,United States,"Charlotte, NC-SC",2214000
+244,Germany,Hamburg,2210000
+245,Japan,Sapporo,2206000
+246,Germany,Munich,2195000
+247,United States,"St. Louis, MO-IL",2193000
+248,Brazil,Belem,2185000
+249,Colombia,Barranquilla,2178000
+250,China,"Yinchuan, NX",2163000
+251,Mexico,Puebla,2162000
+252,Belarus,Minsk,2147000
+253,Qatar,Doha,2141000
+254,Poland,Warsaw,2126000
+255,Australia,"Perth, WA",2117000
+256,Bolivia,La Paz,2115000
+256,Romania,Bucharest,2115000
+258,Germany,Frankfurt,2111000
+259,Malaysia,Johor Bahru,2106000
+260,India,"Madurai, TN",2102000
+260,Indonesia,Palembang,2102000
+262,United States,"San Antonio, TX",2101000
+263,Austria,Vienna,2094000
+263,India,"Malappuram, KL",2094000
+265,Morocco,Rabat,2082000
+266,United States,"Portland, OR-WA",2076000
+267,India,"Visakhapatnam, AP",2065000
+268,China,"Ganzhou, JX",2061000
+269,India,"Meerut, UP",2052000
+270,Indonesia,Makassar,2042000
+271,China,"Xining, QH",2015000
+272,Sierra Leone,Freetown,2011000
+273,Benin,Cotonou,2007000
+274,Nigeria,Benin City,2000000
+275,China,"Hohhot, NM",1997000
+276,Poland,Katowice-Gliwice-Tychy,1991000
+277,India,"Jamshedpur, JH",1987000
+278,China,"Luoyang, HEN",1975000
+279,United States,"Sacramento, CA",1970000
+280,Nigeria,Kaduna,1963000
+281,Palestine,Gaza,1962000
+282,United States,"Austin, TX",1957000
+283,Israel,Jerusalem,1946000
+284,India,"Coimbatore, TN",1943000
+285,Chad,N'Djamena,1926000
+286,Lebanon,Beirut,1919000
+287,Liberia,Monrovia,1918000
+288,India,"Nashik, MH",1878000
+289,United Kingdom,Leeds-Bradford,1863000
+290,China,"Nantong, JS",1848000
+291,Brazil,Vittoria,1837000
+292,Netherlands,Amsterdam,1809000
+293,US: Puerto Rico,San Juan,1796000
+294,China,"Anyang, HEN",1790000
+294,Turkey,Gaziantep,1790000
+296,Russia,Novosibirsk,1788000
+296,United States,"Kansas City, MO-KS",1788000
+298,China,"Anshan, LN",1785000
+299,Malaysia,Penang,1773000
+300,Cuba,Havana,1770000
+301,United States,"Indianapolis, IN",1757000
+302,Myanmar,Mandalay,1753000
+303,Mexico,Tijuana,1752000
+304,Mexico,Toluca,1749000
+305,India,"Kollam, KL",1739000
+306,India,"Asansol, WB",1735000
+307,Iraq,Mosul,1730000
+308,China,"Cixi (Ningbo), ZJ",1729000
+309,Mongolia,Ulaanbaatar,1726000
+310,Denmark,Copenhagen,1715000
+311,India,"Thrissur, KL",1712000
+311,United States,"Cincinnati, OH-KY",1712000
+313,Haiti,Port-au-Prince,1702000
+314,United States,"Pittsburgh, PA",1700000
+315,India,"Aligarh, UP",1696000
+316,India,"Ranchi, JH",1689000
+317,Gambia,Banjul,1687000
+318,Saudi Arabia,Medina,1686000
+319,Honduras,Tegucigalpa,1684000
+320,China,"Linyi, SD",1682000
+320,Japan,Kitakyushu,1682000
+322,Iraq,Basra,1672000
+323,China,"Datong, SAX",1663000
+324,China,"Haikou, HA",1646000
+324,New Zealand,Auckland,1646000
+326,Indonesia,Malang,1637000
+327,Russia,Nizhniy Novgorod,1632000
+328,Argentina,Cordoba,1611000
+329,El Salvador,San Salvador,1602000
+330,Mexico,Leon,1598000
+331,Canada,"Calgary, AB",1593000
+332,India,"Jabalpur, MP",1589000
+333,Spain,Valencia,1588000
+334,United States,"Raleigh, NC",1585000
+335,Mauritania,Nouakchott,1584000
+336,United States,"Columbus, OH",1583000
+337,Kenya,Mombasa,1582000
+338,Uzbekistan,Andizhan,1578000
+339,Venezuela,Valencia,1575000
+340,Indonesia,Yogyakarta,1569000
+341,China,"Ruian (Wenzhou), ZJ",1568000
+342,Iran,Ahvaz,1566000
+343,Paraguay,Asuncion,1563000
+344,Nigeria,Warri,1561000
+345,India,"Dhanbad, JH",1560000
+346,Tajikistan,Dushanbe,1556000
+347,China,"Jilin, JL",1554000
+348,Congo (Dem. Rep.),Kananga,1549000
+349,India,"Jodhpur, RJ",1540000
+350,Uzbekistan,Namangan,1539000
+351,Iran,Tabriz,1527000
+352,India,"Rajkot, GJ",1521000
+353,China,"Yiwu (Jinhua), ZJ",1517000
+354,Italy,Turin,1516000
+355,Brazil,Santos,1514000
+356,Indonesia,Batam,1512000
+357,India,"Aurangabad, MH",1509000
+358,Pakistan,Sialkot,1507000
+359,India,"Gwalior, MP",1506000
+360,India,"Raipur, CH",1498000
+361,China,"Yichang, HUB",1493000
+361,South Korea,Daejon,1493000
+363,Nicaragua,Managua,1479000
+364,Kyrgyzstan,Bishkek,1475000
+365,Kazakhstan,Shimkent,1474000
+366,Philippines,Davao City,1471000
+367,Argentina,Rosario,1461000
+368,France,Lyon,1460000
+369,Ireland,Dublin,1453000
+370,India,"Gorakhpur, UP",1451000
+371,Germany,Stuttgart,1450000
+372,Somalia,Hargeysa,1446000
+373,Oman,Muscat,1436000
+374,France,Marseille,1434000
+375,Russia,Yekaterinburg,1432000
+376,Morocco,Fez,1430000
+377,South Korea,Gwangju,1427000
+378,Brazil,Sao Luis,1426000
+379,United States,"Virginia Beach-Norfolk, VA",1424000
+379,Uruguay,Montevideo,1424000
+379,Vietnam,Da Nang,1424000
+382,India,"Guwahati, AS",1406000
+383,China,"Yingkou, LN",1403000
+384,Panama,Panama City,1401000
+385,Bahrain,Al-Manamah,1398000
+386,Angola,Lubango,1396000
+387,Indonesia,Denpasar,1392000
+388,Portugal,Porto,1387000
+389,Mexico,Torreon,1384000
+389,Nigeria,Ilorin,1384000
+391,Serbia,Belgrade,1379000
+392,India,"Bareilly, UP",1378000
+393,Afghanistan,Herat,1373000
+393,China,"Yantai, SD",1373000
+395,Ukraine,Kharkov,1372000
+396,China,"Huainan, AH",1371000
+396,United Arab Emirates,Abu Dhabi,1371000
+398,Japan,Sendai,1365000
+399,Algeria,Wahran,1353000
+399,India,"Moradabad, UP",1353000
+399,Yemen,Ta'izz,1353000
+402,Central African Rep.,Bangui,1351000
+403,India,"Kannur, KL",1348000
+404,India,"Durg-Bhilainagar, CH",1337000
+405,South Africa,Port Elizabeth,1336000
+406,China,"Xuzhou, JS",1334000
+406,France,Lille,1334000
+408,Canada,"Edmonton, AB",1333000
+409,India,"Srinagar, JK",1332000
+410,India,"Amritsar, PB",1329000
+410,Niger,Niamey,1329000
+412,United States,"Jacksonville, FL",1325000
+413,Armenia,Yerevan,1323000
+414,Russia,Volgograd,1316000
+415,Bolivia,Cochabamba,1314000
+416,Malawi,Lilongwe,1312000
+417,India,"Mysore, KA",1306000
+417,Morocco,Tanger,1306000
+419,Uzbekistan,Samarkand,1305000
+420,Turkmenistan,Ashgabat,1301000
+421,Vietnam,Hai Phong,1298000
+422,China,"Kaifeng, HEN",1296000
+423,Nigeria,Uyo,1290000
+424,China,"Maanshan, AH",1288000
+425,United States,"Milwaukee, WI",1284000
+426,Australia,"Adelaide, SA",1279000
+427,China,"Taizhou, ZJ",1276000
+428,Ukraine,Donetsk,1270000
+429,Russia,Kazan,1269000
+430,Brazil,Natal,1261000
+430,Libya,Tripoli,1261000
+432,Mexico,Ciudad Juarez,1260000
+433,Czech Republic,Prague,1255000
+434,Russia,Rostov,1252000
+435,China,"Lianyungang, JS",1245000
+436,Nigeria,Maiduguri,1242000
+437,India,"Malegaon, MH",1235000
+438,India,"Vijayawada, AP",1234000
+439,Iraq,Najaf,1227000
+440,Nigeria,Enugu,1226000
+441,India,"Kota, RJ",1224000
+442,Argentina,Mendoza,1221000
+443,Honduras,San Pedro Sula,1216000
+444,China,"Jinhua, ZJ",1212000
+445,India,"Salem, TN",1211000
+446,China,"Zhanjiang, GD",1210000
+447,Senegal,Touba,1202000
+448,China,"Shiyan, HUB",1197000
+449,Burundi,Bujumbura,1196000
+449,Finland,Helsinki,1196000
+451,Indonesia,Cirebon,1195000
+451,United States,"Nashville, TN",1195000
+453,Canada,"Ottawa, ON-QC",1187000
+454,China,"Baoji, SAA",1176000
+455,India,"Saharanpur, UP",1175000
+456,Brazil,Joao Pessoa,1173000
+456,Yemen,Aden,1173000
+458,Spain,Seville,1169000
+459,Japan,Hiroshima,1166000
+460,India,"Jalandhar, PB",1165000
+461,China,"Nanchong, SC",1163000
+461,India,"Dehradun, UK",1163000
+463,Japan,Naha,1161000
+464,China,"Liuzhou, GX",1160000
+465,Ghana,Sekondi Takoradi,1158000
+466,India,"Tiruchirappalli, TN",1151000
+467,Thailand,Pattaya-Chon Buri,1146000
+468,Russia,Chelyabinsk,1145000
+469,Indonesia,Pekan Baru,1141000
+470,Uzbekistan,Fergana,1137000
+471,Turkey,Antalya,1136000
+472,China: Taiwan,Tainan,1135000
+472,India,"Jammu, JK",1135000
+474,Bangladesh,Sylhet,1133000
+474,United Kingdom,Glasgow,1133000
+474,United States,"Cape Coral-Bonita Springs, FL",1133000
+477,Nigeria,Aba,1132000
+478,India,"Bhubaneswar, OR",1131000
+479,Kazakhstan,Astana,1127000
+479,Ukraine,Dnipro,1127000
+481,Indonesia,Samarinda,1126000
+482,Iraq,Kirkuk,1124000
+483,Rwanda,Kigali,1111000
+484,China,"Zhenjiang, JS",1109000
+484,Georgia,Tblisi,1109000
+486,Indonesia,Surakarta,1106000
+487,Pakistan,Sargodha,1104000
+488,Burkina Faso,Bobo-Dioulasso,1102000
+489,China,"Zhuzhou, HUN",1099000
+489,India,"Solapur, MH",1099000
+491,Argentina,Tucuman,1097000
+491,Belgium,Antwerp,1097000
+491,Indonesia,Tasikmalaya,1097000
+494,China,"Yichun, JX",1096000
+494,Russia,Voronezh,1096000
+496,China,"Luohe, HEN",1094000
+497,Malaysia,Ipoh,1091000
+498,Brazil,Maceio,1090000
+498,United States,"Richmond, VA",1090000
+500,India,"Hubli-Dharwad, KL",1088000
+500,Russia,Saratov,1088000
+502,India,"Puducherry, PY",1086000
+503,Russia,Samara,1081000
+503,Ukraine,Odessa,1081000
+505,Egypt,Al-Mansurah,1080000
+506,Bulgaria,Sofia,1079000
+507,China,"Yancheng, JS",1078000
+508,Morocco,Agadir,1077000
+509,China,"Yangzhou, JS",1074000
+509,Congo (Dem. Rep.),Tshikapa,1074000
+511,Mexico,Queretaro,1067000
+512,Turkey,Konya,1066000
+513,Norway,Oslo,1065000
+513,Russia,Omsk,1065000
+515,China,"Suzhou, AN",1064000
+515,China,"Weifang, SD",1064000
+517,United Arab Emirates,Al Ain,1060000
+518,Nigeria,Nsukka,1059000
+519,Bangladesh,Khulna,1054000
+520,Colombia,Bucaramanga,1051000
+520,Venezuela,Maracay,1051000
+522,Pakistan,Sheikhupura,1045000
+522,Sudan,Nyala,1045000
+524,China,"Qinhuangdao, HEB",1044000
+525,China,"Daqing, HL",1042000
+526,Brazil,Teresina,1041000
+527,Jordan,Irbid,1034000
+528,Russia,Ufa,1027000
+529,Morocco,Marrakech,1025000
+529,Russia,Makhachkala,1025000
+531,United States,"Memphis, TN-MS-AR",1024000
+532,Mexico,San Luis Potosi,1019000
+533,Pakistan,Quetta,1015000
+533,Peru,Arequipa,1015000
+535,Turkey,Kayseri,1014000
+536,Mexico,Merida,1011000
+537,Peru,Trujillo,1009000
+537,Vietnam,Can Tho,1009000
+539,United States,"Oklahoma City, OK",1007000
+540,Indonesia,Bandar Lampung,1005000
+541,Jamaica,Kingston,1003000
+542,Venezuela,Barquisimeto,1000000
+543,Egypt,Al-Mahallah,999000
+544,China,"Huaibei, AH",998000
+545,China,"Guilin, GX",991000
+546,China,"Jiaozuo, HEN",990000
+547,Albania,Tirana,989000
+548,China,"Liupanshui, GZ",986000
+549,China,"Suqian, JS",982000
+550,Indonesia,Jambi,979000
+551,Russia,Krasnoyarsk,977000
+552,China,"Baoding, HEB",975000
+553,Turkey,Izmit,971000
+554,France,Toulouse,970000
+554,Malawi,Blantyre,970000
+556,United States,"Hartford, CT",966000
+557,China,"Huaihua, HUN",961000
+557,United States,"Louisville, KY-IN",961000
+559,China,"Huangshi, HUB",958000
+560,Indonesia,Padang,953000
+561,United States,"Buffalo, NY",950000
+562,Saudi Arabia,Khamis Mushayt,947000
+562,Turkey,Mersin,947000
+564,China,"Panjin, LN",946000
+565,Netherlands,Utrecht,944000
+566,Mexico,Aguascalientes,943000
+567,China,"Hengyang, HUN",942000
+568,China,"Luan, AN",941000
+569,China,"Xinxiang, HEN",939000
+569,Vietnam,Vung Tau,939000
+571,India,"Cuttack, OR",937000
+572,China,"Cangnan (Wenzhou), ZJ",933000
+572,Colombia,Cartagena,933000
+574,Iran,Qom,932000
+575,China,"Qiqihaer, HL",931000
+576,India,"Tiruppur, TN",930000
+577,China,"Bengbu, AH",929000
+578,Poland,Gdansk,928000
+579,Thailand,Chiang Mai,926000
+580,Mexico,Cuernavaca,920000
+580,Switzerland,Zurich,920000
+580,United States,"New Orleans, LA",920000
+583,Congo (Dem. Rep.),Kisangani,915000
+583,Syria,Homs,915000
+585,Brazil,Campo Grande,913000
+586,Chile,Valparaiso-Vina del Mar,910000
+587,South Korea,Ulsan,907000
+588,Egypt,Tanta,906000
+589,United Kingdom,Southampton-Portsmouth,902000
+590,China,"Dongying, SD",901000
+590,Russia,Irkutsk,901000
+592,Brazil,Cuiaba,900000
+593,Brazil,Aracaju,897000
+593,China,"Xiaogan, HUB",897000
+595,Brazil,Sao Jose dos Campos,895000
+595,China,"Zhumadian, HEN",895000
+595,Mexico,Chihuahua,895000
+598,Nigeria,Jos,889000
+598,United Kingdom,Liverpool,889000
+600,Gabon,Libreville,887000
+601,Chile,Concepcion,884000
+602,France,Nice,883000
+603,United States,"Tucson, AZ",882000
+604,Nigeria,Sokoto,881000
+605,Nigeria,Abeokuta,876000
+606,China,"Korla, XJ",874000
+607,China,"Jining, SD",868000
+608,China,"Xiangtan, HUN",866000
+608,United States,"El Paso, TX-NM",866000
+610,China,"Yueyang, HUN",865000
+610,Colombia,Cucuta,865000
+612,China,"Linfen, SAX",863000
+613,Egypt,Port Said,862000
+613,Russia,Krasnodar,862000
+613,Saudi Arabia,Hufuf-Mubarraz,862000
+616,Canada,"Winnipeg, MB",858000
+616,Iraq,Karbala,858000
+618,China,"Nanyang, HEN",857000
+619,Greece,Thessaloniki,856000
+619,Tanzania,Zanzibar,856000
+621,China,"Deyang, SC",855000
+621,Mexico,Saltillo,855000
+623,Iran,Shiraz,854000
+624,China,"Fuqing (Fuzhou), FJ",853000
+625,China,"Xuchang, HEN",852000
+625,India,"Firozabad, UP",852000
+625,United States,"Sarasota, FL",852000
+628,India,"Bokaro Steel City, JH",850000
+629,Philippines,Cagayan de Oro,849000
+630,France,Bordeaux,847000
+630,Zambia,Kitwe,847000
+632,China,"Xinyu, JX",846000
+632,Iraq,Irbil,846000
+634,Indonesia,Serang,840000
+635,India,"Guntur, AP",839000
+636,Indonesia,Banjarmasin,836000
+637,Russia,Tyumen,835000
+638,China,"Taian, SD",830000
+638,Nigeria,Osogbo,830000
+640,Mexico,Mexicali,829000
+640,United States,"Honolulu, HI",829000
+640,United States,"Omaha, NE-IA",829000
+643,China,"Shenzgezhen, JS-ZJ",825000
+643,Pakistan,Sukkur,825000
+645,Poland,Lodz,824000
+646,China,"Zhucheng (Weifang), SD",823000
+647,United States,"McAllen, TX",822000
+648,Brazil,Sorocaba,820000
+649,Iran,Kermanshah,818000
+650,China,"Binzhou, SD",812000
+650,China,"Fuyang, AN",812000
+652,Turkey,Eskisehir,808000
+653,Mozambique,Nampula,805000
+654,Canada,Quebec,801000
+655,India,"Belgaum, KA",800000
+655,India,"Bikaner, RJ",800000
+655,Iraq,Nasiriyah,800000
+655,Tanzania,Mwanza,800000
+659,Mexico,Hermosillo,799000
+660,Nigeria,Zaria,791000
+661,China,"Benxi, LN",789000
+662,South Korea,Changwon,788000
+663,China,"Jiujiang, JX",787000
+664,Spain,Bilbao,785000
+665,India,"Warangal, AP",783000
+666,Italy,Florence,781000
+667,United States,"Birmingham, AL",780000
+668,Afghanistan,Kandahar,777000
+668,Congo (Dem. Rep.),Bukavu,777000
+670,Italy,Palermo,776000
+671,China,"Dandong, LN",774000
+671,United Kingdom,Newcastle upon Tyne,774000
+673,Poland,Krakow,771000
+673,Yemen,Al-Hudaydah,771000
+675,China,"Qujing, YN",769000
+676,Mexico,Tampico,768000
+676,Morocco,Meknes,768000
+678,China,"Hengshui, HEB",767000
+679,United States,"Albuquerque, NM",766000
+680,China,"Quzhou, ZJ",765000
+680,China,"Zhoukou, HEN",765000
+680,Congo (Dem. Rep.),Goma,765000
+683,China,"Qingyuan, GD",764000
+684,China,"Puyang, HEN",763000
+684,India,"Raurkela, OR",763000
+686,China,"Yuncheng, SAX",761000
+687,Mexico,Morelia,758000
+687,United Kingdom,Nottingham,758000
+689,India,"Amravati, MH",757000
+690,India,"Gulbarga, KA",752000
+691,Venezuela,Ciudad Guayana,751000
+692,India,"Mangalore, KA",749000
+692,Turkey,Samsun,749000
+694,China,"Mudanjiang, HL",748000
+694,United States,"Tulsa, OK",748000
+696,Germany,Hannover,747000
+697,China,"Xingtai, HEB",744000
+697,North Korea,Hamhung,744000
+699,United States,"Charleston, SC",743000
+700,Algeria,Constantine,742000
+700,China,"Xiangyang, HUB",742000
+702,Philippines,Angeles City,741000
+703,India,"Kolhapur, MAH",737000
+704,India,"Bhavnagar, GJ",736000
+705,China,"Gaomi (Weifang), SD",735000
+705,China,"Pingdingshan, HEN",735000
+705,India,"Bilaspur, CH",735000
+705,Spain,Zaragoza,735000
+709,China,"Shangqiu, HEN",734000
+710,Mexico,Veracruz,733000
+711,Germany,Nuremberg,732000
+712,Brazil,Ribeirao Preto,731000
+713,Russia,Tolyatti,730000
+714,Ukraine,Lviv,729000
+715,Libya,Banghazi,728000
+716,United States,"Fresno, CA",727000
+717,India,"Patiala, HR",725000
+718,China,"Chenzhou, HUN",724000
+719,Spain,Malaga,722000
+720,Indonesia,Balikpapan,720000
+720,Poland,Poznan,720000
+722,Brazil,Uberlandia,719000
+722,India,"Muzaffarnagar, UP",719000
+724,China,"Zhangjiakou, HEB",716000
+725,China,"Yongkang (Jinhua), ZJ",715000
+725,Germany,Dresden,715000
+725,Mexico,Acapulco,715000
+728,China,"Laiwu, SD",713000
+729,Mexico,Culiacan,712000
+730,Djibouti,Djibouti,710000
+730,South Korea,Cheongju,710000
+732,China,"Kashi, XJ",709000
+732,China,"Mianyang, SC",709000
+734,China,"Zhaoqing, GD",706000
+734,India,"Jalgaon, MH",706000
+734,Russia,Novokuznetsk,706000
+737,China,"Suining, SC",705000
+737,China: Macau SAR,Macau,705000
+739,Iran,Varamin,704000
+740,India,"Nanded Waghala, MH",703000
+740,Italy,Catania,703000
+742,Belarus,Gomel,700000
+743,Cote d'Ivoire,Bouake,698000
+744,Japan,Fuji,697000
+744,Ukraine,Zaporizhzhya,697000
+746,China,"Shaoguan, GD",696000
+747,Argentina,Salta,695000
+748,Myanmar,Nay Pyi Taw,694000
+749,China,"Jiaxing, ZJ",693000
+750,Croatia,Zagreb,692000
+751,China,"Jiamusi, HL",691000
+751,United States,"Rochester, NY",691000
+753,Benin,Porto Novo,690000
+753,India,"Jamnagar, GJ",690000
+755,China,"Jingzhou, HUB",689000
+755,Venezuela,Barcelona,689000
+757,China,"Anqiu (Weifang), SD",688000
+757,Nigeria,Owerri,688000
+757,United Kingdom,Bristol,688000
+760,Bangladesh,Kutupalong Refugee Camp,687000
+761,China,"Yiyang, HUN",686000
+761,India,"Vellore, TN",686000
+761,Italy,Bergamo,686000
+764,Malaysia,Kuching,685000
+765,Germany,Mannheim,683000
+765,Saudi Arabia,Tabuk,683000
+767,Iran,Urmia,681000
+767,North Korea,Chongjin,681000
+767,Trinidad & Tobago,Port of Spain,681000
+770,India,"Gaya, BR",680000
+770,Japan,Otsu,680000
+770,Russia,Tomsk,680000
+773,Russia,Vladivostok,677000
+774,Brazil,Londrina,676000
+775,Congo (Republic),Pointe Noire,675000
+775,India,"Sangali, MH",675000
+777,India,"Agartala, TR",674000
+777,United Kingdom,Sheffield,674000
+779,Tunisia,Sfax,672000
+780,Brazil,Florianopolis,670000
+781,China,"Jinzhou, LN",668000
+782,United States,"Springfield, MA",667000
+783,China,"Anqing, AH",666000
+784,India,"Akola, MH",665000
+784,Iraq,Amara,665000
+784,Peru,Chiclayo,665000
+784,United States,"Dayton, OH",665000
+788,China,"Yangjiang, GD",664000
+789,Guinea-Bissau,Bissau,663000
+790,Mexico,Cancun,661000
+791,India,"Panipat, HR",660000
+791,India,"Udaipur, RJ",660000
+791,Japan,Kumamoto,660000
+791,Russia,Izhevsk,660000
+795,China,"Changzhi, SAX",655000
+795,China,"Panzhihua, SC",655000
+795,Germany,Leipzig,655000
+798,Thailand,Nakhon Ratchasima,650000
+799,Spain,Las Palmas,649000
+800,Argentina,Mar del Plata,648000
+800,China,"Yuyao (Ningbo), ZJ",648000
+802,Sweden,Goteborg,646000
+803,China,"Yangquan, SAX",643000
+803,Switzerland,Geneva,643000
+805,Mexico,Oaxaca,642000
+805,Philippines,Bacolod,642000
+807,Israel,Haifa,641000
+807,Mexico,Reynosa,641000
+807,United States,"Colorado Springs, CO",641000
+810,Mexico,Tuxtla Gutierrez,639000
+811,China,"Liaoyang, LN",638000
+811,Poland,Wroclaw,638000
+813,India,"Nellore, AP",637000
+814,United States,"Allentown-Bethlehem, PA-NJ",636000
+815,Canada,"Kitchener, ON",634000
+816,China,"Ezhou, HUB",631000
+817,Pakistan,Larkana,630000
+817,United States,"Baton Rouge, LA",630000
+819,United States,"Knoxville, TN",627000
+820,China,"Shaoyang, HUN",626000
+820,China: Taiwan,Hsinchu,626000
+822,China,"Tianshui, GS",624000
+823,South Korea,Cheonan,623000
+824,China,"Huzhou, ZJ",619000
+825,Angola,Huambo,618000
+826,China,"Beihai, GX",615000
+826,Russia,Ulyanovsk,615000
+828,China,"Weihai, SD",614000
+828,United States,"Grand Rapids, MI",614000
+830,China,"Cangzhou, HEB",613000
+830,China,"Changde, HUN",613000
+830,China,"Zhoushan, ZJ",613000
+833,United States,"Columbia, SC",611000
+834,Philippines,Iloilo City,610000
+835,India,"Ajmer, RJ",608000
+835,South Korea,Jeonju,608000
+837,Germany,Bremen,606000
+837,United States,"Albany, NY",606000
+839,Russia,Yaroslavl,605000
+840,United States,"Greenville, SC",604000
+841,Indonesia,Cilegon,603000
+841,Russia,Khabarovsk,603000
+843,Latvia,Riga,602000
+844,China,"Dongsheng (Ordos), NM",600000
+844,South Sudan,Juba,600000
+846,Brazil,Joinville,597000
+847,Russia,Astrakhan,596000
+848,Russia,Cheboksary,595000
+849,France,Nantes,594000
+850,Brazil,Feira de Santana,591000
+851,Congo (Dem. Rep.),Kolwezi,589000
+852,Russia,Barnaul,586000
+852,Zimbabwe,Bulawayo,586000
+854,India,"Jhansi, UP",583000
+854,Nigeria,Bauchi,583000
+856,United States,"Bakersfield, CA",582000
+857,Germany,Aachen,581000
+858,Dominican Republic,Santiago,580000
+859,China,"Langfang, HEB-TJ-BJ",579000
+860,China,"Chifeng, NM",577000
+861,Nigeria,Akure,574000
+862,Angola,Benguela,573000
+862,China,"Heyuan, GD",573000
+864,Japan,Nagano,571000
+864,Mexico,Durango,571000
+866,Brazil,Maringa,567000
+866,Iran,Zahedan,567000
+866,United States,"Des Moines, IA",567000
+869,China,"Wenling (Taizhou), ZJ",565000
+870,Japan,Kanazawa,564000
+871,Lithuania,Vilnius,563000
+872,United States,"Palm Bay, FL",562000
+873,Iraq,Sulaimaniya,561000
+873,Mexico,Xalapa,561000
+873,Russia,Orenburg,561000
+876,Spain,Palma,560000
+877,China,"Yulin, GX",559000
+877,Egypt,Suez,559000
+877,Zambia,Ndola,559000
+880,Italy,Genoa,558000
+881,Turkey,Diyarbakir,557000
+882,China,"Tongcheng (Anqing), AN",555000
+883,United Kingdom,Edinburgh,554000
+884,Iran,Kerman,553000
+885,Mexico,Matamoros,552000
+885,Thailand,Phuket,552000
+887,China,"Fuxin, LN",550000
+888,Iran,Yazd,549000
+889,India,"Rajahmundry, AP",548000
+889,Russia,Naberezhnye Tchelny,548000
+891,China,"Luzhou, SC",547000
+891,Iran,Hamadan,547000
+893,India,"Ujjain, MP",546000
+893,Turkey,Adana,546000
+895,China,"Tongliao, NM",545000
+896,Japan,Mito,544000
+897,Turkey,Denizli,543000
+898,Ghana,Tamale,542000
+899,India,"Kakinada, AP",540000
+899,Iran,Rasht,540000
+901,United Kingdom,Leicester,539000
+902,China,"Chuzhou, AH",538000
+902,India,"Davanagere, KA",538000
+902,Japan,Shizuoka,538000
+905,Colombia,Pereira,536000
+905,South Africa,East London,536000
+905,Switzerland,Basel,536000
+908,Congo (Dem. Rep.),Bunia,532000
+909,China,"Gongyi (Zhengzhou), HEN",528000
+909,China,"Sanya, HA",528000
+909,Moldova,Chisinau,528000
+912,Mexico,Villahermosa,523000
+913,China,"Dezhou, SD-HEN",522000
+913,Colombia,Ibague,522000
+915,China,"Liaocheng, SD",521000
+916,Spain,Santa Cruz de Tenerife,520000
+917,Saudi Arabia,Taif,518000
+917,South Africa,Bloemfontein,518000
+919,United States,"Greensboro, NC",516000
+920,Argentina,Santa Fe,511000
+920,India,"Imphal, MN",511000
+922,China,"Jingdezhen, JX",510000
+922,Russia,Perm,510000
+924,Inda,Erode,509000
+925,Argentina,San Juan,508000
+925,China,"Siping, JL",508000
+927,China,"Hegang, HL",507000
+927,Russia,Lipetsk,507000
+929,Vietnam,Nha Trang,506000
+930,China,"Chaoyang, LN",505000
+930,United Kingdom,Brighton & Hove,505000
+932,China,"Heze, SD",504000
+932,China,"Songyuan, JL",504000
+934,China,"Rizhou, SD",503000
+934,United States,"Harrisburg, PA",503000
+936,United States,"Wichita, KS",502000
+937,Russia,Ryazan,501000
+937,Russia,Stavropol,501000
+937,United States,"Toledo, OH",501000
+940,China,"Lanzhou New Area, GS",500000
+940,Iran,Bandar Abbas,500000
+940,United Kingdom,Bournemouth,500000

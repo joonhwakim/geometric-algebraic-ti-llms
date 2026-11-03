@@ -1,0 +1,10 @@
+name: allenai/OLMo-2-0325-32B-Instruct
+revision: b96024342a77a69aa0dda815c3454a671f477463
+short_name: olmo-2-32b-instruct
+dtype: bfloat16
+quantization: null
+chat_template: true
+thinking_mode: null
+expected_vram_gb: 66
+chat_generation_suffix: null
+# Non-reasoning; system role supported.

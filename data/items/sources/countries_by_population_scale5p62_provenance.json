@@ -1,0 +1,107 @@
+{
+ "pool": "countries_by_population_scale5p62",
+ "built": "2026-09-13",
+ "source_table": "data/items/sources/countries_band_familiarity.csv",
+ "source_citation": "",
+ "units": "people",
+ "spacing": "geometric",
+ "step_ratio": 1.3333864964364877,
+ "sens_ratio": 5.62,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "Netherlands",
+   "raw": "Netherlands",
+   "value": 18153386.0,
+   "target": 19239433.98548564,
+   "dev_pct": -5.644906114727499,
+   "familiarity": 4433164.0
+  },
+  {
+   "name": "Australia",
+   "raw": "Australia",
+   "value": 27801023.0,
+   "target": 25653601.475327786,
+   "dev_pct": 8.370838405428122,
+   "familiarity": 6958958.0
+  },
+  {
+   "name": "Peru",
+   "raw": "Peru",
+   "value": 34157732.0,
+   "target": 34206165.79216523,
+   "dev_pct": -0.14159374792108614,
+   "familiarity": 1508007.0
+  },
+  {
+   "name": "Argentina",
+   "raw": "Argentina",
+   "value": 46466688.0,
+   "target": 45610039.56214082,
+   "dev_pct": 1.8782014795055104,
+   "familiarity": 3288172.0
+  },
+  {
+   "name": "Italy",
+   "raw": "Italy",
+   "value": 58940756.0,
+   "target": 60815810.85409255,
+   "dev_pct": -3.083170030555258,
+   "familiarity": 3704823.0
+  },
+  {
+   "name": "Germany",
+   "raw": "Germany",
+   "value": 83467117.0,
+   "target": 81090980.96268259,
+   "dev_pct": 2.9302100049953625,
+   "familiarity": 5379114.0
+  },
+  {
+   "name": "Egypt",
+   "raw": "Egypt",
+   "value": 108613296.0,
+   "target": 108125618.99842924,
+   "dev_pct": 0.4510281708332655,
+   "familiarity": 3014565.0
+  },
+  {
+   "name": "Russia",
+   "raw": "Russia",
+   "value": 146028325.0,
+   "target": 144173240.2913421,
+   "dev_pct": 1.2867052893513222,
+   "familiarity": 6758604.0
+  },
+  {
+   "name": "Brazil",
+   "raw": "Brazil",
+   "value": 214211951.0,
+   "target": 192238651.7519685,
+   "dev_pct": 11.430219182135152,
+   "familiarity": 3842992.0
+  },
+  {
+   "name": "Pakistan",
+   "raw": "Pakistan",
+   "value": 241499431.0,
+   "target": 256328422.33923134,
+   "dev_pct": -5.785152970514636,
+   "familiarity": 5118030.0
+  },
+  {
+   "name": "United States",
+   "raw": "United States",
+   "value": 341784857.0,
+   "target": 341784857.0,
+   "dev_pct": 0.0,
+   "familiarity": 16464150.0
+  }
+ ],
+ "dropped": {
+  "compound": [],
+  "excluded": [
+   "Georgia (3,941,100)"
+  ]
+ }
+}

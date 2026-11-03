@@ -1,0 +1,136 @@
+{
+ "pool": "cities_by_population_scale2",
+ "built": "2026-09-13",
+ "source_table": "data/items/sources/cities_band_familiarity.csv",
+ "source_citation": "",
+ "units": "people (built-up urban area)",
+ "spacing": "geometric",
+ "step_ratio": 1.122462048309373,
+ "sens_ratio": 2.0,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "Kuala Lumpur",
+   "raw": "Kuala Lumpur",
+   "value": 9899000.0,
+   "target": 10464904.240426812,
+   "dev_pct": -5.407638975239508,
+   "familiarity": 1180905.0
+  },
+  {
+   "name": "Chennai",
+   "raw": "Chennai, TN",
+   "value": 11950000.0,
+   "target": 11746457.849070925,
+   "dev_pct": 1.7327959930080004,
+   "familiarity": 1280332.0
+  },
+  {
+   "name": "Istanbul",
+   "raw": "Istanbul",
+   "value": 14749000.0,
+   "target": 13184953.137647862,
+   "dev_pct": 11.862361936548814,
+   "familiarity": 1888305.0
+  },
+  {
+   "name": "Los Angeles",
+   "raw": "Los Angeles, CA",
+   "value": 15582000.0,
+   "target": 14799609.505747313,
+   "dev_pct": 5.286561743057154,
+   "familiarity": 3274247.0
+  },
+  {
+   "name": "Bangalore",
+   "raw": "Bangalore, KA",
+   "value": 16216000.0,
+   "target": 16611999.999999996,
+   "dev_pct": -2.3838189260775122,
+   "familiarity": 1610228.0
+  },
+  {
+   "name": "Moscow",
+   "raw": "Moscow",
+   "value": 18509000.0,
+   "target": 18646339.5465153,
+   "dev_pct": -0.736549638456881,
+   "familiarity": 1628382.0
+  },
+  {
+   "name": "Kolkata",
+   "raw": "Kolkata, WB",
+   "value": 20327000.0,
+   "target": 20929808.480853632,
+   "dev_pct": -2.880143320016879,
+   "familiarity": 1275979.0
+  },
+  {
+   "name": "Beijing",
+   "raw": "Beijing, BJ-HEB",
+   "value": 22363000.0,
+   "target": 23492915.698141854,
+   "dev_pct": -4.809601807881274,
+   "familiarity": 1270283.0
+  },
+  {
+   "name": "Mumbai",
+   "raw": "Mumbai, MH",
+   "value": 26237000.0,
+   "target": 26369906.27529573,
+   "dev_pct": -0.5040073859505599,
+   "familiarity": 2274809.0
+  },
+  {
+   "name": "Delhi",
+   "raw": "Delhi, DL-UP-HR",
+   "value": 33224000.0,
+   "target": 29599219.011494633,
+   "dev_pct": 12.246204830937298,
+   "familiarity": 1643712.0
+  },
+  {
+   "name": "Jakarta",
+   "raw": "Jakarta",
+   "value": 36877000.0,
+   "target": 33224000.0,
+   "dev_pct": 10.995063809294486,
+   "familiarity": 1052208.0
+  }
+ ],
+ "dropped": {
+  "compound": [
+   "Tokyo-Yokohama (37,325,000)",
+   "Seoul-Incheon (23,825,000)",
+   "Johannesburg-Pretoria (15,026,000)",
+   "Osaka-Kobe-Kyoto (14,998,000)",
+   "Hangzhou-Shaoxing, ZG (12,422,000)",
+   "Shantou-Jieyang, GD (12,187,000)",
+   "Shenyang-Fushun, LN (7,768,000)",
+   "Washington-Baltimore, DC-VA-MD (7,636,000)",
+   "Boston-Providence, MA-NH-RI (7,375,000)",
+   "Dallas-Fort Worth, TX (6,980,000)",
+   "Essen-Dusseldorf (6,874,000)",
+   "San Francisco-San Jose, CA (6,376,000)",
+   "Xiamen-Zhangzhou, FJ (6,237,000)",
+   "Rawalpindi-Islamabad (5,203,000)",
+   "Mbuji-Mayi (3,663,000)",
+   "Tampa-St. Petersburg, FL (3,180,000)",
+   "Ad-Dammam (3,102,000)",
+   "Rotterdam-Hague (3,099,000)",
+   "Brisbane-Gold Coast, QLD-NSW (3,039,000)",
+   "Minneapolis-St. Paul, MN (2,904,000)",
+   "Cologne-Bonn (2,270,000)",
+   "Katowice-Gliwice-Tychy (1,991,000)",
+   "Leeds-Bradford (1,863,000)",
+   "Port-au-Prince (1,702,000)"
+  ],
+  "excluded": [
+   "Hyderabad, TL (10,101,000)",
+   "Kuwait (4,055,000)",
+   "Hyderabad (2,941,000)",
+   "Birmingham (2,648,000)",
+   "Jerusalem (1,946,000)"
+  ]
+ }
+}

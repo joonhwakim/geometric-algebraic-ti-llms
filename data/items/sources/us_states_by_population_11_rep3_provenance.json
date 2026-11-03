@@ -1,0 +1,128 @@
+{
+ "pool": "us_states_by_population_11_rep3",
+ "built": "2026-09-13",
+ "source_table": "data/items/sources/us_states_population_2024.csv",
+ "source_citation": "",
+ "units": "people",
+ "spacing": "geometric",
+ "step_ratio": 1.3333864964364877,
+ "sens_ratio": 5.62,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "Vermont",
+   "raw": "Vermont",
+   "value": 648493.0,
+   "target": 668923.8512326994,
+   "dev_pct": -3.0542865522060816,
+   "familiarity": null
+  },
+  {
+   "name": "North Dakota",
+   "raw": "North Dakota",
+   "value": 796568.0,
+   "target": 891934.0303779714,
+   "dev_pct": -10.69204976264427,
+   "familiarity": null
+  },
+  {
+   "name": "Montana",
+   "raw": "Montana",
+   "value": 1137233.0,
+   "target": 1189292.791818159,
+   "dev_pct": -4.377373862543244,
+   "familiarity": null
+  },
+  {
+   "name": "Hawaii",
+   "raw": "Hawaii",
+   "value": 1446146.0,
+   "target": 1585786.948919584,
+   "dev_pct": -8.805782454870316,
+   "familiarity": null
+  },
+  {
+   "name": "Idaho",
+   "raw": "Idaho",
+   "value": 2001619.0,
+   "target": 2114466.9039145918,
+   "dev_pct": -5.3369434965225615,
+   "familiarity": null
+  },
+  {
+   "name": "Mississippi",
+   "raw": "Mississippi",
+   "value": 2943045.0,
+   "target": 2819401.616841585,
+   "dev_pct": 4.385447692866323,
+   "familiarity": null
+  },
+  {
+   "name": "Connecticut",
+   "raw": "Connecticut",
+   "value": 3675069.0,
+   "target": 3759352.043927769,
+   "dev_pct": -2.2419566708019794,
+   "familiarity": null
+  },
+  {
+   "name": "Louisiana",
+   "raw": "Louisiana",
+   "value": 4597740.0,
+   "target": 5012669.250724196,
+   "dev_pct": -8.277610789186824,
+   "familiarity": null
+  },
+  {
+   "name": "Maryland",
+   "raw": "Maryland",
+   "value": 6263220.0,
+   "target": 6683825.490018051,
+   "dev_pct": -6.292885573481889,
+   "familiarity": null
+  },
+  {
+   "name": "Virginia",
+   "raw": "Virginia",
+   "value": 8811195.0,
+   "target": 8912122.652928058,
+   "dev_pct": -1.1324760313402835,
+   "familiarity": null
+  },
+  {
+   "name": "Ohio",
+   "raw": "Ohio",
+   "value": 11883304.0,
+   "target": 11883304.0,
+   "dev_pct": 0.0,
+   "familiarity": null
+  }
+ ],
+ "dropped": {
+  "compound": [],
+  "excluded": [
+   "Alaska (740,133)",
+   "South Dakota (924,669)",
+   "Maine (1,405,012)",
+   "West Virginia (1,769,979)",
+   "Nebraska (2,005,465)",
+   "New Mexico (2,130,256)",
+   "Kansas (2,970,606)",
+   "Arkansas (3,088,354)",
+   "Oklahoma (4,095,393)",
+   "Oregon (4,272,371)",
+   "Alabama (5,157,699)",
+   "South Carolina (5,478,831)",
+   "Indiana (6,924,275)",
+   "Tennessee (7,227,750)",
+   "New Jersey (9,500,851)",
+   "Michigan (10,140,459)",
+   "Illinois (12,710,158)",
+   "Pennsylvania (13,078,751)",
+   "New York (19,867,248)",
+   "Florida (23,372,215)",
+   "Texas (31,290,831)",
+   "California (39,431,263)"
+  ]
+ }
+}

@@ -1,0 +1,14 @@
+name: microsoft/Phi-4-reasoning
+revision: 1de18ec97600877ce63dbf60c73b998da99f0195
+short_name: phi-4-reasoning
+dtype: bfloat16
+quantization: null
+chat_template: true
+thinking_mode: true
+expected_vram_gb: 32
+chat_generation_suffix: null
+thinking_suppress_prefix: "<think>\n\n</think>\n\n"
+# Reasons natively (no enable_thinking toggle). The template does not pre-open <think>;
+# the direct pass prefills a full empty block (thinking_suppress_prefix). The template
+# drops the system message in favor of its own; scoring.apply_chat_template_safe folds
+# the instruction into the user turn.

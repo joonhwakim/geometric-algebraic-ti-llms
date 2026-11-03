@@ -1,0 +1,108 @@
+{
+ "pool": "countries_by_area_scale31p6",
+ "built": "2026-09-13",
+ "source_table": "data/items/sources/countries_area_worldbank.csv",
+ "source_citation": "",
+ "units": "km2 (surface area)",
+ "spacing": "geometric",
+ "step_ratio": 1.77806587554028,
+ "sens_ratio": 31.6,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "Rwanda",
+   "raw": "Rwanda",
+   "value": 26338.0,
+   "target": 24509.30176188035,
+   "dev_pct": 7.4612416783078235,
+   "familiarity": 1867191.0
+  },
+  {
+   "name": "Denmark",
+   "raw": "Denmark",
+   "value": 42920.0,
+   "target": 43579.15309611871,
+   "dev_pct": -1.5125422347352024,
+   "familiarity": 2719049.0
+  },
+  {
+   "name": "Czech Republic",
+   "raw": "Czech Republic",
+   "value": 78871.0,
+   "target": 77486.60500515423,
+   "dev_pct": 1.7866249202087086,
+   "familiarity": 3642601.0
+  },
+  {
+   "name": "Tajikistan",
+   "raw": "Tajikistan",
+   "value": 141379.0,
+   "target": 137776.2881711334,
+   "dev_pct": 2.614899760103588,
+   "familiarity": 1769297.0
+  },
+  {
+   "name": "United Kingdom",
+   "raw": "United Kingdom",
+   "value": 243610.0,
+   "target": 244975.31645569624,
+   "dev_pct": -0.5573281730786788,
+   "familiarity": 8447108.0
+  },
+  {
+   "name": "Iraq",
+   "raw": "Iraq",
+   "value": 435050.0,
+   "target": 435582.2505395547,
+   "dev_pct": -0.122192889837773,
+   "familiarity": 2354340.0
+  },
+  {
+   "name": "Turkey",
+   "raw": "Turkey",
+   "value": 785350.0,
+   "target": 774493.9356754189,
+   "dev_pct": 1.4016977828385102,
+   "familiarity": 5436868.0
+  },
+  {
+   "name": "South Africa",
+   "raw": "South Africa",
+   "value": 1219090.0,
+   "target": 1377101.2378373512,
+   "dev_pct": -11.474191838321024,
+   "familiarity": 4270992.0
+  },
+  {
+   "name": "Algeria",
+   "raw": "Algeria",
+   "value": 2381740.0,
+   "target": 2448576.7181628733,
+   "dev_pct": -2.7296150317487204,
+   "familiarity": 2375439.0
+  },
+  {
+   "name": "India",
+   "raw": "India",
+   "value": 3287260.0,
+   "target": 4353730.706207815,
+   "dev_pct": -24.4955597434443,
+   "familiarity": 11381076.0
+  },
+  {
+   "name": "Australia",
+   "raw": "Australia",
+   "value": 7741220.0,
+   "target": 7741220.0,
+   "dev_pct": 0.0,
+   "familiarity": 6958958.0
+  }
+ ],
+ "dropped": {
+  "compound": [],
+  "excluded": [
+   "Kuwait (17,820)",
+   "Georgia (69,700)"
+  ]
+ }
+}

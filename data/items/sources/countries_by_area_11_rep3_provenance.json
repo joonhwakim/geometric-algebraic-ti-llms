@@ -1,0 +1,130 @@
+{
+ "pool": "countries_by_area_11_rep3",
+ "built": "2026-09-13",
+ "source_table": "data/items/sources/countries_area_worldbank.csv",
+ "source_citation": "",
+ "units": "km2 (surface area)",
+ "spacing": "geometric",
+ "step_ratio": 1.6155557875145712,
+ "sens_ratio": 17.78,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "El Salvador",
+   "raw": "El Salvador",
+   "value": 21040.0,
+   "target": 22497.346291883205,
+   "dev_pct": -6.477858645972834,
+   "familiarity": 1956120.0
+  },
+  {
+   "name": "Netherlands",
+   "raw": "Netherlands",
+   "value": 41540.0,
+   "target": 36345.71800557139,
+   "dev_pct": 14.291317600693386,
+   "familiarity": 4433164.0
+  },
+  {
+   "name": "Sri Lanka",
+   "raw": "Sri Lanka",
+   "value": 65610.0,
+   "target": 58718.53507527341,
+   "dev_pct": 11.736438785286747,
+   "familiarity": 3345829.0
+  },
+  {
+   "name": "Hungary",
+   "raw": "Hungary",
+   "value": 93030.0,
+   "target": 94863.0691752353,
+   "dev_pct": -1.9323317189423568,
+   "familiarity": 2427729.0
+  },
+  {
+   "name": "Nepal",
+   "raw": "Nepal",
+   "value": 147180.0,
+   "target": 153256.58042744652,
+   "dev_pct": -3.9649719512848223,
+   "familiarity": 2637819.0
+  },
+  {
+   "name": "Ghana",
+   "raw": "Ghana",
+   "value": 238539.0,
+   "target": 247594.5554842536,
+   "dev_pct": -3.657413009968026,
+   "familiarity": 1906686.0
+  },
+  {
+   "name": "Iraq",
+   "raw": "Iraq",
+   "value": 435050.0,
+   "target": 400002.8170696835,
+   "dev_pct": 8.76173402654087,
+   "familiarity": 2354340.0
+  },
+  {
+   "name": "Norway",
+   "raw": "Norway",
+   "value": 624500.0,
+   "target": 646226.8661390594,
+   "dev_pct": -3.362111245678865,
+   "familiarity": 2627868.0
+  },
+  {
+   "name": "Egypt",
+   "raw": "Egypt",
+   "value": 1001450.0,
+   "target": 1044015.5536383615,
+   "dev_pct": -4.0770995690650285,
+   "familiarity": 3014565.0
+  },
+  {
+   "name": "Sudan",
+   "raw": "Sudan",
+   "value": 1878000.0,
+   "target": 1686665.3699356844,
+   "dev_pct": 11.343959120451473,
+   "familiarity": 1781854.0
+  },
+  {
+   "name": "Kazakhstan",
+   "raw": "Kazakhstan",
+   "value": 2724902.0,
+   "target": 2724902.0,
+   "dev_pct": 0.0,
+   "familiarity": 3274126.0
+  }
+ ],
+ "dropped": {
+  "compound": [],
+  "excluded": [
+   "Kuwait (17,820)",
+   "Israel (22,070)",
+   "Switzerland (41,291)",
+   "Lithuania (65,290)",
+   "Georgia (69,700)",
+   "United Arab Emirates (98,648)",
+   "Tajikistan (141,379)",
+   "Bangladesh (147,570)",
+   "Romania (238,400)",
+   "United Kingdom (243,610)",
+   "Japan (377,969)",
+   "Zimbabwe (390,760)",
+   "Kenya (591,969)",
+   "Afghanistan (652,870)",
+   "Tanzania (947,300)",
+   "Mauritania (1,030,700)",
+   "Mongolia (1,564,116)",
+   "Iran (1,745,150)",
+   "Algeria (2,381,740)",
+   "Argentina (2,780,400)",
+   "India (3,287,260)",
+   "Australia (7,741,220)",
+   "United States (9,831,510)",
+   "Russia (17,125,190)"
+  ]
+ }
+}

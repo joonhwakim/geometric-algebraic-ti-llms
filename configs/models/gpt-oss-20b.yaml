@@ -1,0 +1,18 @@
+name: openai/gpt-oss-20b
+revision: 6cee5e81ee83917806bbde320786a8fb61efebee
+short_name: gpt-oss-20b
+dtype: bfloat16
+quantization: null
+chat_template: true
+thinking_mode: true
+expected_vram_gb: 45
+chat_generation_suffix: null
+thinking_suppress_prefix: "<|channel|>final<|message|>"
+thinking_stop_string: "<|end|>"
+device_map: cuda
+experts_implementation: eager
+# Harmony format (MXFP4 checkpoint dequantized to bf16 on load). The generation prompt
+# ends at '<|start|>assistant' and the model opens its 'analysis' channel. Direct pass:
+# thinking_suppress_prefix prefills the final channel so the scored position is the
+# answer. Reasoning pass: the analysis channel ends with '<|end|>' = thinking_stop_string.
+# reasoning_effort is left at the template default (medium).

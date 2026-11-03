@@ -1,0 +1,10 @@
+name: mistralai/Mistral-7B-Instruct-v0.3
+revision: c170c708c41dac9275d15a8fff4eca08d52bab71
+short_name: mistral-7b-instruct-v0.3
+dtype: bfloat16
+quantization: null
+chat_template: true
+thinking_mode: null
+expected_vram_gb: 16
+chat_generation_suffix: null
+# Non-reasoning. The template folds the system message into the first [INST] itself.

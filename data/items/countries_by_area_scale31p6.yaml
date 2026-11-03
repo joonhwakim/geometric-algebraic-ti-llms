@@ -1,0 +1,19 @@
+name: countries_by_area_scale31p6
+description: >
+  Built as countries_by_area_11, with a value ratio of 31.6 between items six ranks apart.
+  Built from
+  data/items/sources/countries_area_worldbank.csv (geometric spacing). Each item's value and
+  provenance: data/items/sources/countries_by_area_scale31p6_provenance.json.
+natural_order: true
+items:
+  - Rwanda
+  - Denmark
+  - Czech Republic
+  - Tajikistan
+  - United Kingdom
+  - Iraq
+  - Turkey
+  - South Africa
+  - Algeria
+  - India
+  - Australia

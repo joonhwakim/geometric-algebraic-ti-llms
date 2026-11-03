@@ -1,0 +1,9 @@
+name: Qwen/Qwen2.5-32B-Instruct
+revision: 5ede1c97bbab6ce5cda5812749b4c0bdf79b18dd
+short_name: qwen2.5-32b-instruct
+dtype: bfloat16
+quantization: null
+chat_template: true
+thinking_mode: null
+expected_vram_gb: 70
+# Non-reasoning (Qwen2.5 has no thinking mode).

@@ -1,0 +1,94 @@
+{
+  "pool": "countries_by_population_11_disjoint",
+  "built": "2026-09-12",
+  "queried_pool": "countries_by_population_11",
+  "source_table": "data/items/sources/countries_band_familiarity.csv",
+  "excluded_pools": [
+    "countries_by_population_11",
+    "countries_by_population_11_rep2",
+    "countries_by_population_11_rep3"
+  ],
+  "familiarity_floor": 1236996.0,
+  "selection": "the queried item set's spacing rule re-applied to the leftover candidates",
+  "spacing": "geometric",
+  "step_ratio": 1.6158585245056627,
+  "filler": [
+    {
+      "name": "Slovenia",
+      "value": 2136385.0,
+      "target": 946445.0267487708,
+      "dev_pct": 125.72732061775551,
+      "familiarity": 2226337.0
+    },
+    {
+      "name": "Albania",
+      "value": 2335930.0,
+      "target": 1529321.2644479913,
+      "dev_pct": 52.74292290986708,
+      "familiarity": 3226335.0
+    },
+    {
+      "name": "Armenia",
+      "value": 3096900.0,
+      "target": 2471166.8018660657,
+      "dev_pct": 25.32136631414039,
+      "familiarity": 2657204.0
+    },
+    {
+      "name": "Croatia",
+      "value": 3866233.0,
+      "target": 3993055.9422706785,
+      "dev_pct": -3.176087290140983,
+      "familiarity": 2823224.0
+    },
+    {
+      "name": "Denmark",
+      "value": 6031699.0,
+      "target": 6452213.483146067,
+      "dev_pct": -6.517367787728967,
+      "familiarity": 2719049.0
+    },
+    {
+      "name": "Greece",
+      "value": 10372335.0,
+      "target": 10425864.158671945,
+      "dev_pct": -0.51342658850414,
+      "familiarity": 2718368.0
+    },
+    {
+      "name": "Portugal",
+      "value": 11424031.0,
+      "target": 16846721.476128124,
+      "dev_pct": -32.1884022586359,
+      "familiarity": 2964337.0
+    },
+    {
+      "name": "Australia",
+      "value": 27801023.0,
+      "target": 27221918.507174246,
+      "dev_pct": 2.127346361253468,
+      "familiarity": 6958958.0
+    },
+    {
+      "name": "Argentina",
+      "value": 46466688.0,
+      "target": 43986769.07321598,
+      "dev_pct": 5.637874704223433,
+      "familiarity": 3288172.0
+    },
+    {
+      "name": "Thailand",
+      "value": 70250751.0,
+      "target": 71076395.77241808,
+      "dev_pct": -1.1616300509408761,
+      "familiarity": 3534318.0
+    },
+    {
+      "name": "Philippines",
+      "value": 114849400.0,
+      "target": 114849400.0,
+      "dev_pct": 0.0,
+      "familiarity": 4746464.0
+    }
+  ]
+}

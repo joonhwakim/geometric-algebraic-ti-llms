@@ -1,0 +1,9 @@
+name: meta-llama/Llama-3.2-3B-Instruct
+revision: 0cb88a4f764b7a12671c53f0838cd831a0843b95
+short_name: llama-3.2-3b
+dtype: bfloat16
+quantization: null
+chat_template: true
+thinking_mode: null
+expected_vram_gb: 8
+# Non-reasoning.

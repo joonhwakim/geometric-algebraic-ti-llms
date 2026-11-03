@@ -1,0 +1,11 @@
+name: meta-llama/Llama-3.1-8B-Instruct
+revision: 0e9e39f249a16976918f6564b8830bc894c89659
+short_name: llama-3.1-8b-instruct
+dtype: bfloat16
+quantization: null
+chat_template: true
+thinking_mode: null
+expected_vram_gb: 18
+chat_generation_suffix: null
+# Non-reasoning. The template stamps strftime_now into the system header;
+# scoring.apply_chat_template_safe pins date_string='26 Jul 2024'.

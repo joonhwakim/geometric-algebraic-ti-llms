@@ -1,0 +1,23 @@
+name: countries_by_population_11
+description: >
+  11 countries ordered from smallest to largest total population. Geometric spacing (neighbors
+  about 1.62 times apart, 17.8-fold over six ranks), set from a pilot in which Qwen3-32B
+  answered without context or reasoning, so that symbolic distance 1 sits near chance and
+  distance 6 near ceiling. Selection: countries with at least 1M annual English Wikipedia page
+  views, then the candidate closest to each spacing target.
+  Built from
+  data/items/sources/countries_band_familiarity.csv (geometric spacing). Each item's value and
+  provenance: data/items/sources/countries_by_population_11_provenance.json.
+natural_order: true
+items:
+  - Jamaica
+  - Panama
+  - Singapore
+  - Belgium
+  - Netherlands
+  - Ukraine
+  - Spain
+  - Germany
+  - Mexico
+  - Brazil
+  - United States

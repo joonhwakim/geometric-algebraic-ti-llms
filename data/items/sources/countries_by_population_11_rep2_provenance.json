@@ -1,0 +1,119 @@
+{
+ "pool": "countries_by_population_11_rep2",
+ "built": "2026-09-03",
+ "source_table": "data/items/sources/countries_full_familiarity.csv",
+ "source_citation": "Wikipedia, List of countries and dependencies by population (national census authorities / UN Population Division), retrieved 2026-09-03; full 237-row table, parse validated against the 69-row extract",
+ "units": "people",
+ "spacing": "geometric",
+ "step_ratio": 1.6158585245056627,
+ "sens_ratio": 17.8,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "Lithuania",
+   "raw": "Lithuania",
+   "value": 2886179.0,
+   "target": 2816563.0654203664,
+   "dev_pct": 2.4716625533553818,
+   "familiarity": 2307248.0
+  },
+  {
+   "name": "Mauritania",
+   "raw": "Mauritania",
+   "value": 4927532.0,
+   "target": 4551167.4390672995,
+   "dev_pct": 8.269626770968271,
+   "familiarity": 1825885.0
+  },
+  {
+   "name": "Kyrgyzstan",
+   "raw": "Kyrgyzstan",
+   "value": 7404300.0,
+   "target": 7354042.702869502,
+   "dev_pct": 0.6833968629375515,
+   "familiarity": 2127321.0
+  },
+  {
+   "name": "Haiti",
+   "raw": "Haiti",
+   "value": 11867032.0,
+   "target": 11883092.591010349,
+   "dev_pct": -0.13515497659673906,
+   "familiarity": 2717412.0
+  },
+  {
+   "name": "Romania",
+   "raw": "Romania",
+   "value": 19041322.0,
+   "target": 19201396.460674156,
+   "dev_pct": -0.8336605152755402,
+   "familiarity": 2924231.0
+  },
+  {
+   "name": "Nepal",
+   "raw": "Nepal",
+   "value": 30034040.0,
+   "target": 31026740.153393194,
+   "dev_pct": -3.1994987178330074,
+   "familiarity": 2637819.0
+  },
+  {
+   "name": "South Korea",
+   "raw": "South Korea",
+   "value": 51088284.0,
+   "target": 50134822.564482525,
+   "dev_pct": 1.901794774063775,
+   "familiarity": 3886531.0
+  },
+  {
+   "name": "Turkey",
+   "raw": "Turkey",
+   "value": 86092168.0,
+   "target": 81010780.41539793,
+   "dev_pct": 6.272483191183084,
+   "familiarity": 5436868.0
+  },
+  {
+   "name": "Japan",
+   "raw": "Japan",
+   "value": 122680000.0,
+   "target": 130901960.11107716,
+   "dev_pct": -6.281006108770561,
+   "familiarity": 6183068.0
+  },
+  {
+   "name": "Nigeria",
+   "raw": "Nigeria",
+   "value": 223800000.0,
+   "target": 211519048.11998424,
+   "dev_pct": 5.80607372677348,
+   "familiarity": 3101186.0
+  },
+  {
+   "name": "Indonesia",
+   "raw": "Indonesia",
+   "value": 288315089.0,
+   "target": 341784857.0,
+   "dev_pct": -15.644276481213444,
+   "familiarity": 4578852.0
+  }
+ ],
+ "dropped": {
+  "compound": [],
+  "excluded": [
+   "Jamaica (2,774,538)",
+   "Georgia (3,941,100)",
+   "Panama (4,064,780)",
+   "Kuwait (4,881,254)",
+   "Singapore (6,110,200)",
+   "Belgium (11,936,546)",
+   "Netherlands (18,153,386)",
+   "Ukraine (28,700,000)",
+   "Spain (49,801,559)",
+   "Germany (83,467,117)",
+   "Mexico (131,231,919)",
+   "Brazil (214,211,951)",
+   "United States (341,784,857)"
+  ]
+ }
+}

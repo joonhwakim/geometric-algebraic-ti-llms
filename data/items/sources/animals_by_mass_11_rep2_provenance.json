@@ -1,0 +1,117 @@
+{
+ "pool": "animals_by_mass_11_rep2",
+ "built": "2026-09-13",
+ "source_table": "data/items/sources/animals_pantheria_mass.csv",
+ "source_citation": "",
+ "units": "kg (adult body mass)",
+ "spacing": "geometric",
+ "step_ratio": 1.6155557875145712,
+ "sens_ratio": 17.78,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "rabbit",
+   "raw": "rabbit",
+   "value": 1.5906,
+   "target": 1.336800764081197,
+   "dev_pct": 18.98556933375506,
+   "familiarity": null
+  },
+  {
+   "name": "skunk",
+   "raw": "skunk",
+   "value": 2.4,
+   "target": 2.1596762111652787,
+   "dev_pct": 11.127769412482976,
+   "familiarity": null
+  },
+  {
+   "name": "hare",
+   "raw": "hare",
+   "value": 3.8164,
+   "target": 3.489077402105607,
+   "dev_pct": 9.381351004046467,
+   "familiarity": null
+  },
+  {
+   "name": "raccoon",
+   "raw": "raccoon",
+   "value": 6.3737,
+   "target": 5.636799190058018,
+   "dev_pct": 13.073036400546274,
+   "familiarity": null
+  },
+  {
+   "name": "otter",
+   "raw": "otter",
+   "value": 8.8687,
+   "target": 9.10656355455568,
+   "dev_pct": -2.612001257452206,
+   "familiarity": null
+  },
+  {
+   "name": "coyote",
+   "raw": "coyote",
+   "value": 11.9891,
+   "target": 14.712161454931692,
+   "dev_pct": -18.508914976724167,
+   "familiarity": null
+  },
+  {
+   "name": "lynx",
+   "raw": "lynx",
+   "value": 19.3,
+   "target": 23.76831758536369,
+   "dev_pct": -18.79946937479175,
+   "familiarity": null
+  },
+  {
+   "name": "chimpanzee",
+   "raw": "chimpanzee",
+   "value": 45.0,
+   "target": 38.39904303451866,
+   "dev_pct": 17.190420499665667,
+   "familiarity": null
+  },
+  {
+   "name": "leopard",
+   "raw": "leopard",
+   "value": 52.4,
+   "target": 62.035796209437706,
+   "dev_pct": -15.53263889272333,
+   "familiarity": null
+  },
+  {
+   "name": "deer",
+   "raw": "deer",
+   "value": 75.9013,
+   "target": 100.22228959923159,
+   "dev_pct": -24.26704647886836,
+   "familiarity": null
+  },
+  {
+   "name": "tiger",
+   "raw": "tiger",
+   "value": 161.9147,
+   "target": 161.9147,
+   "dev_pct": 0.0,
+   "familiarity": null
+  }
+ ],
+ "dropped": {
+  "compound": [],
+  "excluded": [
+   "wolf (32)",
+   "cheetah (51)",
+   "jaguar (84)",
+   "gorilla (113)",
+   "elk (241)",
+   "zebra (279)",
+   "buffalo (593)",
+   "giraffe (965)",
+   "hippopotamus (1,536)",
+   "rhinoceros (2,286)",
+   "elephant (3,825)"
+  ]
+ }
+}

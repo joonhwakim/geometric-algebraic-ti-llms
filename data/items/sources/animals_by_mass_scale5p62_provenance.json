@@ -1,0 +1,105 @@
+{
+ "pool": "animals_by_mass_scale5p62",
+ "built": "2026-09-13",
+ "source_table": "data/items/sources/animals_pantheria_mass.csv",
+ "source_citation": "",
+ "units": "kg (adult body mass)",
+ "spacing": "geometric",
+ "step_ratio": 1.3333864964364877,
+ "sens_ratio": 5.62,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "leopard",
+   "raw": "leopard",
+   "value": 52.4,
+   "target": 58.7113680610267,
+   "dev_pct": -10.749822852818617,
+   "familiarity": null
+  },
+  {
+   "name": "deer",
+   "raw": "deer",
+   "value": 75.9013,
+   "target": 78.2849453598855,
+   "dev_pct": -3.044832373488391,
+   "familiarity": null
+  },
+  {
+   "name": "gorilla",
+   "raw": "gorilla",
+   "value": 112.589,
+   "target": 104.38408901713959,
+   "dev_pct": 7.8603080796281,
+   "familiarity": null
+  },
+  {
+   "name": "lion",
+   "raw": "lion",
+   "value": 158.6239,
+   "target": 139.1843347382782,
+   "dev_pct": 13.966776719719126,
+   "familiarity": null
+  },
+  {
+   "name": "tiger",
+   "raw": "tiger",
+   "value": 161.9147,
+   "target": 185.5865124555161,
+   "dev_pct": -12.755136212385086,
+   "familiarity": null
+  },
+  {
+   "name": "elk",
+   "raw": "elk",
+   "value": 240.8671,
+   "target": 247.45854962892722,
+   "dev_pct": -2.663658070740062,
+   "familiarity": null
+  },
+  {
+   "name": "zebra",
+   "raw": "zebra",
+   "value": 279.1607,
+   "target": 329.9578885029699,
+   "dev_pct": -15.395051996919504,
+   "familiarity": null
+  },
+  {
+   "name": "moose",
+   "raw": "moose",
+   "value": 461.9008,
+   "target": 439.9613929225563,
+   "dev_pct": 4.986666428093971,
+   "familiarity": null
+  },
+  {
+   "name": "buffalo",
+   "raw": "buffalo",
+   "value": 592.666,
+   "target": 586.6385802763242,
+   "dev_pct": 1.0274502779610497,
+   "familiarity": null
+  },
+  {
+   "name": "giraffe",
+   "raw": "giraffe",
+   "value": 964.6547,
+   "target": 782.2159612291232,
+   "dev_pct": 23.323320900305397,
+   "familiarity": null
+  },
+  {
+   "name": "walrus",
+   "raw": "walrus",
+   "value": 1042.9962,
+   "target": 1042.9962,
+   "dev_pct": 0.0,
+   "familiarity": null
+  }
+ ],
+ "dropped": {
+  "compound": [],
+  "excluded": []
+ }
+}

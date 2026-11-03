@@ -1,0 +1,41 @@
+# Rank direction (representation): fit at every hidden state of Qwen3-32B, probe by
+# layer, and the interventions along it, scored on the stored trials of four tests.
+# Not a test declaration for the behavioral runners (experiment.yaml); read by
+# `geo-alg-ti-llms export --experiment representation` and the `represent` subcommands.
+# The settings of the runs are described in README.md.
+name: representation
+question: >-
+  Does Qwen3-32B answer directly from a rank direction in its representation of familiar
+  items (geometric strategy), and does a reasoning chain free the answer from it
+  (algebraic strategy)? Fit the direction at every hidden state, probe it by layer, and
+  erase, invert or overwrite it at every item mention while the model answers.
+
+model: qwen3-32b
+instruction: context_only          # every context condition: the context-only instruction (the IWL test has no context)
+
+dimensions:
+  countries:
+    name: country population
+    item_set: countries_by_population_11
+  cities:
+    name: city population (constant-ratio spacing; the interventions' city item set)
+    item_set: cities_by_population_11
+  usstates:
+    name: US state population
+    item_set: us_states_by_population_11
+
+# The scored tests (in order) and the conditions of each.
+conditions:
+  iwl: [intact, erase, invert, rand_erase, write_0.25, write_0.5, write_0.75, write_1.0, write_rand]
+  content_reversed: [intact, erase, invert, rand_erase, write_0.25, write_0.5, write_0.75, write_1.0, write_rand]
+  cot_reversed: [intact, erase, rand_erase, write_1.0, write_rand]
+  cot_icl: [intact, erase, rand_erase]
+headline_conditions: [intact, erase, rand_erase]     # the bars of the main-text panel
+
+# Where the stored runs live under the published-runs root ({dim}, {model} filled in).
+published_as:
+  run: rank_intervention/{dim}/{model}
+  trials: intervene_scrub_ctxonly
+  summary: intervene_scrub_ctxonly/summary.csv
+  figure_data: rank_intervention/{dim}/{model}/intervene_scrub_ctxonly/fig_app_representation_data.csv   # relative to the published-runs root
+budgets_kept: [0, 1024]

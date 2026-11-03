@@ -1,0 +1,13 @@
+name: zai-org/GLM-4-9B-0414
+revision: 645b8482494e31b6b752272bf7f7f273ef0f3caf
+short_name: glm-4-9b-0414
+dtype: bfloat16
+quantization: null
+chat_template: true
+thinking_mode: null
+expected_vram_gb: 20
+chat_generation_suffix: "\n"
+# Chat model, not a reasoning model (the reasoning variant is GLM-Z1-9B-0414).
+# chat_generation_suffix: the template renders assistant turns as <|assistant|>\n{content}
+# but its generation prompt ends at <|assistant|>; the suffix moves the scored position
+# onto the answer token.

@@ -1,0 +1,108 @@
+{
+ "pool": "countries_by_area_11",
+ "built": "2026-09-08",
+ "source_table": "data/items/sources/countries_area_worldbank.csv",
+ "source_citation": "World Bank / FAO, Surface area (sq. km), indicator AG.SRF.TOTL.K2",
+ "units": "km2 (surface area)",
+ "spacing": "geometric",
+ "step_ratio": 1.6155557875145712,
+ "sens_ratio": 17.78,
+ "sens_d": 6,
+ "items": [
+  {
+   "name": "Tajikistan",
+   "raw": "Tajikistan",
+   "value": 141379.0,
+   "target": 141389.05903562598,
+   "dev_pct": -0.007114437067894732,
+   "familiarity": 1769297.0
+  },
+  {
+   "name": "Romania",
+   "raw": "Romania",
+   "value": 238400.0,
+   "target": 228421.91261624495,
+   "dev_pct": 4.368270657342102,
+   "familiarity": 2924231.0
+  },
+  {
+   "name": "Japan",
+   "raw": "Japan",
+   "value": 377969.0,
+   "target": 369028.34292232216,
+   "dev_pct": 2.422756205357317,
+   "familiarity": 6183068.0
+  },
+  {
+   "name": "Kenya",
+   "raw": "Kenya",
+   "value": 591969.0,
+   "target": 596185.8751650694,
+   "dev_pct": -0.7073088009510137,
+   "familiarity": 1809405.0
+  },
+  {
+   "name": "Tanzania",
+   "raw": "Tanzania",
+   "value": 947300.0,
+   "target": 963171.5410573676,
+   "dev_pct": -1.6478415713927588,
+   "familiarity": 1949834.0
+  },
+  {
+   "name": "Mongolia",
+   "raw": "Mongolia",
+   "value": 1564116.0,
+   "target": 1556057.3575245587,
+   "dev_pct": 0.517888523612096,
+   "familiarity": 2194446.0
+  },
+  {
+   "name": "Algeria",
+   "raw": "Algeria",
+   "value": 2381740.0,
+   "target": 2513897.469653431,
+   "dev_pct": -5.257074771297266,
+   "familiarity": 2375439.0
+  },
+  {
+   "name": "India",
+   "raw": "India",
+   "value": 3287260.0,
+   "target": 4061341.606316836,
+   "dev_pct": -19.059751218978054,
+   "familiarity": 11381076.0
+  },
+  {
+   "name": "Australia",
+   "raw": "Australia",
+   "value": 7741220.0,
+   "target": 6561323.93715889,
+   "dev_pct": 17.98259122917219,
+   "familiarity": 6958958.0
+  },
+  {
+   "name": "United States",
+   "raw": "United States",
+   "value": 9831510.0,
+   "target": 10600184.860434938,
+   "dev_pct": -7.251523162619624,
+   "familiarity": 16464150.0
+  },
+  {
+   "name": "Russia",
+   "raw": "Russia",
+   "value": 17125190.0,
+   "target": 17125190.0,
+   "dev_pct": 0.0,
+   "familiarity": 6758604.0
+  }
+ ],
+ "dropped": {
+  "compound": [],
+  "excluded": [
+   "Kuwait (17,820)",
+   "Georgia (69,700)"
+  ]
+ }
+}

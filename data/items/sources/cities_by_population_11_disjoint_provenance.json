@@ -1,0 +1,92 @@
+{
+  "pool": "cities_by_population_11_disjoint",
+  "built": "2026-09-12",
+  "queried_pool": "cities_by_population_11",
+  "source_table": "data/items/sources/cities_band_familiarity.csv",
+  "excluded_pools": [
+    "cities_by_population_11"
+  ],
+  "familiarity_floor": 1052208.0,
+  "selection": "the queried item set's spacing rule re-applied to the leftover candidates",
+  "spacing": "geometric",
+  "step_ratio": 1.3325944632502422,
+  "filler": [
+    {
+      "name": "Beirut",
+      "value": 1919000.0,
+      "target": 1881359.8567535835,
+      "dev_pct": 2.000688125203598,
+      "familiarity": 1114327.0
+    },
+    {
+      "name": "Budapest",
+      "value": 2489000.0,
+      "target": 2507089.728491094,
+      "dev_pct": -0.7215429222783065,
+      "familiarity": 1263808.0
+    },
+    {
+      "name": "Athens",
+      "value": 3360000.0,
+      "target": 3340933.891058785,
+      "dev_pct": 0.5706820177508121,
+      "familiarity": 1183709.0
+    },
+    {
+      "name": "Berlin",
+      "value": 4371000.0,
+      "target": 4452110.005310025,
+      "dev_pct": -1.821832910985699,
+      "familiarity": 1687989.0
+    },
+    {
+      "name": "Singapore",
+      "value": 6056000.0,
+      "target": 5932857.1428571455,
+      "dev_pct": 2.075607994220996,
+      "familiarity": 5813350.0
+    },
+    {
+      "name": "Hong Kong",
+      "value": 7117000.0,
+      "target": 7906092.579826083,
+      "dev_pct": -9.980816337005772,
+      "familiarity": 3856471.0
+    },
+    {
+      "name": "Kuala Lumpur",
+      "value": 9899000.0,
+      "target": 10535615.197820062,
+      "dev_pct": -6.042506164725769,
+      "familiarity": 1180905.0
+    },
+    {
+      "name": "Istanbul",
+      "value": 14749000.0,
+      "target": 14039702.47955012,
+      "dev_pct": 5.05208369965835,
+      "familiarity": 1888305.0
+    },
+    {
+      "name": "Moscow",
+      "value": 18509000.0,
+      "target": 18709229.78992919,
+      "dev_pct": -1.070219309813425,
+      "familiarity": 1628382.0
+    },
+    {
+      "name": "Beijing",
+      "value": 22363000.0,
+      "target": 24931816.029736128,
+      "dev_pct": -10.30336509250792,
+      "familiarity": 1270283.0
+    },
+    {
+      "name": "Delhi",
+      "value": 33224000.0,
+      "target": 33224000.0,
+      "dev_pct": 0.0,
+      "familiarity": 1643712.0
+    }
+  ]
+}
